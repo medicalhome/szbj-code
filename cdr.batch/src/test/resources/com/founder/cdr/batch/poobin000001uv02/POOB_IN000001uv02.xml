@@ -1,0 +1,368 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOB_IN000001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/POOB_IN000001UV.xsd">
+<!--
+诊断信息
+-->
+	<!-- 消息ID -->
+	<id extension="BS301" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="POOB_IN000001UV" />
+	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="T" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+	<!-- 封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+	    <!--
+          消息交互类型
+          @code: 新增:new 修改:update
+        -->
+		<code code="new" />
+		<subject typeCode="SUBJ">
+		
+			<resultGroup>
+				<code />
+				<statusCode />
+				<effectiveTime />
+				
+				<!-- 病人信息 -->
+				<subject contextControlCode="OP">
+					<patient classCode="PAT">
+						<!-- 病人标识 -->
+						<id>
+							<item root="1.2.156.112606.1.2.1.2" extension="01" identifierName="2"/>
+							<item root="1.2.156.112606.1.2.1.3" extension="222" identifierName="000000155100"/>
+							<item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="121212"/>
+						</id>
+						
+						<!-- 病区编码/病区名称/床位号 -->
+						<addr xsi:type="BAG_AD">
+							<item use="TMP">
+								<part type="BNR" value="病区名" code="病区编码" codeSystem="1.2.156.112606.1.1.33" />
+								<part type="CAR" value="床位号" />
+							</item>
+						</addr>
+						
+						<patientPerson>
+							<!-- 病人名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四" />
+								</item>
+							</name>
+						</patientPerson>
+						
+						<!-- 病人科室信息 -->
+						<providerOrganization determinerCode="INSTANCE" classCode="ORG">
+							<!-- 科室编码 -->
+							<id>
+								<item root="1.2.156.112606.1.1.1" extension="1040500" />
+							</id>
+							<name xsi:type="BAG_EN">
+								<!-- 科室名称 -->
+								<item>
+									<part value="神经外科" />
+								</item>
+							</name>
+						</providerOrganization>
+					</patient>
+				</subject>
+				
+				<!-- 就诊信息 -->
+				<reason contextControlCode="AN">
+					<encounter moodCode="EVN" classCode="ENC">
+						<id>
+							<item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="1"/>
+						</id>
+					</encounter>
+				</reason>
+				
+				
+				<!-- 诊断信息可以循环, 不同类别的诊断都可以由主次诊断构成 -->
+						
+				<!-- 诊断类别1 -->
+				<component>
+					<commonObservationEvent>
+						<!-- 主要诊断信息 -->
+						<!-- 诊断号 -->
+						<id extension="001620" />
+						
+						<!-- 诊断类别编码 -->
+						<code code="1" codeSystem="1.2.156.112606.1.1.29">
+							<!-- 诊断类别名称 -->
+							<displayName value="门诊诊断" />
+						</code>
+						
+						<!-- 必须固定项 -->
+						<statusCode code="active" />
+						
+						<!-- 诊断时间(未使用,但必须存在) -->
+						<effectiveTime />
+						
+						<!-- 是否待查 @code: N代表是, U代表否 -->
+						<uncertaintyCode code="N" codeSystem="2.16.840.1.113883.5.1053" codeSystemName="HL7V3 OID" />
+						
+						<!-- 诊断结果(疾病编码/疾病名称) -->
+						<value xsi:type="CD" code="01" codeSystem="1.2.156.112606.1.1.63">
+							<displayName value="肺癌" />
+						</value>
+						
+						<!-- 病人信息 -->
+						<subject contextControlCode="OP">
+							<patient classCode="PAT"/>
+						</subject>
+						
+						<!-- 诊断医生信息 -->
+						<author contextControlCode="AP">
+							<!-- 诊断时间 -->
+							<time value="20111102" />
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 诊断医生编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="012873" />
+								</id>
+								<!-- 诊断医生名称 -->
+								<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="刘三" />
+										</item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</author>
+						
+						<!-- 诊断科室信息 -->
+						<location contextControlCode="OP">
+							<serviceDeliveryLocation classCode="SDLOC">
+								<!-- 科室编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.1" extension="1234567" />
+								</id>
+								<location classCode="PLC" determinerCode="INSTANCE">
+									<!-- 科室名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="内科"/>
+										</item>
+									</name>
+								</location>
+							</serviceDeliveryLocation>
+						</location>
+						
+						<!-- 次要诊断(可以有多个, 上面的诊断为主诊断)0..N -->
+						<component contextControlCode="AP">
+							<commonObservationEvent>
+								<!-- 次要诊断信息 -->
+								<!-- 诊断号 -->
+								<id extension="001621" />
+													
+								<!-- 诊断类别编码 -->
+								<code code="1" codeSystem="1.2.156.112606.1.1.29">
+									<!-- 诊断类别名称 -->
+									<displayName value="门诊诊断" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="active" />
+								
+								<!--必须项未使用 -->
+								<effectiveTime />
+								
+								<!-- 是否待查 @code: N代表是, U代表否 -->
+								<uncertaintyCode code="N" codeSystem="2.16.840.1.113883.5.1053" codeSystemName="HL7V3 OID " />
+									
+								<!-- 诊断结果(疾病编码/疾病名称) -->
+								<value xsi:type="CD" code="疾病编码" codeSystem="1.2.156.112606.1.1.63">
+									<displayName value="疾病名称" />
+								</value>
+								
+								<!-- 必须项目 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 诊断医生信息 -->
+								<author contextControlCode="AP">
+									<!-- 诊断时间 -->
+									<time value="20111102" />
+									<assignedEntity classCode="ASSIGNED">
+										<!-- 诊断医生编码 -->
+										<id>
+											<item root="1.2.156.112606.1.1.2" extension="012873" />
+										</id>
+										<!-- 诊断医生名称 -->
+										<assignedPerson determinerCode="INSTANCE" classCode="PSN">
+											<name xsi:type="BAG_EN">
+												<item>
+													<part value="刘三" />
+												</item>
+											</name>
+										</assignedPerson>
+									</assignedEntity>
+								</author>
+								
+								<!-- 诊断科室信息 -->
+								<location contextControlCode="OP">
+									<serviceDeliveryLocation classCode="SDLOC">
+										<!-- 科室编码 -->
+										<id>
+											<item root="1.2.156.112606.1.1.1" extension="123456" />
+										</id>
+										<location classCode="PLC" determinerCode="INSTANCE">
+											<!-- 科室名称 -->
+											<name xsi:type="BAG_EN">
+												<item>
+													<part value="内科"/>
+												</item>
+											</name>
+										</location>
+									</serviceDeliveryLocation>
+								</location>
+								
+								<!-- 传染病信息(次诊断) -->
+								<subjectOf3 contextControlCode="AN">
+									<annotation>
+										<text value="false" />
+										<!-- 必须项目 -->
+										<statusCode code="completed" />
+										<!-- 必须项目 -->
+										<author>
+											<assignedEntity classCode="ASSIGNED" />
+										</author>
+									</annotation>
+								</subjectOf3>						
+							</commonObservationEvent>
+						</component>
+		
+		
+						<!-- 传染病信息(主诊断) -->
+						<subjectOf3 contextControlCode="AN">
+							<annotation>
+								<text value="true" />
+								<!-- 必须项目 -->
+								<statusCode code="completed" />
+								<!-- 必须项目 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf3>
+					</commonObservationEvent>
+				</component>
+				
+				<!-- 诊断类别2 -->
+				<component>
+					<commonObservationEvent>
+						<!-- 主要诊断信息 -->
+						<!-- 诊断号 -->
+						<id extension="001621" />
+						
+                        <!-- 诊断类别编码 -->
+						<code code="2" codeSystem="1.2.156.112606.1.1.29">
+							<!-- 诊断类别名称 -->
+							<displayName value="术前诊断" />
+						</code>
+						
+                        <!-- 必须固定项 -->
+						<statusCode code="active" />
+						
+                        <!-- 诊断时间(未使用,但必须存在) -->
+						<effectiveTime />
+						
+                        <!-- 是否待查 @code: N代表是, U代表否 -->
+						<uncertaintyCode code="N" codeSystem="2.16.840.1.113883.5.1053" codeSystemName="HL7V3 OID" />
+						
+                        <!-- 诊断结果(疾病编码/疾病名称) -->
+						<value xsi:type="CD" code="01" codeSystem="1.2.156.112606.1.1.63">
+							<displayName value="肺癌" />
+						</value>
+						
+                        <!-- 病人信息 -->
+						<subject contextControlCode="OP">
+							<patient classCode="PAT"/>
+						</subject>
+						
+                        <!-- 诊断医生信息 -->
+						<author contextControlCode="AP">
+							<!-- 诊断时间 -->
+							<time value="20111102" />
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 诊断医生编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="012873" />
+								</id>
+								<!-- 诊断医生名称 -->
+								<assignedPerson determinerCode="INSTANCE"
+									classCode="PSN">
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="刘三" />
+										</item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</author>
+						
+						<!-- 诊断科室信息 -->
+						<location contextControlCode="OP">
+							<serviceDeliveryLocation classCode="SDLOC">
+								<!-- 科室编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.1" extension="1234567" />
+								</id>
+								<location classCode="PLC" determinerCode="INSTANCE">
+									<!-- 科室名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="内科"/>
+										</item>
+									</name>
+								</location>
+							</serviceDeliveryLocation>
+						</location>
+						
+						<!-- 次要诊断(可以有多个, 上面的诊断为主诊断)0..N -->
+						
+						<!-- 传染病信息(主诊断) -->
+						<subjectOf3 contextControlCode="AN">
+							<annotation>
+								<text value="是否传染" />
+								<!-- 必须项目 -->
+								<statusCode code="completed" />
+								<!-- 必须项目 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf3>
+					</commonObservationEvent>
+				</component>			
+				<!-- 其他诊断按如上格式继续添加 -->
+				
+			</resultGroup>
+			
+		</subject>
+	</controlActProcess>
+</POOB_IN000001UV>

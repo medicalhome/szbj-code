@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-国际疾病分类（ICD）-电子病历-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>MS003</msgId>
+        <!-- 版本号 -->
+        <version>1</version>
+        <!-- 消息名称 -->
+        <msgName>国际疾病分类（ICD）-电子病历</msgName>
+        <!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+        <sourceSysCode>S028</sourceSysCode>
+        <!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+        <targetSysCode>XXX</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action = "insert">
+            <!-- 诊断名词代码 -->
+            <code>诊断名词代码1</code>
+            <!-- 诊断名 -->
+            <name>诊断名1</name>
+            <!-- 拼音码 -->
+            <pyCode>拼音码1</pyCode>
+            <!-- 对应ICD码 -->
+            <icdCode>1</icdCode>
+            <!-- 所属科室 -->
+            <specialFlag2>所属科室1</specialFlag2>
+            <!-- 排序码 -->
+            <seqNo>1</seqNo>
+        </row>
+        <row action = "insert">
+            <!-- 诊断名词代码 -->
+            <code>诊断名词代码2</code>
+            <!-- 诊断名 -->
+            <name>诊断名2</name>
+            <!-- 拼音码 -->
+            <pyCode>拼音码2</pyCode>
+            <!-- 对应ICD码 -->
+            <icdCode>2</icdCode>
+            <!-- 所属科室 -->
+            <specialFlag2>所属科室2</specialFlag2>
+            <!-- 排序码 -->
+            <seqNo>2</seqNo>
+        </row>
+    </body>
+</msg>

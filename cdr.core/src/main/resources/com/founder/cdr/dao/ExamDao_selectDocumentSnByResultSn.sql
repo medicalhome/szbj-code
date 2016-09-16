@@ -1,0 +1,1 @@
+select document_sn from examination_result where exam_report_sn = /*reportSn*/123;

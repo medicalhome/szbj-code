@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 账户信息服务结果数据-账户信息服务结果数据-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>BS901</msgId>
+        <!-- 消息名称 -->
+        <msgName>账户信息服务结果数据</msgName>
+        <!-- 消息源系统编码 -->
+        <sourceSysCode>his</sourceSysCode>
+        <!-- 消息目标系统编码 由平台统一管理 可以为空 -->
+        <targetSysCode>xxx</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action="delete">
+            <!-- 用户ID -->
+            <userID>00001</userID>
+            <!-- 用户名 -->
+            <userName>用户名</userName>
+            <!-- 密码 -->
+            <passwd>123456</passwd>
+            <!-- 性别 -->
+            <sex>1</sex>
+            <!-- 邮件地址 -->
+            <email>tong_meng@founder.com.cn</email>
+            <!-- 手机号码 -->
+            <mobile>15010344667</mobile>
+            <!-- 部门编码 -->
+            <deptCode>0001</deptCode>
+            <!-- 职务编码 -->
+            <posiCode>1001</posiCode>
+            <!-- 在院状态 -->
+            <inHospStatus>0</inHospStatus>
+            <!-- 有效起始日期 -->
+            <exptBeginDate>20120706</exptBeginDate>
+            <!-- 有效截止日期 -->
+            <exptEndDate>20120716</exptEndDate>
+            <!-- 备注 -->
+            <memo>备注</memo>
+        </row>
+    </body>
+</msg>

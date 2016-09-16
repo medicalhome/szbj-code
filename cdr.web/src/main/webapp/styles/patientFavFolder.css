@@ -1,0 +1,47 @@
+#selectable,#selectableAddPatient {
+	list-style-type: none;
+	margin: 0px;
+	padding: 0;
+	position: relative;
+}
+
+#selectable li,#selectableAddPatient li{
+	float: left;
+	width: 98%;
+	/* height: 26px; */
+	text-align: center;
+	font-size: 12px;
+	color:#284d76;
+	cursor: pointer;
+	margin:0px;
+	border-bottom:solid 1px #c7e2f5;
+	/* margin-left:30px;
+	margin-top:15px;
+	margin-bottom:15px; */
+	display:inline-block;
+	white-space:nowrap;
+	vertical-align:bottom;
+	overflow:hidden;
+}
+/*
+ #selectable .default {
+	background-image: url(../images/patient_folder.png);
+	width:300px;
+	height:20px;
+	background-repeat: no-repeat;
+}
+
+ #selectable .ui-selecting {
+	background-image: url(../images/patient_folder.png);
+	background-repeat: no-repeat;
+} */
+
+#selectable .ui-selected,#selectableAddPatient .ui-selected { 
+	background-image: url(../images/di.png);
+	background-repeat: repeat;
+}
+
+
+
+
+

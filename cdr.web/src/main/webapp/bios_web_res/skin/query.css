@@ -1,0 +1,65 @@
+table.rpt_param_form {
+	font-size:10pt;
+	font-family:ËÎÌå;
+	color:black;
+	background-color:#F6F6F6; /*Ä¬ÈÏ±³¾°É«*/
+}
+
+td.rpt_param_label {
+	white-space:nowrap;
+	padding-left:10px;
+	padding-right:2px;
+	text-align:right;
+}
+
+td.rpt_param_btn {
+	padding-left:5px;
+	padding-right:5px;
+}
+
+td.rpt_param_notnull{
+	padding-left:2px;
+	color:red;
+}
+
+td.rpt_param_error{
+	background-repeat:repeat-x;
+	background-position: bottom;
+	background-image:url(image/query/error.png);
+}
+
+.rpt_param_bat {
+	color:#3AA4DC;
+	cursor:hand;
+	white-space:nowrap;
+}
+
+.rpt_param_button {
+  BORDER-RIGHT: #002D96 1px solid;
+  PADDING-RIGHT: 2px;
+  BORDER-TOP: #002D96 1px solid;
+  PADDING-LEFT: 2px;
+  FONT-SIZE: 12px;
+  FILTER: progid:DXImageTransform.Microsoft.Gradient(GradientType=0, StartColorStr=#FFFFFF, EndColorStr=#9DBCEA); 
+  BORDER-LEFT: #002D96 1px solid;
+  CURSOR: hand;
+  COLOR: black;
+  PADDING-TOP: 2px;
+  BORDER-BOTTOM: #002D96 1px solid;
+}
+
+.rpt_param_text{
+
+}
+
+.rpt_param_select{
+	
+}
+
+.rpt_param_checkbox {
+
+}
+
+.rpt_param_radio {
+
+}

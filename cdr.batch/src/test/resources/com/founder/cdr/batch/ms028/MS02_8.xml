@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-药品字典-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>MS028</msgId>
+        <!-- 版本号 -->
+        <version>1</version>
+        <!-- 消息名称 -->
+        <msgName>药品字典</msgName>
+        <!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+        <sourceSysCode>S028</sourceSysCode>
+        <!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+        <targetSysCode>XXX</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action = "insert">
+            <!-- 药品编码 -->
+            <code>1</code>
+            <!-- 包装序号 -->
+            <serial>1</serial>
+            <!-- 药品分类码 -->
+            <drugId>药品分类码</drugId>
+            <!-- 国标分类码 -->
+            <drugStandardId>1</drugStandardId>
+            <!-- 药品名称 -->
+            <name>药品名称</name>
+            <!-- 剂型 -->
+            <dosage>剂型</dosage>
+            <!-- 浓度 -->
+            <concentration>浓度</concentration>
+            <!-- 重量 -->
+            <weight>重量</weight>
+            <!-- 重量单位 -->
+            <weightUnit>重量单位</weightUnit>
+            <!-- 体积 -->
+            <volum>体积</volum>
+            <!-- 体积单位 -->
+            <volUnit>体积单位</volUnit>
+            <!-- 最小单位 -->
+            <miniUnit>最小单位</miniUnit>
+            <!-- 包装量 -->
+            <packSize>1</packSize>
+            <!-- 包装单位 -->
+            <packUnit>包装单位</packUnit>
+            <!-- 规格 -->
+            <specification>规格</specification>
+            <!-- 规格备注 -->
+            <speComment>规格备注</speComment>
+            <!-- 批发价 -->
+            <fixPrice>1</fixPrice>
+            <!-- 零售价 -->
+            <retprice>1</retprice>
+            <!-- 制药厂 -->
+            <manufactory>制药厂</manufactory>
+            <!-- 自费标志 -->
+            <selfFlag>自费标志</selfFlag>
+            <!-- 单列标志 -->
+            <separateFlag>单列标志</separateFlag>
+            <!-- 贵重标志 -->
+            <supriceFlag>贵重标志</supriceFlag>
+            <!-- 毒麻标志 -->
+            <drugFlag>毒麻标志</drugFlag>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+            <!-- 大输液标志 -->
+            <infusionFlag>大输液标志</infusionFlag>
+            <!-- 进口 -->
+            <countryFlag>进口</countryFlag>
+            <!-- 分装标志 -->
+            <divideFlag>分装标志</divideFlag>
+            <!-- 药品类别 -->
+            <drugKind>药品类别</drugKind>
+            <!-- 住院账单码 -->
+            <zyBillItem>住院账单码</zyBillItem>
+            <!-- 门诊账单码 -->
+            <mzBillItem>门诊账单码</mzBillItem>
+            <!-- 住院用药品分组 -->
+            <zyChargeGroup>住院用药品分组</zyChargeGroup>
+            <!-- 门诊用药品分组 -->
+            <mzChargeGroup>门诊用药品分组</mzChargeGroup>
+            <!-- 药品类别码 -->
+            <classCode>药品类别码</classCode>
+            <!-- 药品与外界衔接码 -->
+            <extendCode>药品与外界衔接码</extendCode>
+            <!-- 常用服法 -->
+            <supplyCode>常用服法</supplyCode>
+            <!-- 常用频率 -->
+            <frequCode>常用频率</frequCode>
+            <!-- 常用剂量 -->
+            <orderDosage>常用剂量</orderDosage>
+            <!-- 常用计量单位 -->
+            <dosageUnit>常用计量单位</dosageUnit>
+            <!-- 购入价 -->
+            <buyPrice>1</buyPrice>
+            <!-- 大规格小剂量标志 -->
+            <lowdosageFlag>大规格小剂量标志</lowdosageFlag>
+            <!-- 核算码 -->
+            <auditCode>核算码</auditCode>
+            <!-- 无用 -->
+            <skinTestFlag>无用</skinTestFlag>
+            <!-- 打印名称 -->
+            <printName>打印名称</printName>
+            <!-- 文号 -->
+            <licenseNo>文号</licenseNo>
+            <!-- 有效月份 -->
+            <effMonth>有效月份</effMonth>
+            <!-- 商标 -->
+            <tradMark>商标</tradMark>
+            <!-- ‘副’影响标志 -->
+            <fuFlag>‘副’影响标志</fuFlag>
+            <!-- 住院使用给药方式 -->
+            <zySupplyCode>住院使用给药方式</zySupplyCode>
+            <!-- 住院使用频率 -->
+            <zyFrequCode>住院使用频率</zyFrequCode>
+        </row>
+    </body>
+</msg>

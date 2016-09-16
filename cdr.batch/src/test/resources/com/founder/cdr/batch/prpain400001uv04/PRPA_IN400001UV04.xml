@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN400001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/PRPA_IN400001UV.xsd">
+<!--
+PRPA_IN400001UV01
+出留观
+-->
+	<!--消息ID-->
+	<id root="2.16.840.1.113883.19.3.2409"/>
+	<!--消息创建时间-->
+	<creationTime value="201202151538"/>
+	<!--交互ID-extension="PRPA_IN400001UV"-->
+	<interactionId root="2.16.840.1.113883.1.18" extension="PRPA_IN400001UV"/>
+	<!--消息发送系统的状态:P(Production);D (Debugging);T (Training)-->
+	<processingCode code="P"/>
+	<!--消息处理模式：A (Archive)；I (Initial load);R (Restore from archive);T (Current processing)-->
+	<processingModeCode code="R"/>
+	<!--消息应答：AL (Always)；ER (Error/reject only)；NE (Never)-->
+	<acceptAckCode code="AL"/>
+	<!--接收者-->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--接收者ID-->
+			<id>				
+				<item root="1.2.840.114350.1.13.99999.4567"/>
+			</id>
+			<!--接收者通讯方式-->
+			<telecom xsi:type="BAG_TEL">
+				<item use="WP" value="https://example.org/PatientFeed"/>
+			</telecom>
+		</device>
+	</receiver>
+	<!--发送者-->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--发送者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99998.8734"/>
+			</id>
+		</device>
+	</sender>
+	
+	<!--封装的信息内容-->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new 修改:update 
+        -->
+	    <code code="update" />
+		<subject typeCode="SUBJ">
+			<encounterEvent>
+				<!--就诊次数-->
+				<id>
+                    <item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="就诊次数"/>
+				</id>
+				
+				<!-- 入出留观事件编码(@code: 20入留观, 21出留观) -->
+				<code code="20" />
+				
+				<statusCode code="completed"/>
+				
+                <!-- 出留观时间 -->
+				<effectiveTime>
+					<any value="201202151538"/>
+				</effectiveTime>
+				
+				<!-- 病人意识 -->
+				<priorityCode>
+					<originalText value="清醒"/>
+				</priorityCode>
+				
+				<!-- 病人去向编码/病人去向名称(回家/转科/住院/死亡...) -->
+				<dischargeDispositionCode code="01" codeSystem="1.2.156.112606.1.1.78">
+					<originalText value="回家"/>
+				</dischargeDispositionCode>
+				
+				<!-- 病人基本信息 -->
+				<subject>
+					<patient classCode="PAT">
+						<!-- 病人标识 -->
+						<id>
+							<item root="1.2.156.112606.1.2.1.2" extension="01" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="222" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+						<!-- 个人信息 -->
+						<patientPerson>
+							<!-- 患者姓名 -->
+							<name xsi:type="DSET_EN">
+								<item>
+									<part value="张三"/>
+								</item>			        
+							</name>
+							<!-- 性别编码 -->
+							<administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3"/>
+							<!-- 出生日期 -->
+							<birthTime value="19430605">
+							    <!-- 年龄 -->
+							    <originalText value="69" />
+							</birthTime>
+							<!-- 出生地信息 -->
+							<birthPlace>
+								<addr>
+									<part type="CTY" value="地址第一部分" code="相关编码code" codeSystem="1.2.156.112606.1.1.83" />
+									<part type="AL" value="地址第二部分或者完成地址" />
+								</addr>
+							</birthPlace>				
+						</patientPerson>
+					</patient>
+				</subject>
+
+				<departedBy>
+					<transportation moodCode="EVN">
+						<!-- 出留观方式:走/坐/卧 -->
+						<code>
+							<originalText value="走"/>
+						</code>
+						<performer>
+							<assignedPerson>
+								<!-- 出留观医生编码 -->
+								<id root="1.2.156.112606.1.1.2" extension="0000200012" />
+				                <!-- 出留观医生名称 -->
+                                <assignedPerson>
+                                    <name xsi:type="EN"><part value="李四" /></name> 
+                                </assignedPerson>
+							</assignedPerson>
+						</performer>
+						
+						<!-- 病区床号信息 -->
+						<location typeCode="LOC">
+							<locatedEntity classCode="LOCE">
+							    <!-- 必须项 -->
+							    <id />
+								<!-- 具体地址信息 -->
+								<location classCode="PLC" determinerCode="INSTANCE">
+								    <!-- 病区编码 -->
+									<id>
+										<item root="1.2.156.112606.1.1.33" extension="01" />
+									</id>
+								    <!-- 床位类型编码(床位, 座位) -->
+								    <code code="01" codeSystem="OID待申请">
+								        <displayName value="床位" />
+								    </code>
+								    <!-- 病区名称 -->
+								    <name xsi:type="BAG_EN">
+								        <item>
+								            <part value="急诊抢救室" />
+								        </item>
+								    </name>
+								    <!-- 床位号 -->
+								    <positionText value="Q01"/>
+								</location>
+							</locatedEntity>
+						</location>
+						
+					</transportation>
+				</departedBy>
+			</encounterEvent>
+		</subject>
+	</controlActProcess>
+	
+</PRPA_IN400001UV>

@@ -1,0 +1,124 @@
+/*报表整体区域*/
+div.rpt_frame{
+	
+}
+
+/*标题区*/
+table.rpt_title td{
+	text-align:center;
+	vertical-align:middle;
+	font-family:宋体;
+	font-size:10pt;
+}
+
+/*表头区*/
+table.rpt_header td {
+	background-image: url(image/table/hd.gif);
+	background-repeat: repeat-x;
+	
+	text-align:center;
+	vertical-align:middle;
+	font-family:宋体;
+	font-size:10pt;
+}
+
+/*左表头区*/
+table.rpt_header_left td {
+	text-align:center;
+	vertical-align:middle;
+	font-family:宋体;
+	font-size:10pt;
+}
+
+/*数据区*/
+table.rpt_body td{
+	text-align:center;
+	vertical-align:middle;
+	font-family:宋体;
+	font-size:10pt;
+}
+
+/*单元格边框*/
+td.border_0 {
+
+}
+td.border_r {
+	border-right: 1px solid #ededed;
+}
+td.border_b {
+	border-bottom: 1px solid #ededed;
+}
+td.border_l {
+	border-left: 1px solid #ededed;
+}
+td.border_t {
+	border-top: 1px solid #ededed;
+}
+
+/*数据区指针*/
+table.rpt_body {
+	cursor: hand;
+}
+
+/*数据区行*/
+table.rpt_body tr {
+	 background-color: #f6f6f6;
+}
+
+/*数据区奇数行*/
+table.rpt_body tr.rpt_row_odd {
+	 background-color: #FFFFFF;
+}
+
+/*滚动条*/
+div.rpt_scrollbar{
+	scrollbar-face-color:#D9E7F8; 
+	scrollbar-highlight-color:#FCFDFE; 
+	scrollbar-3dlight-color:#A1BFE8; 
+	scrollbar-arrow-color:#FFF; 
+	scrollbar-track-color:#ECF1FA;
+}
+
+
+tr:hover{
+	background-image: url(image/table/row-over.gif);
+}
+
+table.rpt_body tr
+{
+ TableSelect: expression(
+	onmouseover = function()
+   {
+    this.oldColor = this.style.backgroundColor;
+    this.style.backgroundColor = "#d3e0f3" 
+   },
+   onmouseout = function()
+   {
+    this.style.backgroundColor = this.oldColor;
+   }
+ )
+}
+
+/*upload progress bar*/
+div.up_pb {
+	width:100%;
+	height:100%;
+	display:block;
+	background-color:#EFEFEF;
+	background-image: url(image/table/load.gif);
+	background-repeat:no-repeat;
+	background-position:center;
+}
+
+/*file download link*/
+a.af:link {
+	vertical-align:top;
+	text-decoration:none;
+	color:black;
+}
+a.af:visited {
+	text-decoration:none;
+}
+a.af:hover {
+	text-decoration:underline;
+}

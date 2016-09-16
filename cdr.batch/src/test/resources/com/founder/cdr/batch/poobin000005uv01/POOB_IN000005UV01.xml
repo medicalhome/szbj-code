@@ -1,0 +1,747 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOB_IN000001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 POOB_IN000001UV01.xsd">
+<!--
+生命体征测量
+-->
+	<!-- 消息ID -->
+	<id root="" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="POOB_IN000001UV" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL" />
+
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+	
+	<!-- 封装的消息内容(按Excel填写) -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<code code="POOB_TE000001UV" />
+	    <subject typeCode="SUBJ">
+	    
+	        <resultGroup>
+				<code />
+				
+				<statusCode code="completed" />
+				
+				<!-- 这一组护理操作的审核时间 -->
+				<effectiveTime>
+				    <any value="201112311020" />
+				</effectiveTime>
+				
+				<!-- 病人信息 -->
+				<subject contextControlCode="OP">
+					<patient classCode="PAT">
+					    <!-- 病人标识对象 -->
+					    <id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="02" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="04" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+					    </id>
+					    
+						<!-- 病区和床号 -->
+						<addr xsi:type="BAG_AD">
+							<item use="TMP">
+							    <!-- 病区 -->
+								<part type="BNR" value="11A" code="01" codeSystem="1.2.156.112606.1.1.33" />
+								<!-- 床号 -->
+								<part type="CAR" value="5555" />
+							</item>
+						</addr>
+						
+					    <!-- 个人信息 -->
+					    <patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 患者姓名 -->
+					        <name xsi:type="DSET_EN">
+                                <item>
+                                    <part value="张三"/>
+                                </item>			        
+					        </name>
+					        <!-- 性别代码 -->
+					        <administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3" />				        
+					    </patientPerson>					    
+					</patient>
+				</subject>
+								
+				<!-- 审核人 -->
+				<responsibleParty contextControlCode="OP">
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 审核人标识 -->
+						<id>
+							<item extension="123456789" root="1.2.156.112606.1.1.2"/>
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 审核人姓名 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+				</responsibleParty>				
+				
+				
+				<!-- 护理操作(可循环) -->
+				<component>
+					<resultGroup>
+					    <!-- 护理操作类型编码及名称 -->
+						<code code="01" codeSystem="1.2.156.112606.1.1.56">
+						    <displayName value="基础护理" />
+						</code>
+						
+						<!-- 必须固定项 -->
+						<statusCode code="completed" />
+						
+						<!-- 护理操作的开始, 结束时间-->
+						<effectiveTime>
+						    <low value="201112311005" />
+						    <high value="201112311015" />
+						</effectiveTime>
+						
+						<!-- 必须固定项 -->
+						<subject contextControlCode="OP">
+							<patient classCode="PAT" />
+						</subject>
+						
+						<!-- 操作执行人 -->
+						<performer contextControlCode="OP">
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 操作执行人标识 -->
+								<id>
+									<item extension="123456789" root="1.2.156.112606.1.1.2"/>
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 操作执行人姓名 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="张三"/>
+										</item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</performer>
+						
+						
+						<!--========== 生命体征测量记录(可循环) START - 结果只采用PQ和ST两种 ==========-->
+						<!-- 体温示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.062" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="体温" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="36.9" unit="Cel">
+									<originalText value="36.9℃" />
+								</value>
+								
+								<!-- 结果正常与否标记(可选项) -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 测量部位 -->
+								<targetSiteCode>
+									<item code="1099" codeSystem="1.2.156.112606.1.1.42">
+										<displayName value="腋窝" />
+									</item>
+								</targetSiteCode>						
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value="体温是生命体征中重要的一个项目"></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>
+						<!-- 其他生命体征测量记录按上面格式添加 -->
+						
+						<!-- 脉搏示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.999" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="脉搏" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="75" unit="次/分">
+									<originalText value="每分钟75次" />
+								</value>
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>								
+							</commonObservationEvent>
+						</component>
+						
+						<!-- 呼吸示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.117" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="呼吸频率(次/分钟)" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="17" unit="次/分钟">
+									<originalText value="每分钟17次" />
+								</value>
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>							
+							</commonObservationEvent>
+						</component>
+						
+						<!-- 血压示例(由心脏收缩和心脏舒张构成) -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.034" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="收缩压" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="132" unit="mmHg">
+								    <originalText value="132mmHg" />
+								</value>
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.035" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="舒张压" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="86" unit="mmHg">
+								    <originalText value="86mmHg" />
+								</value>
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>											
+						
+						<!-- 大便(大便次数)示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.997" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="大便" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="3" unit="次" />
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>
+														
+						<!-- 尿量(小便量)示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.996" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="尿量" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="200" unit="ml" />
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>								
+						
+						<!-- 总入量(输入液量 + 饮入液量)示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.995" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="总入量" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="300" unit="ml" />
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>
+						
+						<!-- 身高示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.003" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="身高(cm)" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="175" unit="cm">
+									<originalText value="1.75m" />
+								</value>
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>				
+						
+						<!-- 体重示例 -->
+						<component>
+							<commonObservationEvent>
+								<!-- 项目类型编码及名称 -->
+								<code code="HR51.02.002" codeSystem="1.2.156.112606.1.1.53">
+									<displayName value="体重(g)" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 测量时间 -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 测量结果及单位 -->
+								<value xsi:type="PQ" value="60000" unit="g">
+									<originalText value="60kg" />
+								</value>
+								
+								<!-- 结果正常与否标记 -->
+								<interpretationCode code="01" codeSystem="1.2.156.112606.1.1.84">
+									<displayName value="true" />
+								</interpretationCode>
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>
+							</commonObservationEvent>
+						</component>			
+						<!-- 其他生命体征测量记录按上面格式添加 -->
+																	
+						<!--========== 生命体征测量记录 END ==========-->						
+
+
+						<!-- 效果评价 -->
+						<subjectOf2 contextControlCode="AN">
+							<annotation>
+								<text value="一切正常"></text>
+								<statusCode code="completed" />
+								<!-- 给予评价的人 -->
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf2>
+						
+						
+						<!-- 护理操作项目类型代码及名称 -->
+						<subjectOf2 contextControlCode="AN">
+							<annotation>
+							    
+							    <code code="01">
+							        <displayName value="生命体征测量" />
+							    </code>
+								
+								<text />
+								<statusCode code="completed" />
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf2>
+                        
+
+                        <!-- 护理操作项目类目编码及名称 -->
+                        <componentOf contextControlCode="OP">
+							<patientCareProvisionEvent>
+								<id />
+								<code code="HR52.02.159" codeSystem="1.2.156.112606.1.1.54">
+								    <displayName value="护理观察项目名称(生命体征测量)" />
+								</code>
+							</patientCareProvisionEvent>
+						</componentOf>
+						
+					</resultGroup>
+				</component>
+				<!-- 若有多个护理操作, 则按上面格式添加 -->
+				
+				
+				<!-- 评分操作信息(作为一个护理操作对待) -->
+				<component>
+				    <!-- 疼痛评分(静息/活动) -->
+					<resultGroup>
+						<!-- 医学评分项目编码及名称 -->
+						<code code="01" codeSystem="1.2.156.112606.1.1.99">
+							<displayName value="疼痛评分" />
+						</code>
+						
+						<!-- 必须固定项 -->
+						<statusCode code="completed" />
+						
+						<!-- 护理操作的开始, 结束时间-->
+						<effectiveTime>
+						    <low value="201112311005" />
+						    <high value="201112311015" />
+						</effectiveTime>
+						
+						<!-- 必须固定项 -->
+						<subject contextControlCode="OP">
+							<patient classCode="PAT" />
+						</subject>
+						
+						<!-- 操作执行人 -->
+						<performer contextControlCode="OP">
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 操作执行人标识 -->
+								<id>
+									<item extension="123456789" root="1.2.156.112606.1.1.2"/>
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 操作执行人姓名 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="张三"/>
+										</item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</performer>						
+						
+						<!-- 评分细目(可循环) -->
+						<component>
+							<commonObservationEvent>
+								<!-- 医学评分项目细目编码及名称 -->
+								<code code="01" codeSystem="1.2.156.112606.1.1.100">
+									<displayName value="静息" />
+								</code>
+								<statusCode code="completed" />
+								
+								<!-- 评分时间(可选项) -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 评分值 -->
+								<value xsi:type="ST" value="0" />
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>								
+							</commonObservationEvent>
+						</component>
+						
+						<component>
+							<commonObservationEvent>
+								<!-- 医学评分项目细目编码及名称 -->
+								<code code="02" codeSystem="1.2.156.112606.1.1.100">
+									<displayName value="活动" />
+								</code>
+								
+								<!-- 必须固定项 -->
+								<statusCode code="completed" />
+								
+								<!-- 评分时间(可选项) -->
+								<effectiveTime>
+									<any value="201112311010" />
+								</effectiveTime>
+								
+								<!-- 评分值 -->
+								<value xsi:type="ST" value="3" />
+								
+								<!-- 必须固定项 -->
+								<subject contextControlCode="OP">
+									<patient classCode="PAT" />
+								</subject>
+								
+								<!-- 检查项描述 -->
+								<definition>
+									<observationDefinition classCode="OBS">
+										<id />
+										<text value=""></text>
+									</observationDefinition>
+								</definition>								
+							</commonObservationEvent>
+						</component>
+						<!-- 多个评分细项按上面格式添加 -->
+						
+						
+						<!-- 护理操作项目类型代码及名称 -->
+						<subjectOf2 contextControlCode="AN">
+							<annotation>
+							    
+							    <code code="02">
+							        <displayName value="评分" />
+							    </code>
+								
+								<text />
+								<statusCode code="completed" />
+								<author>
+									<assignedEntity classCode="ASSIGNED" />
+								</author>
+							</annotation>
+						</subjectOf2>
+												
+						
+                        <!-- 护理操作项目类目编码及名称 -->
+                        <componentOf contextControlCode="OP">
+							<patientCareProvisionEvent>
+								<id />
+								<code code="HR52.02.159" codeSystem="1.2.156.112606.1.1.54">
+								    <displayName value="护理观察项目名称(生命体征测量)" />
+								</code>
+							</patientCareProvisionEvent>
+						</componentOf>
+												
+					</resultGroup>
+				</component> 
+				
+			</resultGroup>
+	    
+	    </subject>
+	</controlActProcess>
+	
+</POOB_IN000001UV>

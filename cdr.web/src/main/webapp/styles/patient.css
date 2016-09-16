@@ -1,0 +1,124 @@
+.label {
+	text-align: right;
+	padding-right: 5px;
+}
+
+.dataitem {
+	color: #0000FF;
+	padding-left: 5px;
+}
+
+/**
+ * 为电子病历EMR定制 begin
+ */
+.emrLabel
+{
+   font-size: 14px;
+   text-align: right;
+   padding-right: 10px;
+   height:23px;
+   width:20%;
+   background-color: #fff;
+   color: #000;
+}
+
+.emrDataitem
+{
+   font-size: 14px;
+   font-weight: bold;
+   color: #326bc5;
+   padding-left: 5px;
+   width:30%;
+   background-color: #FFFFFF;
+   border-bottom:solid 1px black;
+   text-align: left;
+}
+/**
+ * 为电子病历EMR定制 end
+ */
+
+.tabcontainer {
+	padding: 0px !important;
+}
+
+.aHidden
+{
+	text-align:right;
+	padding-top:2%;
+	padding-right:15px;
+	font-weight:normal; 
+}
+
+.aHidden a
+{
+	color:blue;
+}
+
+.divTab
+{
+	width:100%;
+	height:37px;
+	line-height:37px!important;
+	line-height:27px;
+	background:url(../images/pic_nav_bj.gif) repeat center center;
+}
+
+.divTabBody
+{
+	float:left;
+	text-align:center;
+	padding-bottom:0.5%;
+	height: 32px;
+	margin-top:0!important;
+	margin-top:3px;
+}
+
+.divTabChange
+{
+	color:white; 
+	font-size:15px;
+}
+
+.pl_tabs1BackGround
+{background:url(../images/pic_button_mz.png)  no-repeat center center ;}
+
+
+.pl_tabs2BackGround
+{background:url(../images/pic_button_zy.png)  no-repeat center center ;}
+
+.pl_tabs3BackGround
+{background:url(../images/pic_button_zj.png)  no-repeat center center ;}
+
+.pl_tabs4BackGround
+{background:url(../images/pic_button_js.png)  no-repeat center center ;}
+
+.pl_tabs5BackGround	
+{background:url(../images/pic_button_folder.png)  no-repeat center center ;}
+
+.pl_tabs6BackGround	
+{background:url(../images/pic_button_appoint.png)  no-repeat center center ;}
+
+.divTabLink
+{
+    background:url(../images/pic_button_yc.png)  no-repeat center center ;;
+	float:right;
+	height:21px;
+	width:47px;
+	text-align:center;
+	vertical-align:top;
+	cursor:pointer;
+	margin-top:9px;!important;
+	margin-top:9px;
+	margin-right:1.1%;
+}
+
+.butSearchPatient
+{
+	background: url(../images/5.jpg) no-repeat center center;
+}
+
+.mouseMove:hover
+{
+	color:#2d59b2;
+	/*background:url(../images/pic_button.png) no-repeat center center;	*/
+}

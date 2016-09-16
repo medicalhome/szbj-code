@@ -1,0 +1,1 @@
+delete from system_role_auth sra where sra.system_role_id = /*roleId*/

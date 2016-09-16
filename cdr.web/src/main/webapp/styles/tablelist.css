@@ -1,0 +1,613 @@
+body, table, tr, td, form
+{
+	margin: 0;
+	padding: 0;
+	font: 12px "微软雅黑";
+}
+
+.responsability
+{
+	width:100%;
+	text-align:center;
+	color:red;
+}
+
+.table
+{
+	border:1px solid #C5D6E0;
+	border-collapse: collapse;
+		font-family:"微软雅黑";
+      
+}
+
+.tabtable{
+	border: solid 1px #c0ddea;
+	border-collapse:collapse;
+	border-bottom:0px;
+	width:100%;
+}
+
+.tableci
+{
+	border:2px solid #FFED45;
+	border-collapse: collapse;
+}
+
+.tableci td 
+{
+	border-right:1px solid #C5D6E0;
+	padding-left:2px;
+}
+
+
+.tabletitle td
+{
+	background-color:/*  #74b8e7;  */  #D5EAFF; 
+	color:#000000;
+	border-color:#FF0000;
+	font-family:"微软雅黑";
+    font-size:10pt;
+   
+}
+
+.table td 
+{
+	border-right:1px solid #C5D6E0;
+	padding-left:2px;
+	padding-right:2px;
+	font-family:"微软雅黑";
+} 
+
+.blockTable
+{
+	width: 100%;
+	border-collapse: collapse;
+	border-spacing: 0px;
+	text-align: center;
+	font-family:"微软雅黑";
+	margin: 0;
+	padding: 0;
+}
+.blockHeader
+{
+	background: url('../images/nav_right_bj.gif');
+	vertical-align:middle;
+	font-family:"微软雅黑";
+	color:#153460;
+}
+.conditionRow
+{
+	background-color: #A3D2FE;
+	font-family:"微软雅黑";
+	color: #464646;
+}
+
+.mouseover
+{
+	background-color: #d4ffd4;
+	color: #464646;
+}
+/* $Author :chang_xuewen
+  * $Date : 2013/11/07 11:00$
+  * [BUG]0039004 ADD BEGIN
+  */
+.mouseover_forBS357
+{
+	cursor:default;
+	background-color: #d5eaff;
+	font-weight:bold;
+    font-size: 12px;
+   	padding-left: 5px;
+   	heignt:20px;
+   	width:13%;
+   	border-left:solid 1px #607eb0;
+	border-right:solid 1px #607eb0;
+   	text-align:left;
+}
+.tr_forBS357
+{
+	height:22px;
+}
+/* [BUG]0039004 ADD END */
+.odd
+{
+	background-color: #FFFFFF;
+	color: #000000;
+	height:20px;
+}
+.even
+{
+	background-color: #F1FBFD;
+	color: #000000;
+	height:20px;
+}
+.forbidden
+{
+	background-color: #FCE6C9;
+	color: #000000;
+}
+.orderOnly
+{
+	background-color: #D3F8F8;
+	color: #000000;
+}
+.reportOnly
+{
+	background-color: #E9D3F8;
+	color: #000000;
+}
+.tempReport
+{
+	background-color: #D1E097;
+	color: #000000;
+}
+.button
+{
+	border:0px;
+	background:url(../images/7.jpg); 
+	width:77px;
+	height:25px;
+	font-size:12px;
+	padding:0;
+	text-align:center;
+}
+.cell
+{
+	float: left;
+	padding-left: 2px;
+	padding-right: 2px;
+	height: 29px;
+	line-height: 29px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.cell input, .cell select
+{
+	margin-top: 4px;
+}
+.label
+{
+   font-size: 14px;
+   text-align: right;
+   padding-right: 10px;
+   heignt:30px;
+   width:20%;
+   background-color: #D5EAFF;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+
+/**
+ * 为电子病历EMR定制 begin
+ */
+.emrLabel
+{
+   font-size: 14px;
+   text-align: right;
+   padding-right: 10px;
+   height:23px;
+   width:20%;
+   background-color: #fff;
+   color: #000;
+}
+
+.emrDataitem
+{
+   font-size: 14px;
+   font-weight: bold;
+   color: #326bc5;
+   padding-left: 5px;
+   width:30%;
+   background-color: #FFFFFF;
+   border-bottom:solid 1px black;
+   text-align: left;
+}
+/**
+ * 为电子病历EMR定制 end
+ */
+
+
+.CVISlabel
+{
+   font-size: 14px;
+   text-align: right;
+   padding-right: 10px;
+   heignt:30px;
+   /* width:20%; */
+   background-color: #D5EAFF;
+   border-top:solid 1px #c0ddea;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.CVISlabel_1
+{
+   font-size: 15px;
+   font-weight:bold;
+   text-align: left;
+   text-decoration: underline;
+   padding-left: 10px;
+   heignt:30px;
+   background-color: #FFFFFF;
+   color: #043a8f;
+}
+.dataitem
+{
+   font-size: 14px;
+   font-weight: bold;
+   color: #326bc5;
+   padding-left: 5px;
+   width:30%;
+   background-color: #FFFFFF;
+   border-bottom:solid 1px #c0ddea;
+   text-align: left;
+}
+.CVISdataitem
+{
+   font-size: 14px;
+   font-weight: bold;
+   color: #326bc5;
+   padding-left: 10px;
+   /* width:17%; */
+   background-color: #FFFFFF;
+   border-top:solid 1px #c0ddea;
+   border-bottom:solid 1px #c0ddea;
+   text-align: left;
+}
+.noAccessMessage{
+	height:24px; 
+	width:10%; 
+	color: #FF0033;
+	padding-left: 5px ;
+	font-weight: bold;
+}
+.lablabel
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 5px;
+   heignt:30px;
+   background-color: #D5EAFF;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.labdataitem
+{
+   font-size: 12px;
+   font-weight: bold;
+   color: #0000FF;
+   padding-left: 5px;
+   heignt:30px;
+   background-color: #FFFFFF;
+   border-bottom:solid 1px #c0ddea;
+   text-align: left;
+   
+}
+.doclabel
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   background-color: #D5EAFF;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.doclabel3
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   color: #043a8f;
+}
+.doclabel4
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   color: #043a8f;
+}
+.docdataitem
+{
+   font-size: 12px;
+   font-weight: bold;
+   color: #0000FF;
+   padding-left: 5px;
+   text-align: left;
+   heignt:30px;
+   width:20%;
+   background-color: #FFFFFF;
+   border-bottom:solid 1px #c0ddea;
+}
+.docdataitem3
+{
+   font-size: 12px;
+   padding-left: 5px;
+   text-align: left;
+   heignt:30px;
+   width:20%;
+   background-color: #FFFFFF;
+   word-break:break-all;
+   word-wrap:break-word;
+   border-bottom:solid 1px #c0ddea;
+}
+/* $Author :chang_xuewen
+  * $Date : 2013/11/05 16:00$
+  * [BUG]0039002 ADD BEGIN
+  */
+.doclabel_left
+{
+   font-size: 12px;
+   text-align: right;
+   font-weight: bold;
+   padding-right: 35px;
+   heignt:20px;
+   width:12%;
+   background-color: #D5EAFF;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+/* [BUG]0039002 ADD END  */
+
+.doclabel2
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 5px;
+   heignt:20px;
+   width:12%;
+    background-color: #D5EAFF;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.docdataitem2
+{
+   font-size: 12px;
+   font-weight: bold;
+   color: #0000FF;
+   padding-left: 5px;
+   heignt:20px;
+   width:13%;
+   background-color: #FFFFFF;
+   border-bottom:solid 1px #c0ddea;
+   text-align: left;
+}
+.tabcontainer
+{
+   padding: 2px!important;
+   margin:2px;
+}
+.pagelinks
+{
+	background: url('../images/bgBlockHead.jpg');
+	color: #464646;
+	height: 100%;
+	width: 100%;
+	border: solid 1px #B3C4D4;
+    border-right: 0px;
+}
+.pageNum
+{
+	float: left;
+	margin-top: 3px;
+}
+.pagedesc
+{
+	width: 250px;
+	text-align: center;
+}
+.pagedesc, .firstPage, .prevPage, .nextPage, .lastPage, .goinput, .currentPage, .pageno
+{
+	float: left;
+	padding: 5px 5px 0px 5px;
+}
+.currentPage
+{
+	color: #000;
+}
+
+.headicon
+{
+	font-family:"微软雅黑";
+	cursor:pointer;
+}
+
+.headtitle
+{
+	font-size: 14px;
+	font-family:"微软雅黑";
+	color: #043a8f;
+	width:127px;
+	height:32px;
+}
+
+.lj{
+	text-align:center;
+	width:120px;
+}
+
+ .my-dialog .ui-dialog-titlebar-close{
+    display: none;
+  }
+  
+  .blws{
+  text-align: left;
+  padding-left:10px;
+  background-color: #FFFFFF;
+  }
+
+ .blwstitle{
+  background-color:#fbfeff;
+  border:solid 1px #e8f5fc;
+  font-weight: bold;
+  padding-left: 3px;
+  color:#153460;
+}
+/**
+ * Author:chang_xuewen
+ * Date : 2013/7/9 15:30
+ * [BUG]0033461 ADD BEGIN
+ */
+.selected{
+	background-color:#87ceff;
+	font-weight: bold;
+}
+.updown_up {
+	width: 100%;
+	height: 7px;
+	background: url(../images/pic_lines_13.jpg) no-repeat;
+	background-position:center;
+	cursor:pointer;
+}
+
+.updown_down {
+	width: 100%;
+	height: 7px;
+	background: url(../images/pic_lines_12.jpg) no-repeat;
+	background-position:center;
+	cursor:pointer;
+}
+.mover{
+	width: 100%;
+	height: 8px;
+	background-color:#ffffff;
+	cursor:n-resize;
+}
+p.ui-xlgwr .ui-icon{ 
+	position:relative; 
+	float: left; 
+	margin:0.4em 0.5em 0 0.5em; 
+	cursor:pointer;
+	z-index:999;
+	right:2px;
+}
+p.ui-xlgwr{ 
+	position:absolute; 
+	top:4px; 
+	padding:0; 
+	right:0; 
+	display:inline;
+}
+#thead{ 
+	position:fixed; 
+	z-index:100;
+}
+#conditionForm .tabletitle td
+{
+	background-color:/*  #74b8e7;  */  #D5EAFF; 
+	color:#000000;
+	border-color:#d5eaff;
+	font-family:"微软雅黑";
+    font-size:10pt;
+   
+}
+#listcon table td
+{
+	word-break:break-all;
+	word-wrap:break-word;
+}
+	
+/**
+ * [BUG]0033461 ADD END
+ */
+
+ .doclabelline
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   background-color: #D5EAFF;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+ .doclabelline2
+{
+   font-size: 12px;
+   text-align: center;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   background-color: #D5EAFF;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+ .doclabelline3
+{
+   font-size: 12px;
+   text-align: center;
+   padding-right: 3px;
+   heignt:30px;
+   background-color: #D5EAFF;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.docdataitemline
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   background-color: #FFFFFF;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.docdataitemline2
+{
+   font-size: 12px;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   background-color: #FFFFFF;
+   border-top:solid 1px #c0ddea;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.docdataitemline3
+{
+   text-align: center;
+   font-size: 12px;
+   padding-right: 3px;
+   heignt:30px;  
+   background-color: #FFFFFF;
+   border-top:solid 1px #c0ddea;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+.docdataitemline4
+{
+   text-align: left;
+   font-size: 12px;
+   padding-right: 3px;
+   heignt:30px;  
+   background-color: #FFFFFF;
+   border-top:solid 1px #c0ddea;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: #043a8f;
+}
+
+.docdataitemlinered
+{
+   font-size: 12px;
+   text-align: right;
+   padding-right: 3px;
+   heignt:30px;
+   width:13%;
+   background-color: #FFFFFF;
+   border-right:1px solid #C5D6E0;
+   border-bottom:solid 1px #c0ddea;
+   color: red;
+}

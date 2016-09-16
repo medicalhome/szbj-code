@@ -1,0 +1,377 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<FIAB_IN020001UV02 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/FIAB_IN020001UV02.xsd">
+<!--
+费用
+-->	
+	<!-- 消息ID -->
+	<id extension="BS353" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="FIAB_IN020001UV02" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="T" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+	<!-- 封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new
+        -->
+		<code code="new" />
+		<subject typeCode="SUBJ" xsi:nil="false">
+			<!-- 费用交易 -->
+			<financialTransaction classCode="XACT" moodCode="EVN">
+				<!-- 病人标识 -->
+				<id>
+					<item root="1.2.156.112606.1.2.1.2" extension="4130232" identifierName="域ID"/>
+					<item root="1.2.156.112606.1.2.1.3" extension="4130230" identifierName="病人ID"/>
+					<item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+					<item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="就诊次数"/>
+				</id>
+
+				<!-- 收款日期(transaction post date) -->
+				<effectiveTime>
+					<any value="20120506" />
+				</effectiveTime>
+
+				<!-- 收款人信息 -->
+				<author typeCode="AUT">
+					<guarantorRole classCode="GUAR">
+						<!-- 收款人编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="0000200012" />
+						</id>
+						<guarantorPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 收款人名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三" />
+								</item>
+							</name>
+							<asPersonalRelationship classCode="PRS" />
+						</guarantorPerson>
+					</guarantorRole>
+				</author>
+				
+				
+				<!-- 账单信息(可循环) -->
+				<reason typeCode="RSON">
+					<chargeGroup classCode="INVE" moodCode="EVN">
+						<id>
+							<!-- 收据号 -->
+							<item extension="0988123" />
+							<!-- 红冲账单流水号 -->
+							<item extension="08127331" scope="BUSN" />
+						</id>
+						
+						<!-- 账单码编码/账单码名称 -->
+						<code code="19284751">
+							<displayName value="药物费用账单" />
+						</code>
+						
+						<!-- 账单日期 -->
+						<effectiveTime>
+							<any value="20120506" />
+						</effectiveTime>
+						
+						<!-- 账单金额/金额单位 -->
+						<netAmt value="560" currency="RMB" />
+						
+						<!-- 账单相关信息(固定项) -->
+						<pertinentInformation typeCode="PERT">
+						    <encounter classCode="ENC" moodCode="EVN">
+						        <id />
+						        <code />
+						        <statusCode />
+						        <subject typeCode="SBJ">
+						            <patient classCode="PAT" />
+						        </subject>
+						    </encounter>
+						</pertinentInformation>
+						
+						<!-- 费用明细(可循环) -->
+						<component typeCode="COMP">
+							<chargeDetail classCode="INVE" moodCode="EVN">
+								<id>
+									<!-- 细目号 -->
+									<item extension="0868787" />
+									<!-- 结算次数 -->
+									<item extension="2" scope="VER" />
+								</id>
+								
+								<!-- 费用状态编码/费用状态名称(1录入, 2上帐, 4收费, 7冲账) -->
+								<code code="4" codeSystem="1.2.156.112606.1.1.102">
+								    <displayName value="收费" />
+								</code>
+								
+								<!-- 项目收费时间 -->
+								<effectiveTime>
+									<any value="20120506" />
+								</effectiveTime>
+								
+								<!-- 数量/单位(退费时为退还数量, 草药时为草药副数) -->
+								<unitQuantity>
+									<numerator xsi:type="PQ" value="20" unit="瓶" />
+								</unitQuantity>
+								
+                                <!-- 单价/单价价格单位 -->
+								<unitPriceAmt>
+									<numerator xsi:type="MO" value="28" currency="RMB" />
+								</unitPriceAmt>
+								
+								<!-- 必须固定项(此条费用的总金额) -->
+								<netAmt />
+									
+								<!-- 费用项目信息 -->
+								<reason typeCode="RSON">
+								    <organizer classCode="CONTAINER" moodCode="EVN">
+								        <!-- 处方号(门诊填写, 不然写成<id />即可) -->
+								        <id>
+								            <item extension="2" />
+								        </id>
+								        
+										<!-- 处方类别编码/处方类别名称(门诊填写, 不然写成<code />即可) -->
+										<code code="01" codeSystem="1.2.156.112606.1.1.34">
+											<displayName value="门诊处方笺"/>
+										</code>
+										
+										<!-- 医嘱信息 -->
+										<component typeCode="COMP">
+	                                        <substanceAdministration classCode="SBADM" moodCode="RQO">
+												<!-- 医嘱号 -->
+												<id>
+													<item extension="123456" />
+												</id>
+												
+												<!-- 
+												医嘱类别编码/医嘱类别名称
+												1. 住院(医嘱类别 - OID: 1.2.156.112606.1.1.27): 针剂药品, 材料类, 治疗类, 片剂药品, 化验类...
+												2. 门诊(处方类型 - OID: 1.2.156.112606.1.1.35): 急诊西药, 草药饮片, 放射药品, 卫生材料... 
+												-->
+												<code code="f" codeSystem="1.2.156.112606.1.1.27">
+													<displayName value="针剂药品" />
+												</code>
+												
+												<!-- 物资信息 -->
+												<consumable typeCode="CSM">
+													<manufacturedProduct classCode="MANU">
+														<!-- 包装序号 -->
+														<id extension="088344" />																			
+														<manufacturedProduct classCode="MMAT" determinerCode="KIND">
+															<!-- 费用编码/费用名称(OID: 1.2.156.112606.1.1.90药品, 1.2.156.112606.1.1.95耗材) -->
+															<code code="9012" codeSystem="1.2.156.112606.1.1.90">
+																<displayName value="青霉素" />
+															</code>
+														</manufacturedProduct>
+														
+														<!-- 所属医保信息 -->
+														<subjectOf3 typeCode="SBJ">
+															<policy classCode="POLICY" moodCode="EVN">
+																<!-- 医保类别编码/医保类别名称 -->
+																<code code="01">
+																	<displayName value="甲类" />
+																</code>								
+															</policy>
+														</subjectOf3>		
+													</manufacturedProduct>
+												</consumable>    
+											</substanceAdministration>
+										</component>
+										
+								    </organizer>
+								</reason>
+								
+								<!-- 收费项目分组信息 -->
+								<coverage typeCode="COVBY">
+									<policyOrProgram classCode="COV" moodCode="EVN">
+									    <!-- 项目分组编码/项目分组名称 -->
+									    <code code="0" codeSystem="1.2.156.112606.1.1.105">
+									        <displayName value="甲类" />
+									    </code>
+									</policyOrProgram>
+								</coverage>
+								
+								<!-- 费别信息 -->
+								<coverage typeCode="COVBY">
+									<policyOrProgram classCode="COV" moodCode="EVN">
+										<!-- 费别编码/费别名称(OID: 1.2.156.112606.1.1.59 住院, 1.2.156.112606.1.1.79 门诊) -->
+										<code code="010" codeSystem="1.2.156.112606.1.1.59">
+											<!-- 费别名称 -->
+											<displayName value="诊查费" />
+										</code>
+									</policyOrProgram>
+								</coverage>
+								
+								<!-- 费用相关信息 -->
+								<pertinentInformation typeCode="PERT">
+									<encounter classCode="ENC" moodCode="EVN">
+									    <!-- 固定必须项 -->
+										<id />
+										<statusCode />
+										
+										<!-- 婴儿标记信息(固定编码08, @value: 是1, 否0) -->
+										<specialCourtesiesCode>
+											<item xsi:type="PQR" value="1" code="08" codeSystem="1.2.156.112606.1.1.84">
+												<displayName value="是否婴儿标记" />
+											</item>
+										</specialCourtesiesCode>
+										
+										<!-- 固定必须项 -->
+										<subject typeCode="SBJ">
+											<patient classCode="PAT" />
+										</subject>
+										
+										<!-- 费用执行位置信息(收费处) -->
+										<location typeCode="ORG">
+											<time />
+											<serviceDeliveryLocation classCode="SDLOC">
+											    <serviceProviderOrganization classCode="ORG" determinerCode="INSTANCE">
+													<!-- 费用执行科室编码 -->
+													<id>
+														<item root="1.2.156.112606.1.1.1" extension="1230" />
+													</id>
+													<!-- 费用执行科室名称 -->
+													<name xsi:type="DSET_EN">
+													    <item><part value="门诊收费处" /></item> 
+													</name>
+												</serviceProviderOrganization>
+											</serviceDeliveryLocation>
+										</location>
+										
+										<!-- 费用确认人和申请人信息 -->
+										<authorization typeCode="AUTH">
+											<consent classCode="CONS" moodCode="EVN">
+												<text />
+												<!-- 费用确认人信息 -->
+												<performer typeCode="PRF">
+													<assignedEntity classCode="ASSIGNED">
+													    <!-- 费用确认人编码 -->
+													    <id>
+													        <item root="1.2.156.112606.1.1.2" extension="1235" />
+													    </id>
+													    <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+													        <!-- 费用确认人名称 -->
+															<name xsi:type="DSET_EN">
+															    <item><part value="吴总" /></item> 
+															</name>
+														</assignedPerson>
+													</assignedEntity>
+												</performer>
+												<!-- 费用申请人信息 -->
+												<author typeCode="AUT">
+													<responsibleParty classCode="ASSIGNED">
+													    <!-- 申请科室信息 -->
+													    <agentOrganization classCode="ORG" determinerCode="INSTANCE">
+													        <!-- 申请科室编码 -->
+															<id>
+															    <item root="1.2.156.112606.1.1.1" extension="1234" />
+															</id>
+															<!-- 申请科室名称 -->
+															<name xsi:type="DSET_EN">
+															    <item><part value="肾内科" /></item>
+															</name>
+													    </agentOrganization>
+													    <!-- 申请人信息 -->
+													    <representedPerson>
+															<!-- 费用申请人编码 -->
+															<id>
+																<item root="1.2.156.112606.1.1.2" extension="1236" />
+															</id>
+															<!-- 费用申请人名称 -->
+															<name xsi:type="DSET_EN">
+															    <item><part value="文总" /></item>
+															</name>
+														</representedPerson>
+													</responsibleParty>
+												</author>
+											</consent>
+										</authorization>
+										
+									</encounter>
+								</pertinentInformation>
+								
+							</chargeDetail>
+						</component>
+						<!-- 多条费用明细按上面格式添加 -->
+						
+					</chargeGroup>
+				</reason>
+				<!-- 多个账单按上面格式添加 -->
+				
+				
+				<!-- 账户信息 -->
+				<postingTo2 typeCode="DEBIT">
+					<account classCode="ACCT" moodCode="EVN">
+						<id />
+						
+						<statusCode code="active" />
+						
+						<!-- 医保内金额 -->
+						<component typeCode="COMP">
+							<account classCode="ACCT" moodCode="EVN">
+								<!-- 医保号 -->
+								<id>
+									<item root="1.2.156.112606.1.2.11" extension="088742" />
+								</id>
+								
+								<!-- 病人付费类别编码/病人付费类别名称 -->
+								<code code="1" codeSystem="1.2.156.112606.1.1.86">
+								    <displayName value="城镇职工基本医疗保险" />
+								</code>
+								
+								<statusCode code="active" />
+								
+								<!-- 金额/金额单位 -->
+								<balanceAmt value="560" currency="RMB" />
+							</account>
+						</component>
+						
+						<!-- 医保外金额 -->
+						<component typeCode="COMP">
+							<account classCode="ACCT" moodCode="EVN">
+								<!-- 其他卡号 -->
+								<id>
+									<item extension="其他卡号" />
+								</id>
+								
+								<!-- 病人付费类别编码/病人付费类别名称(医保外金额的编码固定为7) -->
+								<code code="7" codeSystem="1.2.156.112606.1.1.86">
+								    <displayName value="全自费" />
+								</code>
+								
+								<statusCode code="active" />
+								
+								<!-- 金额/金额单位 -->
+								<balanceAmt value="300" currency="RMB" />
+							</account>
+						</component>
+					</account>
+				</postingTo2>
+				
+			</financialTransaction>
+			
+		</subject>
+	</controlActProcess>
+
+</FIAB_IN020001UV02>

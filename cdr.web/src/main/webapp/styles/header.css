@@ -1,0 +1,14 @@
+/* CSS Document */
+/*.header{width:100%; height:56px; background:url(../images/top/top-bj.png) repeat-x; position: relative;}
+.header-logo{width:260px; height:56px; position: absolute; top: 0px; left: 0px;}
+.header-bj{width:680px; height:56px; line-height:56px; background:url(../images/top/top-right.png) no-repeat; position: absolute; top: 0px; left: 260px; font-family:"ÂçéÊñáÊñ∞È≠è"; font-size:24px; color:#fff; }
+.header-left{background:url(../images/top/top-left.png) no-repeat;}
+.fd-logo{width:122px;height:56px; background:url(../images/top/fd-logo.jpg) no-repeat; position: absolute; top: 0px; right: 20px; z-index:10; text-align: right;}
+.bgHeaderNew {width: 100%; height: 55px; line-height: 20px; vertical-align: top; text-align: right; color: #34454C; position:absolute; z-index:20;}
+*/
+
+.header{width:100%; height:56px; background:url(../images/top/top-bj.png) repeat-x; position: relative;}
+.header-logo{width:260px; height:56px; position: absolute; top: 0px; left: 0px;}
+.header-bj{width:680px; height:56px; line-height:56px; background:url(../images/top/top-right.png) no-repeat; position: absolute; top: 0px; left: 260px; font-family:"∑Ω’˝ ÊÃÂ	"; font-size:24px; color:#fff; }
+.fd-logo{width:122px;height:56px; background:url(../images/top/fd-logo.jpg) no-repeat; position: absolute; top: 0px; right: 20px; }
+.bgHeaderNew {width: 100%; height: 55px; line-height: 20px; vertical-align: top; text-align: right; color: #34454C; position:absolute; z-index:20;}

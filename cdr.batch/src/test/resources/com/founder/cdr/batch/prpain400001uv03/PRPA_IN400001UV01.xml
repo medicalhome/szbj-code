@@ -1,0 +1,251 @@
+<!--
+PRPA_IN400001UV
+01
+入科
+-->
+<PRPA_IN400001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 Schemas/PRPA_IN400001UV.xsd">
+	<!--消息ID-->
+	<id root="2.16.840.1.113883.19.3.2409"/>
+	<!--消息创建时间-->
+	<creationTime value="201203011525"/>
+	<!--交互ID-->
+	<interactionId root="2.16.840.1.113883.1.18" extension="PRPA_IN400001UV"/>
+	<!--消息发送系统的状态:P(Production);D (Debugging);T (Training)-->
+	<processingCode code="P"/>
+	<!--消息处理模式：A (Archive)；I (Initial load);R (Restore from archive);T (Current processing)-->
+	<processingModeCode code="R"/>
+	<!--消息应答：AL (Always)；ER (Error/reject only)；NE (Never)-->
+	<acceptAckCode code="AL"/>
+	<!--接受者-->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--接受者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99999.4567"/>
+			</id>
+			<!--接受者电话-->
+			<telecom xsi:type="BAG_TEL">
+				<item use="WP" value="https://example.org/PatientFeed"/>
+			</telecom>
+		</device>
+	</receiver>
+	<!--发送者-->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--发送者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99998.8734"/>
+			</id>
+		</device>
+	</sender>
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<code code="PRPA_TE400001UV" codeSystem="2.16.840.1.113883.1.18"/>
+		<subject typeCode="SUBJ" xsi:nil="false">
+			<encounterEvent>
+				<!--就诊次数-->
+				<id>
+                    <item scope="VER" extension="1" root="1.2.156.112606.1.2.1.7" identifierName="就诊次数"/>
+				</id>
+				<!--入科-->
+				<code code="3" codeSystem="1.2.156.112606.1.2.3.34">
+					<displayName value="入科"/>
+				</code>
+				<statusCode code="active"/>
+				<!--入科时间-->
+				<effectiveTime>
+					<any value="201203011530"/>
+				</effectiveTime>
+				<!--病人信息-->
+				<subject>
+					<patient classCode="PAT">
+						<!--病历号/EMPI_ID-->
+						<id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="02" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="04" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+						<patientPerson>
+							<!--病人姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+							<!--性别代码-->
+							<administrativeGenderCode/>
+							<!--出生日期-->
+							<birthTime value="19730401">
+							    <!-- 年龄 -->
+							    <originalText value="39" />
+							</birthTime>
+						</patientPerson>
+					</patient>
+				</subject>
+				<!--入科操作者-->
+				<admitter typeCode="ADM" xsi:nil="false">
+					<!--未使用,1..1-->
+					<time/>
+					<assignedPerson classCode="ASSIGNED">
+						<!--ID-->
+						<id>
+							<item extension="5678" root="1.2.156.112606.1.1.2" identifierName="护士ID"/>
+						</id>
+						
+						<!-- 病区 -->
+						<addr xsi:type="BAG_AD">
+							<item use="TMP">
+								<part type="BNR" value="4B" />
+							</item>
+						</addr>
+						
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE" xsi:nil="false">
+							<!--姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="魏鹏"/>
+								</item>
+							</name>
+						</assignedPerson>
+						
+						<!--入科操作者-科室-->
+						<representedOrganization classCode="ORG" determinerCode="INSTANCE" xsi:nil="false">
+							<!--科室ID-->
+							<id>
+								<item extension="6789" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+							</id>
+							<!--科室名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="ICU"/>
+								</item>
+							</name>
+						</representedOrganization>
+					</assignedPerson>
+				</admitter>
+				<!--家属-->
+				<notificationContact typeCode="NOT" xsi:nil="false">
+					<notificationParty classCode="CON">
+						<!--未使用,1..1-->
+						<id/>
+						<contactPerson classCode="PSN" xsi:nil="false">
+							<!--未使用,1..1-->
+							<id/>
+							<!--家属姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="赵六"/>
+								</item>
+							</name>
+							<!--家属联系方式-->
+							<telecom xsi:type="BAG_TEL">
+								<item value="13800138000"/>
+							</telecom>
+						</contactPerson>
+					</notificationParty>
+				</notificationContact>
+				<!--转入科室-->
+				<location typeCode="LOC" xsi:nil="false">
+					<!--未使用,1..1-->
+					<time/>
+					<statusCode code="active"/>
+					<serviceDeliveryLocation classCode="SDLOC">
+						<!--科室ID-->
+						<id>
+							<item extension="6789" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+						</id>
+						<!--科室名称-->
+						<name xsi:type="BAG_EN">
+							<item>
+								<part value="ICU"/>
+							</item>
+						</name>
+						<location classCode="PLC" determinerCode="INSTANCE" xsi:nil="false">
+							<!--病区ID-->
+							<id>
+								<item extension="789" root="1.2.156.112606.1.1.33" identifierName="病区ID"/>
+							</id>
+							<!--病区名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="ICU 4B 病区"/>
+								</item>
+							</name>
+							<!--床位-->
+							<positionText value="01"/>
+						</location>
+					</serviceDeliveryLocation>
+				</location>
+				<!--过敏-->
+				<reason typeCode="RSON" xsi:nil="false">
+					<observationDx classCode="OBS" moodCode="EVN">
+						<!--过敏-->
+						<code code="89" codeSystem="1.2.156.112606.1.1.12">
+							<displayName value="过敏"/>
+						</code>
+						<statusCode code="completed"/>
+						<!--过敏原-->
+						<value code="90" codeSystem="1.2.156.112606.1.1.13">
+							<displayName value="青霉素"/>
+						</value>
+					</observationDx>
+				</reason>
+				<!--身高-->
+				<reason typeCode="RSON" xsi:nil="false">
+					<observationDx classCode="OBS" moodCode="EVN">
+						<code code="80" codeSystem="1.2.156.112606.1.1.53">
+							<displayName value="身高"/>
+						</code>
+						<statusCode code="completed"/>
+						<value xsi:type="PQR" value="173"/>
+					</observationDx>
+				</reason>
+				<!--体重-->
+				<reason typeCode="RSON" xsi:nil="false">
+					<observationDx classCode="OBS" moodCode="EVN">
+						<code code="81" codeSystem="1.2.156.112606.1.1.53">
+							<displayName value="体重"/>
+						</code>
+						<statusCode code="completed"/>
+						<value xsi:type="PQR" value="78"/>
+					</observationDx>
+				</reason>
+				<!--诊断-->
+				<reason typeCode="RSON" xsi:nil="false">
+					<observationDx classCode="OBS" moodCode="EVN">
+						<code code="82" codeSystem="1.2.156.112606.1.2.2.1">
+							<displayName value="诊断"/>
+						</code>
+						<statusCode code=" completed"/>
+						<value code="" codeSystem="" codeSystemName="ICD-10">
+							<displayName value="失血性休克"/>
+						</value>
+					</observationDx>
+				</reason>
+				<!--ABO血型-->
+				<reason typeCode="RSON" xsi:nil="false">
+					<observationDx classCode="OBS" moodCode="EVN">
+						<code code="83" codeSystem="1.2.156.112606.1.1.46">
+							<displayName value="ABO血型"/>
+						</code>
+						<statusCode code="completed"/>
+						<value code="165743006" codeSystem="1.2.156.112606.1.1.10" codeSystemName="SNOMED-CT">
+							<displayName value="AB型血"/>
+						</value>
+					</observationDx>
+				</reason>
+				<!--Rh血型-->
+				<reason typeCode="RSON" xsi:nil="false">
+					<observationDx classCode="OBS" moodCode="EVN">
+						<code code="84" codeSystem="1.2.156.112606.1.1.46">
+							<displayName value="Rh血型"/>
+						</code>
+						<statusCode code="completed"/>
+						<value code="165747007" codeSystem="1.2.156.112606.1.1.11" codeSystemName="SNOMED-CT">
+							<displayName value="阳性"/>
+						</value>
+					</observationDx>
+				</reason>
+			</encounterEvent>
+		</subject>
+	</controlActProcess>
+</PRPA_IN400001UV>

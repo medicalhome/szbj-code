@@ -1,0 +1,17 @@
+body { background:url(../images/bg.jpg) repeat-x; background-position:top; padding:0px;}
+.clear{ clear:both;}
+
+.container{ width:903px; margin:0 auto; padding:0px;}
+.header   { width:903px; height:124px; margin:0px; padding:0px;}
+.logo     { width:325px; height:62px; background:url(../images/logo.png) no-repeat; margin-top:45px; margin-left:30px;}
+.main     { width:903px; height:310px;}
+.mainleft { width:315px; height:303px; background:url(../images/bg_11.jpg) no-repeat; float:left; margin-left:6px;}
+.mainright{ width:568px; height:303px; background:url(../images/bg_2.jpg) no-repeat; float:left; margin-right:6px;}
+.xtdl     { width:138px; height:41px; margin-top:75px; margin-left:101px; font-size:18px; font-weight:bold; line-height:25px; color:#FFFFFF;}
+.name     {margin:0;padding:0;float:left; margin-top:-1px;padding-left:40px; text-align:left; white-space:nowrap; color:#FFFFFF; font-weight:bold; line-height:14px; font-size:14px;align:left;}
+.input ul, li{ width:172px; line-height:40px !important;height:40px; list-style-type:none;}
+.btn      { width:151px; height:27px; line-height:27px; margin-top:90px; margin-left:100px; color:#333333; font-size:14px; font-weight:bold; text-align:center;}
+.btn_1    { width:69px; height:27px; float:left; background:url(../images/btn_1.jpg) no-repeat;}
+.btn_2    { width:69px; height:27px; float:right; background:url(../images/btn_1.jpg) no-repeat;}
+.footer   { width:275px; height:20px; line-height:27px; float:right; margin-right:40px; margin-top:40px; font-size:12px; color:#333333;}
+.prompt   { color:red;font-weight:normal;display:none;font-size:12px;}

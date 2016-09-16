@@ -1,0 +1,612 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PORX_IN010370UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/PORX_IN010370UV.xsd">
+<!--
+处方信息
+-->
+	<!-- 消息ID -->
+	<id extension="BS302" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="PORX_IN010370UV" />
+	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="T" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+    <!-- 封装的消息内容 -->
+    <controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new 修改:update
+        -->
+        <code code="new" />
+		<subject typeCode="SUBJ">
+		
+		    <!-- 一个消息可包含一个患者一次就诊的多个处方笺 -->
+		    <combinedMedicationRequest moodCode="RQO">
+
+                <!-- 病人信息 -->
+				<subject typeCode="SBJ">
+					<patient classCode="PAT">
+						<!-- 病人标识 -->
+						<id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="02" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="4130230" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+						
+						<!-- 个人信息 -->
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 病人名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+							<!-- 性别编码 -->
+							<administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3"/>
+                            <!-- 出生日期 -->
+							<birthTime value="19730401">
+								<!-- 年龄 -->
+								<originalText value=""/>
+							</birthTime>
+							
+							<!-- 病人身份信息 -->
+							<asOtherIDs classCode="ROL">
+								<id />
+								<!-- 病人身份编码/病人身份名称 -->
+								<code code="01" codeSystem="1.2.156.112606.1.1.94">
+								    <displayName value="病人身份名称" />
+								</code>
+								<scopingOrganization classCode="ORG" determinerCode="INSTANCE">
+									<id />
+								</scopingOrganization>
+							</asOtherIDs>
+							
+							<!-- 与患者关系信息(固定为代办人), 如果没有此信息可以不写personalRelationship节点 -->
+							<personalRelationship classCode="PRS">
+								<!-- 个人关系编码 -->
+								<code code="03" codeSystem="1.2.156.112606.1.1.18">
+									<displayName value="代办人"/>
+								</code>
+								<relationshipHolder1 classCode="PSN" determinerCode="INSTANCE">
+									<!-- 代办人身份证号 -->
+									<id>
+										<item extension="123456789012345678" root="2.16.840.1.113883.18.4"/>
+									</id>
+									<!-- 代办人姓名 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="赵六"/>
+										</item>
+									</name>
+								</relationshipHolder1>
+							</personalRelationship>
+						</patientPerson>
+						
+						<!-- 保险信息 -->
+						<coveredPartyOf typeCode="COV">
+							<coverageRecord classCode="COV" moodCode="EVN">
+								<component typeCode="COMP">
+									<policyOrProgram classCode="COV" moodCode="EVN">
+										<!-- 保险类别编码/保险类别名称 -->
+										<code code="01" codeSystem="1.2.156.112606.1.1.20">
+											<displayName value="社会基本医疗保险"/>
+										</code>
+										<coveredParty typeCode="COV">
+											<coveredParty classCode="COVPTY">
+												<!-- 保险机构号 -->
+												<id>
+													<item extension="4567"/>
+												</id>
+											</coveredParty>
+										</coveredParty>
+									</policyOrProgram>
+								</component>
+							</coverageRecord>
+						</coveredPartyOf>
+					</patient>
+				</subject>
+				
+				
+				<!-- 处方信息(可循环) -->
+				<component2 typeCode="COMP">
+					<combinedMedicationRequest moodCode="RQO">
+						<!-- 处方号 -->
+						<id>
+							<item extension="2" />
+						</id>
+						
+						<!-- 处方类别编码/处方类别名称 -->
+						<code code="01" codeSystem="1.2.156.112606.1.1.34">
+							<displayName value="门诊处方笺"/>
+						</code>
+						
+						<!-- 必须固定项 -->
+						<statusCode code="active"/>
+						
+						<!-- 开方医生信息 -->
+						<author typeCode="AUT">
+							<!-- 开方时间 -->
+							<time value="20120908"/>
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 开方医生编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="5678"  />
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 开方医生姓名 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="李四"/>
+										</item>
+									</name>
+								</assignedPerson>
+								<!-- 开方科室信息 -->
+								<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+									<!-- 开方科室编码 -->
+									<id>
+										<item extension="3333" root="1.2.156.112606.1.1.1" />
+									</id>
+									<!-- 开方科室名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="内科"/>
+										</item>
+									</name>
+								</representedOrganization>
+							</assignedEntity>
+						</author>
+						
+						<!-- 审核医生信息 -->
+						<verifier typeCode="VRF">
+							<!-- 审核时间 -->
+							<time value="20120908"/>
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 审核医生编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="7890" />
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 审核医生姓名 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="王五"/>
+										</item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</verifier>		
+						
+						<!--
+						**************************************************************************************************
+						处方药品细目
+						例一:西药/成药(西药/成药处方中不会含有草药, 草药处方中也不会含有西药/成药)
+						**************************************************************************************************
+						-->
+						<component1 typeCode="COMP">
+							<substanceAdministrationRequest classCode="SBADM" moodCode="RQO">
+								<id>
+									<!-- 当前药品医嘱号 -->
+									<item extension="8901" />
+									<!-- 父医嘱号(当没有父医嘱时可没有此item节点) -->
+									<item extension="" scope="BUSN" />
+									<!-- 西药/成药标识(固定值) -->
+									<item extension="03" root="1.2.156.112606.1.2.2.23" />
+								</id>
+								
+								<!-- 处方类型编码/处方类型名称 -->
+								<code code="10" codeSystem="1.2.156.112606.1.1.35">
+									<displayName value="门诊西药"/>
+								</code>
+								
+								<!-- 频次编码/频次名称 -->
+								<effectiveTime xsi:type="QSC_TS">
+									<code code="TID">
+										<displayName value="1天3次"/>
+									</code>
+								</effectiveTime>
+								
+								<!-- 天数 -->
+								<repeatNumber>
+									<any value="6"/>
+								</repeatNumber>
+								
+								<!-- 给药途径编码/给药途径名称 -->
+								<routeCode code="1" codeSystem="1.2.156.112606.1.1.38">
+									<displayName value="口服"/>
+								</routeCode>
+								
+								<!-- 次剂量/次剂量单位 -->
+								<doseQuantity value="1" unit="tablet">
+									<originalText value="1次1片"/>
+								</doseQuantity>
+								
+								<!-- 总药量/总药量单位 -->
+								<doseCheckQuantity>
+									<item>
+										<numerator xsi:type="PQ" value="18" unit="tablet">
+											<originalText value="用药18片"/>
+										</numerator>
+									</item>
+								</doseCheckQuantity>
+								
+								<!-- 领药量/领药量单位 -->
+								<maxDoseQuantity>
+									<item>
+										<numerator xsi:type="PQ" value="2" unit="box">
+											<originalText value="领药2盒"/>
+										</numerator>
+									</item>
+								</maxDoseQuantity>
+								
+								<!-- 药品信息 -->
+								<consumable typeCode="CSM">
+									<manufacturedProduct classCode="MANU">
+										<!-- 包装序号 -->
+										<id extension="1234" />
+																	
+										<manufacturedProduct classCode="MMAT" determinerCode="KIND">
+											<!-- 药品编码 -->
+											<code code="9012" codeSystem="1.2.156.112606.1.1.90" />
+										</manufacturedProduct>
+										
+										<!-- 药物所属医保信息 -->
+										<subjectOf3 typeCode="SBJ">
+											<policy classCode="POLICY" moodCode="EVN">
+												<!-- 药物医保类别编码/药物医保类别名称 -->
+												<code code="01">
+													<displayName value="甲类" />
+												</code>								
+											</policy>
+										</subjectOf3>
+									</manufacturedProduct>
+								</consumable>
+								
+								<!-- 执行科室信息 -->
+								<location typeCode="LOC">
+									<serviceDeliveryLocation classCode="SDLOC">
+										<!-- 执行科室编码 -->
+										<id>
+											<item root="1.2.156.112606.1.1.1" extension="12" />
+										</id>
+										<location classCode="PLC" determinerCode="INSTANCE">
+											<!-- 执行科室名称 -->
+											<name xsi:type="BAG_EN">
+												<item>
+													<part value="门诊西药房"/>
+												</item>
+											</name>
+										</location>
+									</serviceDeliveryLocation>
+								</location>
+								
+								<!-- 是否皮试 -->
+								<precondition typeCode="PRCN">
+									<observationEventCriterion classCode="OBS" moodCode="EVN.CRT">
+										<code code="01" codeSystem="1.2.156.112606.1.1.84">
+											<displayName value="是否皮试"/>
+										</code>
+										<value xsi:type="BL" value="true"/>
+									</observationEventCriterion>
+								</precondition>
+								
+								<!-- 是否药观 -->
+								<precondition typeCode="PRCN">
+									<observationEventCriterion classCode="OBS" moodCode="EVN.CRT">
+										<code code="04" codeSystem="1.2.156.112606.1.1.84">
+											<displayName value="是否药观"/>
+										</code>
+										<value xsi:type="BL" value="true"/>
+									</observationEventCriterion>
+								</precondition>						
+								
+								<!-- 嘱托 -->
+								<subjectOf typeCode="SUBJ">
+									<annotation>
+										<!-- 嘱托内容 -->
+										<text value="对于药品的嘱托内容,当有需要的时候进行填写"/>
+										<statusCode code="completed"/>
+										<author>
+											<assignedEntity classCode="ASSIGNED"/>
+										</author>
+									</annotation>
+								</subjectOf>
+								
+							</substanceAdministrationRequest>
+						</component1>
+							
+						<!--
+						**************************************************************************************************
+						处方药品细目
+						例二:草药方剂(西药/成药处方中不会含有草药, 草药处方中也不会含有西药/成药)
+						**************************************************************************************************
+						-->
+						<component1 typeCode="COMP">
+							<substanceAdministrationRequest classCode="SBADM" moodCode="RQO">								
+								<id>
+								    <!-- 医嘱号 -->
+									<item extension="8901"/>
+									<!-- 草药标识(固定值) -->
+									<item extension="04" root="1.2.156.112606.1.2.2.23" />									
+								</id>
+								
+								<!-- 处方类型编码/处方类型名称 -->
+								<code code="10" codeSystem="1.2.156.112606.1.1.35">
+									<displayName value="中医科"/>
+								</code>
+								
+								<!-- 频次编码/频次名称 -->
+								<effectiveTime xsi:type="QSC_TS">
+									<code code="BID">
+										<displayName value="1天2次"/>
+									</code>
+								</effectiveTime>
+		
+								<!-- 总药量(付数)/总药量单位(付) -->
+								<doseCheckQuantity>
+									<item>
+										<numerator xsi:type="PQ" value="7" unit="bag">
+											<originalText value="用药7付"/>
+										</numerator>
+									</item>
+								</doseCheckQuantity>
+		
+								<!-- 药品信息 -->
+								<consumable typeCode="CSM">
+									<manufacturedProduct classCode="MANU">
+										<manufacturedProduct classCode="MMAT" determinerCode="KIND">
+											<!-- 第一味药 -->
+											<part classCode="PART">
+												<!-- 包装序号 -->
+												<id extension="5001" />	
+												<!-- 重量/重量单位(药量) -->
+												<quantity>
+													<numerator xsi:type="PQ" value="15" unit="g"/>
+												</quantity>
+												<partProduct classCode="MMAT" determinerCode="KIND">
+													<!-- 药品编码 -->
+													<code code="901" codeSystem="1.2.156.112606.1.1.90" />
+													<!-- 特殊用法编码/特殊用法名称(草药煎熬法) -->
+													<handlingCode>
+														<item code="01" codeSystem="1.2.156.112606.1.1.101">
+															<displayName value="先煎"/>
+														</item>
+													</handlingCode>
+													<!-- 药物所属医保信息 -->
+													<asContent classCode="CONT">
+														<quantity />
+														<containerPackagedProduct classCode="CONT" determinerCode="KIND">
+															<code />
+															<formCode />
+														</containerPackagedProduct>
+														<subjectOf2 typeCode="SBJ">
+															<policy classCode="POLICY" moodCode="EVN">
+																<!-- 药物医保类别编码/药物医保类别名称 -->
+																<code code="01">
+																	<displayName value="甲类" />
+																</code>								
+															</policy>
+														</subjectOf2>
+													</asContent>											
+												</partProduct>
+												<!-- 是否与付数无关标记 -->
+												<subjectOf typeCode="SBJ">
+													<characteristic classCode="OBS" moodCode="EVN">
+														<code code="07" codeSystem="1.2.156.112606.1.1.84">
+															<displayName value="是否与付数无关" />
+														</code>
+														<value xsi:type="BL" value="true"/>
+													</characteristic>
+												</subjectOf>
+											</part>
+											
+											<!--第二味药-->
+											<part classCode="PART">
+												<!-- 包装序号 -->
+												<id extension="5002" />											
+												<!-- 重量/重量单位(药量) -->
+												<quantity>
+													<numerator xsi:type="PQ" value="20" unit="g"/>
+												</quantity>
+												<partProduct classCode="MMAT" determinerCode="KIND">
+												    <!-- 药品编码 -->
+													<code code="902" codeSystem="1.2.156.112606.1.1.90" />
+													<!-- 特殊用法编码/特殊用法名称(草药煎熬法) -->
+													<handlingCode>
+														<item code="02" codeSystem="1.2.156.112606.1.1.101">
+															<displayName value="后下"/>
+														</item>
+													</handlingCode>
+													<!-- 药物所属医保信息 -->
+													<asContent classCode="CONT">
+														<quantity />
+														<containerPackagedProduct classCode="CONT" determinerCode="KIND">
+															<code />
+															<formCode />
+														</containerPackagedProduct>
+														<subjectOf2 typeCode="SBJ">
+															<policy classCode="POLICY" moodCode="EVN">
+																<!-- 药物医保类别编码/药物医保类别名称 -->
+																<code code="01">
+																	<displayName value="甲类" />
+																</code>								
+															</policy>
+														</subjectOf2>
+													</asContent>											
+												</partProduct>
+												<!-- 是否与付数无关标记 -->
+												<subjectOf typeCode="SBJ">
+													<characteristic classCode="OBS" moodCode="EVN">
+														<code code="07" codeSystem="1.2.156.112606.1.1.84">
+															<displayName value="是否与付数无关" />
+														</code>
+														<value xsi:type="BL" value="false"/>
+													</characteristic>
+												</subjectOf>
+											</part>
+											
+											<!--第三味药-->
+											<part classCode="PART">
+												<!-- 包装序号 -->
+												<id extension="5003" />												
+												<!-- 重量/重量单位(药量) -->
+												<quantity>
+													<numerator xsi:type="PQ" value="20" unit="g"/>
+												</quantity>
+												<partProduct classCode="MMAT" determinerCode="KIND">
+													<!-- 药品编码 -->
+													<code code="903" codeSystem="1.2.156.112606.1.1.90" />
+													<!-- 特殊用法编码/特殊用法名称(草药煎熬法) -->
+													<handlingCode>
+														<item code="03" codeSystem="1.2.156.112606.1.1.101">
+															<displayName value="捣碎"/>
+														</item>
+													</handlingCode>
+													<!-- 药物所属医保信息 -->
+													<asContent classCode="CONT">
+														<quantity />
+														<containerPackagedProduct classCode="CONT" determinerCode="KIND">
+															<code />
+															<formCode />
+														</containerPackagedProduct>
+														<subjectOf2 typeCode="SBJ">
+															<policy classCode="POLICY" moodCode="EVN">
+																<!-- 药物医保类别编码/药物医保类别名称 -->
+																<code code="01">
+																	<displayName value="甲类" />
+																</code>								
+															</policy>
+														</subjectOf2>
+													</asContent>											
+												</partProduct>
+												<!-- 是否与付数无关标记 -->
+												<subjectOf typeCode="SBJ">
+													<characteristic classCode="OBS" moodCode="EVN">
+														<code code="07" codeSystem="1.2.156.112606.1.1.84">
+															<displayName value="是否与付数无关" />
+														</code>
+														<value xsi:type="BL" value="false"/>
+													</characteristic>
+												</subjectOf>
+											</part>
+											<!-- 其它成分信息按上面格式添加 -->
+										</manufacturedProduct>
+									</manufacturedProduct>
+								</consumable>
+								
+								<!-- 执行科室信息 -->
+								<location typeCode="LOC">
+									<serviceDeliveryLocation classCode="SDLOC">
+										<!-- 执行科室编码 -->
+										<id>
+											<item root="1.2.156.112606.1.1.1" extension="12" />
+										</id>
+										<location classCode="PLC" determinerCode="INSTANCE">
+											<!-- 执行科室名称 -->
+											<name xsi:type="BAG_EN">
+												<item>
+													<part value="门诊中药房"/>
+												</item>
+											</name>
+										</location>
+									</serviceDeliveryLocation>
+								</location>
+								
+								<!-- 是否药观 -->
+								<precondition typeCode="PRCN">
+									<observationEventCriterion classCode="OBS" moodCode="EVN.CRT">
+										<code code="04" codeSystem="1.2.156.112606.1.1.84">
+											<displayName value="是否药观"/>
+										</code>
+										<value xsi:type="BL" value="true"/>
+									</observationEventCriterion>
+								</precondition>						
+								
+								<!-- 嘱托 -->
+								<subjectOf typeCode="SUBJ">
+									<annotation>
+										<!-- 嘱托内容 -->
+										<text value="煎服"/>
+										<statusCode code="completed"/>
+										<author>
+											<assignedEntity classCode="ASSIGNED"/>
+										</author>
+									</annotation>
+								</subjectOf>
+							</substanceAdministrationRequest>
+						</component1>
+						<!-- 其他处方项按照上面格式添加 -->
+						
+					</combinedMedicationRequest>					
+				</component2>
+				
+				<!-- 已收费处方信息(可循环) -->
+				<component2>
+					<combinedMedicationRequest moodCode="RQO">
+						<!-- 已收费处方号(处方号增加@scope) -->
+						<id>
+							<item extension="2" scope="VER" />
+						</id>
+						
+						<!-- 处方类别编码/处方类别名称 -->
+						<code code="01" codeSystem="1.2.156.112606.1.1.34">
+							<displayName value="门诊处方笺"/>
+						</code>
+					</combinedMedicationRequest>
+				</component2>
+				
+				
+				<!-- 就诊信息 -->
+				<componentOf typeCode="COMP">
+					<encounter classCode="ENC" moodCode="EVN">
+						<id>
+							<item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="就诊次数"/>
+						</id>
+						<statusCode code="active"/>
+						<subject typeCode="SBJ">
+							<patient classCode="PAT" />
+						</subject>
+						<!-- 就诊科室信息 -->
+						<location typeCode="LOC">
+							<time />
+							<serviceDeliveryLocation classCode="SDLOC">
+								<!-- 就诊科室编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.1" extension="0001" />
+								</id>
+								<location classCode="PLC" determinerCode="INSTANCE">
+									<!-- 就诊科室名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="内科"/>
+										</item>
+									</name>
+								</location>
+							</serviceDeliveryLocation>
+						</location>
+					</encounter>
+				</componentOf>
+						    
+		    </combinedMedicationRequest>
+			
+		</subject>
+	</controlActProcess>
+</PORX_IN010370UV>

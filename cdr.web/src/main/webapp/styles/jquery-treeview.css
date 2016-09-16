@@ -1,0 +1,44 @@
+.treeview {
+	height: 200px;	
+	width: 100%;
+	overflow-y:auto;
+}
+
+.treeview, .treeview ul { 
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
+.treeview ul {
+	background-color: white;
+	margin-top: 4px;
+}
+
+.treeview li { 
+	margin: 0;
+	padding: 3px 0pt 3px 22px;
+}
+
+.treeview li { background: url(../images/treeview-default-line.gif) 0 0 no-repeat; }
+
+.treeview li.last { background-position: 0 -1766px }
+
+.treeview .hitarea {
+	background: url(../images/checkbox_unchecked_normal.gif)  0 0 no-repeat;
+	height: 16px;
+	width: 16px;
+	margin-left: -22px;
+	float: left;
+	cursor: pointer;
+}
+
+/* fix for IE6 */
+* html .hitarea {
+	display: inline;
+	float:none;
+}
+
+.treeview .checked { background: url(../images/checkbox_checked_normal.gif)  0 0 no-repeat; }
+
+.treeview .hover { background-color: #eee; font-weight: bold;}

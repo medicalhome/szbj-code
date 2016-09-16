@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOR_IN200901UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/POOR_IN200901UV07.xsd">
+<!--
+取血单
+-->
+	<!-- 消息ID -->
+	<id extension="BS309" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="POOR_IN200901UV" />
+	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="T" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+	
+	<!-- 封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new
+        -->
+	    <code code="update" />
+	    <subject typeCode="SUBJ" contextConductionInd="false">
+	    
+			<supplyRequest classCode="SPLY" moodCode="RQO">
+			
+				<!-- 输血申请单号/取血单号/取血次数 -->
+				<id>
+				    <item extension="" identifierName="输血申请单号" />
+    			    <item extension="" scope="BUSN" identifierName="取血单号" />
+    			    <item extension="" scope="VER" identifierName="取血次数"/>
+				</id>
+				
+				<!-- 必须固定项 -->
+				<code />
+				<statusCode code="active" />
+				
+                <!-- 取血日期 -->
+				<effectiveTime xsi:type="IVL_TS">
+				    <any value="20111231" />
+				</effectiveTime>
+				
+                <!-- 取血量/取血量单位 -->
+				<quantity value="2000" unit="ml" />												
+				
+                <!-- 病人信息 -->
+				<subject typeCode="SBJ">
+					<patient classCode="PAT">
+					    <!-- 病人标识 -->
+					    <id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="02" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="04" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+					    </id>
+					    
+					    <!-- 病区床号信息 -->
+					    <addr xsi:type="BAG_AD">
+					        <item use="TMP">
+					            <!-- 病区编码@code/病名名称@value-->
+					            <part type="BNR" value="12C" code="1000662" codeSystem="1.2.156.112606.1.1.33" />
+					            <!-- 床位号 -->
+					            <part type="CAR" value="001" />
+					        </item>
+					    </addr>					    		
+											    
+					    <!-- 个人信息 -->
+					    <patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 病人名称 -->
+					        <name xsi:type="DSET_EN">
+                                <item>
+                                    <part value="张三"/>
+                                </item>			        
+					        </name>
+					        <!-- 性别编码 -->
+					        <administrativeGenderCode code="M" codeSystem="1.2.156.112606.1.1.3" />
+							<!-- 出生日期 -->
+							<birthTime value="19730401">
+							    <!-- 年龄 -->
+							    <originalText value="39" />
+							</birthTime>										    
+						</patientPerson>
+						
+						<!-- 病人科室信息 -->
+						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+						    <!-- 科室编码 -->
+							<id>
+								<item root="1.2.156.112606.1.1.1" extension="110" />
+							</id>
+							<!-- 科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="肿瘤科"/>
+								</item>									
+							</name>
+						</providerOrganization>
+					</patient>					
+				</subject>
+						
+				<!-- 血液成分信息(申请血液种类) -->
+				<product typeCode="PRD">
+					<supplyItem classCode="DST">
+						<distributedManufacturedMaterialKind classCode="MMAT" determinerCode="KIND">
+						    <!-- 医嘱号 -->
+						    <id>
+						        <item extension="123456" />
+						    </id>
+						    <!-- 血液成分编码/血液成分名称 -->
+							<code code="103002" codeSystem="1.2.156.112606.1.1.96">
+							    <displayName value="冰冻血浆" />
+							</code>
+						</distributedManufacturedMaterialKind>
+					</supplyItem>
+				</product>
+								
+				<!-- 申请医师信息 -->
+				<author typeCode="AUT" contextControlCode="OP">
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 申请医师编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="0000200012" />
+						</id>
+						<!-- 申请医师联系电话 -->
+						<telecom xsi:type="BAG_TEL">
+						    <item use="WP" value="tel:13011119999" />
+						</telecom>
+					    <assignedPerson classCode="PSN" determinerCode="INSTANCE">
+                            <!-- 申请医师名称 -->
+							<name xsi:type="LIST_EN">
+							    <item><part value="张山"/></item>
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+				</author>
+				
+				<!-- 需要血的位置(手术间) -->
+				<location typeCode="LOC">
+					<serviceDeliveryLocation classCode="SDLOC">
+					    <!-- 手术间编码 -->
+					    <id>
+					        <item root="1.2.156.112606.1.1.1" extension="01" />
+					    </id>
+					    <!-- 手术间(层) -->
+					    <addr xsi:type="BAG_AD">
+					        <item use="WP">
+					            <part value="二层手术间" />
+					        </item>
+					    </addr>
+					    <!-- 手术间电话 -->
+					    <telecom xsi:type="BAG_TEL">
+					        <item use="WP" value="tel:010-1112223" />
+					    </telecom>
+					</serviceDeliveryLocation>
+				</location>				
+				
+				<!-- 申请血型信息 -->
+				<pertinentInformation typeCode="PERT" contextControlCode="AP" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+					    <!-- ABO血型编码/ABO血型名称 -->
+						<code code="1001" codeSystem="1.2.156.112606.1.1.10">
+						    <displayName value="A" />
+						</code>
+					</observation>
+				</pertinentInformation>
+				<pertinentInformation typeCode="PERT" contextControlCode="AP" contextConductionInd="false">
+					<observation classCode="OBS" moodCode="EVN">
+					    <!-- Rh血型编码/Rh血型名称 -->
+						<code code="1001" codeSystem="1.2.156.112606.1.1.11">
+						    <displayName value="阳性" />
+						</code>
+					</observation>
+				</pertinentInformation>
+				
+				<!-- 就诊信息 -->
+				<componentOf contextConductionInd="false" typeCode="COMP" contextControlCode="OP">
+				    <encounter classCode="ENC" moodCode="EVN">
+						<id>
+							<item root="1.2.156.112606.1.2.1.7" extension="333" identifierName="就诊次数"/>
+						</id>
+						<!-- 必须固定项 -->
+						<statusCode code="active"/>
+						<subject typeCode="SBJ">
+						    <patient classCode="PAT" />
+						</subject>
+					</encounter>
+				</componentOf>				
+							
+			</supplyRequest>
+			
+		</subject>	
+	</controlActProcess>
+</POOR_IN200901UV>

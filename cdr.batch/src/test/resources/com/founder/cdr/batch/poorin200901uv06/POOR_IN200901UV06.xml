@@ -1,0 +1,196 @@
+<POOR_IN200901UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 Schemas/POOR_IN200901UV.xsd">
+	<!--消息ID-->
+	<id  root="2.16.840.1.113883.19.3.2409"/>
+	<!--消息创建时间-->
+	<creationTime value="201202271637"/>
+	<!--交互ID-extension="POOR_IN200901UV"-->
+	<interactionId root="2.16.840.1.113883.1.18" extension="POOR_IN200901UV"/>
+	<!--消息发送系统的状态:P(Production);D (Debugging);T (Training)-->
+	<processingCode code="P"/>
+	<!--消息处理模式：A (Archive)；I (Initial load);R (Restore from archive);T (Current processing)-->
+	<processingModeCode code="R"/>
+	<!--消息应答：AL (Always)；ER (Error/reject only)；NE (Never)-->
+	<acceptAckCode code="AL"/>
+	<!--接收者-->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--接收者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99999.4567"/>
+			</id>
+			<!--接收者通讯方式-->
+			<telecom xsi:type="BAG_TEL">
+				<item use="WP" value="https://example.org/PatientFeed"/>
+			</telecom>
+		</device>
+	</receiver>
+	<!--发送者-->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--发送者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99998.8734"/>
+			</id>
+		</device>
+	</sender>
+	
+	<!--封装的消息内容-->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!--触发事件:TE-->
+		<code code="new" codeSystem="2.16.840.1.113883.18"/>
+		<!--主体-->
+		<subject typeCode="SUBJ" xsi:nil="false">
+			<!--会诊申请-->
+			<observationRequest classCode="OBS" moodCode="RQO">
+				<!--会诊申请编号-->
+				<id>
+					<item extension="1234" scope="BUSN" />
+				</id>
+				<!--会诊申请类型-加急/普通-->
+				<code>
+					<originalText value="普通"/>
+				</code>
+				<!--会诊原因-->
+				<text value="此处记录:病情及诊疗经过,申请会诊的理由及申请会诊的目的"/>
+				<statusCode code="active"/>
+				<!--会诊申请时间-->
+				<effectiveTime xsi:type="IVL_TS">
+					<any value="201202271650"/>
+				</effectiveTime>
+				<!--病人信息-->
+				<subject typeCode="SBJ" xsi:nil="false">
+					<patient classCode="PAT">
+						<!--病历号/EMPI_ID-->
+						<id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="02" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="04" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+						<patientPerson classCode="PSN" determinerCode="INSTANCE" xsi:nil="false">
+							<!--姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+							<!--性别代码-->
+							<administrativeGenderCode codeSystem="1.2.156.112606.1.1.3" codeSystemName="GB/T 2261.1-2003 个人基本信息分类与代码 第1部分 人的性别代码" code="1"/>
+							<!--出生日期-->
+							<birthTime value="19730401">
+							    <!-- 年龄 -->
+							    <originalText value="39" />
+							</birthTime>
+						</patientPerson>
+					</patient>
+				</subject>
+				<!--会诊科室-即参与会诊的其他科室-理解为会诊申请的接收方-有多个会诊科室则有多个receiver-->
+				<!--会诊科室1-->
+				<receiver typeCode="RCV" xsi:nil="false">
+					<assignedEntity classCode="ASSIGNED" xsi:nil="false">
+						<!--会诊科室ID-->
+						<id>
+							<item extension="4567" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+						</id>
+						<assignedOrganization classCode="ORG" determinerCode="INSTANCE" xsi:nil="false">
+							<!--科室名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="呼吸内科"/>
+								</item>
+							</name>
+						</assignedOrganization>
+					</assignedEntity>
+				</receiver>
+				<!--会诊科室2-->
+				<receiver typeCode="RCV" xsi:nil="false">
+					<assignedEntity classCode="ASSIGNED" xsi:nil="false">
+						<!--会诊科室ID-->
+						<id>
+							<item extension="4568" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+						</id>
+						<assignedOrganization classCode="ORG" determinerCode="INSTANCE" xsi:nil="false">
+							<!--科室名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="血液科"/>
+								</item>
+							</name>
+						</assignedOrganization>
+					</assignedEntity>
+				</receiver>
+				<!--申请人-->
+				<author typeCode="AUT" xsi:nil="false">
+					<assignedEntity classCode="ASSIGNED">
+						<!--申请医生ID-->
+						<id>
+							<item extension="5678" root="1.2.156.112606.1.1.2" identifierName="医生ID"/>
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE" xsi:nil="false">
+							<!--申请人姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四"/>
+								</item>
+							</name>
+						</assignedPerson>
+						<!--申请人-科室-->
+						<representedOrganization classCode="ORG" determinerCode="INSTANCE" xsi:nil="false">
+							<!--科室ID-->
+							<id>
+								<item extension="4569" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+							</id>
+							<!--科室名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="心外科"/>
+								</item>
+							</name>
+						</representedOrganization>
+					</assignedEntity>
+				</author>
+				<!--会诊地点-->
+				<location typeCode="LOC" xsi:nil="false">
+					<serviceDeliveryLocation classCode="SDLOC">
+						<location classCode="PLC" determinerCode="INSTANCE" xsi:nil="false">
+							<!--科室ID-->
+							<id>
+								<item extension="4569" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+							</id>
+							<!--科室名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="心外科"/>
+								</item>
+							</name>
+						</location>
+					</serviceDeliveryLocation>
+				</location>
+				<reason contextConductionInd="false" xsi:nil="false">
+					<observation classCode="OBS" moodCode="RQO" xsi:nil="false">
+						<!--会诊医嘱ID-->
+						<id>
+							<item extension="12345678"/>
+						</id>
+						<code code="12345" codeSystem="1.2.156.112606.1.1.27">
+							<!--会诊医嘱名称-->
+							<displayName value="会诊医嘱"/>
+						</code>
+					</observation>
+				</reason>
+				<!--就诊-->
+				<componentOf typeCode="COMP" contextConductionInd="false" xsi:nil="false">
+					<encounter classCode="ENC" moodCode="EVN">
+						<!--就诊次数-->
+						<id>
+							<item scope="VER" extension="1" root="1.2.156.112606.1.2.1.7" identifierName="就诊次数"/>
+						</id>
+						<statusCode code="active"/>
+						<!--未使用,1..1-->
+						<subject typeCode="SBJ"><patient classCode="PAT"></patient></subject>
+					</encounter>
+				</componentOf>
+			</observationRequest>
+		</subject>
+	</controlActProcess>
+	
+</POOR_IN200901UV>

@@ -1,0 +1,358 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xmlns:beans="http://www.springframework.org/schema/beans"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/security
+		http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+	<!-- Spring Security Core Services -->
+	<!-- ============================================================================================ -->
+	<!-- authenticationManager -->
+	<!-- ============================================================================================ -->
+	<beans:bean id="authenticationManager"
+		class="org.springframework.security.authentication.ProviderManager">
+		<beans:property name="providers">
+			<beans:list>
+				<beans:ref local="preAuthProvider"/>
+				<beans:ref local="daoAuthenticationProvider" />
+				<beans:ref local="anonymousAuthenticationProvider" />
+				<!-- <ref local="ldapAuthenticationProvider"/> -->
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+	<!-- 预认证 -->
+	<beans:bean id="preAuthenticatedProcessingFilter" class="org.springframework.security.web.authentication.preauth.RequestHeaderAuthenticationFilter">
+		<beans:property name="exceptionIfHeaderMissing" value="false"/>
+		<beans:property name="principalRequestHeader" value="OAM_REMOTE_USER"/>
+		<beans:property name="authenticationManager" ref="authenticationManager"/>
+	</beans:bean>
+	<beans:bean id="preAuthProvider" class="org.springframework.security.web.authentication.preauth.PreAuthenticatedAuthenticationProvider">
+        <beans:property name="preAuthenticatedUserDetailsService" ref="userDetailsServiceWrapper" />
+    </beans:bean>
+    
+     <beans:bean id="userDetailsServiceWrapper" class="org.springframework.security.core.userdetails.UserDetailsByNameServiceWrapper">
+        <beans:property name="userDetailsService" ref="loginUserDetailsValidation"/>
+     </beans:bean>
+	 
+	<beans:bean id="anonymousAuthenticationProvider"
+		class="org.springframework.security.authentication.AnonymousAuthenticationProvider">
+		<beans:property name="key" value="foobar" />
+	</beans:bean>
+
+	<!-- ============================================================================================ -->
+	<!-- daoAuthenticationProvider -->
+	<!-- ============================================================================================ -->
+	<!--<beans:bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">-->
+	 <beans:bean id="daoAuthenticationProvider"
+		class="com.founder.cdr.web.loginValidation.ProxyDaoAuthenticationProvider">
+	<!-- <beans:bean id="daoAuthenticationProvider"
+		class="com.founder.cdr.web.loginValidation.SecPWDaoAuthenticationProvider" >
+		-->
+		<beans:property name="userDetailsService" ref="loginUserDetailsValidation" />
+		<beans:property name="hideUserNotFoundExceptions" value="false"></beans:property>
+		<beans:property name="passwordEncoder" ref="md5PasswordEncoder" />
+		<!-- 
+		<property name="saltSource" ref="saltSource" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
+		-->
+	</beans:bean>
+	
+	<beans:bean id="shaPasswordEncoder"
+		class="org.springframework.security.authentication.encoding.ShaPasswordEncoder">
+		<beans:constructor-arg value="256" />
+	</beans:bean>
+	
+	<beans:bean id="md5PasswordEncoder" class="org.springframework.security.authentication.encoding.Md5PasswordEncoder" />
+
+	<!-- ============================================================================================ -->
+	<!-- spring security userDetailsService -->
+	<!-- ============================================================================================ -->
+	<beans:bean id="loginUserDetailsValidation"
+		class="com.founder.cdr.web.loginValidation.LoginUserDetailsValidation">
+		<beans:property name="loginService" ref="loginService" />
+	    <!--  $Author:wu_jianfeng
+	          $Date : 2012/09/12 14:10
+	          $[BUG]0009663 MODIFY BEGIN
+	                                   访问控制实现 
+		 -->
+		<beans:property name="accessControlService" ref="accessControlService" />
+		<!-- $[BUG]0009663 MODIFY END -->	
+		
+		<!-- $Author :jin_peng
+         $Date : 2012/10/29 18:23$
+         [BUG]0010836 ADD BEGIN
+                                通用service -->
+         <beans:property name="commonService" ref="commonService" />
+         <!-- [BUG]0010836 ADD END -->
+         
+         <beans:property name="peopleGroupSpecific" value="${PEOPLE_GROUP_SPECIFIC}" />
+		
+		<beans:property name="passwordEncoder" ref="md5PasswordEncoder" />
+	</beans:bean>
+	
+	<beans:bean id="loginService" class="com.founder.cdr.service.impl.LoginServiceImpl" />
+	
+	<!-- $Author :jin_peng
+         $Date : 2012/09/21 14:01$
+         [BUG]0009561 ADD BEGIN
+                               登陆控制 -->
+    <beans:bean id="loginController"
+		class="com.founder.cdr.web.LoginController">
+		<beans:property name="loginService" ref="loginService" />
+		
+		<!-- $Author :jin_peng
+         $Date : 2012/10/30 14:40$
+         [BUG]0010836 ADD BEGIN
+                                通用service -->
+         <beans:property name="commonService" ref="commonService" />
+         <!-- [BUG]0010836 ADD END -->
+	</beans:bean>                          
+    <!-- [BUG]0009561 ADD END -->
+
+    <!--  $Author:wu_jianfeng
+          $Date : 2012/09/12 14:10
+          $[BUG]0009663 MODIFY BEGIN
+                                   访问控制实现 
+	 -->
+	<beans:bean id="accessControlService" class="com.founder.cdr.service.impl.AccessControlServiceImpl" />
+	<!-- $[BUG]0009663 MODIFY END -->	
+	
+	<!-- $Author :jin_peng
+         $Date : 2012/10/29 18:23$
+         [BUG]0010836 ADD BEGIN
+                                通用service -->
+    <beans:bean id="commonService"
+		class="com.founder.cdr.service.impl.CommonServiceImpl" />
+    <!-- [BUG]0010836 ADD END -->
+
+	<beans:bean id="springSecurityFilterChain"
+		class="org.springframework.security.web.FilterChainProxy">
+		<filter-chain-map path-type="ant">
+			<filter-chain pattern="/scripts/**/*" filters="none" />
+			<filter-chain pattern="/styles/**/*" filters="none" />
+			<filter-chain pattern="/images/**/*" filters="none" />
+			<filter-chain pattern="/**/favicon.ico" filters="none" />
+			<filter-chain pattern="/**/login.html" filters="none" />
+			<filter-chain pattern="/**/loginunauthorized.html" filters="none"/>
+			<filter-chain pattern="/webservice/**/*" filters="none" />
+			<!-- 过滤webservice -->
+			<filter-chain pattern="/webservices/**" filters="none" /> 
+			<!-- $Author :jin_peng
+     			 $Date : 2012/09/21 14:01$
+     			 [BUG]0009561 ADD BEGIN -->
+     		<filter-chain pattern="/**/loginIntegrated.html" filters="none"/>
+     		<!-- [BUG]0009561 ADD END -->
+     		<filter-chain pattern="/**/loginInpatientIntegrated.html" filters="none"/>
+			<filter-chain pattern="/**/loginLabReportIntegrated.html" filters="none" />
+			<filter-chain pattern="/**/loginBusinessSnIntegrated.html" filters="none" />
+			<filter-chain pattern="/**/loginPortalIntegrated.html" filters="none" />
+		    <filter-chain pattern="/**"
+				filters="securityContextPersistenceFilterWithASCTrue,
+					concurrencyFilter,
+					logoutFilter,
+					preAuthenticatedProcessingFilter,
+					formLoginFilter,
+					exceptionTranslationFilter,
+					filterSecurityInterceptor" />
+		</filter-chain-map>
+	</beans:bean>
+
+	<!-- <authentication-manager> <authentication-provider ref='daoAuthenticationProvider' 
+		/> </authentication-manager> <http auto-config="true"> <intercept-url pattern="/common/**" 
+		filters="none"/> <intercept-url pattern="/js/**" filters="none"/> <intercept-url 
+		pattern="/css/**" filters="none"/> <intercept-url pattern="/images/**" filters="none"/> 
+		<intercept-url pattern="/favicon.ico" filters="none"/> <intercept-url pattern="/login.jsp" 
+		filters="none" /> <intercept-url pattern="/**" access="ROLE_USER" /> <form-login 
+		login-page='/login.jsp'/> <logout invalidate-session="true" /> <session-management> 
+		<concurrency-control max-sessions="1" error-if-maximum-exceeded="true" /> 
+		</session-management> </http> -->
+
+	<!-- <beans:bean id="captchaFilter" class="com.founder.fasf.web.security.CaptchaFilter">
+		<beans:property name="captchaParameter" value="j_captcha" />
+		<beans:property name="filterProcessesUrl" value="/j_spring_security_check" />
+		<beans:property name="captchaService" ref="captchaService" />
+		<beans:property name="defaultFailureUrl" value="/tools/login/login.error.code" />
+	</beans:bean> -->
+
+	<!-- $Author :jin_peng
+         $Date : 2012/10/30 16:13$
+         [BUG]0010836 MODIFY BEGIN-->
+	<!-- $Author :jin_peng
+         $Date : 2012/08/27 16:46$
+         [BUG]0008759 MODIFY BEGIN
+                               注销登录操作 -->
+	<beans:bean id="logoutFilter"
+		class="org.springframework.security.web.authentication.logout.LogoutFilter">
+		<beans:constructor-arg name="logoutSuccessUrl"
+			value="/login.html" />
+		<beans:constructor-arg name="handlers">
+			<beans:array>
+				<beans:ref local="loginSecurityContextLogoutHandler" />
+			</beans:array>
+		</beans:constructor-arg>
+	</beans:bean>
+	<!-- [BUG]0008759 MODIFY END -->
+	<!-- [BUG]0010836 MODIFY END -->
+
+	<!-- $Author :jin_peng
+         $Date : 2012/10/30 16:13$
+         [BUG]0010836 ADD BEGIN
+                                用户退出系统时添加用户操作日志-->
+	<beans:bean id="loginSecurityContextLogoutHandler"
+		class="com.founder.cdr.web.loginValidation.LoginSecurityContextLogoutHandler">
+		<beans:property name="loginService" ref="loginService" />
+	</beans:bean>
+	<!-- [BUG]0010836 ADD END -->
+
+	<beans:bean id="anonymousAuthFilter"
+		class="org.springframework.security.web.authentication.AnonymousAuthenticationFilter">
+		<beans:property name="key" value="foobar" />
+		<beans:property name="userAttribute" value="anonymousUser,ROLE_ANONYMOUS" />
+	</beans:bean>
+
+	<beans:bean id="securityContextRepositoryWithASCTrue"
+		class="org.springframework.security.web.context.HttpSessionSecurityContextRepository">
+		<beans:property name="allowSessionCreation" value="true" />
+		<beans:property name="disableUrlRewriting" value="true" />
+	</beans:bean>
+
+	<beans:bean id="securityContextRepositoryWithASCFalse"
+		class="org.springframework.security.web.context.HttpSessionSecurityContextRepository">
+		<beans:property name="allowSessionCreation" value="false" />
+		<beans:property name="disableUrlRewriting" value="true" />
+	</beans:bean>
+
+	<beans:bean id="securityContextPersistenceFilterWithASCTrue"
+		class="org.springframework.security.web.context.SecurityContextPersistenceFilter">
+		<beans:property name="securityContextRepository"
+			ref="securityContextRepositoryWithASCTrue" />
+		<beans:property name="forceEagerSessionCreation" value="true" />
+	</beans:bean>
+
+	<beans:bean id="securityContextPersistenceFilterWithASCFalse"
+		class="org.springframework.security.web.context.SecurityContextPersistenceFilter">
+		<beans:property name="securityContextRepository"
+			ref="securityContextRepositoryWithASCFalse" />
+		<beans:property name="forceEagerSessionCreation" value="false" />
+	</beans:bean>
+
+	<beans:bean id="formLoginFilter"
+		class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+		<beans:property name="authenticationFailureHandler"
+			ref="simpleUrlAuthenticationFailureHandler" />
+		<beans:property name="authenticationSuccessHandler"
+			ref="simpleUrlAuthenticationSuccessHandler" />
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		<beans:property name="filterProcessesUrl" value="/j_spring_security_check" />
+		<beans:property name="sessionAuthenticationStrategy"
+			ref="concurrentSessionControlStrategy" />
+	</beans:bean>
+
+	<beans:bean id="simpleUrlAuthenticationFailureHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler">
+		<beans:property name="defaultFailureUrl"
+			value="/login.html?status=error" />
+		<!-- <beans:property name="useForward" value="true" /> -->
+	</beans:bean>
+	
+	<beans:bean id="simpleUrlAuthenticationSuccessHandler"
+		class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler">
+		<beans:property name="defaultTargetUrl"
+			value="/login/loginValidationSuccess.html" />
+	</beans:bean>
+
+	<beans:bean id="exceptionMappingAuthenticationFailureHandler"
+		class="org.springframework.security.web.authentication.ExceptionMappingAuthenticationFailureHandler" />
+
+	<beans:bean id="securityMetadataSource"
+		class="com.founder.fasf.web.security.DataBasedFilterInvocationSecurityMetadataSource" />
+
+	<beans:bean id="roleVoter"
+		class="org.springframework.security.access.vote.RoleVoter" />
+
+	<beans:bean id="authenticatedVoter"
+		class="org.springframework.security.access.vote.AuthenticatedVoter" />
+
+	<beans:bean id="accessDecisionManager"
+		class="org.springframework.security.access.vote.AffirmativeBased">
+		<beans:property name="decisionVoters">
+			<beans:list>
+				<beans:ref local="roleVoter" />
+				<beans:ref local="authenticatedVoter" />
+			</beans:list>
+		</beans:property>
+	</beans:bean>
+
+	<beans:bean id="defaultLoginPageGeneratingFilter"
+		class="org.springframework.security.web.authentication.ui.DefaultLoginPageGeneratingFilter">
+		<beans:constructor-arg name="filter" ref="formLoginFilter" />
+	</beans:bean>
+
+	<beans:bean id="filterSecurityInterceptor"
+		class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+		<beans:property name="authenticationManager" ref="authenticationManager" />
+		 <beans:property name="accessDecisionManager" ref="accessDecisionManager" />
+		<!--<beans:property name="securityMetadataSource" ref="securityMetadataSource" 
+			/>--> 
+		<beans:property name="securityMetadataSource">
+			<filter-security-metadata-source>
+				<intercept-url pattern="/**" access="ROLE_ADMIN" />
+			</filter-security-metadata-source>
+		</beans:property> 
+	</beans:bean>
+
+	<beans:bean id="exceptionTranslationFilter"
+		class="org.springframework.security.web.access.ExceptionTranslationFilter">
+		<beans:property name="authenticationEntryPoint" ref="authenticationEntryPoint" />
+		<beans:property name="accessDeniedHandler" ref="accessDeniedHandler" />
+	</beans:bean>
+
+	<beans:bean id="authenticationEntryPoint"
+		class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint">
+		<beans:property name="loginFormUrl" value="/login/loginunauthorized.html" />
+	</beans:bean>
+
+	<beans:bean id="accessDeniedHandler"
+		class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+		<beans:property name="errorPage" value="/403.jsp" />
+	</beans:bean>
+
+	<!-- ==================================================================================================== -->
+	<!-- ===================================Session管理:单用户登陆============================================ -->
+	<!-- ==================================================================================================== -->
+	<!-- $Author :jin_peng
+         $Date : 2012/10/31 14:17$
+         [BUG]0010836 MODIFY BEGIN
+                               代理session失效 -->
+	<beans:bean id="concurrencyFilter"
+		class="org.springframework.security.web.session.ConcurrentSessionFilter">
+		<beans:property name="sessionRegistry" ref="proxySessionRegistry" />
+		<beans:property name="expiredUrl" value="/tools/login/login.error.twice" />
+	</beans:bean>
+
+	<beans:bean id="concurrentSessionControlStrategy"
+		class="org.springframework.security.web.authentication.session.ConcurrentSessionControlStrategy">
+		<beans:constructor-arg name="sessionRegistry"
+			ref="proxySessionRegistry" />
+		<beans:property name="maximumSessions" value="2" />
+		<!-- <beans:property name="exceptionIfMaximumExceeded" value="true" /> -->
+	</beans:bean>
+
+	<beans:bean id="proxySessionRegistry"
+		class="com.founder.cdr.web.loginValidation.ProxySessionRegistryImpl">
+		<beans:property name="loginService" ref="loginService" />
+	</beans:bean>
+		
+	<!-- [BUG]0010836 MODIFY END -->
+
+	<beans:bean id="sessionManagementFilter"
+		class="org.springframework.security.web.session.SessionManagementFilter">
+		<beans:constructor-arg name="securityContextRepository"
+			ref="securityContextRepositoryWithASCTrue" />
+		<beans:property name="sessionAuthenticationStrategy"
+			ref="concurrentSessionControlStrategy" />
+	</beans:bean>
+</beans:beans>

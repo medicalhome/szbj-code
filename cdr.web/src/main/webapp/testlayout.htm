@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+	<title>CSS特效-两列等高布局效果</title>
+	<meta http-equiv="content-type" content="text/html;charset=gb2312">
+	<style type="text/css">
+	*{ margin: 0; padding: 0; }
+	html{ overflow-y: scroll; }
+	body{ font-size: 12px; background: #fff; color: #333;}
+	ul,ol{ list-style: none; }
+	a{ text-decoration: none; color: #f30; }
+	img{ border: none; }
+	.clearfix{ zoom: 1; }
+	.clearfix:after{ content: ""; display: block; height: 0; line-height: 0; font-size: 0; visibility: hidden; clear: both; }
+	.hd_wrap{background:#333;border-bottom:3px solid #f30;zoom:1}
+	.header,.ct_wrap,.ft_wrap{width:950px;margin:0 auto;zoom:1}
+	.ct_wrap{background: #e0e0e0; }
+	.header{height:45px;line-height:45px;color:#fff;border-bottom:3px solid #f30;margin-bottom:-3px;position:relative;background:#333}
+	.content{margin-left:150px;border-left:1px solid #333;background:#fff}
+	.main_col{float:left;width:100%;word-wrap:break-word}
+	.side_col{float:left;width:150px; height: 800px; margin-left:-950px;position:relative;word-wrap:break-word}
+	.ft_wrap{border-top:2px solid #333;zoom:1}
+	.footer{text-align:center;padding:10px 0}
+	.padding_con{ height:150px; }
+	</style>
+</head>
+<body>
+	<div class="hd_wrap">
+		<div class="header">网页的头部</div>
+	</div>
+	<div class="ct_wrap">
+		<div class="content clearfix">
+			<div class="main_col">
+				<div class="padding_con">内容内容内容内容内容内容内容</div>
+				<div class="padding_con">内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容内容</div>
+			</div>
+			<div class="side_col">
+				<div class="padding_con">导航菜单</div>
+			</div>
+		</div>
+	</div>
+	<div class="ft_wrap">
+		<div class="footer">CopyRight</div>
+	</div>
+</body>
+</html>

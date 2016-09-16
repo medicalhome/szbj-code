@@ -1,0 +1,54 @@
+div.f_dirty {
+	display:none;
+	float:left;
+	position:relative;
+	width:5px;
+	height:5px;
+	background-image:url(image/fillin/dirty.gif);
+	background-repeat:no-repeat;
+}
+div.f_dirty_add {
+	display:none;
+	float:left;
+	position:relative;
+	width:5px;
+	height:5px;
+	background-image:url(image/fillin/dirty_add.gif);
+	background-repeat:no-repeat;
+}
+.f_error {
+	background-repeat:repeat-x;
+	background-position:bottom;
+	background-image:url(image/fillin/error.png);
+}
+div.f_link {
+	float:right;
+	position:relative;
+	top:-5px;
+	width:5px;
+	height:5px;
+}
+img.f_link {
+	width:5px;
+	height:5px;
+	margin:0px;
+	border:0px;
+}
+.f_ctrl_text {
+	display:none;
+	_position:relative;
+	_top:-1px;
+	width:100%;
+	height:100%;
+	border:0px;
+	background:#d1edd2;
+}
+.f_ctrl_select {
+	display:none;
+	width:100%;
+	height:100%;
+}
+.rpt_param_bat {
+	cursor:hand;
+	white-space:nowrap;
+}

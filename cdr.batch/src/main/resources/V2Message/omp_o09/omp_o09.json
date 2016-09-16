@@ -1,0 +1,1634 @@
+{
+	"triggerEvent" : {
+		"desc" : "触发事件",
+		"path" : "/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"triggerEventCode" : {
+		"desc" : "触发事件",
+		"path" : "/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"newUpFlg" : {
+		"desc" : "交互类型（同触发事件，新增、修改、删除）",
+		"path" : "/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"newUpFlag" : {
+		"desc" : "交互类型（同触发事件，新增、修改、删除）",
+		"path" : "/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientLid" : {
+		"desc" : "患者id",
+		"path" : "/PATIENT/PID-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientDomain" : {
+		"desc" : "域id",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitType" : {
+		"desc" : "就诊类别",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-19",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"visitTimes" : {
+		"desc" : "就诊次数",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-13",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitTime" : {
+		"desc" : "就诊次数",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-13",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"wardCode" : {
+		"desc" : "病区编码",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"wards" : {
+		"desc" : "病区编码",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"wardsId" : {
+		"desc" : "病区编码",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"wardsName" : {
+		"desc" : "病区名称",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-9",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"deptId" : {
+		"desc" : "科室编码",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},	
+	
+	"dept" : {
+		"desc" : "就诊科室",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},	
+	
+	"visitDept" : {
+		"desc" : "就诊科室",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"bedNo" : {
+		"desc" : "床号",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"orderPerson" : {
+		"desc" : "开嘱人编码",
+		"path" : "/ORDER/ORC-12-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"orderPersonName" : {
+		"desc" : "开嘱人姓名",
+		"path" : "/ORDER/ORC-12-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"orderDept" : {
+		"desc" : "医嘱开立科室ID",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},	
+	
+	"orderDeptName" : {
+		"desc" : "医嘱开立科室名称",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-3-5",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"orderType" : {
+		"desc" : "医嘱类别",
+		"path" : "/ORDER/ORC-25-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"sender" : {
+		"desc" : "发送系统",
+		"path" : "/MSH-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"genderCode" : {
+		"desc" : "性别编码",
+		"path" : "/PATIENT/PID-8",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"birthday" : {
+		"desc" : "出生日期",
+		"path" : "/PATIENT/PID-7",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientName" : {
+		"desc" : "出生日期",
+		"path" : "/PATIENT/PID-5-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"orderStatus" : {
+		"desc" : "医嘱状态",
+		"path" : "/ORDER/ORC-5",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationCode" : {
+		"desc" : "操作人编码",
+		"path" : "/ORDER/ORC-10-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationName" : {
+		"desc" : "操作人姓名",
+		"path" : "/ORDER/ORC-10-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationDate" : {
+		"desc" : "操作日期",
+		"path" : "/ORDER/ORC-9",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"treatmentItem" : {
+		"desc" : "诊疗项目，BS303诊疗处置",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderType" : {
+				"desc" : "医嘱类别编码",
+				"path" : "/ORDER/ORC-25-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderTypeName" : {
+				"desc" : "医嘱类别名称",
+				"path" : "/ORDER/ORC-25-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderTime" : {
+				"desc" : "开嘱时间",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPerson" : {
+				"desc" : "开嘱医生编码",
+				"path" : "/ORDER/ORC-12-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPersonName" : {
+				"desc" : "开嘱医生名称",
+				"path" : "/ORDER/ORC-12-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"itemCode" : {
+				"desc" : "诊疗项目编码",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"itemName" : {
+				"desc" : "诊疗项目名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"executiveDept" : {
+				"desc" : "执行科室ID",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"executionFrequency" : {
+				"desc" : "医嘱执行频率编码",
+				"path" : "/ORDER/ORC-7-2-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"formerDept" : {
+				"desc" : "医嘱开立科室ID",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"formerDeptName" : {
+				"desc" : "医嘱开立科室",
+				"path" : "/ORDER/ORC-17-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"temporaryFlag" : {
+				"desc" : "长期临时标识",
+				"path" : "/ORDER/ORC-16-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"quantity" : {
+				"desc" : "数量",
+				"path" : "/ORDER/RXO-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"unit" : {
+				"desc" : "单位",
+				"path" : "/ORDER/RXO-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+
+	"careOrderBatch" : {
+		"desc" : "护理医嘱内容，BS304护理医嘱信息",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderType" : {
+				"desc" : "医嘱类别编码",
+				"path" : "/ORDER/ORC-25-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderCode" : {
+				"desc" : "医嘱编码（项目编码）",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderName" : {
+				"desc" : "医嘱名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderTypeName" : {
+				"desc" : "医嘱类别名称",
+				"path" : "/ORDER/ORC-25-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPerson" : {
+				"desc" : "开嘱医生编码",
+				"path" : "/ORDER/ORC-12-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPersonName" : {
+				"desc" : "开嘱医生姓名",
+				"path" : "/ORDER/ORC-12-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"inputTime" : {
+				"desc" : "开嘱时间",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"execDept" : {
+				"desc" : "执行科室ID",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDept" : {
+				"desc" : "医嘱开立科室ID",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDeptName" : {
+				"desc" : "医嘱开立科室",
+				"path" : "/ORDER/ORC-17-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"usage" : {
+				"desc" : "长期临时标识",
+				"path" : "/ORDER/ORC-16-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"freq" : {
+				"desc" : "频率",
+				"path" : "/ORDER/ORC-7-2-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"quantity" : {
+				"desc" : "数量",
+				"path" : "/ORDER/RXO-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"unit" : {
+				"desc" : "单位",
+				"path" : "/ORDER/RXO-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"prescriptions" : {
+		"desc" : "处方，BS302",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"prescriptionNo" : {
+				"desc" : "处方号",
+				"path" : "/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionDoctorId" : {
+				"desc" : "开方医生ID(操作人编码)",
+				"path" : "/ORDER/ORC-10-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionDoctorName" : {
+				"desc" : "开方医生姓名(操作人姓名)",
+				"path" : "/ORDER/ORC-10-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionDept" : {
+				"desc" : "开方科室ID",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionDeptName" : {
+				"desc" : "开方科室名称",
+				"path" : "/ORDER/ORC-17-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionTime" : {
+				"desc" : "开嘱时间",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}			
+		}
+	},
+
+	"medicationOrderBatch" : {
+		"desc" : "用药医嘱内容BS311",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "本地医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionNo" : {
+				"desc" : "处方号",
+				"path" : "/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderType" : {
+				"desc" : "医嘱类别编码",
+				"path" : "/ORDER/ORC-25-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderTypeName" : {
+				"desc" : "医嘱类别名称",
+				"path" : "/ORDER/ORC-25-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"dosage" : {
+				"desc" : "单次剂量",
+				"path" : "/ORDER/ORC-7-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"dosageUnit" : {
+				"desc" : "单次剂量单位",
+				"path" : "/ORDER/ORC-7-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"totalDosage" : {
+				"desc" : "总剂量",
+				"path" : "/ORDER/RXO-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"totalDosageUnit" : {
+				"desc" : "总剂量单位",
+				"path" : "/ORDER/RXO-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugCode" : {
+				"desc" : "药物编码",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugName" : {
+				"desc" : "药物名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"execDept" : {
+				"desc" : "执行科室ID",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPerson" : {
+				"desc" : "医嘱开立人ID",
+				"path" : "/ORDER/ORC-12-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPersonName" : {
+				"desc" : "医嘱开立人姓名",
+				"path" : "/ORDER/ORC-12-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDept" : {
+				"desc" : "医嘱开立科室ID",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDeptName" : {
+				"desc" : "医嘱开立科室",
+				"path" : "/ORDER/ORC-17-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderTime" : {
+				"desc" : "开嘱时间",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderStartTime" : {
+				"desc" : "医嘱开始时间",
+				"path" : "/ORDER/ORC-16-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"routeCode" : {
+				"desc" : "用药途径代码",
+				"path" : "/ORDER/RXR-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"routeName" : {
+				"desc" : "用药途径名称",
+				"path" : "/ORDER/RXR-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"medicineFrenquency" : {
+				"desc" : "频率",
+				"path" : "/ORDER/ORC-7-2-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"repeatNumber" : {
+				"desc" : "天数",
+				"path" : "/ORDER/ORC-7-11-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugType" : {
+				"desc" : "药品类别(西药，中成药，中草药)",
+				"path" : "/ORDER/ORC-25-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"temporaryFlag" : {
+				"desc" : "长期临时标识",
+				"path" : "/ORDER/ORC-16-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"PV1" : {
+		"desc" : "BS305其他医嘱用",
+		"path" : "/PATIENT/PATIENT_VISIT",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"patientDomain" : {
+				"desc" : "域id",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"domainID" : {
+				"desc" : "域ID",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"visitOrdNo" : {
+				"desc" : "就诊流水号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-19",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"bedNo" : {
+				"desc" : "床号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"visitTimes" : {
+				"desc" : "就诊次数",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-13",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"wardNo" : {
+				"desc" : "病区编码",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"deptNo" : {
+				"desc" : "科室编码",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},	
+			
+			"visitType" : {
+				"desc" : "就诊类别",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"PID" : {
+		"desc" : "BS305其他医嘱用",
+		"path" : "/PATIENT",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"genderCode" : {
+				"desc" : "性别编码",
+				"path" : "/PATIENT/PID-8",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"patientLid" : {
+				"desc" : "患者id",
+				"path" : "/PATIENT/PID-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+
+	"otherOrder" : {
+		"desc" : "BS305其他医嘱",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+						
+		}
+	},
+	
+	"OrderItems" : {
+		"desc" : "BS305其他医嘱",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"orderTypeId" : {
+				"desc" : "医嘱类型",
+				"path" : "/ORDER/ORC-25-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"orderTypeName" : {
+				"desc" : "医嘱类型名称",
+				"path" : "/ORDER/ORC-25-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"orderTime" : {
+				"desc" : "开嘱时间",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPersonId" : {
+				"desc" : "开嘱医生编码",
+				"path" : "/ORDER/ORC-12-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderPersonName" : {
+				"desc" : "开嘱医生姓名",
+				"path" : "/ORDER/ORC-12-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDeptNo" : {
+				"desc" : "开嘱科室编码",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDeptName" : {
+				"desc" : "开嘱科室名称",
+				"path" : "/ORDER/ORC-17-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"excuOrderDeptId" : {
+				"desc" : "执行科室ID",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderCode" : {
+				"desc" : "医嘱编码（医嘱字典中的值）",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderName" : {
+				"desc" : "医嘱名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"urgentFlag" : {
+				"desc" : "是否加急",
+				"path" : "/ORDER/ORC-7-6",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"comments" : {
+				"desc" : "嘱托内容",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"usage" : {
+				"desc" : "长期临时标识",
+				"path" : "/ORDER/ORC-16-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"execFreqCode" : {
+				"desc" : "频率",
+				"path" : "/ORDER/ORC-7-2-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"quantity" : {
+				"desc" : "数量",
+				"path" : "/ORDER/RXO-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"unit" : {
+				"desc" : "单位",
+				"path" : "/ORDER/RXO-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"examinationApplications" : {
+		"desc" : "检查申请单BS002",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+
+			"requestDate" : {
+				"desc" : "申请时间",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"executiveDept" : {
+				"desc" : "执行科室编码",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"examinationOrderDtos" : {
+		"desc" : "检查医嘱BS002，嵌套在examinationApplications内部",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+
+			"itemCode" : {
+				"desc" : "检查项目编码",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"itemName" : {
+				"desc" : "检查项目名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}					
+		}
+	},
+	
+	"visitList" : {
+		"desc" : "就诊 BS006检验",
+		"path" : "/PATIENT/PATIENT_VISIT",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"visitTimes" : {
+				"desc" : "就诊次数",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-13",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"visitType" : {
+				"desc" : "就诊类别",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"visitDate" : {
+				"desc" : "就诊日期",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-44",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"admissionWards" : {
+				"desc" : "病区编码",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+
+			"admissionBedNo" : {
+				"desc" : "床位号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},	
+			
+			"visitDept" : {
+				"desc" : "患者科室编号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},	
+			
+			"visitOrdNo" : {
+				"desc" : "就诊流水号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-19",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"requestList" : {
+		"desc" : "检验申请单，BS006",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"requestDate" : {
+				"desc" : "检验申请日期",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"labOrderDto" : {
+		"desc" : "检验医嘱BS006，嵌套在requestList内部",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {			
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"itemCode" : {
+				"desc" : "检验项目编码",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"itemName" : {
+				"desc" : "检验项目名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},	
+			
+			"deliveryId" : {
+				"desc" : "执行科室编码",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},	
+	
+	"proOrders" : {
+		"desc" : "BS007手术",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+						
+			"operationName" : {
+				"desc" : "手术名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"operationNameCode" : {
+				"desc" : "手术名称代码",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"requestDate" : {
+				"desc" : "申请日期",
+				"path" : "/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"requestPersonId" : {
+				"desc" : "申请人编号",
+				"path" : "/ORDER/ORC-12-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"requestPersonName" : {
+				"desc" : "申请人姓名",
+				"path" : "/ORDER/ORC-12-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"requestDeptNo" : {
+				"desc" : "申请科室编码",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"executeDeptNo" : {
+				"desc" : "执行科室编号",
+				"path" : "/ORDER/RXO-8-4-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"order" : {
+		"desc" : "BS005撤销和停止",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			"prescriptionNo" : {
+				"desc" : "处方号",
+				"path" : "/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			"orderType" : {
+				"desc" : "医嘱类型",
+				"path" : "/ORDER/ORC-25-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"orderTypeName" : {
+				"desc" : "医嘱类型名称",
+				"path" : "/ORDER/ORC-25-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"drugCode" : {
+				"desc" : "药品编号",
+				"path" : "/ORDER/RXO-1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"drugName" : {
+				"desc" : "药品名称",
+				"path" : "/ORDER/RXO-1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"cancelOrStopTime" : {
+				"desc" : "撤销/停止时间",
+				"path" : "/ORDER/ORC-9",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"cancelOrStopPerson" : {
+				"desc" : "撤销/停止人编码",
+				"path" : "/ORDER/ORC-10-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+
+			"cancelOrStopPersonName" : {
+				"desc" : "撤销/停止人姓名",
+				"path" : "/ORDER/ORC-10-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"execDept" : {
+				"desc" : "执行科室（操作人科室）",
+				"path" : "/ORDER/ORC-17-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			},
+			
+			"execDeptName" : {
+				"desc" : "执行科室名称（操作人科室名称）",
+				"path" : "/ORDER/ORC-17-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"			
+			}
+		}	
+	},
+	
+	"medicaVisit" : {
+		"desc" : "就诊",
+		"path" : "/PATIENT/PATIENT_VISIT",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"visitTimes" : {
+				"desc" : "就诊次数",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-13",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			"visitType" : {
+				"desc" : "就诊类别",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			"admissionWards" : {
+				"desc" : "病区编码",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			"admissionBedNo" : {
+				"desc" : "床位号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-3-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			"visitDate" : {
+				"desc" : "",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-44",
+				"display" : "就诊日期",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			"visitOrdNo" : {
+				"desc" : "就诊流水号",
+				"path" : "/PATIENT/PATIENT_VISIT/PV1-19",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"orderStatusInf" : {
+		"desc" : "医嘱，BS004",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"requestNo" : {
+				"desc" : "申请单号",
+				"path" : "/ORDER/ORC-2-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderStatus" : {
+				"desc" : "医嘱状态",
+				"path" : "/ORDER/ORC-5",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"operatorId" : {
+				"desc" : "执行人编码",
+				"path" : "/ORDER/ORC-10-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}
+}

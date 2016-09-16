@@ -1,0 +1,172 @@
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../coreschemas/CDA.xsd">
+<!--===================================-->
+<!-- 报告作废                          -->
+<!--===================================-->
+<!-- 
+****************************************************************************
+  CDA Header
+****************************************************************************
+-->	
+	<realmCode code="CH" />
+	
+    <!-- 固定项 -->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+	
+	<!-- 文档流水号-标识符
+      @root: 医院OID
+      @extension: 医院文档编号 -->
+	<id root="2.16.840.1.113883.19.4" extension="c266" />
+	
+    <!-- 文档类型-代码(参考LOINC Document Codes)
+      @code: 28568-4, 使用的code可以自定义, 下面参考LOINC提供的值
+      @displayName: 文档类型展现的名称
+      @codeSystem: 2.16.840.1.113883.6.1, LONIC的OID
+      @codeSystemName: 编码系统的名称, 这里就是LONIC -->	
+	<code code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory report" />
+	
+	<!-- 文档标题-文本 -->
+	<title>报告作废</title>
+	
+	<!-- 文档创建时间-时间
+      @value: 20111231, 2011年12月31日. 若要时分秒可以为20111231010101, 1时1分1秒 -->
+	<effectiveTime value="20111231" />
+
+	<!-- 文档保密程度-代码
+      @code: N默认值, 没有特殊限制/加密. 其他值可以是R, V
+      @displayName: normal，对@code的解释, 表示文档的保密级别名称
+      @codeSystem: 2.16.840.1.113883.5.25，固定值，表示HL7 OID
+      @codeSystemName: Confidentiality，固定值，表示HL7注册的编码系统名称  -->	
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal" />
+	
+	<!-- 文档语言-代码(参考IETF(Internet Engineering Task Force) RFC 3066, HL7编码系统2.16.840.1.113883.6.121)
+      @code: zh-CN，表示文档默认语言为简体中文(zh-TW表示繁体中文) -->
+	<languageCode code="zh-CN" />
+
+    <!-- 文档的操作版本:0表示新增, 1表示修改, -1表示作废 -->
+	<versionNumber value="-1"/>
+	
+	<!-- 文档记录对象 -->
+	<recordTarget>
+	    <!-- 患者 -->
+		<patientRole>
+		    <!-- 域ID -->
+			<id root="1.2.156.112606.1.2.1.2" extension="222" /> 
+			<!-- 患者ID -->
+			<id root="1.2.156.112606.1.2.1.3" extension="333" /> 
+			<!-- 就诊号 -->
+            <id root="1.2.156.112606.1.2.1.12" extension="121212" /> 
+			
+			<!-- 地址信息
+			  @use: 地址类别，比如H代表家庭住址，WP代表工作地址s
+			  state：省（自治区或直辖市）
+			  city：市（地区）
+			  county：县
+			  precinct：区
+			  country：乡（镇、街道办事处）
+			  streetName：村（街、路、弄等）
+			  houseNumber：门牌号码
+			  postalCode：邮政编码 -->
+			<!-- 房号 + 床号 -->
+			<addr use="TMP">
+				<!--房号-->
+			    <houseNumber>12</houseNumber>
+			    <!--床号-->
+			    <careOf>02</careOf>
+			</addr>
+			
+			<patient>
+			    <!-- 患者姓名 -->
+			    <name>李四</name>
+			    <!-- 性别 -->
+			    <administrativeGenderCode code="M" codeSystem="1.2.156.112606.1.1.3" displayName="男" />
+			    <!-- 出生日期 -->
+			    <birthTime value="20000101" />
+			</patient>
+			
+			<!-- 医院 ＋ 院区 + 科室 -->
+			<providerOrganization>
+			    <!-- 院区 -->
+			    <asOrganizationPartOf>
+			        <!-- 院区Id -->
+			        <code code="01" displayName="新院" />
+			    </asOrganizationPartOf>
+			</providerOrganization>
+		</patientRole>
+	</recordTarget>
+	
+	<!-- 报告人 -->
+	<author>
+	    <!-- 报告日期 -->
+		<time value="20111231" />
+		<assignedAuthor>
+			<!--报告人ID-->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017" />		
+			<assignedPerson>
+				<!--报告人姓名-->
+				<name>张三</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>	
+
+	<!-- 文档保管者 -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id root="1.2.156.112606" />
+				<name>人民医院</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	
+	<!--作废人-->
+	<participant typeCode="PRF">
+		<!--作废时间-->
+		<time value="20111231" />
+		<associatedEntity classCode="ASSIGNED">
+			<!--作废人ID-->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017" />
+			<associatedPerson>
+				<!--作废人姓名-->
+				<name>老王</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
+	
+	<!-- 文档中医疗卫生事件的就诊场景 -->
+    <componentOf>
+		<encompassingEncounter>
+			<id root="1.2.156.112606.1.2.1.3" extension="001190513601" /> <!-- 门诊号 -->
+			<id root="1.2.156.112606.1.2.1.4" extension="001190513601" /> <!-- 住院号 -->
+			<id root="1.2.156.112606.1.2.1.7" extension="1" /> <!-- 就诊次数 -->
+			<id root="1.2.156.112606.1.2.1.2" extension="1340" /> <!-- 域ID -->
+			<!-- 病人来源(门诊, 住院, 体检) -->
+			<code code="03" codeSystem="2.16.840.1.113883.19.7" />
+		    <!-- 就诊日期时间 -->
+			<effectiveTime value="20111231"/>
+			
+			<location>
+				<healthCareFacility>
+				    <!-- 就诊科室/申请单科室 -->
+				    <serviceProviderOrganization>
+						<!-- 科室编码 -->
+						<id root="1.2.156.112606.1.1.1" extension="100" assigningAuthorityName="人民医院" />
+						<!-- 科室名称 -->
+						<name>病人所在科室</name>
+				    </serviceProviderOrganization>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+	
+	<component>
+		<structuredBody>
+			<component>
+				<section>
+					<!--作废原因-->
+					<text>检验结果内容打印错误,出现乱码</text>
+				</section>
+			</component>
+		</structuredBody>
+	</component>
+</ClinicalDocument>
+	

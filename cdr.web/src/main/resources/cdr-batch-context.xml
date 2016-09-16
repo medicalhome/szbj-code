@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	
+	<bean id="MQQueueFactory" class="com.founder.cdr.wmq.WMQQueueFactory">  
+		<property name="host" value="${mq.hostname}" />
+		<property name="managerName" value="${mq.qmName}" />
+		<property name="port" value="${mq.port}" />
+		<property name="channel" value="${mq.channel}" />
+		<property name="ccsid" value="${mq.ccsid}" />
+		<property name="transport" value="${mq.transport}" />
+	</bean>
+	
+	<bean id="auditMessageHelper" class="com.founder.cdr.web.mq.process.audit.AuditMessageHelper">  
+		<property name="auditQueueName" value="${AUDIT_QUEUE_NAME}" />
+	</bean>
+	
+</beans>

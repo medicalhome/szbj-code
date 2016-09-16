@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-人员字典-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>MS024</msgId>
+        <!-- 版本号 -->
+        <version>1</version>
+        <!-- 消息名称 -->
+        <msgName>人员字典</msgName>
+        <!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+        <sourceSysCode>S028</sourceSysCode>
+        <!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+        <targetSysCode>XXX</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action = "insert">
+            <!-- 人员编码 -->
+            <code>人员编码</code>
+            <!-- 人员名称 -->
+            <name>人员名称</name>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+            <!-- 性别码 -->
+            <sexCode>1</sexCode>
+            <!-- 在岗状态码 -->
+            <employmentStatusCd>在岗状态码</employmentStatusCd>
+            <!-- 岗位类别 -->
+            <jobCategory>岗位类别</jobCategory>
+            <!-- 科室编码 -->
+            <departCd>1</departCd>
+            <!-- 电话号码 -->
+            <phoneNumber>111111</phoneNumber>
+            <!-- 人员类型码 -->
+            <employeeTypeId>1</employeeTypeId>
+            <!-- 邮箱 -->
+            <mailAddress>邮箱</mailAddress>
+            <!-- 入职日期 -->
+            <serviceStartDate>201212221200</serviceStartDate>
+            <!-- 职务列别，职务名称码 -->
+            <groupId>职务名称码</groupId>
+        </row>
+    </body>
+</msg>

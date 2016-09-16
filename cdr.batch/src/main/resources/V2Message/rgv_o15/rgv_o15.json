@@ -1,0 +1,219 @@
+{
+	"newUpFlag" : {
+		"desc" : "新增标志",
+		"path" : "/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientLid" : {
+		"desc" : "患者ID",
+		"path" : "/PATIENT/PID-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientDomain" : {
+		"desc" : "域id",
+		"path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitTimes" : {
+		"desc" : "就诊次数",
+	    "path" : "/PATIENT/PATIENT_VISIT/PV1-13",
+	    "display" : "",
+	    "type" : "string",
+	    "format" : "",
+	    "multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+	    "path" : "/PATIENT/PATIENT_VISIT/PV1-19",
+	    "display" : "",
+	    "type" : "string",
+	    "format" : "",
+	    "multiplicity" : "0..1"
+	},
+	
+	"visitType" : {
+		"desc" : "就诊类别",
+	    "path" : "/PATIENT/PATIENT_VISIT/PV1-2",
+	    "display" : "",
+	    "type" : "string",
+	    "format" : "",
+	    "multiplicity" : "0..1"
+	},
+	
+	"prescription" : {
+		"desc" : "",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"prescriptionNo" : {
+				"desc" : "处方号或摆药单序号（门诊）",
+				"path" : "/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"prescriptionNo2" : {
+				"desc" : "处方号或摆药单序号（住院）",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"confirmTime" : {
+				"desc" : "发药确认时间",
+				"path" : "/ORDER/ORC-9",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"confirmPersonId" : {
+				"desc" : "发药人编码",
+				"path" : "/ORDER/ORC-10-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"confirmPersonName" : {
+				"desc" : "发药人姓名",
+				"path" : "/ORDER/ORC-10-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+
+			"detail" : {
+				"desc" : "放入prescription的内容",
+				"path" : "/ORDER/ORDER_DETAIL",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..n",
+				"child" : {					
+					"execDeptId" : {
+						"desc" : "执行科室编码",
+						"path" : "/ORDER/ORDER_DETAIL/RXO-8-4-2",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+
+					"dispenseDeptId" : {
+						"desc" : "发药科室编码",
+						"path" : "/ORDER/ORDER_DETAIL/RXO-8-4-2",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					}
+				}
+			}
+		}
+	},
+
+	"drugs" : {
+		"desc" : "药物信息",
+		"path" : "/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderId" : {
+				"desc" : "医嘱号（门诊）",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderId2" : {
+				"desc" : "医嘱号（住院）",
+				"path" : "/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"batchNo" : {
+				"desc" : "住院医嘱执行档",
+				"path" : "/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"detail" : {
+				"desc" : "放入drugs的内容",
+				"path" : "/ORDER/ORDER_DETAIL",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..n",
+				"child" : {
+					"drugCode" : {
+						"desc" : "药品编码",
+						"path" : "/ORDER/ORDER_DETAIL/RXO-1-2",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+
+					"recordNo" : {
+						"desc" : "发药单号",
+						"path" : "/ORDER/ORDER_DETAIL/RXO-24-2",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+					"unit" : {
+						"desc" : "单位",
+						"path" : "/ORDER/ORDER_DETAIL/RXO-4",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+					"quantity" : {
+						"desc" : "药量",
+						"path" : "/ORDER/ORDER_DETAIL/RXO-2",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					}
+				}
+			}
+		}
+	}
+}

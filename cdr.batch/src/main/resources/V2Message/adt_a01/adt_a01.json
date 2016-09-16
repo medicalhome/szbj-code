@@ -1,0 +1,342 @@
+{
+	"patientDomain": {
+		"desc": "域Id",
+		"path": "/PV1-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"patientLid": {
+		"desc": "患者Id",
+		"path": "/PID-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitTimes": {
+		"desc": "就诊次数",
+		"path": "/PV1-13",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitOrdNo": {
+		"desc": "就诊流水号",
+		"path": "/PV1-19",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitType": {
+		"desc": "就诊类别",
+		"path": "/PV1-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"admissionDoctor": {
+		"desc": "入院医生",
+		"path": "/PV1-17-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"admissionDoctorName": {
+		"desc": "入院医生名称",
+		"path": "/PV1-17-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"admitingSourceCode": {
+		"desc": "入院类型",
+		"path": "/PV1-14",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitStatus": {
+		"desc": "紧急程度",
+		"path": "/PV1-4",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"chargeClass": {
+		"desc": "费用类别",
+		"path": "/PID-38-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"chargeClassName": {
+		"desc": "费用类别名称",
+		"path": "/PID-38-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitDate": {
+		"desc": "就诊日期",
+		"path": "/PV1-44",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"admissionWards": {
+		"desc": "病区号",
+		"path": "/PV1-3-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"admissionWardsName": {
+		"desc": "病区名称",
+		"path": "/PV1-3-9",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"admissionBedNo": {
+		"desc": "病床号",
+		"path": "/PV1-3-3",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitDept": {
+		"desc": "科室",
+		"path": "/PV1-3-4",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"patientName": {
+		"desc": "患者姓名",
+		"path": "/PID-5",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"genderCode": {
+		"desc": "性别",
+		"path": "/PID-8",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"birthDate": {
+		"desc": "出生日期",
+		"path": "/PID-7",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"diagnosis": {
+		"desc": "诊断",
+		"path": "/DG1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..n",
+		"child": {
+			"diagnosisType": {
+				"desc": "诊断类型",
+				"path": "/DG1-6",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"diagnosisTypeName": {
+				"desc": "诊断类型名称",
+				"path": "/DG1-7",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"diseaseCode": {
+				"desc": "疾病编码",
+				"path": "/DG1-3-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"diseaseName": {
+				"desc": "疾病名称",
+				"path": "/DG1-3-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"diagnosisDate": {
+				"desc": "诊断日期",
+				"path": "/DG1-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"priorityNumber": {
+				"desc": "诊断顺位",
+				"path": "/DG1-15",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"diagnosisNo": {
+				"desc": "诊断ID",
+				"path": "/DG1-16-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"diagnosisName": {
+				"desc": "诊断名称",
+				"path": "/DG1-16-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			}
+		}
+	},
+	"pid3": {
+		"desc": "PID-3",
+		"path": "/PID",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..n",
+		"child": {
+			"p11": {
+				"desc": "number",
+				"path": "/PID-3[0]-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p12": {
+				"desc": "name",
+				"path": "/PID-3[0]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p21": {
+				"desc": "number",
+				"path": "/PID-3[1]-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p22": {
+				"desc": "name",
+				"path": "/PID-3[1]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p31": {
+				"desc": "number",
+				"path": "/PID-3[2]-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p32": {
+				"desc": "name",
+				"path": "/PID-3[2]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p41": {
+				"desc": "number",
+				"path": "/PID-3[3]-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p42": {
+				"desc": "name",
+				"path": "/PID-3[3]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p51": {
+				"desc": "number",
+				"path": "/PID-3[4]-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p52": {
+				"desc": "name",
+				"path": "/PID-3[4]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p61": {
+				"desc": "number",
+				"path": "/PID-3[5]-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"p62": {
+				"desc": "name",
+				"path": "/PID-3[5]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			}
+		}
+	},
+	"babyFlag": {
+		"desc": "婴儿标记",
+		"path": "/PV2-36",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	}
+}

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<!--  
+	<bean id="messagePool" class="com.founder.cdr.batch.core.MessagePool" />
+	<bean id="messageDispatcher" class="com.founder.cdr.batch.core.MessageDispatcher" />
+	<bean id="messageReader" class="com.founder.cdr.batch.core.MessageReader" />-->
+	<bean id="springBeanFactory" class="com.founder.cdr.util.SpringBeanFactory" />
+	
+	<bean id="MQQueueFactory" class="com.founder.cdr.wmq.WMQQueueFactory">  
+		<!--<property name="host" value="172.18.73.233" />
+		<property name="managerName" value="dd" />
+		<property name="port" value="1414" />
+		<property name="channel" value="SYSTEM.DEF.SVRCONN" />
+		<property name="ccsid" value="1208" />
+		<property name="transport" value="1" />-->
+		
+		<property name="host" value="${mq.hostname}" />
+		<property name="managerName" value="${mq.qmName}" />
+		<property name="port" value="${mq.port}" />
+		<property name="channel" value="${mq.channel}" />
+		<property name="ccsid" value="${mq.ccsid}" />
+		<property name="transport" value="${mq.transport}" />
+	</bean>
+	
+	
+    <bean id="appSettings" class="com.founder.cdr.core.AppSettings">
+		<property name="locations" value="classpath:cdr.properties" />
+	</bean>
+	
+	<!--  
+	<bean id="messageStore" class="com.founder.cdr.batch.core.FileMessageStore">
+		<property name="dataDir" value="/var" />
+	</bean>
+	-->
+	<bean id="messageStore" class="com.founder.cdr.batch.core.DatabaseMessageStore" />
+
+	<!-- 
+	业务逻辑处理 
+	<bean id="processor" class="com.founder.cdr.batch.processor.MessageProcessor" scope="prototype" />
+	-->
+	
+	<!-- 写 -->
+	<bean id="writer" class="com.founder.cdr.batch.core.MessageWriter" scope="prototype">
+	</bean>
+</beans>

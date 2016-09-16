@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 警告通知信息服务-消息定义 -->
+<msg>
+	<head>
+		<msgId>0</msgId>
+		<!-- 消息名称 -->
+		<msgName>警告通知信息</msgName>
+		<!-- 消息源系统编码 -->
+		<sourceSysCode>xxx</sourceSysCode>
+		<!-- 消息目标系统编码 由平台统一管理 可以为空 -->
+		<targetSysCode>xxx</targetSysCode>
+		<!-- 消息创建时间 -->
+		<createTime>20090101121330</createTime>
+	</head>
+	<body>
+		<patient>
+			<!-- 患者域Id -->
+			<patientDomain>患者域Id</patientDomain>
+			<!-- 患者Id -->
+			<patientLid>患者Id</patientLid>
+			<!-- 患者姓名 -->
+			<patientName>患者姓名</patientName>
+			<!-- 患者性别 -->
+			<genderCode>患者性别</genderCode>
+			<!-- 病人年龄 -->
+			<age>30</age>
+			<!-- 就诊时间 -->
+			<visitDate>20090101121330</visitDate>
+			<!-- 就诊次数 -->
+			<visitTimes>就诊次数</visitTimes>
+			<!-- 所属科室 -->
+			<visitDept>100</visitDept>
+			<!-- 所属科室名称 -->
+			<visitDeptName>病人所在科室</visitDeptName>
+			<!-- 病区 -->
+			<wardsNo>12</wardsNo>
+			<!-- 床号 -->
+			<bedNo>02</bedNo>
+			<!-- 联系电话 -->
+			<telcom>13500832123</telcom>
+		</patient>
+		<!-- 报告警告信息 -->
+		<warningInfo>
+			<!-- 警告类型 -->
+			<warningType>危急/异常</warningType>
+			<!-- 报告号 -->
+			<reportNo>报告号</reportNo>
+			<!-- 报告链接 -->
+			<reportLink>http://www.cdr.com?reportNo=18</reportLink>
+			<!-- 1..n警告项目分类 -->
+			<warningItem>
+				<!-- 项目分类代码 -->
+				<labItemCode>项目代码</labItemCode>
+				<!-- 项目分类名称 -->
+				<labItemName>血细胞分析24项</labItemName>
+				<!-- 1..n项目子分类 -->
+				<waringDetail>
+					<!-- 子项目代码 -->
+					<itemCode>子项目代码</itemCode>
+					<!-- 子项目名称 -->
+					<itemNameCn>白细胞检验类型编码</itemNameCn>
+					<!-- 子项目名称(En) -->
+					<itemNameEn>WBC-B</itemNameEn>
+					<!-- 结果数值值 -->
+					<itemNumValue>结果整数值</itemNumValue>
+					<!-- 结果字符值 -->
+					<itemStrValue>结果字符值</itemStrValue>
+					<!-- 单位 -->
+					<itemUnit>单位</itemUnit>
+					<!-- 检验结果状态 -->
+					<checkStatus>true</checkStatus>
+					<!-- 检验结果信息 -->
+					<checkMessage>检验结果信息</checkMessage>
+					<!-- 处理建议 -->
+					<advise>检验结果信息</advise>
+				</waringDetail>
+			</warningItem>
+		</warningInfo>
+		<!-- 申请时间 -->
+		<requestTime>201112310900</requestTime>
+		<!-- 申请医生 -->
+		<applyPerson>KP00017</applyPerson>
+		<!-- 申请医生姓名 -->
+		<applyPersonName>张三</applyPersonName>
+	</body>
+</msg>

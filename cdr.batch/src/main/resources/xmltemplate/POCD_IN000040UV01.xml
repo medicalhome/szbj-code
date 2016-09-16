@@ -1,0 +1,564 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../coreschemas/CDA.xsd">
+<!--===================================-->
+<!-- 检验报告                           -->
+<!--===================================-->
+<!-- 
+****************************************************************************
+  CDA Header
+****************************************************************************
+-->	
+    <!-- 文档适用范围编码 -->
+	<realmCode code="CN" />
+	
+	<!-- 文档信息模型类别-标识符 -->
+	<!-- 固定值 -->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+	
+    <!-- 文档标识-报告号 -->
+	<id root="S008" extension="c266" />
+
+	<!-- 文档标识-名称 / 文档标识-类别编码 -->
+	<!-- 固定值 -->
+	<code code="04" codeSystem="1.2.156.112606.1.1.60" displayName="检查检验记录"/>
+		
+	<!-- 文档标题文本 -->
+	<title>检验报告</title>
+	
+    <!-- 文档生效日期 -->
+	<effectiveTime value="20111231" />
+
+	<!-- 文档保密程度-代码
+      @code: N默认值, 没有特殊限制/加密. 其他值可以是R, V
+      @displayName: normal，对@code的解释, 表示文档的保密级别名称
+      @codeSystem: 2.16.840.1.113883.5.25，固定值，表示HL7 OID
+      @codeSystemName: Confidentiality，固定值，表示HL7注册的编码系统名称  -->	
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal" />
+
+	<!-- 文档语言编码 -->
+    <!-- 固定值 -->
+	<languageCode code="zh-CN" />
+	
+    <!-- 文档的操作版本:0表示新增, 1表示修改 -->
+	<versionNumber value="0"/>
+	
+	<!-- 文档记录对象 -->
+	<recordTarget>
+	    <!-- 病人信息 -->
+		<patientRole>
+		    <!-- 域ID -->
+			<id root="1.2.156.112606.1.2.1.2" extension="222" /> 
+			<!-- 患者ID -->
+			<id root="1.2.156.112606.1.2.1.3" extension="333" /> 
+			<!-- 就诊号 -->
+            <id root="1.2.156.112606.1.2.1.12" extension="121212" /> 
+			
+			<!-- 病区床号信息 -->
+			<addr use="TMP">
+                <!-- 病区(房号) -->			    
+			    <houseNumber>12</houseNumber>
+                <!-- 床位号 -->
+			    <careOf>02</careOf>
+			</addr>
+			
+			<!-- 病人基本信息 -->
+			<patient>
+			    <!-- 病人名称 -->
+			    <name>李四</name>
+			    <!-- 性别编码/性别名称 -->
+			    <administrativeGenderCode code="M" codeSystem="1.2.156.112606.1.1.3" displayName="男" />
+			    <!-- 出生日期 -->
+			    <birthTime value="20000101" />
+			</patient>
+			
+			<!-- 院区信息 -->
+			<providerOrganization>
+			    <asOrganizationPartOf>
+			        <!-- 院区编码/院区名称 -->
+			        <code code="01" displayName="新院" />
+			    </asOrganizationPartOf>
+			</providerOrganization>
+		</patientRole>
+	</recordTarget>
+	
+	<!-- 报告人信息 -->
+	<author>
+	    <!-- 报告日期 -->
+		<time value="201112311010" />
+		<assignedAuthor>
+		    <!-- 报告人编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017" />	
+			<assignedPerson>
+			    <!-- 报告人名称 -->
+				<name>张三</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	
+	<!-- 文档保管者(固定值，CDA中custodian为必填项) -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id root="1.2.156.112606" />
+				<name>北大人民医院</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	
+	<!-- 电子签章信息 -->
+	<legalAuthenticator>
+		<time />
+		<signatureCode code="S" />
+		<assignedEntity>
+			<id extension="电子签章号" />
+		</assignedEntity>
+	</legalAuthenticator>	
+	
+	<!-- 审核人信息 -->
+	<authenticator>
+	    <!-- 审核日期 -->
+		<time value="201112311010" />
+		<signatureCode code="S" />
+		<assignedEntity>
+		    <!-- 审核者编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017" />
+			<assignedPerson>
+			    <!-- 审核者名称 -->
+				<name>张三</name>
+			</assignedPerson>
+		</assignedEntity>
+	</authenticator>	
+	
+	<!-- 送检医生信息 -->
+	<participant typeCode="DIST">
+		<associatedEntity classCode="ASSIGNED">
+			<!-- 送检医生编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017"/>
+			<associatedPerson>
+				<!-- 送检医生名称 -->
+				<name>张三</name>
+			</associatedPerson>
+		</associatedEntity>
+	</participant>
+	
+	<!-- 检验科室信息(执行科室) -->
+	<participant typeCode="PRF">
+		<associatedEntity classCode="ASSIGNED">
+			<associatedPerson/>
+			<scopingOrganization>
+				<!-- 检验科室编码 -->
+				<id root="1.2.156.112606.1.1.1" extension="1234"/>
+				<!-- 检验科室名称 -->
+				<name>检验科生化室</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	
+	<!-- 申请科室信息 -->
+	<participant typeCode="AUT">
+		<!-- 申请时间 -->
+		<time value="201112310900"/>
+		<associatedEntity classCode="ASSIGNED">
+			<scopingOrganization>
+				<!-- 申请科室编码 -->
+				<id root="1.2.156.112606.1.1.1" extension="12345678"/>
+				<!-- 申请科室名称 -->
+				<name>申请科室名称</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	
+	<!-- 其他参与者
+      @code: 可以用此属性表明是不同身份人员 -->
+
+	<!-- 关联医嘱信息 -->
+    <inFulfillmentOf>
+		<order>
+		    <!-- 关联医嘱号(可多个) -->
+			<id extension="1000" />
+			<id extension="2000" />
+		</order>
+	</inFulfillmentOf>	
+	
+	<!-- 文档中医疗卫生事件的就诊场景 -->
+    <componentOf>
+		<encompassingEncounter>
+            <!-- 就诊次数 -->
+			<id root="1.2.156.112606.1.2.1.7" extension="1" />
+
+			<!-- 就诊类别编码(门诊, 住院, 体检) -->
+			<code code="03" codeSystem="1.2.156.112606.1.1.80" />
+		    
+		    <!-- 必须项 -->
+			<effectiveTime />
+			
+			<!-- 申请科室信息 -->
+			<location>
+				<healthCareFacility>
+				    <!-- 申请科室(就诊科室) -->
+				    <serviceProviderOrganization>
+						<!-- 申请科室编码 -->
+						<id root="1.2.156.112606.1.1.1" extension="100" />
+						<!-- 申请科室名称 -->
+						<name>病人所在科室</name>
+				    </serviceProviderOrganization>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+
+
+
+<!-- 
+****************************************************************************
+  CDA Body
+****************************************************************************
+-->	
+	<!-- 结构化信息 -->
+	<component>
+		
+		<structuredBody>
+		
+<!-- 
+****************************************************************************
+  #检验章节(Labs section)
+****************************************************************************
+-->
+			<component>
+				<section>
+					<code code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory report" />
+					<title>检验</title>
+					
+					<!-- 相关备注说明 -->
+					<text>
+					    <!-- 报告备注 -->
+					    <content ID="a1">内容填在这</content>
+					    <!-- 技术备注 -->
+					    <content ID="a2"></content>
+					    <!-- 表现现象(指报告的一些备注内容) -->
+					    <content ID="a3"></content>
+					</text>
+					
+					<!-- 一个条目对应一个大的检验结果 -->
+					<entry>
+					    <observation classCode="OBS" moodCode="EVN">
+					        <!-- 检验类别编码(1.2.156.112606.1.1.44) -->
+							<code />
+							<statusCode code="completed" />
+							
+                            <!-- 优先级别:紧急/优先/普通 -->
+							<priorityCode code="01" />
+							
+                            <entryRelationship typeCode="COMP">
+                                <!-- 检验报告条目 -->
+								<organizer classCode="BATTERY" moodCode="EVN">
+									<!-- 检验项编码/检验项名称(血细胞分析24项类型编码) -->
+									<code code="1000" codeSystem="1.2.156.112606.1.1.46" displayName="血细胞分析24项" />
+									<statusCode code="completed" />
+								
+									<!-- 白细胞(单位为分子式) -->
+									<component>
+										<!-- 显示序号 -->
+										<sequenceNumber value="1"/>
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- 检验子项编码/检验子项简称/检验子项全称(白细胞检验类型编码) -->
+											<code code="01" codeSystem="1.2.156.112606.1.1.108" displayName="WBC-B">
+												<!-- @displayName是简称, originalText是全称 -->
+												<originalText>白细胞检验类型编码</originalText>
+											</code>
+											<!-- 文字参考范围/说明 -->
+											<text>参考值填这里</text>
+											<statusCode code="completed" />
+
+											<!-- 检验结果(结果只采用PQ, ST, SC类型) -->
+											<!--
+											PQ: <value xsi:type="PQ" value="19.1" unit="10^9/L" />  数值类型的结果+单位(没有单位去掉@unit, 没有结果去掉@value)
+											ST: <value xsi:type="ST">阳性(+)</value>  文本类型结果
+											SC: <value xsi:type="SC" code="个/LPF">未见</value> 文本类型结果+单位
+											-->
+
+											<!-- 检验结果(采用PQ类型 - 19.1 10^9/L) -->
+											<value xsi:type="PQ" value="19.1" unit="10^9/L" />
+											<!-- 结果是否正常-, 偏高↑或偏低↓ -->
+											<interpretationCode code="02" displayName="↑">
+												<originalText>偏高</originalText>
+												<translation code="数值标识" />
+											</interpretationCode>
+											<!-- codeSystem决定使用参考说明的系统标识 -->
+											<interpretationCode code="04" displayName="不危险">
+												<translation code="危险标识" />
+											</interpretationCode>
+											<!-- 参考范围值 -->
+											<referenceRange>
+												<observationRange>
+													<!-- 范围类型编码(固定值 - @code: 01参考范围值, 02危险范围值) -->
+													<code code="01" displayName="参考范围值" />
+													<value xsi:type="IVL_PQ" unit="10^9/L">
+														<low value="4.0" />
+														<high value="10.0" />
+													</value>
+												</observationRange>
+											</referenceRange>
+											<!-- 危险范围值 -->
+											<referenceRange>
+												<observationRange>
+													<!-- 范围类型编码(固定值 - @code: 01参考范围值, 02危险范围值) -->
+													<code code="02" displayName="危险范围值" />
+													<value xsi:type="IVL_PQ" unit="10^9/L">
+														<low value="2.0" />
+														<high value="15.0" />
+													</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+											
+									<!-- 红细胞压积(没有单位) -->
+									<component>
+										<!--显示序号-->
+										<sequenceNumber value="2"/>
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- 红细胞压积类型编码 -->
+											<code code="02" codeSystem="1.2.156.112606.1.1.108" displayName="HCT">
+												<originalText>红细胞压积类型编码</originalText>
+											</code>
+											<statusCode code="completed" />
+											<!-- 检验结果(采用PQ类型 - 45.4) -->
+											<value xsi:type="PQ" value="45.4" />
+											<!-- 结果是否正常-, 偏高↑或偏低↓ -->
+											<interpretationCode code="01" displayName="-">
+												<translation code="数值标识" />
+											</interpretationCode>
+											<!-- 参考范围值 -->
+											<referenceRange>
+												<observationRange>
+												   <code code="01" displayName="参考范围值" />
+													<value xsi:type="IVL_PQ">
+														<low value="36.0" />
+														<high value="56.0" />
+													</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+											
+									<!-- 平均血红蛋白量(单位为单个符号) -->
+									<component>
+										<!--显示序号-->
+										<sequenceNumber value="3"/>
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- 平均血红蛋白量类型编码 -->
+											<code code="03" codeSystem="1.2.156.112606.1.1.108" displayName="MCH">
+												<originalText>平均血红蛋白量类型编码</originalText>
+											</code>
+											<statusCode code="completed" />
+											<!-- 检验结果(采用PQ类型 － 30.7 pg) -->
+											<value xsi:type="PQ" value="30.7" unit="pg" />
+											<!-- 结果是否正常-, 偏高↑或偏低↓ -->
+											<interpretationCode code="01" displayName="-">
+												<translation code="数值标识" />
+											</interpretationCode>
+											<!-- 参考范围值 -->
+											<referenceRange>
+												<observationRange>
+													<code code="01" displayName="参考范围值" />
+													<value xsi:type="IVL_PQ" unit="pg">
+														<low value="27.0" />
+														<high value="32.0" />
+													</value>
+												</observationRange>
+											</referenceRange>
+										</observation>
+									</component>
+									<!-- 其他项目按上面结构和格式添加 -->
+									
+								</organizer>
+							</entryRelationship>
+							
+							<!-- 如果报告上有相关检验项, 可以按上面结构组织添加. 下面为演示 -->
+							<entryRelationship typeCode="COMP">
+								<organizer classCode="BATTERY" moodCode="EVN">
+									<!-- 尿检项编码 -->
+									<code code="1000" codeSystem="1.2.156.112606.1.1.46" displayName="尿检项目" />
+									<statusCode code="completed" />
+									<!-- B-HCG尿妊反(结果为字符串) -->
+									<component>
+										<!--显示序号-->
+										<sequenceNumber value="4"/>
+										<observation classCode="OBS" moodCode="EVN">
+											<!-- B-HCG尿妊反类型编码 -->
+											<code code="02" codeSystem="1.2.156.112606.1.1.108" displayName="B-HCG尿妊反">
+												<originalText>B-HCG尿液妊娠反应</originalText>
+											</code>
+											<statusCode code="completed" />
+											<!-- 检验结果(采用ST类型 － 阳性(+) 或 阴性(-)) -->
+											<value xsi:type="ST">阳性(+)</value>
+										</observation>
+									</component>					    
+								</organizer>
+							</entryRelationship>
+							
+							<!-- 标本及其图像信息 -->
+							<entryRelationship typeCode="SAS" inversionInd="true">
+								<procedure classCode="PROC" moodCode="EVN">
+									<code />
+									<statusCode code="completed" />
+									<!-- 标本采集日期(采血时间) -->
+									<effectiveTime value="201112311100" />
+									
+									<!-- 标本信息 -->
+									<specimen>
+									<specimenRole>
+									<!-- 标本条码号 -->
+									<id extension="1000" />
+									<specimenPlayingEntity>
+									<!-- 标本类型编码/标本类型名称(标本来源) -->
+									<code code="01" codeSystem="1.2.156.112606.1.1.45" displayName="血" />
+									</specimenPlayingEntity>
+									</specimenRole>
+									</specimen>
+									
+									<!-- 采集人/采集机构信息 -->
+									<performer>
+										<assignedEntity>
+											<!-- 采集人编码 -->
+											<id root="1.2.156.112606.1.1.2" extension="KP00017" />
+											<assignedPerson>
+												<!-- 采集人名称 -->
+												<name>张三</name>
+											</assignedPerson>
+											<!-- 采集地点编码/采集地点名称 -->
+											<representedOrganization>
+												<id root="1.2.156.112606.1.1.1" extension="101"/>
+												<name>血液科</name>
+											</representedOrganization>
+										</assignedEntity>
+									</performer>
+									
+									<!-- 标本接收人信息 -->
+									<participant typeCode="RCV">
+										<!-- 接收时间 -->
+										<time value="201112311105" />
+										<participantRole>
+											<!-- 接收人编码 -->
+											<id root="1.2.156.112606.1.1.2" extension="KP00016" />
+											<playingEntity>
+												<!-- 接收人名称 -->
+												<name>小二</name>
+											</playingEntity>
+										</participantRole>
+									</participant>
+									
+									<!-- 标本容器信息 -->
+									<participant typeCode="SBJ">
+										<participantRole>
+											<playingDevice>
+												<!-- 容器编码/容器名称 -->
+												<code code="01" displayName="试管" />
+											</playingDevice>
+										</participantRole>
+									</participant>
+									
+									<!-- 图像信息 -->
+									<entryRelationship typeCode="SPRT">
+										<observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 影像信息(要求编码为BASE64), @mediaType: 影像格式 -->
+											<value xsi:type="ED" mediaType="image/gif">
+												TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+												IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+												dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+												dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+												ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+											</value>
+											<entryRelationship typeCode="XCRPT">
+												<act classCode="INFRM" moodCode="PRP">
+													<code />
+													<!-- 提示信息 -->
+													<text>RBC</text>
+												</act>
+											</entryRelationship>
+										</observationMedia>
+									</entryRelationship>
+									<!-- 其他图像按以上格式添加 -->
+									
+									<!-- 图像信息 -->
+									<entryRelationship typeCode="SPRT">
+										<observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 影像信息(要求编码为BASE64), @mediaType: 影像格式 -->
+											<value xsi:type="ED" mediaType="image/gif">
+												TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+												IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+												dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+												dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+												ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+											</value>
+											<entryRelationship typeCode="XCRPT">
+												<act classCode="INFRM" moodCode="PRP">
+													<code />
+													<!-- 提示信息 -->
+													<text>PLT</text>
+												</act>
+											</entryRelationship>
+										</observationMedia>
+									</entryRelationship>
+									<!-- 其他图像按以上格式添加 -->					
+								</procedure>
+							</entryRelationship>
+							
+						</observation>	
+	
+					</entry>
+					
+				</section>
+			</component>
+			
+
+<!-- 
+****************************************************************************
+  #诊断章节(Diagnosis section)
+****************************************************************************
+-->							    	
+			<component>
+				<section>
+					<code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/> 
+					<title>诊断</title> 
+					<entry typeCode="DRIV">
+						<act classCode="ACT" moodCode="EVN">
+							<code nullFlavor="NA"/>
+							<entryRelationship typeCode="SUBJ">
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- 诊断类别编码/诊断类别名称 -->
+									<code code="02" codeSystem="1.2.156.112606.1.1.29" displayName="门诊诊断" />
+																		
+									<statusCode code="completed"/>
+									
+									<!-- 疾病编码/疾病名称(没有编码去掉@code) -->
+									<value xsi:type="CD" code="233604007" codeSystem="1.2.156.112606.1.1.30" displayName="肺炎" />        
+								</observation>
+							</entryRelationship>
+						</act>
+					</entry>
+				</section>
+		    </component>
+											
+<!-- 
+****************************************************************************
+  #药观章节
+****************************************************************************
+-->	
+
+			<component>
+				<section>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- 药观编码/药观名称 -->
+							<code code="123" displayName="药观名称"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+
+			
+        </structuredBody>     
+	</component>
+</ClinicalDocument>

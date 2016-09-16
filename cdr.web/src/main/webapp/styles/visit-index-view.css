@@ -1,0 +1,68 @@
+.jzInfo {
+	height: 150px;
+	background: url(../images/jzbr.png) no-repeat bottom;
+	background-position:20px 70px;
+	text-align: center;
+	background-color:#D7E9FF; 
+	border:1px #698497;
+}
+
+.jzInfoMouseOver {
+	height: 150px;
+	background: url(../images/jzbr.png) no-repeat bottom;
+	background-position:19px 69px;
+	text-align: center;
+	background-color:#F4FFFC; 
+	border:1px solid #38DAFD;
+}
+
+.mzInfo {
+	height: 150px;
+	background: url(../images/mzbr.png) no-repeat bottom ;
+	background-position:20px 70px;
+	text-align: center;
+	background-color:#D7E9FF; 
+	border:1px #698497;
+}
+
+.mzInfoMouseOver {
+	height: 150px;
+	background: url(../images/mzbr.png) no-repeat bottom ;
+	background-position:19px 69px;
+	text-align: center;
+	background-color:#F4FFFC; 
+	border:1px solid #38DAFD;
+}
+
+.zyInfo {
+	height: 150px;
+	background: url(../images/zybr.png) no-repeat bottom;
+	background-position:20px 70px;
+	text-align: center;
+	background-color:#D7E9FF; 
+	border:1px #698497;
+}
+
+.zyInfoMouseOver {
+	height: 150px;
+	background: url(../images/zybr.png) no-repeat bottom;
+	background-position:19px 69px;
+	text-align: center;
+	background-color:#F4FFFC; 
+	border:1px solid #38DAFD;
+}
+.noInfo {
+	height: 150px;
+/* 	background: url(../images/zybr.png) no-repeat 5% bottom; */
+	text-align: center;
+	background-color:#D7E9FF; 
+	border:1px #698497;
+}
+
+.infoMouseover {
+	background-color:#D7EEFF; 
+	border:1px solid #698497;
+}
+。emptyVisitInfo {
+	
+}

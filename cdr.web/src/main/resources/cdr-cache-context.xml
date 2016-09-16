@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+     xmlns:ehcache="http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring"
+     xsi:schemaLocation="
+     http://www.springframework.org/schema/beans 
+     http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring
+     http://ehcache-spring-annotations.googlecode.com/svn/schema/ehcache-spring/ehcache-spring-1.1.xsd">
+
+    <!-- <ehcache:annotation-driven cache-manager="cacheManager" /> -->
+    <!--  
+    <bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+    	<property name="configLocation" value="classpath:core-ehcache.xml"/>
+    	<property name="shared" value="true" />
+    </bean>
+    -->
+	
+	<!-- <bean id="cacheManager" class="org.springframework.cache.support.SimpleCacheManager">
+		<property name="caches">
+		<set>
+			<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="default"/>
+			<bean class="org.springframework.cache.concurrent.ConcurrentMapCacheFactoryBean" p:name="books"/>
+		</set>
+		</property>
+	</bean> -->
+	<!-- dictionaryCache -->
+	<bean id="dictionaryCache" class="com.founder.cdr.cache.DictionaryCache" init-method="init" />
+	
+	<!--Logo Private custom -->
+	<bean id="hospitalPicCache" class="com.founder.cdr.cache.HospitalPicCache" init-method="init" />
+</beans>

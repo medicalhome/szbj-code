@@ -1,0 +1,92 @@
+{
+	"patientLid" : {
+		"desc" : "患者ID",
+		"path" : "/PATIENT/PID-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientDomain" : {
+		"desc" : "域id",
+		"path" : "/VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"sender" : {
+		"desc" : "发送方",
+		"path" : "/MSH-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitTypeCode" : {
+		"desc" : "就诊类别编码",
+		"path" : "/VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/VISIT/PV1-19",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"operationDate" : {
+		"desc" : "操作日期",
+		"path" : "/ORDER_OBSERVATION/OBR-22-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationCode" : {
+		"desc" : "操作人编码",
+		"path" : "/ORDER_OBSERVATION/OBR-32-1-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationName" : {
+		"desc" : "操作人姓名",
+		"path" : "/ORDER_OBSERVATION/OBR-32-1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"orderStatusInf" : {
+		"desc" : "",
+		"path" : "/ORDER_OBSERVATION",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/ORDER_OBSERVATION/OBR-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}
+}

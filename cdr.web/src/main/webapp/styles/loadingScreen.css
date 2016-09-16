@@ -1,0 +1,16 @@
+.loadingScreenWindow .ui-dialog-titlebar {
+	display: none;
+}
+
+#loadingScreen, .loadingScreen { 
+    background: url(../images/loading.gif) no-repeat 5px center; 
+    padding-left: 25px;
+}
+
+#loadingMessage, .loadingMessage {
+	padding-left:20px;
+	line-height:36px;
+}
+
+
+ 

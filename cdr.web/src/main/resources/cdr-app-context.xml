@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:util="http://www.springframework.org/schema/util"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd
+       http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+       http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-3.0.xsd
+       http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.0.xsd
+       http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd"
+	default-lazy-init="true">
+	
+	<!-- 日志 -->
+    <bean id="loggingInterceptor" class="com.founder.fasf.core.interceptor.LoggingInterceptor">
+    	<property name="order" value="1"/>
+    </bean>
+    <aop:config>
+		<aop:pointcut id="services" expression="execution(* com.founder.cdr.*.service.*.*.*(..))"/>
+		<aop:advisor pointcut-ref="services" advice-ref="loggingInterceptor"/>
+	</aop:config>
+	<!-- End -->
+    
+    <!-- 事务 -->
+    <tx:annotation-driven transaction-manager="txManager" order="2"/>
+    <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+    	 <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- End -->
+
+	<bean id="exceptionResolver" class="org.springframework.web.servlet.handler.SimpleMappingExceptionResolver">
+		<property name="exceptionMappings">
+			<props>
+				<prop key="org.springframework.dao.DataAccessException">
+					dataAccessFailure
+				</prop>
+				<prop key="org.springframework.web.servlet.mvc.multiaction.NoSuchRequestHandlingMethodException">
+					dataAccessFailure
+				</prop>
+			</props>
+		</property>
+	</bean>
+	 
+	<bean id="messageSource" class="com.founder.fasf.core.util.message.ResourceMessageSource">
+		<property name="basenamePatterns" value="com/founder/cdr/**/message,ApplicationResources" />
+		<property name="useCodeAsDefaultMessage" value="true" />
+	</bean>
+	
+	<bean id="appSettings" class="com.founder.cdr.core.AppSettings">
+		<property name="locations">
+			<list>
+				<value>classpath:cdr.properties</value>
+				<value>classpath:closedCycle.properties</value>
+			</list>
+		</property>
+	</bean>
+	
+	<context:component-scan base-package="com.founder.cdr" >
+		<!-- context:include-filter type="regex" expression=".*(Service).*"/-->
+	</context:component-scan>
+
+	<!-- 设置JSON结果的字符集为UTF8（默认为ISO-8859-1） -->
+	<bean class="org.springframework.web.servlet.mvc.annotation.AnnotationMethodHandlerAdapter">
+		<property name="messageConverters">
+			<util:list>
+				<bean class="org.springframework.http.converter.StringHttpMessageConverter">
+					<property name="supportedMediaTypes">
+						<util:list>  
+							<value>text/plain;charset=UTF-8</value>  
+						</util:list>
+					</property>
+				</bean>
+			</util:list>
+		</property>
+	</bean>
+
+	<!-- 使用 @Controller注解，Dispacher向Controller分发请求  -->
+	<mvc:annotation-driven />
+
+	<!-- 定义ParameterizableViewController -->
+	<!-- 不会执行任何逻辑操作，直接显示View -->
+	<!-- path映射到Controller -->
+	<!-- view-name映射到View -->
+	<mvc:view-controller path="/mainMenu" view-name="mainMenu" />
+	
+	<mvc:view-controller path="/fileupload.vi" view-name="fileupload" />
+
+	<!-- 与JSP相关的 View Resolver，由View名映射到JSP -->
+	<bean id="viewResolver" class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="requestContextAttribute" value="rc" />
+		<property name="viewClass" value="org.springframework.web.servlet.view.JstlView" />
+		<property name="prefix" value="/WEB-INF/pages/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+
+	<!-- 使用名字约定，映射Request URL到Controller -->
+	<!-- 普通控制器WelcomeController与/welcome*对应 -->
+	<!-- MultiActionController控制器AdminController会与/admin/*对应 -->
+	<bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping" />
+
+
+	<!-- ===================================================================================== -->
+	<!--                       file upload support: multipartResolver                          -->
+	<!-- ===================================================================================== -->
+	<!--		
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+    -->
+	
+	<!-- ===================================================================================== -->
+	<!--                               URL Handler Interceptors                                -->
+	<!-- ===================================================================================== -->	 
+	<mvc:interceptors>
+		<!-- Paging -->
+		<bean class="com.founder.fasf.web.interceptor.PagingInterceptor" />
+		<!-- Sorting -->
+		<bean class="com.founder.fasf.web.interceptor.SortingInterceptor" />
+		<!-- theme -->
+		<bean id="themeChangeInterceptor" class="org.springframework.web.servlet.theme.ThemeChangeInterceptor">
+			<property name="paramName" value="theme"/>
+		</bean>
+		<!-- locale -->
+		<bean id="localeChangeInterceptor" class="org.springframework.web.servlet.i18n.LocaleChangeInterceptor">
+			<!-- http://www.founder.com/home.view?locale=zh_CN -->
+			<property name="paramName" value="locale"/>
+		</bean>
+		<!-- ajax session expried -->
+    	<bean id="ajaxExpiredSessionInterceptor" class="com.founder.cdr.web.interceptor.AjaxExpiredSessionInterceptor" />  
+	</mvc:interceptors>
+</beans>

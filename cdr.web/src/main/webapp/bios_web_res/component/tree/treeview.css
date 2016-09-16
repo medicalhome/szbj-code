@@ -1,0 +1,15 @@
+.bios_tree_node {
+	font-size: 12px; width: 1px; color: #000000; font-family: verdana
+}
+.bios_tree_node a {
+	color: #000000; text-decoration: none
+}
+.bios_tree_node a:hover {
+	color: blue; text-decoration: underline
+}
+.highlight {
+	color: black; background-color: c7c7c0
+}
+.highlight a {
+	color: black
+}

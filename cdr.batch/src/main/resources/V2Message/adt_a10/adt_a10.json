@@ -1,0 +1,154 @@
+{
+	"patientDomain": {
+		"desc" : "域ID",
+		"path" : "/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientLid": {
+		"desc" : "患者本地ID",
+		"path" : "/PID-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitTimes": {
+		"desc" : "就诊次数",
+		"path" : "/PV1-13",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/PV1-19",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitTypeCode" : {
+		"desc" : "就诊类别",
+		"path" : "/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"deptId" : {
+		"desc" : "科室编码",
+		"path" : "/PV1-3-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"deptName" : {
+		"desc" : "科室名称",
+		"path" : "/PV1-3-5",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"wardsId" : {
+		"desc" : "病区编码",
+		"path" : "/PV1-3-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"wardsName" : {
+		"desc" : "病区名称",
+		"path" : "/PV1-3-9",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"bedNo" : {
+		"desc" : "床位",
+		"path" : "/PV1-3-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"residentDoctor" : {
+		"desc" : "住院医生编号 ",
+		"path" : "/PV1-17-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"residentDoctorName" : {
+		"desc" : "住院医生名称 ",
+		"path" : "/PV1-17-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"attendingDoctor" : {
+		"desc" : "主治医生编号",
+		"path" : "/PV1-7-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"attendingDoctorName" : {
+		"desc" : "主治医生名称",
+		"path" : "/PV1-7-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"inExecPersonId" : {
+		"desc" : "入科执行人ID",
+		"path" : "/PV1-17-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"inExecPersonName" : {
+		"desc" : "入科执行人名称",
+		"path" : "/PV1-17-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"execTime" : {
+		"desc" : "执行时间",
+		"path" : "/EVN-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	}
+}

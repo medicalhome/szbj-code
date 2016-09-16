@@ -1,0 +1,56 @@
+#moreTabs {
+	float: right;
+	margin: 2px;
+	min-height: 516px;
+	_height: 516px
+}
+
+.detailViewTab {
+	padding: 0px;
+	overflow-y: auto;
+	/* max-height: 485px !important; */
+	height: 485px;
+}
+
+.parentli {
+	background: url(../images/title2.png) no-repeat;
+	text-align: left;
+	width: 70px;
+	margin-left: 5px;
+	text-decoration: none;
+	color: #043bd8;
+}
+
+#dd_detailContent {
+	float: left;
+	width: 27%;
+	margin: 2px;
+}
+
+#img_prev,#img_next {
+	width: 100%;
+	background-color: #BDF0FD;
+	text-align: center;
+	cursor: pointer;
+}
+
+#prev_next {
+	width: 100%;
+	height: 472px;
+	float: left;
+}
+
+#prev_next td {
+	height: 33px;
+}
+
+#tabs-animate {
+	vertical-align: top;
+	float: left;
+	width: auto;
+	height: 518px;
+	margin: 2px;
+}
+.ui-tabs .ui-tabs-panel{
+	padding:0px;
+}

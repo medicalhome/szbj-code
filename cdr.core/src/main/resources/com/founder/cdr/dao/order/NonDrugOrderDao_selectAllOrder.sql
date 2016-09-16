@@ -1,0 +1,92 @@
+/**
+ * 
+ * [FUN]V05-101非药物医嘱列表
+ * @version 1.0, 2012/03/12  
+ * @author 金鹏
+ * @since 1.0
+ * 非药物医嘱检索结果
+ */
+SELECT A.ORDER_FLAG,A.ORDER_TITLE,A.ORDER_SN,A.ORDER_TYPE,A.ORDER_NAME,A.ORDER_TYPE_NAME,A.ORDER_TIME,
+       A.CANCEL_TIME,A.ORDER_DEPT,A.ORDER_PERSON,A.CONFIRM_PERSON,
+       A.EXEC_DEPT,A.PATIENT_SN,A.WARDS_ID,A.TEMPORARY_FLAG,A.CONFIRM_TIME,
+       A.CANCEL_PERSON_NAME,A.CANCEL_PERSON
+  FROM(
+	--项目名称，医嘱类型，开嘱时间，取消时间，下医嘱科室，下医嘱人，医嘱确认人，执行科室，病人编码，病区，长期或临时，确认时间，取消人
+		SELECT '1' ORDER_FLAG,'诊疗医嘱详细' ORDER_TITLE,TOD.ORDER_SN,TOD.ORDER_TYPE,TOD.ITEM_NAME ORDER_NAME,
+			   TOD.ORDER_TYPE_NAME ORDER_TYPE_NAME,TOD.ORDER_TIME,
+			   TOD.CANCEL_TIME,TOD.ORDER_DEPT,TOD.ORDER_PERSON,TOD.ORDER_PERSON_NAME,
+			   TOD.CONFIRM_PERSON,TOD.CONFIRM_PERSON_NAME,TOD.EXECUTIVE_DEPT EXEC_DEPT,TOD.PATIENT_SN,
+			   TOD.WARDS_ID,TOD.TEMPORARY_FLAG,TOD.CONFIRM_TIME,TOD.CANCEL_PERSON_NAME,TOD.CANCEL_PERSON
+		  FROM MEDICAL_VISIT MV,TREATMENT_ORDER TOD--诊疗医嘱
+		 WHERE TOD.VISIT_ID = MV.VISIT_SN
+		       and MV.delete_flag=0
+		       and TOD.delete_flag=0
+		 UNION
+		SELECT '2' ORDER_FLAG,'护理医嘱详细' ORDER_TITLE,CO.ORDER_SN,CO.ORDER_TYPE,CO.ORDER_NAME,--医嘱类型名称，病区
+			   '治疗类' ORDER_TYPE_NAME,CO.INPUT_TIME ORDER_TIME,
+			   CO.CANCEL_TIME,CO.ORDER_DEPT,CO.ORDER_PERSON,--CO.ORDER_PERSON1 
+			   ORDER_PERSON_NAME,
+			   CO.CONFIRM_PERSON,CO.CONFIRM_PERSON_NAME,CO.EXEC_DEPT,CO.PATIENT_SN,
+			   '2' WARDS_ID,CO.USAGE TEMPORARY_FLAG,CO.CONFIRM_TIME,
+			   CO.CANCEL_PERSON_NAME,CO.CANCEL_PERSON
+		  FROM MEDICAL_VISIT MV,CARE_ORDER CO--护理医嘱
+		 WHERE CO.VISIT_SN = MV.VISIT_SN
+		       and MV.delete_flag=0
+		       and CO.delete_flag=0
+		 UNION
+		SELECT '3' ORDER_FLAG,'手术医嘱详细' ORDER_TITLE,PO.ORDER_SN,PO.ORDER_TYPE,PO.ORDER_NAME,--长期临时标识没有更改
+			   '手术类' ORDER_TYPE_NAME,PO.ORDER_TIME,
+			   PO.CANCEL_TIME,PO.ORDER_DEPT,PO.ORDER_PERSON,PO.ORDER_PERSON_NAME,
+			   PO.CONFIRM_PERSON,PO.CONFIRM_PERSON_NAME,PO.exec_dept,PO.PATIENT_SN,
+			   '3' WARDS_ID,'1' TEMPORARY_FLAG,PO.CONFIRM_TIME,
+			   PO.CANCEL_PERSON_NAME,PO.CANCEL_PERSON
+		  FROM MEDICAL_VISIT MV,PROCEDURE_ORDER PO--手术医嘱
+		 WHERE PO.VISIT_SN = MV.VISIT_SN
+		       and MV.delete_flag=0
+		       and PO.delete_flag=0
+		 UNION
+		SELECT '4' ORDER_FLAG,'检查医嘱详细' ORDER_TITLE,EO.ORDER_SN,EO.ORDER_TYPE,EO.ITEM_NAME ORDER_NAME,
+			   EO.ORDER_TYPE_NAME ORDER_TYPE_NAME,EO.ORDER_TIME,
+			   EO.CANCEL_TIME,EO.ORDER_DEPT,EO.ORDER_PERSON,EO.ORDER_PERSON_NAME,
+			   EO.CONFIRM_PERSON,EO.CONFIRM_PERSON_NAME,EO.EXECUTIVE_DEPT EXEC_DEPT,EO.PATIENT_SN,
+			   EO.WARDS_ID,EO.TEMPORARY_FLAG,EO.CONFIRM_TIME,
+			   EO.CANCEL_PERSON_NAME,EO.CANCEL_PERSON
+		  FROM MEDICAL_VISIT MV,EXAMINATION_ORDER EO--检查医嘱
+		 WHERE EO.VISIT_SN = MV.VISIT_SN 
+		       and MV.delete_flag=0
+		       and EO.delete_flag=0
+		 UNION
+		SELECT '5' ORDER_FLAG,'检验医嘱详细' ORDER_TITLE,LO.ORDER_SN,LO.ORDER_TYPE,LO.ITEM_NAME ORDER_NAME,
+			   LO.ORDER_TYPE_NAME ORDER_TYPE_NAME,LO.ORDER_TIME,
+			   LO.CANCEL_TIME,LO.ORDER_DEPT,LO.ORDER_PERSON,LO.ORDER_PERSON_NAME,
+			   LO.CONFIRM_PERSON,LO.CONFIRM_PERSON_NAME,LO.EXECUTIVE_DEPT EXEC_DEPT,LO.PATIENT_SN,
+			   LO.WARDS_ID,LO.TEMPORARY_FLAG,LO.CONFIRM_TIME,
+			   LO.CANCEL_PERSON_NAME,LO.CANCEL_PERSON
+		  FROM MEDICAL_VISIT MV,LAB_ORDER LO--检验医嘱
+		 WHERE LO.VISIT_SN = MV.VISIT_SN
+		       and MV.delete_flag=0
+		       and LO.delete_flag=0
+ 	) A
+ WHERE A.PATIENT_SN = /*patientSn*/ 
+ 	   /*IF orderStrStartTime != null && orderStrStartTime.length() != 0*/
+   	    AND A.ORDER_TIME >= to_date(/*orderStrStartTime*/,'YYYY-MM-DD HH24:MI:SS')
+   	   /*END*/
+   	   /*IF orderStrEndTime != null && orderStrEndTime.length() != 0*/
+   	    AND A.ORDER_TIME <= to_date(/*orderStrEndTime*/,'YYYY-MM-DD HH24:MI:SS')
+   	   /*END*/ 
+	   /*IF orderType != null && orderType.length() != 0 && !"-1".equals(orderType)*/
+   	    AND A.ORDER_TYPE = /*orderType*/
+   	   /*END*/
+   	   /*IF orderDept != null && orderDept.length() != 0 && !"-1".equals(orderDept)*/
+   	    AND A.ORDER_DEPT = /*orderDept*/
+   	   /*END*/
+	   /*IF orderPerson != null && orderPerson.length() != 0*/
+   	    AND A.ORDER_PERSON_NAME like '%' || /*orderPerson*/'' || '%'
+   	   /*END*/
+       /*IF execDept != null && execDept.length() != 0 && !"-1".equals(execDept)*/
+   	    AND A.EXEC_DEPT = /*execDept*/
+   	   /*END*/
+   	   /*IF orderName != null && orderName.length() != 0*/
+   	    AND A.ORDER_NAME like '%' || /*orderName*/'' || '%'
+   	   /*END*/
+ ORDER BY A.ORDER_TIME DESC

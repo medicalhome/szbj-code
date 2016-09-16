@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!-- 皕杰报表配置文件，报表系统启动时，会使用该文件进行系统设置和组件加载。
+	   该文件的名称和路径可在web.xml中，通过ReportEmitter这个servlet的初始化参数"reportConf"进行设置和修改。
+	   系统运行过程中，如果修改了该文件，则可参考下面的url来访问报表系统，即可不重启应用，热加载修改后的配置信息。
+	   "http://localhost:8080/report/ReportEmitter?ReportConfigReload"
+ -->
+<Config>
+	<!-- 报表文件存放目录，节点值为相对应用根目录的路径。
+		   当节点值以*打头时表示该路径为绝对路径 。
+	-->
+	<reportHome>/WEB-INF/reports</reportHome>
+		
+	<!-- 报表引用图片的存放目录，缺省时使用reportHome作为imageHome。
+		   路径设置规则与reportHome相同。
+	-->
+	<!-- <imageHome>/WEB-INF/reports</imageHome> -->
+			
+	<!-- 应用资源的存放路径，节点值为相对应用根目录的路径。
+		   应用资源包括自定义函数文件、自定义图表配色方案文件等。
+	
+	<appResource>/WEB-INF/resources</appResource>
+	-->
+	<!-- 客户端资源存放路径，节点值为相对应用根目录的路径。
+		   客户端资源包括报表内置的js脚本、css样式表、图片以及Appletc程序包和客户端jre安装程序等。 
+		   请注意，该路径不可位于WEB-INF目录下。
+	-->
+	<webResource>/bios_web_res</webResource>
+			
+	<!-- web编码 -->
+	<characterEncode>GBK</characterEncode>
+			
+	<!-- 数据源 -->
+	<dsConf>
+		
+		<dataSource>
+			<Name>Cdr_Test</Name>
+			<JNDIPrefix>java:comp/env/</JNDIPrefix>
+			<JNDIName>orcl</JNDIName>
+			<DBType>oracle</DBType>
+			<DBEncode>GBK</DBEncode>
+			<SQLDecode>false</SQLDecode>
+			<Default>true</Default>
+		</dataSource>
+		
+		<!-- xml数据源配置
+		<dataSource type="xml">
+			<Name>XML</Name>
+			<Def name="出版物信息" xml="D:\DATASOURCE_XML\表1.xml" encode=""/>
+			<Def name="表15" xml="D:\DATASOURCE_XML\表15.xml" encode=""/>
+		</dataSource>
+		-->
+		<!-- webservice数据源配置
+		<dataSource type="webservice">
+			<Name>WS</Name>
+			<WSDL>http://www.webxml.com.cn/WebServices/WeatherWebService.asmx?wsdl</WSDL>
+		</dataSource>
+		-->		
+	</dsConf>
+	
+	<!-- 语义层文件存放目录 -->
+	<!-- <bizModelHome>/WEB-INF/bizmodel</bizModelHome> -->
+	 
+	<!-- 系统运行模式，允许设置的值: develop | product
+		   develop: 开发模式，不启用报表缓存功能，实时刷新数据和报表模板，方便开发调试。
+		   product: 生产模式，开启报表缓存功能，提高性能。
+	 -->
+	<runMode>product</runMode>
+	
+	<!-- 缓存 -->
+	<cache>
+		<maxElements>150</maxElements> <!-- 内存中缓存的最大对象数 -->
+		<liveTime>1800</liveTime> <!-- 生命周期(秒) -->
+		<timeout>600</timeout> <!-- 过期时间(秒) -->
+		<useDisk>false</useDisk> <!-- 是否使用硬盘缓存 -->
+		
+		<!-- 配置硬盘缓存的路径，最大对象数，缓冲区大小(M) -->
+		<!--
+		<diskStorekCfg>
+			<path>d:/temp</path>
+			<maxElements>100000</maxElements>
+			<bufferSize>8</bufferSize>
+		</diskStorekCfg>
+		-->
+		
+		<!-- 集群配置，如果有server1,server2,server3三台服务器集群，
+			server1上该节点的值应为: server2:port,server3:port
+			server2上该节点的值应为: server1:port,server3:port
+			server3上该节点的值应为: server1:port,server2:port
+		-->
+		<!-- <cluster>192.168.1.10:40000,192.168.1.15:40000</cluster> --> 
+		
+		<!-- 可配置多个缓存组 -->
+		<!-- 
+		<group name="cache2" maxElements="150" liveTime="1800" timeout="600"/>
+		<group name="cache3" maxElements="50" liveTime="36000" timeout="18000">rpts/*.brt</group>
+		 -->
+	</cache>
+	
+	<html>
+		<!-- 报表在web上的输出尺寸 -->
+		<rptwidth>100%</rptwidth>
+		<rptheight>100%</rptheight>
+		
+		<!-- 输出宽度自适应选项 -->
+		<fitwidth>false</fitwidth>
+		
+		<!-- 页面工具条配置 -->
+		<toolbar>
+			<toolbardisplay>bottom</toolbardisplay> <!--工具条显示信息(表格下方、上方、不显示)，bottom | top | none-->
+			<xlsbtn>false</xlsbtn> <!--是否显示整页导出excel按钮-->
+			<xlsbtn1>false</xlsbtn1> <!--是否显示分页导出excel按钮-->
+			<pdfbtn>true</pdfbtn> <!--是否显示导出PDF按钮-->
+			<docbtn>false</docbtn> <!--是否显示导出Word按钮-->
+			<printbtn>false</printbtn> <!--是否显示打印按钮-->
+		</toolbar>
+		
+		<!-- 填报表页面输出配置 -->
+		<fillin>
+			<forwardurl></forwardurl> <!--提交填报表单后，转向的位置，默认停留在本页-->
+			<errorforward></errorforward> <!--提交填报表单失败时，转向的位置，默认停留在本页-->
+			<offlinebtn>true</offlinebtn> <!--是否显示离线填报功能按钮-->
+			<deleteprompt>true</deleteprompt> <!--删除数据时，是否弹出确认操作提示-->
+			<saveprompt>true</saveprompt> <!--保存数据前，是否弹出确认操作提示-->
+			<succeedprompt>true</succeedprompt> <!--数据成功保存后，是否弹出提示信息-->
+		</fillin>
+	</html>
+	
+	<!-- 报表导出配置 -->
+	<export>
+		<!-- <excelVersion>xlsx</excelVersion> --> <!-- 导出的excel文件版本，xlsx表示2007格式，xls表示2003格式 -->
+	</export>
+	
+	<!-- 用户自定义接口配置，包括工厂、事件等 -->
+	<userDef>
+		<!-- <reportFactory></reportFactory> -->  <!-- 报表工厂，用于自定义报表加载和计算等 -->
+		<!-- <dataSourceFactory></dataSourceFactory> -->  <!-- 自定义数据源工厂，用于通过自定义的方式获取报表数据源 -->
+		<!-- <toolbarFactory></toolbarFactory> -->  <!-- 工具条工厂，用于自定义html工具条  -->
+		<!-- <toolbarButtonFactory></toolbarButtonFactory> -->  <!-- 工具条按钮工厂，用于替换html工具条上的一些按钮  -->
+		<!-- <printEventListener></printEventListener> -->  <!-- 打印事件监听器 -->
+		<!-- <fillinEventListener></fillinEventListener> -->  <!-- 填报事件监听器 -->
+		<!-- <exportEventListener></exportEventListener> -->  <!-- 报表导出事件监听器 -->		
+		<!-- <reportLogHandler></reportLogHandler> -->  <!-- 自定义报表日志输出处理器，在报表系统日志的基础上，增加其他日志记录方式 -->
+	</userDef>
+	
+	<!-- 客户端applet打印的java环境配置 -->
+	<jreplugin>
+		<!-- 客户端浏览器没有jre环境时，将会下载该安装程序进行自动安装。
+			   需要放在webResource节点指定的目录下名为applet的文件夹下。 
+		-->
+	  	<jreName>jre-6u45-windows-i586.exe</jreName>
+	  	
+	  	<jreVersion>1.6</jreVersion>
+	</jreplugin>
+	
+	<!-- 日志配置 -->
+	<log>
+		<!-- 日志输出级别，允许设置的值: debug | warning | error | off 
+			   debug：输出所有日志信息
+			   warning：输出警告信息和错误信息
+			   error：仅输出错误信息
+			   off：关闭日志输出
+		-->
+		<level>off</level>
+		
+		<!-- 日志文件名称，节点值为相对应用根目录的文件路径 -->
+		<fileName>/logs/bios_report.log</fileName>
+		
+		<!-- 日志文件个数 -->
+		<fileCount>1</fileCount>
+	</log>
+	
+	<!-- URL前缀，通过域名地址访问报表，或报表服务器地址存在跳转、分发时，请设置该参数 -->
+	<appUrlPrefix></appUrlPrefix>
+	
+</Config>

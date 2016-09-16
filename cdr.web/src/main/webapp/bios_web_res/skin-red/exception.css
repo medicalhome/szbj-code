@@ -1,0 +1,22 @@
+.rpt_info{
+	width:100%;
+	height:100%;
+	font-size:10pt;
+	font-family:ËÎÌו;
+	font-weight:bold;
+	color:#626262;
+	background-color:#F6F6F6;
+	padding:20px;
+	padding-top:15px;
+}
+.rpt_error{
+	width:100%;
+	height:100%;
+	font-size:10pt;
+	font-family:ËÎÌו;
+	font-weight:bold;
+	color:red;
+	background-color:#F6F6F6;
+	padding:20px;
+	padding-top:15px;
+}

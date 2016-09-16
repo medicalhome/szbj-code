@@ -1,0 +1,624 @@
+/**
+ * $Author :jin_peng
+ * $Date : 2012/11/09 15:34$
+ * [BUG]0011225 MODIFY BEGIN
+ * $Author :jin_peng
+ * $Date : 2012/09/27 10:31$
+ * [BUG]0010132 MODIFY BEGIN
+ * [FUN]V05-101住院视图列表
+ * @version 1.0, 2012/05/28  
+ * @author 金鹏
+ * @since 1.0 
+ * 住院视图列表检索结果
+ */
+/*IF "inpatient".equals(itemFlag)*/
+SELECT * FROM
+(SELECT MV.*,ROWNUM NM 
+FROM
+(SELECT MV.VISIT_DATE + MVFOR.RN - 1 INPATIENT_DATE, MV.VISIT_SN, MV.VISIT_DATE, MVFOR.RN INPATIENT_DAYS, MV.DISCHARGE_DATE, MV.VISIT_TIMES, MV.DISCHARGE_WARD_NAME, MV.DISCHARGE_BED_NO, MV.ENTRANCE_TIME
+  FROM (
+  			SELECT ROWNUM RN --树状查询出某住院日期开始需要循环增加的天数
+              FROM (
+              			SELECT MAX(TRUNC(NVL(MVDAY.DISCHARGE_DATE,SYSDATE)) - TRUNC(MVDAY.VISIT_DATE)) MAX_DIFF --获取住院天数最大值，以便后续进行树状查询
+                          FROM MEDICAL_VISIT MVDAY
+                         WHERE MVDAY.PATIENT_SN = /*patientSn*/
+                         	   AND MVDAY.visit_type_code = /*inpatientType*/ --就诊类型为住院
+                         	   AND MVDAY.VISIT_STATUS_CODE != /*exitInpatient*/
+                               AND MVDAY.DELETE_FLAG = '0'
+        		   ) DAYMAX
+       	   CONNECT BY ROWNUM <= DAYMAX.MAX_DIFF + 1
+       ) MVFOR,
+       MEDICAL_VISIT MV
+ WHERE MV.PATIENT_SN = /*patientSn*/
+ 	   AND MV.visit_type_code = /*inpatientType*/ 
+ 	   AND MV.VISIT_STATUS_CODE != /*exitInpatient*/
+       AND MV.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MV.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND TRUNC(NVL(MV.DISCHARGE_DATE,SYSDATE)) - TRUNC(MV.VISIT_DATE) + 1 >= MVFOR.RN --保证住院天数要大于天数添加的增量，否则则超出该次住院的天数
+/*IF inpatientDate != null && inpatientDate.length() != 0*/
+ ORDER BY MV.VISIT_TIMES, MV.VISIT_DATE + MVFOR.RN - 1
+--ELSE
+ ORDER BY MV.VISIT_TIMES DESC, MV.VISIT_DATE + MVFOR.RN - 1 DESC
+/*END*/
+) MV
+WHERE ROWNUM <= /*rowNumEnd*/
+)
+WHERE NM >= /*rowNumStart*/
+/*END*/
+/**[BUG]0010132 MODIFY END*/
+
+/*IF "physical".equals(itemFlag)*/
+SELECT PE.ITEM_CODE, PE.ITEM_NAME, PE.ITEM_RESULT, PE.ITEM_RESULT_UNIT, TO_NUMBER(TO_CHAR(PE.EXAM_TIME, 'HH24')) EXAM_TIME_HOUR,PE.EXAM_TIME INPATIENT_DATE,
+	   ROUND((TO_NUMBER(TO_CHAR(PE.EXAM_TIME, 'HH24')) * 3600 + 
+       TO_NUMBER(TO_CHAR(PE.EXAM_TIME, 'MI')) * 60 +
+       TO_NUMBER(TO_CHAR(PE.EXAM_TIME, 'SS'))) / 3600, 2) + (TRUNC(PE.EXAM_TIME) - TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD')) * 24 || '-' || 
+       /*IF "1".equals(numFlag) */
+       ROUND(PE.ITEM_RESULT, 2) || 
+       /*END*/
+       '-' || TO_CHAR(PE.EXAM_TIME,'HH24:MI:SS') || '-' || /*itemUnit*/ XH_DATA  --算出三测单横坐标值和图形数据
+  FROM NURSING_OPERATION NON, PHYSICAL_EXAMINATION PE
+ WHERE PE.OPERATION_SN = NON.OPERATION_SN
+       AND NON.VISIT_SN = /*visitSn*/
+       AND PE.ITEM_TYPE_CODE = /*itemTypeCode*/
+       AND PE.EXAM_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+       AND REGEXP_LIKE(PE.ITEM_RESULT,'^[0-9]+\.{0,1}[[:digit:]]+$')
+       AND PE.DELETE_FLAG = 0
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND PE.ORG_CODE = /*orgCode*/
+       AND NON.ORG_CODE = /*orgCode*/
+       /*END*/
+       /*IF bpFlag != null*/
+       AND PE.BLOOD_PRESSURE_FLAG = /*bpFlag*/
+       /*END*/
+ ORDER BY PE.EXAM_TIME
+/*END*/
+
+/*IF "diagnosis".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.DIAGNOSIS_SN,RES.DISEASE_CODE,RES.DISEASE_NAME,RES.DIAGNOSIS_TYPE_NAME,RES.INPATIENT_DATE,RES.MAIN_DIAGNOSIS_FLAG
+  FROM (
+		SELECT DG.VISIT_SN,DG.DIAGNOSIS_SN,DG.DISEASE_CODE,DG.DISEASE_NAME,DG.DIAGNOSIS_TYPE_NAME,DG.DIAGNOSIS_DATE INPATIENT_DATE,DG.MAIN_DIAGNOSIS_FLAG,
+			   ROW_NUMBER () OVER (PARTITION BY TRUNC(DG.DIAGNOSIS_DATE) ORDER BY DG.DIAGNOSIS_DATE DESC,DG.DIAGNOSIS_SN DESC) ROW_NUM
+		  FROM DIAGNOSIS DG
+		 WHERE DG.VISIT_SN = /*visitSn*/
+		 	   AND DG.DIAGNOSIS_DATE BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		 	   AND DG.DELETE_FLAG = '0'
+		 	   /*IF orgCode != NULL && orgCode.length() != 0*/
+		 	   AND DG.ORG_CODE = /*orgCode*/
+		 	   /*END*/
+		 ORDER BY DG.DIAGNOSIS_DATE DESC,DG.DIAGNOSIS_SN DESC
+	 ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+
+/**
+ * $Author :jin_peng
+ * $Date : 2012/10/09 17:09$
+ * [BUG]0010239 MODIFY BEGIN 
+ * */
+ /**
+ * $Author :yang_mingjie
+ * $Date : 2014/06/09 10:09$
+ * [BUG]0044564 MODIFY BEGIN 
+ * */
+ /*IF "drugOrderLong".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.ORDER_SN,RES.DRUG_CODE,RES.DRUG_NAME,RES.DOSAGE,RES.DOSAGE_UNIT,RES.MEDICINE_FRENQUENCY,RES.PRESCRIPTION_SN,  --用药长期医嘱
+	   RES.ORDER_TIME,TRUNC(RES.STOP_TIME) STOP_TIME,RES.CANCEL_TIME,RES.MEDICINE_FREQ_NAME,RES.SKIN_TEST_RESULT,RES.APPROVED_DRUG_NAME,RES.ORDER_TYPE,
+	   RES.ROUTE_CODE,RES.ROUTE_NAME,TRUNC(RES.ORDER_START_TIME) ORDER_START_TIME,RES.TEMPORARY_FLAG,RES.SPECIFICATION,RES.NAME
+  FROM (
+  		SELECT RE.VISIT_SN,RE.ORDER_SN,RE.DRUG_CODE,RE.DRUG_NAME,RE.DOSAGE,RE.DOSAGE_UNIT,RE.MEDICINE_FRENQUENCY,RE.PRESCRIPTION_SN,  --用药长期医嘱
+			   RE.ORDER_TIME,RE.STOP_TIME,RE.CANCEL_TIME,RE.MEDICINE_FREQ_NAME,RE.SKIN_TEST_RESULT,RE.APPROVED_DRUG_NAME,RE.ORDER_TYPE,
+			   RE.ROUTE_CODE,RE.ROUTE_NAME,RE.ORDER_START_TIME,RE.TEMPORARY_FLAG,RE.ORG_CODE,RE.SPECIFICATION,RE.NAME
+  		  FROM (
+				SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				  -- ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				 WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate1*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate1*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*IF inpatientDate2 != null && inpatientDate2.length() != 0*/
+				 UNION
+				SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				 --  ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate2*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate2*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/ 	   
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*END*/
+				/*IF inpatientDate3 != null && inpatientDate3.length() != 0*/
+				 UNION
+				SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				 --  ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate3*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate3*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*END*/
+				/*IF inpatientDate4 != null && inpatientDate4.length() != 0*/
+				 UNION
+				SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				 --  ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				 WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate4*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate4*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*END*/
+				/*IF inpatientDate5 != null && inpatientDate5.length() != 0*/
+				 UNION
+				SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				 --  ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				 WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate5*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate5*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*END*/
+				/*IF inpatientDate6 != null && inpatientDate6.length() != 0*/
+				 UNION
+			SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				 --  ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				 WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate6*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate6*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*END*/
+				/*IF inpatientDate7 != null && inpatientDate7.length() != 0*/
+				 UNION
+			SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.PRESCRIPTION_SN,  --用药长期医嘱
+					   MO.ORDER_TIME,MO.STOP_TIME,MO.CANCEL_TIME,MO.MEDICINE_FREQ_NAME,MO.SKIN_TEST_RESULT,MO.APPROVED_DRUG_NAME,MO.ORDER_TYPE,
+					   MO.ROUTE_CODE,MO.ROUTE_NAME,MO.ORDER_START_TIME,MO.SERIAL_NO,MO.TEMPORARY_FLAG,MO.ORG_CODE,TRIM(CD.SPECIFICATION) SPECIFICATION,TRIM(MO.Approved_Drug_Name) NAME
+				   FROM (MEDICATION_ORDER MO INNER JOIN CODE_DRUG CD ON MO.DRUG_CODE = CD.CODE)-- AND MO.SERIAL_NO = CD.SERIAL) INNER JOIN CODE_MEDICAL_NAME CMN 
+				 --  ON CMN.CODE = CD.DRUG_ID AND CMN.FLAG = 1
+				 WHERE MO.VISIT_SN = /*visitSn*/
+				 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate7*/,'YYYY-MM-DD')
+				 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate7*/, 'YYYY-MM-DD')
+				 	    OR MO.STOP_TIME IS NULL)
+				 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+				 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+				       AND MO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND MO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				/*END*/
+		) RE
+		WHERE NOT EXISTS
+              (
+                  SELECT 1
+                    FROM HIDE_DRUG HD
+                   WHERE RE.DRUG_CODE = HD.DRUG_CODE
+                     AND HD.DELETE_FLAG = '0'
+                     and hd.user_name = /*userSn*/
+              )
+		ORDER BY RE.ORDER_START_TIME, RE.ORDER_SN DESC
+     ) RES
+ WHERE ROWNUM <= /*displayCount*/
+/*END*/
+/*END*/
+/*[BUG]0044564 MODIFY END */
+ 
+/*IF "drugOrderLongCount".equals(itemFlag)*/
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate1*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate1*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  and hd.user_name = /*userSn*/
+           )
+/*IF inpatientDate2 != null && inpatientDate2.length() != 0*/
+ UNION ALL
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate2*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate2*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  and hd.user_name = /*userSn*/
+           )
+/*END*/
+/*IF inpatientDate3 != null && inpatientDate3.length() != 0*/
+ UNION ALL
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate3*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate3*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  and hd.user_name = /*userSn*/
+           )
+/*END*/
+/*IF inpatientDate4 != null && inpatientDate4.length() != 0*/
+ UNION ALL
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate4*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate4*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  and hd.user_name = /*userSn*/
+           )
+/*END*/
+/*IF inpatientDate5 != null && inpatientDate5.length() != 0*/
+ UNION ALL
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate5*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate5*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  and hd.user_name = /*userSn*/
+           )
+/*END*/
+/*IF inpatientDate6 != null && inpatientDate6.length() != 0*/
+ UNION ALL
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate6*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate6*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  and hd.user_name = /*userSn*/
+           )
+/*END*/
+/*IF inpatientDate7 != null && inpatientDate7.length() != 0*/
+ UNION ALL
+SELECT COUNT(1) LONG_TERM_COUNT
+  FROM MEDICATION_ORDER MO
+ WHERE MO.VISIT_SN = /*visitSn*/
+ 	   AND TRUNC(MO.ORDER_START_TIME) <= TO_DATE(/*inpatientDate7*/,'YYYY-MM-DD')
+ 	   AND (MO.STOP_TIME >= TO_DATE(/*inpatientDate7*/, 'YYYY-MM-DD')
+ 	    OR MO.STOP_TIME IS NULL)
+ 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+ 	   AND MO.TEMPORARY_FLAG = /*longTermFlag*/
+       AND MO.DELETE_FLAG = '0'
+       /*IF orgCode != NULL && orgCode.length() != 0*/
+       AND MO.ORG_CODE = /*orgCode*/
+       /*END*/
+       AND NOT EXISTS
+           (
+               SELECT 1
+                 FROM HIDE_DRUG HD
+                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+                  AND HD.DELETE_FLAG = '0'
+                  AND HD.USER_NAME = /*userSn*/
+           )
+/*END*/
+/*END*/
+ 
+/*IF "drugOrder".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.ORDER_SN,RES.DRUG_CODE,RES.DRUG_NAME,RES.DOSAGE,RES.DOSAGE_UNIT,RES.MEDICINE_FRENQUENCY,RES.PRESCRIPTION_SN,RES.ORDER_TYPE,RES.APPROVED_DRUG_NAME,  --用药临时医嘱
+	   RES.INPATIENT_DATE
+  FROM (
+		SELECT MO.VISIT_SN,MO.ORDER_SN,MO.DRUG_CODE,MO.DRUG_NAME,MO.DOSAGE,MO.DOSAGE_UNIT,MO.MEDICINE_FRENQUENCY,MO.ORDER_TYPE,MO.APPROVED_DRUG_NAME,
+			   MO.PRESCRIPTION_SN,NVL(MO.ORDER_START_TIME,MO.ORDER_TIME) INPATIENT_DATE,
+			   ROW_NUMBER () OVER (PARTITION BY TRUNC(NVL(MO.ORDER_START_TIME,MO.ORDER_TIME)) ORDER BY MO.ORDER_START_TIME DESC, MO.ORDER_SN DESC) ROW_NUM
+		  FROM MEDICATION_ORDER MO
+		 WHERE MO.VISIT_SN = /*visitSn*/
+		 	   AND NVL(MO.ORDER_START_TIME,MO.ORDER_TIME) BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		 	   AND MO.ORDER_STATUS != /*cancelOrderStatus*/
+		 	   AND MO.TEMPORARY_FLAG = /*tempFlag*/
+		       AND MO.DELETE_FLAG = '0'
+		       /*IF orgCode != NULL && orgCode.length() != 0*/
+		       AND MO.ORG_CODE = /*orgCode*/
+		       /*END*/
+		       AND NOT EXISTS
+		           (
+		               SELECT 1
+		                 FROM HIDE_DRUG HD
+		                WHERE MO.DRUG_CODE = HD.DRUG_CODE
+		                  AND HD.DELETE_FLAG = '0'
+		                  AND HD.USER_NAME = /*userSn*/
+		           )
+		 ORDER BY MO.ORDER_START_TIME DESC, MO.ORDER_SN DESC
+		) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+/**[BUG]0010239 MODIFY END*/
+	
+/*IF "examination".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.EXAM_REPORT_SN,RES.EXAMINATION_METHOD,RES.EXAMINATION_METHOD_NAME,RES.EXAMINATION_ITEM, --检查
+	   RES.EXAMINATION_ITEM_NAME,RES.INPATIENT_DATE,RES.WITHDRAW_FLAG,RES.EXAMINATION_REGION,RES.ITEM_SN,
+	   RES.ITEM_CLASS_NAME,RES.REPORT_DOCTOR_NAME,RES.EXAM_DEPT_NAME,RES.IMAGING_FINDING,RES.EXAM_ORDER_SN
+  FROM (
+  		SELECT EO.VISIT_SN,ER.EXAM_REPORT_SN,EO.EXAM_METHOD_CODE AS EXAMINATION_METHOD,EO.EXAM_METHOD_NAME AS EXAMINATION_METHOD_NAME,EO.ITEM_CODE AS EXAMINATION_ITEM, --检查
+			   EO.ITEM_NAME AS EXAMINATION_ITEM_NAME,EO.ORDER_TIME INPATIENT_DATE,ER.WITHDRAW_FLAG,EO.REGION_CODE AS EXAMINATION_REGION,EI.ITEM_SN,
+			   ER.ITEM_CLASS_NAME,ER.REPORT_DOCTOR_NAME,ER.EXAM_DEPT_NAME,ER.IMAGING_FINDING,EO.ORDER_SN AS EXAM_ORDER_SN,
+			   ROW_NUMBER () OVER (PARTITION BY TRUNC(EO.ORDER_TIME) ORDER BY EO.ORDER_TIME DESC,EO.ORDER_SN DESC,ER.EXAM_REPORT_SN DESC,EI.ITEM_SN DESC) ROW_NUM
+		  FROM EXAMINATION_ORDER EO,EXAMINATION_RESULT ER,EXAMINATION_ITEM EI,EXAM_ORDER_EXAM_RESULT EOER 
+		 WHERE EO.ORDER_SN = EOER.EXAM_ORDER_SN(+)
+		   AND EOER.EXAM_RESULT_SN = ER.EXAM_REPORT_SN(+)
+		   AND ER.EXAM_REPORT_SN = EI.EXAM_REPORT_SN(+) 
+		   AND EO.DELETE_FLAG = '0'
+		   AND EOER.DELETE_FLAG(+) = '0'
+		   AND ER.DELETE_FLAG(+) = '0'
+		   AND EI.DELETE_FLAG(+) = '0'		   
+		   AND EO.VISIT_SN = /*visitSn*/
+		   /*IF orgCode != NULL && orgCode.length() != 0*/
+		   AND EO.ORG_CODE = /*orgCode*/
+		   /*END*/
+		   AND EO.ORDER_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		 ORDER BY EO.ORDER_TIME DESC,EO.ORDER_SN DESC,ER.EXAM_REPORT_SN DESC,EI.ITEM_SN DESC
+  	   ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+	
+/*IF "lab".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.ITEM_CODE,RES.ITEM_NAME,RES.LAB_REPORT_SN,RES.LAB_DEPT,RES.TESTER_ID,RES.TESTER_NAME,RES.TEST_DATE,RES.REPORTER_ID,RES.REPORT_DOCTOR_NAME,
+       RES.REPORT_DATE,RES.REVIEWER_ID,RES.REVIEWER_NAME,RES.REVIEW_DATE,RES.SAMPLE_TYPE,RES.REPORT_MEMO,RES.INPATIENT_DATE,RES.SOURCE_SYSTEM_ID, --检验
+       RES.WITHDRAW_FLAG,RES.COMPOSITE_ITEM_SN,RES.WARN_FLAG,RES.LAB_ORDER_SN,RES.LAB_DEPT_NAME,RES.TEST_RESULTS
+  FROM (
+  		SELECT LABORDER.*,ROW_NUMBER () OVER (PARTITION BY TRUNC(LABORDER.INPATIENT_DATE) ORDER BY LABORDER.INPATIENT_DATE DESC,LABORDER.LAB_ORDER_SN DESC,LABORDER.LAB_REPORT_SN DESC) ROW_NUM
+  		  FROM (
+	  		SELECT LO.VISIT_SN,NULL AS ITEM_CODE,LO.ITEM_NAME,LR.LAB_REPORT_SN,LR.LAB_DEPT,LR.TESTER_ID,LR.TESTER_NAME,LR.TEST_DATE,LR.REPORTER_ID,LR.REPORTER_NAME AS REPORT_DOCTOR_NAME,
+			       LR.REPORT_DATE,LR.REVIEWER_ID,LR.REVIEWER_NAME,LR.REVIEW_DATE,LR.SAMPLE_TYPE,LR.REPORT_MEMO,LO.ORDER_TIME INPATIENT_DATE,LR.SOURCE_SYSTEM_ID, --检验
+			       LR.WITHDRAW_FLAG,NULL AS COMPOSITE_ITEM_SN,NULL AS WARN_FLAG,LO.ORDER_SN AS LAB_ORDER_SN,LR.LAB_DEPT_NAME,LR.TEST_RESULTS,
+			       ROW_NUMBER() OVER(PARTITION BY LO.ORDER_SN ORDER BY LR.REPORT_DATE DESC) ACOL
+			  FROM LAB_ORDER LO,LAB_ORDER_LAB_RESULT LOLR,LAB_RESULT LR 
+			 WHERE LO.ORDER_SN = LOLR.LAB_ORDER_SN(+)
+	           AND LOLR.LAB_REPORT_SN = LR.LAB_REPORT_SN(+)
+		       AND LO.DELETE_FLAG = '0'
+		       AND LOLR.DELETE_FLAG(+) = '0'
+		       AND LR.DELETE_FLAG(+) = '0' 
+			   AND LO.VISIT_SN = /*visitSn*/
+			   /*IF orgCode != NULL && orgCode.length() != 0*/
+			   AND LO.ORG_CODE = /*orgCode*/
+			   /*END*/
+			   AND LO.ORDER_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+			 ORDER BY LR.REPORT_DATE DESC ) LABORDER
+		 WHERE ACOL = 1
+		 ORDER BY LABORDER.INPATIENT_DATE DESC,LABORDER.LAB_ORDER_SN DESC,LABORDER.LAB_REPORT_SN DESC
+       ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+ 
+ /* $Author :chang_xuewen
+  * $Date : 2013/10/24 11:00$
+  * [BUG]0038443 MODIFY BEGIN
+  */
+/*IF "procedure".equals(itemFlag)*/
+SELECT RES.PATIENT_SN,RES.VISIT_SN,RES.ORDER_NAME,RES.INPATIENT_DATE,RES.ORDER_SN,RES.surgical_Dept_Name
+  FROM (
+	select po.patient_sn,po.visit_sn,po.order_name,po.order_time INPATIENT_DATE,po.order_sn,po.exec_dept_name surgical_Dept_Name,
+		ROW_NUMBER () OVER (PARTITION BY TRUNC(po.order_time) ORDER BY po.order_sn) ROW_NUM
+ 	from procedure_order po
+ 	WHERE po.VISIT_SN = /*visitSn*/
+          AND po.order_time BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+          AND po.DELETE_FLAG = '0'
+          /*IF orgCode != NULL && orgCode.length() != 0*/
+          AND po.ORG_CODE = /*orgCode*/
+          /*END*/
+     ORDER BY po.order_sn DESC
+            ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+/*IF "nouse_for_temp".equals(itemFlag)*/
+ SELECT RES.VISIT_SN,RES.OPERATION_NAME,RES.INPATIENT_DATE,RES.PROCEDURE_SN
+  FROM (
+  		SELECT SP.VISIT_SN,SP.OPERATION_NAME,SP.OPERATION_DATE INPATIENT_DATE,SP.PROCEDURE_SN, --手术
+			   ROW_NUMBER () OVER (PARTITION BY TRUNC(SP.OPERATION_DATE) ORDER BY SP.START_TIME DESC,SP.PROCEDURE_SN DESC) ROW_NUM  
+		  FROM SURGICAL_PROCEDURE SP
+		 WHERE SP.VISIT_SN = /*visitSn*/
+		 	   AND SP.OPERATION_DATE BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		 	   AND SP.DELETE_FLAG = '0'
+		 ORDER BY SP.START_TIME DESC,SP.PROCEDURE_SN DESC
+  	   ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+ 
+/*IF "proceduredoc".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.DOCUMENT_NAME,RES.DOCUMENT_TYPE,RES.DOCUMENT_LID,RES.DOCUMENT_TYPE_NAME,RES.WRITE_TIME,RES.DOCUMENT_SN,RES.INPATIENT_DATE,RES.SUBMIT_TIME,
+	   RES.SERVICE_ID,RES.DOCUMENT_AUTHOR_NAME
+  FROM (SELECT AE.*,ROW_NUMBER () OVER (PARTITION BY TRUNC(AE.SUBMIT_TIME) ORDER BY AE.SUBMIT_TIME DESC,AE.DOCUMENT_SN DESC) ROW_NUM FROM(
+      	SELECT CD.VISIT_SN,CD.DOCUMENT_NAME,CD.DOCUMENT_TYPE,CD.DOCUMENT_LID,CD.DOCUMENT_TYPE_NAME,CD.WRITE_TIME,CD.DOCUMENT_SN,CD.WRITE_TIME INPATIENT_DATE,CD.SUBMIT_TIME,  --病例文书
+			   CD.SERVICE_ID,CD.DOCUMENT_AUTHOR_NAME
+		  FROM CLINICAL_DOCUMENT CD
+		 WHERE CD.VISIT_SN = /*visitSn*/
+		 	   AND CD.WRITE_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		 	   AND CD.DELETE_FLAG = '0'
+		 	   AND CD.DOCUMENT_TYPE != '04'
+		 	   /*IF orgCode != NULL && orgCode.length() != 0*/
+		 	   AND CD.ORG_CODE = /*orgCode*/
+		 	   /*END*/
+		 	   AND （EXISTS (SELECT 1 FROM DUAL WHERE (cd.service_id = 'BS329' or cd.service_id = 'BS337' or cd.service_id = 'BS327' or cd.service_id = 'BS370' or cd.service_id = 'BS375' or cd.service_id = 'BS379'))
+  			    or EXISTS (SELECT 1 FROM DUAL WHERE (cd.service_id = 'BS336' AND (cd.document_name LIKE '%手术前讨论记录%' OR cd.document_name  LIKE '%手术前小结%' OR cd.document_name  LIKE '%手术记录%'))))
+       )AE) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+ ORDER BY RES.SUBMIT_TIME DESC,RES.DOCUMENT_SN DESC
+/*END*/
+ 
+/*IF "documentation".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.DOCUMENT_NAME,RES.DOCUMENT_TYPE,RES.DOCUMENT_LID,RES.DOCUMENT_TYPE_NAME,RES.WRITE_TIME,RES.DOCUMENT_SN,RES.INPATIENT_DATE,RES.SUBMIT_TIME,
+	   RES.SERVICE_ID,RES.DOCUMENT_AUTHOR_NAME
+  FROM (SELECT AE.*,ROW_NUMBER () OVER (PARTITION BY TRUNC(AE.WRITE_TIME) ORDER BY AE.WRITE_TIME DESC,AE.DOCUMENT_SN DESC) ROW_NUM FROM(
+      	SELECT CD.VISIT_SN,CD.DOCUMENT_NAME,CD.DOCUMENT_TYPE,CD.DOCUMENT_LID,CD.DOCUMENT_TYPE_NAME,CD.WRITE_TIME,CD.DOCUMENT_SN,CD.WRITE_TIME INPATIENT_DATE,CD.SUBMIT_TIME,  --病例文书
+			   CD.SERVICE_ID,CD.DOCUMENT_AUTHOR_NAME
+		  FROM CLINICAL_DOCUMENT CD
+		 WHERE CD.VISIT_SN = /*visitSn*/
+		 	   AND CD.WRITE_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+		 	   AND CD.DELETE_FLAG = '0'
+		 	   AND cd.document_type != '04'
+		 	   /*IF orgCode != NULL && orgCode.length() != 0*/
+		 	   AND CD.ORG_CODE = /*orgCode*/
+		 	   /*END*/
+		 	  AND NOT EXISTS (SELECT 1 FROM DUAL WHERE (cd.service_id = 'BS329' or cd.service_id = 'BS337' or cd.service_id = 'BS327' or cd.service_id = 'BS370' or cd.service_id = 'BS375' or cd.service_id = 'BS379'))
+  			  AND NOT EXISTS (SELECT 1 FROM DUAL WHERE (cd.service_id = 'BS336' AND (cd.document_name LIKE '%手术前讨论记录%' OR cd.document_name  LIKE '%手术前小结%' OR cd.document_name  LIKE '%手术记录%')))
+       )AE ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+ ORDER BY RES.WRITE_TIME DESC,RES.DOCUMENT_SN DESC
+/*END*/
+/*  [BUG]0038443 MODIFY END */
+	
+/*IF "noDrugOrder".equals(itemFlag)*/
+SELECT RES.VISIT_SN,RES.ORDER_FLAG,RES.ORDER_SN,RES.ORDER_TITLE,RES.ORDER_PATH,RES.ORDER_NAME,RES.ORDER_TIME,RES.ORDER_TYPE,RES.INPATIENT_DATE
+  FROM (
+  		SELECT M.VISIT_SN,M.ORDER_FLAG,M.ORDER_SN,M.ORDER_TITLE,M.ORDER_PATH,RTRIM(M.ORDER_NAME) ORDER_NAME,M.ORDER_TIME,M.ORDER_TYPE,M.ORDER_TIME INPATIENT_DATE,
+		       ROW_NUMBER () OVER (PARTITION BY TRUNC(M.ORDER_TIME) ORDER BY M.ORDER_TIME DESC, M.ORDER_SN DESC) ROW_NUM
+		  FROM (
+				SELECT TOD.VISIT_SN,'1' ORDER_FLAG,TOD.ORDER_SN,'诊疗医嘱详细' ORDER_TITLE,'../order/treatment_' || TOD.ORDER_SN || '.html' ORDER_PATH,TOD.ITEM_NAME ORDER_NAME,TOD.ORDER_TIME,TOD.ORDER_TYPE  --非药物医嘱 --诊疗医嘱
+				  FROM TREATMENT_ORDER TOD
+				 WHERE TOD.VISIT_SN = /*visitSn*/
+				 	   AND TOD.ORDER_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				 	   AND TOD.DELETE_FLAG = '0'
+				 	   /*IF orgCode != NULL && orgCode.length() != 0*/
+				 	   AND TOD.ORG_CODE = /*orgCode*/
+				 	   /*END*/
+				 UNION ALL
+				SELECT CO.VISIT_SN,'2' ORDER_FLAG,CO.ORDER_SN,'护理医嘱详细' ORDER_TITLE,'../order/care_' || CO.ORDER_SN || '.html' ORDER_PATH,CO.ORDER_NAME,CO.INPUT_TIME ORDER_TIME,CO.ORDER_TYPE --非药物医嘱 --护理医嘱
+				  FROM CARE_ORDER CO
+				 WHERE CO.VISIT_SN = /*visitSn*/
+				 	   AND CO.INPUT_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				       AND CO.DELETE_FLAG = '0'
+				       /*IF orgCode != NULL && orgCode.length() != 0*/
+				       AND CO.ORG_CODE = /*orgCode*/
+				       /*END*/
+				 UNION ALL
+				
+				SELECT CNO.VISIT_SN,'6' ORDER_FLAG,CNO.ORDER_SN,'会诊医嘱详细' ORDER_TITLE,'../order/consultation_' || CNO.ORDER_SN || '.html' ORDER_PATH,CNO.ORDER_NAME,CNO.ORDER_TIME,CNO.order_type_code as ORDER_TYPE --非药物医嘱 --会诊医嘱
+				  FROM CONSULTATION_ORDER CNO
+				 WHERE CNO.VISIT_SN = /*visitSn*/
+				 	   AND CNO.ORDER_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				 	   AND CNO.DELETE_FLAG = '0'
+				 	   /*IF orgCode != NULL && orgCode.length() != 0*/
+				 	   AND CNO.ORG_CODE = /*orgCode*/
+				 	   /*END*/
+				 UNION ALL
+				SELECT GLO.VISIT_SN,'7' ORDER_FLAG,GLO.ORDER_SN,'其他医嘱详细' ORDER_TITLE,'../order/general_' || GLO.ORDER_SN || '.html' ORDER_PATH,GLO.ORDER_NAME,GLO.INPUT_TIME ORDER_TIME,GLO.order_type_code as ORDER_TYPE --非药物医嘱 --其他医嘱
+				  FROM GENERAL_ORDER GLO
+				 WHERE GLO.VISIT_SN = /*visitSn*/
+				 	   AND GLO.INPUT_TIME BETWEEN TO_DATE(/*inpatientStartDate*/,'YYYY-MM-DD') AND TO_DATE(/*inpatientEndDate*/ || '23:59:59', 'YYYY-MM-DD HH24:MI:SS')
+				 	   AND GLO.DELETE_FLAG = '0'
+				 	   /*IF orgCode != NULL && orgCode.length() != 0*/
+				 	   AND GLO.ORG_CODE = /*orgCode*/
+				 	   /*END*/
+			   ) M
+		 ORDER BY M.ORDER_TIME DESC, M.ORDER_SN DESC
+       ) RES
+ WHERE RES.ROW_NUM <= /*displayCount*/
+/*END*/
+/**[BUG]0011225 MODIFY END*/

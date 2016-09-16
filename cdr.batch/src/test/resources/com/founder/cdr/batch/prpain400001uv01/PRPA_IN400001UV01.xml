@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN400001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 PRPA_IN400001UV.xsd">
+	<!-- 消息ID -->
+	<id root="" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="PRPA_IN400001UV" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current 
+		processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL" />
+
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+	<!-- 封装的消息内容(按Excel填写) -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<code code="new"></code>
+		<subject typeCode="SUBJ" xsi:nil="false">
+			<encounterEvent classCode="ENC" moodCode="EVN">
+				<!-- 条码号 就诊号 就诊次数 必须项已使用-->
+				<id>
+					<!--就诊号(就诊序号)-->
+					<item extension="43" identifierName="就诊队列序号"/>
+					<!--就诊次数-->
+					<item extension="3" root="1.2.156.112606.1.2.1.7" identifierName="就诊次数"/>
+				</id>
+				<!--就诊类别:体检/门诊/急诊-->
+				<code code="R" codeSystem="1.2.156.112606.1.1.80">
+					<displayName value="门诊"/>
+				</code>
+				<!-- 必须项 未使用  -->	 
+				<statusCode code="active"/>
+				<!-- 就诊时间-->
+				<effectiveTime><any value="20120227091000"></any></effectiveTime>
+				<!-- 所挂时段 -->
+				<activityTime>
+					<originalText value="AM"/>
+				</activityTime>
+
+				<!--挂号方式-->
+				<admissionReferralSourceCode code="01" codeSystem="1.2.156.112606.1.1.25">
+					<displayName value="诊间预约"/>
+				</admissionReferralSourceCode>
+				<!--费用费别,即保险类别代码和名称-->
+				<specialCourtesiesCode>
+					<!--费用费别-->
+					<item code="1211" codeSystem="1.2.156.112606.1.1.20">
+						<displayName value="自费"></displayName>
+					</item>
+					<!-- 号别 -->
+					<item code="" codeSystem="1.2.156.112606.1.1.21">
+						<displayName value="号别名称"/>
+					</item>
+				</specialCourtesiesCode>
+				<!-- 病人信息 -->
+				<subject typeCode="SBJ">
+					<patient classCode="PAT">
+						<!--患者ID -->
+						<id>
+							<item root="1.2.156.112606.1.2.1.2" extension="01" identifierName="域ID"/>
+							<item root="1.2.156.112606.1.2.1.3" extension="222" identifierName="门诊系统患者ID(patient_id)"/>
+						</id>
+						<!--个人信息 -->
+						<patientPerson classCode="PSN">
+							<!--姓名 必须项已使用 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三" />
+								</item>
+							</name>
+							<!--性别代码 必须项已使用 -->
+							<administrativeGenderCode code="1"
+								codeSystem="1.2.156.112606.1.1.3" />
+							<!--出生日期 -->
+							<birthTime value="19730401">
+								<!--年龄 -->
+								<originalText value="49岁"/>
+							</birthTime>
+						</patientPerson>
+					</patient>
+				</subject>
+				<!-- 所挂专家号的医生 -->
+				<admitter typeCode="ADM">
+					<!-- 必须 未使用 -->
+					<time><any value="20120227"></any></time>
+					<assignedPerson classCode="ASSIGNED">
+						<!-- 挂号医生编码 -->
+						<id>
+							<item extension="01" root="1.2.156.112606.1.1.2" identifierName="医生"></item>
+						</id>
+						<assignedPerson determinerCode="INSTANCE"
+							classCode="PSN">
+							<!--挂号医生姓名 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四"></part>
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</admitter>
+				<location typeCode="LOC">
+					<!-- 必须项未使用 -->
+					<time></time>
+					<!-- 必须项未使用 -->
+					<statusCode/>
+					<serviceDeliveryLocation classCode="SDLOC">
+						<location determinerCode="INSTANCE" classCode="PLC">
+							<!--挂号科室编码 -->
+							<id><item extension="1010700" root="1.2.156.112606.1.1.1"></item></id>
+							<!-- 挂号科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="检验室"></part>
+								</item>
+							</name>
+						</location>
+					</serviceDeliveryLocation>
+				</location>
+			</encounterEvent>
+		</subject>
+	</controlActProcess>
+</PRPA_IN400001UV>

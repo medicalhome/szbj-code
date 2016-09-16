@@ -1,0 +1,105 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-检查项目分组-消息定义 -->
+<msg>
+	<head>
+		<!-- 消息类别代码 -->
+		<msgId>MS040</msgId>
+		<!-- 版本号 -->
+		<version>2</version>
+		<!-- 消息名称 -->
+		<msgName>检查项目分组</msgName>
+		<!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+		<sourceSysCode>S028</sourceSysCode>
+		<!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+		<targetSysCode>XXX</targetSysCode>
+		<!-- 消息创建时间 -->
+		<createTime>2009-01-01 12:13:30</createTime>
+	</head>
+	<body>
+		<!-- 操作类型 取值范围( insert、delete、update) -->
+		<row action="update">
+			<!-- 分组编码 -->
+			<code>1</code>
+			<!-- 分组名称 -->
+			<name>分组名称1</name>
+			<!-- 拼音码 -->
+			<pyCode>拼音码1</pyCode>
+			<!-- 报表头 -->
+			<reportHeader>报表头1</reportHeader>
+			<!-- 报表尾 -->
+			<reportFooter>报表尾1</reportFooter>
+			<!-- 科室模板 -->
+			<applyTemplate>科室模板1</applyTemplate>
+			<!-- 对应报表号 -->
+			<appointmentReportCode>对应报表号1</appointmentReportCode>
+			<!-- 提前分钟 -->
+			<aheadExamTime>提前分钟1</aheadExamTime>
+			<!-- 预约单条码号 -->
+			<tmReportCode>预约单条码号</tmReportCode>
+			<!-- 是否扫描 -->
+			<scanFlag>是</scanFlag>
+			<!-- 是否称体重 -->
+			<weightFlag>是</weightFlag>
+			<!-- 是否同一天 -->
+			<sameDayFlag>是</sameDayFlag>
+			<!-- 排序码 -->
+			<seqNo>1</seqNo>
+		</row>
+		<row action="insert">
+			<!-- 分组编码 -->
+			<code>2</code>
+			<!-- 分组名称 -->
+			<name>分组名称2</name>
+			<!-- 拼音码 -->
+			<pyCode>拼音码2</pyCode>
+			<!-- 报表头 -->
+			<reportHeader>报表头2</reportHeader>
+			<!-- 报表尾 -->
+			<reportFooter>报表尾2</reportFooter>
+			<!-- 科室模板 -->
+			<applyTemplate>科室模板2</applyTemplate>
+			<!-- 对应报表号 -->
+			<appointmentReportCode>对应报表号2</appointmentReportCode>
+			<!-- 提前分钟 -->
+			<aheadExamTime>提前分钟2</aheadExamTime>
+			<!-- 预约单条码号 -->
+			<tmReportCode>预约单条码号</tmReportCode>
+			<!-- 是否扫描 -->
+			<scanFlag>是</scanFlag>
+			<!-- 是否称体重 -->
+			<weightFlag>是</weightFlag>
+			<!-- 是否同一天 -->
+			<sameDayFlag>是</sameDayFlag>
+			<!-- 排序码 -->
+			<seqNo>2</seqNo>
+		</row>
+		<row action="update">
+			<!-- 分组编码 -->
+			<code>3</code>
+			<!-- 分组名称 -->
+			<name>分组名称3</name>
+			<!-- 拼音码 -->
+			<pyCode>拼音码3</pyCode>
+			<!-- 报表头 -->
+			<reportHeader>报表头3</reportHeader>
+			<!-- 报表尾 -->
+			<reportFooter>报表尾3</reportFooter>
+			<!-- 科室模板 -->
+			<applyTemplate>科室模板3</applyTemplate>
+			<!-- 对应报表号 -->
+			<appointmentReportCode>对应报表号3</appointmentReportCode>
+			<!-- 提前分钟 -->
+			<aheadExamTime>提前分钟3</aheadExamTime>
+			<!-- 预约单条码号 -->
+			<tmReportCode>预约单条码号</tmReportCode>
+			<!-- 是否扫描 -->
+			<scanFlag>是</scanFlag>
+			<!-- 是否称体重 -->
+			<weightFlag>是</weightFlag>
+			<!-- 是否同一天 -->
+			<sameDayFlag>是</sameDayFlag>
+			<!-- 排序码 -->
+			<seqNo>3</seqNo>
+		</row>
+	</body>
+</msg>

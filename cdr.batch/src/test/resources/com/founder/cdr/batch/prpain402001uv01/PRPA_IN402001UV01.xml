@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN402001UV02 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/PRPA_IN402001UV.xsd">
+<!--
+入院消息
+-->
+	<!-- 消息ID -->
+	<id root="" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="PRPA_IN402001UV02" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current  processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+	<!-- 封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+        <!-- 
+            消息交互类型
+            @code: 新增:new 修改:update 
+        -->
+		<code code="update" />
+		<subject typeCode="SUBJ">
+			
+			<!-- 入院信息 -->
+			<inpatientEncounterEvent classCode="ENC" moodCode="EVN ">
+				<id>
+					<item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="就诊次数"/>
+				</id>
+				
+				<!-- 必须固定项 -->
+				<code />
+				
+				<!-- 必须固定项 -->
+				<statusCode code="active" />
+
+				<!-- 入院日期 -->
+				<effectiveTime>
+					<any value="201112311100" />
+				</effectiveTime>
+				
+				<!-- 紧急程度编码/紧急程度名称(入院状态) -->
+				<priorityCode code="1" codeSystem="1.2.156.112606.1.1.103">
+					<displayName value="常规" />
+				</priorityCode>
+				
+				<!-- 入院原因 -->
+				<reasonCode>
+					<item>
+						<displayName value="车祸" />
+					</item>
+				</reasonCode>
+				
+				<!-- 特定标识信息 -->
+				<specialCourtesiesCode>
+				    <!-- 入院类别编码/入院类别名称(标明是否是门诊转住院等, OID为就诊类别) -->
+					<item code="01" codeSystem="1.2.156.112606.1.1.80">
+						<displayName value="门诊" />
+					</item>				
+								
+					<!-- 病人身份编码/病人身份名称(特殊类别,访问类别) -->
+					<item code="01" codeSystem="1.2.156.112606.1.1.94">
+						<displayName value="本院" />
+					</item>
+					
+					<!-- 住院费别编码/住院费别名称(医疗付款方式) -->
+					<item code="3" codeSystem="1.2.156.112606.1.1.86">
+						<displayName value="新型农村合作医疗" />
+					</item>
+				</specialCourtesiesCode>
+				
+				<!-- 病人信息 -->
+				<subject typeCode="SBJ ">
+					<patient classCode="PAT ">
+					    <!-- 病人标识 -->
+					    <id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="01" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="222" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="3434234" identifierName="就诊号"/>
+					    </id>
+					    
+					    <!-- 病区床号信息(分床时机需要) -->
+					    <addr xsi:type="BAG_AD">
+					        <item use="TMP">
+					            <!-- 病区编码@code/病名名称@value-->
+					            <part type="BNR" value="12C" code="1000662" codeSystem="1.2.156.112606.1.1.33" />
+					            <!-- 床位号 -->
+					            <part type="CAR" value="001" />
+					        </item>
+					    </addr>
+					    
+					    <!-- 个人信息(详细信息从EMPI获取) -->
+						<patientPerson>	
+							<!-- 病人名称 -->
+							<name xsi:type="BAG_EN">
+								<item><part value="张三" /></item>
+							</name>
+							
+							<!-- 性别编码 -->
+							<administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3"/>
+							
+							<!-- 出生日期 -->
+							<birthTime value="19430605">
+							    <!-- 年龄 -->
+							    <originalText value="69" />
+							</birthTime>
+						</patientPerson>
+					</patient>
+				</subject>
+
+				<!-- 科室主任信息 -->
+				<responsibleParty typeCode="RESP">
+					<time />
+					<assignedOrganization classCode="ASSIGNED">
+						<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+							<id />
+							<contactParty classCode="CON">
+								<!-- 科室主任编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="9876" />
+								</id>
+								<contactPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 科室主任名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="王小红" />
+										</item>
+									</name>
+								</contactPerson>
+							</contactParty>
+						</representedOrganization>
+					</assignedOrganization>
+				</responsibleParty>
+
+				<!-- 入院医生信息 -->
+				<admitter typeCode="ADM ">
+					<time />
+					<assignedPerson classCode="ASSIGNED">
+						<!-- 入院医生编号 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="9875" />
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 入院医生名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</admitter>
+				
+				<!-- 责任护士信息 -->
+				<attender typeCode="ATND">
+					<time />
+					<assignedPerson classCode="ASSIGNED">
+						<!-- 责任护士编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="9874" />
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 责任护士名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="王府" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</attender>
+
+				<!-- 住院医生信息 -->
+				<attender typeCode="ATND">
+					<time />
+					<assignedPerson classCode="ASSIGNED">
+						<!-- 住院医生编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="9873" />
+						</id>
+						<!-- 角色类别编码/角色类别名称(标明该attender所对应的角色为住院医生) -->
+						<code code="01" codeSystem="1.2.156.112606.1.1.75">
+							<displayName value="住院医生" />
+						</code>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 住院医生名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="六子" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</attender>
+				
+				<!-- 主治医生信息 -->
+				<attender typeCode="ATND">
+					<time />
+					<assignedPerson classCode="ASSIGNED">
+						<!-- 主治医生编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="9872" />
+						</id>
+						<!-- 角色类别编码/角色类别名称(标明该attender所对应的角色为主治医生) -->
+						<code code="02" codeSystem="1.2.156.112606.1.1.75">
+							<displayName value="主治医生" />
+						</code>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 主治医生名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="小七" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</attender>
+				
+				<!-- 病人科室信息 -->
+				<location typeCode="DST">
+					<time />
+					<statusCode />
+					<serviceDeliveryLocation classCode="DSDLOC ">
+						<!-- 科室编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.1" extension="1234" />
+						</id>
+						<!-- 科室名称 -->
+						<name xsi:type="BAG_EN">
+							<item>
+								<part value="肾内科" />
+							</item>
+						</name>
+					</serviceDeliveryLocation>
+				</location>
+				
+				<!-- 预约信息 -->
+				<inFulfillmentOf typeCode="FLFS">
+					<actAppointment classCode="ACT" moodCode="APT">
+						<!-- 预约号 -->
+						<id extension="90" />
+						<!-- 必须固定项 -->
+						<subject typeCode="SBJ">
+							<patient classCode="PAT">
+								<id />
+								<patientPerson>
+									<name xsi:type="BAG_EN" />
+								</patientPerson>
+							</patient>
+						</subject>
+					</actAppointment>
+				</inFulfillmentOf>
+
+				<!-- 诊断信息(可循环) -->
+				<reason typeCode="RSON">
+					<observationDx classCode="OBS " moodCode="EVN ">
+						<!-- 诊断类别编码/诊断类别名称 -->
+						<code code="3" codeSystem="1.2.156.112606.1.1.29">
+							<displayName value="入院诊断" />
+						</code>
+						
+                        <!-- 必须固定项 -->
+						<statusCode code="completed"/>
+						
+						<!-- 疾病编码/疾病名称 -->
+						<value code="233604007" codeSystem="1.2.156.112606.1.1.30">
+						    <displayName value="肺炎" />
+						</value>
+					</observationDx>
+				</reason>				
+				<reason typeCode="RSON">
+					<observationDx classCode="OBS " moodCode="EVN ">
+						<!-- 诊断类别编码/诊断类别名称 -->
+						<code code="2" codeSystem="1.2.156.112606.1.1.29">
+							<displayName value="门诊诊断" />
+						</code>
+						
+                        <!-- 必须固定项 -->
+						<statusCode code="completed"/>
+						
+						<!-- 疾病编码/疾病名称 -->
+						<value code="233604007" codeSystem="1.2.156.112606.1.1.30">
+						    <displayName value="肺炎" />
+						</value>
+					</observationDx>
+				</reason>
+				
+			</inpatientEncounterEvent>
+		</subject>
+	</controlActProcess>
+</PRPA_IN402001UV02>

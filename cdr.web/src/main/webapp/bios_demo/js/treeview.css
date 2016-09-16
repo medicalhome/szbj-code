@@ -1,0 +1,21 @@
+.node {
+	FONT-SIZE: 12px; WIDTH: 1px; COLOR: #000000; FONT-FAMILY: Verdana
+}
+.node A {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+.node A:hover {
+	COLOR: blue; TEXT-DECORATION: underline
+}
+SPAN {
+	CURSOR: hand; HEIGHT: 15px
+}
+.highlight {
+	COLOR: black; BACKGROUND-COLOR: C7C7C0
+}
+.highlight A {
+	COLOR: black
+}
+IMG {
+	BORDER-RIGHT: 0px; BORDER-TOP: 0px; BORDER-LEFT: 0px; BORDER-BOTTOM: 0px
+}

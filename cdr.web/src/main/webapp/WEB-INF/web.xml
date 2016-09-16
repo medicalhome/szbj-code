@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="2.5" xmlns="http://java.sun.com/xml/ns/j2ee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://java.sun.com/xml/ns/j2ee http://java.sun.com/xml/ns/j2ee/web-app_2_5.xsd">
+	<display-name>CDR Portal</display-name>
+
+	<!-- 设置页面国际化（I18N）配置文件的 basename -->
+	<context-param>
+		<param-name>javax.servlet.jsp.jstl.fmt.localizationContext</param-name>
+		<param-value>ApplicationResources</param-value>
+	</context-param>
+
+	<!-- Spring配置文件 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:cdr-core-context.xml,
+			classpath:cdr-data-context.xml,
+			classpath:cdr-dao-context.xml,
+			classpath:cdr-app-context.xml,
+			classpath:cdr-batch-context.xml,
+			classpath:cdr-cache-context.xml,
+			classpath:cdr-sec-context.xml,
+			classpath:cdr-parafilter-context.xml,
+			classpath:cdr-ws-context.xml,
+			classpath:cdr-webservice-context.xml
+		</param-value>
+	</context-param>
+
+	<!-- spring encoding filter -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+		<init-param>
+			<param-name>forceEncoding</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<!-- 登陆验证 -->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+
+	<!-- 时间轴视图和住院视图所需要向相应页面的参数传递所用过滤器 -->
+	<filter>
+		<filter-name>springSecurityFilterParameters</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+
+	<!-- encodingFilter映射 -->
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- 登陆验证 -->
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+
+	<!-- 时间轴视图和住院视图所需要向相应页面的参数传递所用过滤器映射 -->
+	<filter-mapping>
+		<filter-name>springSecurityFilterParameters</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Spring Security Listener定义 -->
+	<listener>
+		<listener-class>org.springframework.security.web.session.HttpSessionEventPublisher</listener-class>
+	</listener>
+
+	<!-- 自定义Spring Context Listener -->
+	<listener>
+		<listener-class>com.founder.fasf.web.listener.SpringContextInitListener</listener-class>
+	</listener>
+
+	<!-- Servlet -->
+	<!-- Spring Servlet -->
+	<servlet>
+		<servlet-name>dispatcher</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextAttribute</param-name>
+			<param-value>org.springframework.web.context.WebApplicationContext.ROOT</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<!-- jfreechart servlet -->
+	<servlet>
+		<servlet-name>DisplayChart</servlet-name>
+		<servlet-class>org.jfree.chart.servlet.DisplayChart</servlet-class>
+	</servlet>
+
+	<!-- Servlet映射 -->
+	<!-- Spring Servlet映射 -->
+	<servlet-mapping>
+		<servlet-name>dispatcher</servlet-name>
+		<url-pattern>*.html</url-pattern>
+	</servlet-mapping>
+
+	<!-- jfreechart mapping -->
+	<servlet-mapping>
+		<servlet-name>DisplayChart</servlet-name>
+		<url-pattern>/DisplayChart</url-pattern>
+	</servlet-mapping>
+
+	<servlet>
+		<servlet-name>CXFServlet</servlet-name>
+		<servlet-class>org.apache.cxf.transport.servlet.CXFServlet</servlet-class>
+		<load-on-startup>2</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>CXFServlet</servlet-name>
+		<url-pattern>/webservices/*</url-pattern>
+	</servlet-mapping>
+
+    <!-- webservice -->
+	<servlet>
+		<servlet-name>Jersey Spring Web Application</servlet-name>
+		<servlet-class>com.sun.jersey.spi.spring.container.servlet.SpringServlet</servlet-class>
+		<init-param>
+			<param-name>com.sun.jersey.config.property.packages</param-name>
+			<param-value>com.founder.cdr.resources</param-value>
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>Jersey Spring Web Application</servlet-name>
+		<url-pattern>/webservice/*</url-pattern>
+	</servlet-mapping>
+	
+	<jsp-config>
+		<taglib>
+			<taglib-uri>translation.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tags/translation.tld</taglib-location>
+		</taglib>
+
+		<taglib>
+			<taglib-uri>html.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tags/html.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>html2.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tags/html2.tld</taglib-location>
+		</taglib>
+		<taglib>
+			<taglib-uri>optionList.tld</taglib-uri>
+			<taglib-location>/WEB-INF/tags/optionList.tld</taglib-location>
+		</taglib>
+	</jsp-config>
+
+	<!-- 会话超时的设置（分钟） -->
+	<session-config>
+		<session-timeout>100</session-timeout>
+	</session-config>
+
+	<!-- 欢迎页的配置 -->
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	<!-- 皕杰报表 start -->
+<!--	<listener>
+        <listener-class>net.sf.ehcache3.constructs.web.ShutdownListener</listener-class>
+    	</listener> 
+        
+		<servlet>
+	    <servlet-name>reportServlet</servlet-name>
+			<servlet-class>bios.report.engine.output.ReportEmitter</servlet-class>
+			<init-param>
+				<param-name>reportConf</param-name>
+				<param-value>/WEB-INF/report-config/cdr-report-config.xml</param-value>
+			</init-param>
+
+			<load-on-startup>2</load-on-startup>
+		</servlet>
+		<servlet>
+	    <servlet-name>imageServlet</servlet-name>
+			<servlet-class>bios.report.engine.output.ImageServlet</servlet-class>
+		</servlet>
+		<servlet>
+	    <servlet-name>fillinServlet</servlet-name>
+			<servlet-class>bios.report.engine.output.FillinServlet</servlet-class>
+		</servlet>
+    <servlet-mapping>
+        <servlet-name>reportServlet</servlet-name>
+        <url-pattern>/ReportEmitter</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>imageServlet</servlet-name>
+        <url-pattern>/ImgServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>fillinServlet</servlet-name>
+        <url-pattern>/FillinServlet</url-pattern>
+    </servlet-mapping>
+    -->
+	<!-- 皕杰报表 end -->	
+</web-app>

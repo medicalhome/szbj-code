@@ -1,0 +1,119 @@
+{
+	"domainId": {
+		"desc" : "域Id",
+		"path" : "/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientId": {
+		"desc" : "患者Id",
+		"path" : "/PID-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"times": {
+		"desc" : "就诊次数",
+		"path" : "/PV1-13",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/PV1-19",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitType" : {
+		"desc" : "就诊类别",
+		"path" : "/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"createTime" : {
+		"desc" : "消息创建时间",
+		"path" : "/EVN-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"msgId" : {
+		"desc" : "消息类别代码",
+		"path" : "/MSH-9",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"sourceSysCode" : {
+		"desc" : "消息源系统编码",
+		"path" : "/MSH-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"targetSysCode" : {
+		"desc" : "消息目标系统编码",
+		"path" : "/MSH-5",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"doctors" : {
+		"desc" : "主管医生信息",
+		"path" : "/PV1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"doctorId" : {
+				"desc" : "主管医生ID",
+				"path" : "/PV1-7-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"doctorName" : {
+				"desc" : "主管医生名称",
+				"path" : "/PV1-7-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"takeoverTime" : {
+				"desc" : "接管病人时间",
+				"path" : "/EVN-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}  
+}

@@ -1,0 +1,183 @@
+/******************************************************************************
+********************************   wireframe   ********************************
+******************************************************************************/
+
+.bios-tab-skin-wireframe .bios-tab-container {
+			margin:10px;
+			border-bottom: 1px solid gray;
+			border-left:   1px solid gray;
+			}
+	
+.bios-tab-skin-wireframe .bios-tab-wrap {
+			
+			}
+	
+.bios-tab-skin-wireframe .bios-tab {
+			float:left;
+			padding:2px 10px 2px;
+			border-top:  1px solid gray;
+			border-right:1px solid gray;
+			cursor:pointer;
+			}
+	
+.bios-tab-skin-wireframe .bios-tab-wrap .bios-unfocused {
+			color:gray;
+			background-color:white;
+			}
+	
+.bios-tab-skin-wireframe .bios-tab-wrap .bios-focused {
+			color:black;
+			background-color:silver;
+			}
+
+.bios-tab-skin-wireframe .bios-tab-pane-wrap {
+			padding:8px;
+			border-top:    1px solid gray;
+			border-right:  1px solid gray;
+			}
+
+.bios-tab-skin-wireframe .bios-tab-pane {
+			
+			}
+	
+.bios-tab-skin-wireframe br.bios-clear {
+			clear:both;
+			}
+			
+			
+/******************************************************************************
+******************************   INVISIBLE   **********************************
+******************************************************************************/
+
+.bios-tab-skin-invisible .bios-tab-container {
+			margin:10px;
+			border:0;
+			}
+	
+.bios-tab-skin-invisible .bios-tab-wrap {
+			display:none;
+			border:0;
+			}
+	
+.bios-tab-skin-invisible .bios-tab {
+			display:none;
+			border:0;
+			}
+	
+.bios-tab-skin-invisible .bios-tab-wrap .bios-unfocused {
+			border:0;
+			}
+	
+.bios-tab-skin-invisible .bios-tab-wrap .bios-focused {
+			border:0;
+			}
+
+.bios-tab-skin-invisible .bios-tab-pane-wrap {
+			border:0;
+			padding:8px;
+			}
+
+.bios-tab-skin-invisible .bios-tab-pane {
+			border:0;
+			}
+	
+.bios-tab-skin-invisible br.bios-clear {
+			clear:both;
+			}
+			
+			
+/******************************************************************************
+********************************   default   **********************************
+******************************************************************************/
+
+.bios-tab-skin-default .bios-tab-container {
+			margin:10px;
+			}
+	
+.bios-tab-skin-default .bios-tab-wrap {
+			position:relative;
+			z-index:10;
+			font:12px "Lucida Grande",LucidaGrande,Verdana,sans-serif;
+			}
+	
+.bios-tab-skin-default .bios-tab {
+			position:relative;
+			float:left;
+			padding:2px 20px;
+			margin:0 1px -1px 0;
+			text-align:center;
+			cursor:pointer;
+			font:12px "Lucida Grande",LucidaGrande,Verdana,sans-serif;
+			}
+
+.bios-tab-skin-default .bios-tab-bg-left {
+			position:absolute;
+			left:0; top:0;
+			width:10px; height:18px;
+			}
+html>body .bios-tab-skin-default .bios-tab-bg-left {
+
+	
+			height:19px;
+	
+	
+
+			}
+
+.bios-tab-skin-default .bios-unfocused {
+			color:#999;
+			border-bottom:1px solid silver;
+	
+		
+		
+			background:transparent url(image/default_tab_bg_right.gif) 100% 0 no-repeat;
+		
+	
+			}
+	
+.bios-tab-skin-default .bios-focused {
+			border-bottom:1px solid white;
+	
+		
+		
+			background:transparent url(image/default_tab_bg_white_right.gif) 100% 0 no-repeat;
+		
+	
+			}
+
+
+.bios-tab-skin-default .bios-unfocused .bios-tab-bg-left {
+			background:transparent url(image/default_tab_bg_left.gif) 0 0 no-repeat;
+			}
+.bios-tab-skin-default .bios-focused .bios-tab-bg-left {
+			background:transparent url(image/default_tab_bg_white_left.gif) 0 0 no-repeat;
+			}
+
+
+
+.bios-tab-skin-default .bios-tab a:link,
+.bios-tab-skin-default .bios-tab a:visited {
+			color:black;
+			text-decoration:none;
+			}
+.bios-tab-skin-default .bios-tab-wrap .bios-unfocused a:link,
+.bios-tab-skin-default .bios-tab-wrap .bios-unfocused a:visited {
+			color:silver;
+			}
+
+
+
+.bios-tab-skin-default .bios-tab-pane-wrap {
+			position:relative;
+			z-index:9;
+			border:1px solid silver;
+			padding:8px 15px;
+			}
+
+.bios-tab-skin-default .bios-tab-pane {
+			
+			}
+	
+.bios-tab-skin-default br.bios-clear {
+			clear:both;
+			}

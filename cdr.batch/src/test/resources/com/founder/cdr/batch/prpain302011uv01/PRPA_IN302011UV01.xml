@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN302011UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:hl7-org:v3 PRPA_IN302011UV.xsd">
+	<!-- 消息ID -->
+	<id root="" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="PRPA_IN302011UV" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current 
+		processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL" />
+
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+	<!-- 封装的消息内容(按Excel填写) -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<code code="update"></code>
+		<subject typeCode="SUBJ" xsi:nil="false">
+			<!-- 转区转床信息 -->
+			<encounterEvent classCode="ENC" moodCode="EVN">
+				<!-- 住院号 住院次数 必须项 -->
+				<id>
+					<!-- 住院次数 -->
+					<item extension="1" root="1.2.156.112606.1.2.1.7" />
+					<!-- 医嘱号 -->
+					<item extension="" />
+				</id>
+				<!-- 住院标志 -->
+				<code code="1"></code>
+				<subject typeCode="SBJ">
+					<!--转床病人信息 -->
+					<patient classCode="PAT">
+						<!--患者id 必须项 -->
+						<id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="01" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="02" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+					</patient>
+				</subject>
+				<!-- 转入病房 -->
+				<location1 typeCode="LOC">
+					<!-- 转入时间 必须项 -->
+					<time>
+						<any value="201101131400" />
+					</time>
+					<!-- 现床位号 -->
+					<id>
+						<item extension="1" root="1.2.156.112606.1.2.1.8"/>
+					</id>
+					<!--状态 必须项 -->
+					<statusCode code="active" />
+					<serviceDeliveryLocation classCode="SDLOC">
+						<!--科室ID -->
+						<id>
+							<item extension="1010700" root="1.2.156.112606.1.1.1" />
+						</id>
+						<!--科室 -->
+						<name xsi:type="BAG_EN">
+							<item>
+								<part value="神经外科" />
+							</item>
+						</name>
+						<location determinerCode="INSTANCE" classCode="PLC">
+							<!--现病区编码 -->
+							<id >
+								<item extension="0128" root="1.2.156.112606.1.1.33"/>
+							</id>
+						</location>
+					</serviceDeliveryLocation>
+					
+				</location1>
+				<!--原病房 -->
+				<location2 typeCode="LOC">
+					<!--住院时间 必须项 -->
+					<time>
+						<any value="201101131400" />
+					</time>
+					<!--原床位号 -->
+					<id>
+						<item extension="2" root="1.2.156.112606.1.2.1.8"/>
+					</id>
+					<!--状态 -->
+					<statusCode code="completed" />
+					<serviceDeliveryLocation classCode="SDLOC">
+						<!-- 科室ID -->
+						<id>
+							<item extension="1010700" root="1.2.156.112606.1.1.1" />
+						</id>
+						<!--科室 -->
+						<name xsi:type="BAG_EN">
+							<item>
+								<part value="神经外科" />
+							</item>
+						</name>
+						<location determinerCode="INSTANCE" classCode="PLC">
+							<!--原病区编码 -->
+							<id >
+								<item extension="0128" root="1.2.156.112606.1.1.33"/>
+							</id>
+						</location>
+					</serviceDeliveryLocation>
+				</location2>
+			</encounterEvent>
+		</subject>
+	</controlActProcess>
+
+</PRPA_IN302011UV>
+		

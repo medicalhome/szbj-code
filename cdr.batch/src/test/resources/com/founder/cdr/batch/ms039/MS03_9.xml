@@ -1,0 +1,117 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-检查项目字典-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>MS039</msgId>
+        <!-- 版本号 -->
+        <version>2</version>
+        <!-- 消息名称 -->
+        <msgName>检查项目字典</msgName>
+        <!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+        <sourceSysCode>MS039</sourceSysCode>
+        <!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+        <targetSysCode>XXX</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action = "insert">
+            <!-- 检查项目编码 -->
+            <code>1</code>
+            <!-- 检查分类码 -->
+            <typeCode>检查分类码</typeCode>
+            <!-- 检查项目名称 -->
+            <name>检查项目名称</name>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+            <!-- 报表头 -->
+            <reportHeader>报表头</reportHeader>
+            <!-- 报表尾 -->
+            <reportFooter>报表尾</reportFooter>
+            <!-- 类别 -->
+            <class>类别</class>
+            <!-- 执行科室 -->
+            <execUnit>执行科室</execUnit>
+            <!-- 医嘱码 -->
+            <yzOrderCode>医嘱码</yzOrderCode>
+            <!-- 子类 -->
+            <subClass>子类</subClass>
+            <!-- 检查部位 -->
+            <examRegion>检查部位</examRegion>
+            <!-- 空腹标志 -->
+            <kfFlag>空腹标志</kfFlag>
+            <!-- 打药标志 -->
+            <dyFlag>打药标志</dyFlag>
+            <!-- 胃肠准备标志 -->
+            <wcjcFlag>胃肠准备标志</wcjcFlag>
+            <!-- 开药标志 -->
+            <kyFlag>开药标志</kyFlag>
+            <!-- 排序 -->
+            <sortNo>排序</sortNo>
+            <!-- 到诊时间 -->
+            <arriveTime>到诊时间</arriveTime>
+            <!-- 提前分钟 -->
+            <aheadExamTime>提前分钟</aheadExamTime>
+            <!-- 与预约中心对照码 -->
+            <compareCode2>与预约中心对照码</compareCode2>
+            <!-- 特殊处理项目标志 -->
+            <groupSn >特殊处理项目标志</groupSn >
+            <!-- 缺省模板号 -->
+            <defaultTemplate>缺省模板号</defaultTemplate>
+            <!-- 备注 -->
+            <comment>备注</comment>
+            <!-- 门诊住院标志 -->
+            <mzZyFlag>门诊住院标志</mzZyFlag>
+        </row> 
+        <row action = "update">
+            <!-- 检查项目编码 -->
+            <code>2</code>
+            <!-- 检查分类码 -->
+            <typeCode>检查分类码</typeCode>
+            <!-- 检查项目名称 -->
+            <name>检查项目名称</name>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+            <!-- 报表头 -->
+            <reportHeader>报表头</reportHeader>
+            <!-- 报表尾 -->
+            <reportFooter>报表尾</reportFooter>
+            <!-- 类别 -->
+            <class>类别</class>
+            <!-- 执行科室 -->
+            <execUnit>执行科室</execUnit>
+            <!-- 医嘱码 -->
+            <yzOrderCode>医嘱码</yzOrderCode>
+            <!-- 子类 -->
+            <subClass>子类</subClass>
+            <!-- 检查部位 -->
+            <examRegion>检查部位</examRegion>
+            <!-- 空腹标志 -->
+            <kfFlag>空腹标志</kfFlag>
+            <!-- 打药标志 -->
+            <dyFlag>打药标志</dyFlag>
+            <!-- 胃肠准备标志 -->
+            <wcjcFlag>胃肠准备标志</wcjcFlag>
+            <!-- 开药标志 -->
+            <kyFlag>开药标志</kyFlag>
+            <!-- 排序 -->
+            <sortNo>排序</sortNo>
+            <!-- 到诊时间 -->
+            <arriveTime>到诊时间</arriveTime>
+            <!-- 提前分钟 -->
+            <aheadExamTime>提前分钟</aheadExamTime>
+            <!-- 与预约中心对照码 -->
+            <compareCode2>与预约中心对照码</compareCode2>
+            <!-- 特殊处理项目标志 -->
+            <groupSn >特殊处理项目标志</groupSn >
+            <!-- 缺省模板号 -->
+            <defaultTemplate>缺省模板号</defaultTemplate>
+            <!-- 备注 -->
+            <comment>备注</comment>
+            <!-- 门诊住院标志 -->
+            <mzZyFlag>门诊住院标志</mzZyFlag>
+        </row>
+    </body>
+</msg>

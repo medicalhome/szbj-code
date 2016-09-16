@@ -1,0 +1,27 @@
+/* CSS Document */
+/*form{height:50px; line-height:50px; margin-left:30px;}
+.loginbj{ width:630px; height:360px; position: relative; background:url(../images/login/login-bj.jpg) no-repeat;margin-top:105px;margin-left:auto; margin-right:auto;}
+.login-img{ width:630px; height:310px;}
+.login-logo{ width:344px; height:68px; margin-top:70px; margin-left:20px;}
+.SysteName{width:630px; height:40px; position: absolute; top:174px; font-family:"�����п�"; font-size:34px; color:#fff; text-align:center;}
+.login-form{width:630px; height:50px; }
+.font12{ font-family:"����"; font-size:12px; font-weight:bold;}
+.font-white{font-family:"����"; font-size:12px; color:#fff;}
+.input-text{width:105px; height:22px; line-height:19px; background-color:#e0f2fa; border:1px #276b97 solid;_margin-top:10px; }
+.input-button{width:81px; height:26px; background-image:url(../images/login/button.png); background-repeat:no-repeat; margin-left:5px; background-color:transparent;border:none;}
+.input-Spacing{margin-left:7px}
+.input-Spacing-text{margin-left:7px}
+*/
+/* CSS Document */
+form{height:50px; line-height:50px; margin-left:30px;}
+.loginbj{ width:630px; height:360px; position: relative; background:url(../images/login/login-bj.jpg) no-repeat;margin-top:150px;margin-left:auto; margin-right:auto;}
+.login-img{ width:630px; height:310px;}
+.login-logo{ width:344px; height:68px; margin-top:70px; margin-left:20px;}
+.SysteName{width:630px; height:40px; position: absolute; top:174px; font-family:"方正舒体"; font-size:34px; color:black; text-align:center;}
+.SysteEngName{width:630px; height:40px; position: absolute; top:214px; font-family:"Arial"; font-size:14px; color:black; text-align:center;}
+.login-form{width:630px; height:50px; }
+.font12{ font-family:"宋体"; font-size:12px; font-weight:bold;}
+.font-white{font-family:"宋体"; font-size:12px; color:#fff;}
+.input-text{width:105px; height:22px; background-color:#e0f2fa; border:1px #276b97 solid;_margin-top:10px; }
+.input-button{width:81px; height:26px; background-image:url(../images/login/button.png); background-repeat:no-repeat; margin-left:10px; background-color:transparent;border:none;}
+.input-Spacing{margin-left:30px}

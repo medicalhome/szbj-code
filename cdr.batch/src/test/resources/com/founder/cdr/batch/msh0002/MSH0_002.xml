@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-国家名称-消息定义 -->
+<msg>
+	<head>
+		<!-- 消息类别代码 -->
+		<msgId>MS010</msgId>
+		<!-- 版本号 -->
+		<version>2</version>
+		<!-- 消息名称 -->
+		<msgName>国家名称</msgName>
+		<!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+		<sourceSysCode>S028</sourceSysCode>
+		<!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+		<targetSysCode>XXX</targetSysCode>
+		<!-- 消息创建时间 -->
+		<createTime>2009-01-01 12:13:30</createTime>
+	</head>
+	<body>
+		<!-- 操作类型 取值范围( insert、delete、update) -->
+		<row action="insert">
+			<!-- 国家编码 -->
+			<code>1</code>
+			<!-- 国家名称 -->
+			<name>国家名称1</name>
+			<!-- 数字编码 -->
+			<numberCode>数字编码1</numberCode>
+			<!-- 拼音码 -->
+			<pyCode>拼音码</pyCode>
+		</row>
+		<row action="delete">
+			<!-- 国家编码 -->
+			<code>2</code>
+			<!-- 国家名称 -->
+			<name>国家名称2</name>
+			<!-- 数字编码 -->
+			<numberCode>数字编码</numberCode>
+			<!-- 拼音码 -->
+			<pyCode>拼音码</pyCode>
+		</row>
+		<row action="update">
+			<!-- 国家编码 -->
+			<code>3</code>
+			<!-- 国家名称 -->
+			<name>国家名称3</name>
+			<!-- 数字编码 -->
+			<numberCode>数字编码</numberCode>
+			<!-- 拼音码 -->
+			<pyCode>拼音码</pyCode>
+		</row>
+		<row action="insert">
+			<!-- 国家编码 -->
+			<code>4</code>
+			<!-- 国家名称 -->
+			<name>国家名称4</name>
+			<!-- 数字编码 -->
+			<numberCode>数字编码</numberCode>
+			<!-- 拼音码 -->
+			<pyCode>拼音码</pyCode>
+		</row>
+	</body>
+</msg>

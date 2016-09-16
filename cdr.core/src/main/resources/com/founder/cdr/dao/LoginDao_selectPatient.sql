@@ -1,0 +1,24 @@
+/**
+ * $Author :jin_peng
+ * $Date : 2012/09/21 14:01$
+ * [BUG]0009561 ADD BEGIN
+ * [FUN]V05-101登陆集成页面查询患者
+ * @version 1.0, 2012/09/24  
+ * @author 金鹏
+ * @since 1.0
+ * 患者信息
+ */
+SELECT PT.PATIENT_SN
+  FROM PATIENT_TEMP PT
+ WHERE PT.PATIENT_LID = /*patientId*/
+   AND PT.PATIENT_DOMAIN = /*patientDomain*/
+   AND PT.DELETE_FLAG = 0
+ UNION
+SELECT P.PATIENT_SN
+  FROM PATIENT P,PATIENT_CROSS_INDEX PCI
+ WHERE P.PATIENT_EID = PCI.PATIENT_EID
+   AND PCI.PATIENT_LID = /*patientId*/
+   AND PCI.PATIENT_DOMAIN = /*patientDomain*/
+   AND P.DELETE_FLAG = 0
+   AND PCI.DELETE_FLAG = 0
+/**[BUG]0009561 ADD END*/     

@@ -1,0 +1,571 @@
+{
+	"newUpFlag": {
+		"desc": "触发事件",
+		"path": "/ORDER/ORC-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"triggerEvent": {
+		"desc": "触发事件",
+		"path": "/ORDER/ORC-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"patientLid": {
+		"desc": "患者本地ID",
+		"path": "/PATIENT/PID-2-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"wardsCode": {
+		"desc": "病区码",
+		"path": "/PATIENT/PATIENT_VISIT/PV1-3-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"bedNo": {
+		"desc": "病床码",
+		"path": "/PATIENT/PATIENT_VISIT/PV1-3-3",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"patientName": {
+		"desc": "患者姓名",
+		"path": "/PATIENT/PID-5",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"genderCode": {
+		"desc": "性别",
+		"path": "/PATIENT/PID-8",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"birthDate": {
+		"desc": "出生日期",
+		"path": "/PATIENT/PID-7",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitTimes": {
+		"desc": "就诊次数",
+		"path": "/PATIENT/PATIENT_VISIT/PV1-13",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"execDept": {
+		"desc": "执行科室编号",
+		"path": "/ORDER/ZOP-2-1",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"execDeptName": {
+		"desc": "执行科室名称",
+		"path": "/ORDER/ZOP-2-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitOrdNo": {
+		"desc": "就诊流水号",
+		"path": "/PATIENT/PATIENT_VISIT/PV1-19",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"visitType": {
+		"desc": "就诊类别",
+		"path": "/PATIENT/PATIENT_VISIT/PV1-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"patientDomain": {
+		"desc": "域Id",
+		"path": "/PATIENT/PATIENT_VISIT/PV1-2",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"sender": {
+		"desc": "发送者",
+		"path": "/MSH-3",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..1"
+	},
+	"order": {
+		"desc": "医嘱,bs005",
+		"path": "/ORDER",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..n",
+		"child": {
+			"orderLid": {
+				"desc": "医嘱号",
+				"path": "/ORDER/ORC-4",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"requestNo": {
+				"desc": "申请单编号",
+				"path": "/ORDER/ORC-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"cancelOrStopTime": {
+				"desc": "撤销停止时间",
+				"path": "/ORDER/ORC-9",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"cancelOrStopPerson": {
+				"desc": "撤销停止人编码",
+				"path": "/ORDER/ORC-10-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"cancelOrStopPersonName": {
+				"desc": "撤销停止人姓名",
+				"path": "/ORDER/ORC-10-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			}
+		}
+	},
+	"orderStatusInf": {
+		"desc": "医嘱",
+		"path": "/ORDER",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..n",
+		"child": {
+			"orderLid": {
+				"desc": "医嘱号",
+				"path": "/ORDER/ORC-4",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"cancelOrStopTime": {
+				"desc": "撤销/停止时间",
+				"path": "/ORDER/ORC-15",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"cancelOrStopPerson": {
+				"desc": "撤销/停止人id",
+				"path": "/ORDER/ORC-12-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"cancelOrStopPersonName": {
+				"desc": "撤销/停止人姓名",
+				"path": "/ORDER/ORC-12-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"requestNo": {
+				"desc": "申请单编号",
+				"path": "/ORDER/ORC-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"orderStatus": {
+				"desc": "医嘱状态",
+				"path": "/ORDER/ORC-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			}
+		}
+	},
+	"medicaVisit": {
+		"desc": "就诊",
+		"path": "/PATIENT/PATIENT_VISIT",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..n",
+		"child": {
+			"visitTimes": {
+				"desc": "就诊次数",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-13",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"visitType": {
+				"desc": "就诊类别",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"admissionWards": {
+				"desc": "病区编码",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-3-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"admissionBedNo": {
+				"desc": "床位号",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-3-3",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"visitDate": {
+				"desc": "",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-44",
+				"display": "就诊日期",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"visitOrdNo": {
+				"desc": "就诊流水号",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-19",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			}
+		}
+	},
+	"proOrders": {
+		"desc": "手术申请医嘱",
+		"path": "/ORDER",
+		"display": "",
+		"type": "string",
+		"format": "",
+		"multiplicity": "0..n",
+		"child": {
+			"requestNo": {
+				"desc": "申请单号",
+				"path": "/ORDER/ORC-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"orderLid": {
+				"desc": "医嘱号",
+				"path": "/ORDER/ORC-4",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"wardsId": {
+				"desc": "病区编码",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-3-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"roomNo": {
+				"desc": "房间号",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-3-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"bedNo": {
+				"desc": "床号",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-3-3",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"operationName": {
+				"desc": "手术名称",
+				"path": "/ORDER/ZOP-16-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"operationNameCode": {
+				"desc": "手术名称代码",
+				"path": "/ORDER/ZOP-16-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"operationLevel": {
+				"desc": "手术等级代码",
+				"path": "/ORDER/ZOP-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"operationKind": {
+				"desc": "手术性质编码(0择期，1急诊)",
+				"path": "/ORDER/ZOP-8",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"requestDate": {
+				"desc": "申请日期",
+				"path": "/ORDER/ORC-9",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"surgicalTime": {
+				"desc": "建议时间",
+				"path": "/ORDER/ORC-15",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"patientLid": {
+				"desc": "患者本地ID",
+				"path": "/PATIENT/PID-2-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"domainID": {
+				"desc": "域ID",
+				"path": "/PATIENT/PATIENT_VISIT/PV1-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"patientName": {
+				"desc": "患者姓名",
+				"path": "/PATIENT/PID-5",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"genderCode": {
+				"desc": "",
+				"path": "/PATIENT/PID-8",
+				"display": "性别代码",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"birthday": {
+				"desc": "出生日期",
+				"path": "/PATIENT/PID-7-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"requestPersonId": {
+				"desc": "申请人编号",
+				"path": "/ORDER/ORC-12-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"requestPersonName": {
+				"desc": "申请人姓名",
+				"path": "/ORDER/ORC-12-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"requestDeptNo": {
+				"desc": "申请科室编码",
+				"path": "/ORDER/ORC-17-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"executeDeptNo": {
+				"desc": "执行科室编号",
+				"path": "/ORDER/ZOP-2-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"executeDeptName": {
+				"desc": "执行科室名称",
+				"path": "/ORDER/ZOP-2-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"userTime": {
+				"desc": "预计手术用时",
+				"path": "/ORDER/ZOP-6",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"anesthesiaCode": {
+				"desc": "麻醉编码",
+				"path": "/ORDER/ZOP-7-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"anesthesiaName": {
+				"desc": "麻醉名称",
+				"path": "/ORDER/ZOP-7-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"tableSeq": {
+				"desc": "台次",
+				"path": "/ORDER/ZOP-4",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"operatorCode": {
+				"desc": "手术医师编码",
+				"path": "/ORDER/ZOP-10[0]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"operatorName": {
+				"desc": "手术医师名称",
+				"path": "/ORDER/ZOP-10[0]-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"assistant1Code": {
+				"desc": "助手1编码",
+				"path": "/ORDER/ZOP-10[1]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"assistant1Name": {
+				"desc": "助手1名称",
+				"path": "/ORDER/ZOP-10[1]-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"assistant2Code": {
+				"desc": "助手2编码",
+				"path": "/ORDER/ZOP-10[2]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"assistant2Name": {
+				"desc": "助手2名称",
+				"path": "/ORDER/ZOP-10[2]-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"assistant3Code": {
+				"desc": "助手3编码",
+				"path": "/ORDER/ZOP-10[3]-1",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"assistant3Name": {
+				"desc": "助手3名称",
+				"path": "/ORDER/ZOP-10[3]-2",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			},
+			"descript": {
+				"desc": "描述",
+				"path": "/ORDER/ZOP-21",
+				"display": "",
+				"type": "string",
+				"format": "",
+				"multiplicity": "0..1"
+			}
+			
+		}
+	}
+}

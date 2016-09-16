@@ -1,0 +1,112 @@
+{
+
+	"patientDomain" : {
+		"desc" : "域id",
+		"path" : "/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientLid" : {
+		"desc" : "患者本地ID",
+		"path" : "/PID-2-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/PV1-19",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitType" : {
+		"desc" : "就诊类型",
+		"path" : "/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"time" : {
+		"desc" : "时间",
+		"path" : "/OBR-22",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"nursingOperation" : {
+		"desc" : "护理操作",
+		"path" : "/OBR",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"nursingOperationTime" : {
+				"desc" : "护理操作时间",
+				"path" : "/OBR-22",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"physicalExamDto" : {
+				"desc" : "体格检查",
+				"path" : "/OBX",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..n",
+				"child" : {
+					"itemTypeCode" : {
+						"desc" : "项目类型编码",
+						"path" : "/OBX-3-1",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+					
+					"itemTypeName" : {
+						"desc" : "项目类型名称",
+						"path" : "/OBX-3-2",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+					
+					"itemResult" : {
+						"desc" : "测量结果",
+						"path" : "/OBX-5",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					},
+					
+					"physicalTime" : {
+						"desc" : "测量时间",
+						"path" : "/OBX-14",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					}
+				}
+			}
+		}
+	}	
+}

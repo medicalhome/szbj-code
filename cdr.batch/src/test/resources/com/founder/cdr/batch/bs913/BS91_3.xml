@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 访问控制信息服务结果数据-访问控制信息服务结果数据-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>BS913</msgId>
+        <!-- 消息名称 -->
+        <msgName>警告通知对象设定信息服务</msgName>
+        <!-- 消息源系统编码 -->
+        <sourceSysCode>S030</sourceSysCode>
+        <!-- 消息目标系统编码 由平台统一管理 可以为空 -->
+        <targetSysCode>S015</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete) -->
+        <notification action = "insert">
+			<!-- 通知对象员工号（医生、护士）-->
+			<userId>1</userId>
+            <!-- 异常值、警告值-->
+            <ruleGroup>9090909090</ruleGroup>
+			<!-- 通知对象类型（医生、护士） -->
+            <userType>医</userType>
+			<!-- 通知方式0...1 telephone、email只给出一个，如果两个都给出，两个都要用-->
+            <method>
+            	<telephone value="15311394343">
+					<weekdays>1:3:5</weekdays>
+				</telephone>
+            	<email>tong_meng@founder.com</email>
+	            <!-- 0..n 系统 -->
+            	<systems>
+	            	<!-- 系统ID -->
+	            	<systemId>1</systemId>
+	            	<systemId>2</systemId>
+	            	<systemId>3</systemId>
+            	</systems>
+            </method>
+            <!-- 科室ID -->
+            <deptId>科室ID</deptId>
+        </notification>
+    </body>
+</msg>

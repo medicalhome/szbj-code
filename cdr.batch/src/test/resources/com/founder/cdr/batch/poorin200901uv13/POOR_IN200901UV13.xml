@@ -1,0 +1,303 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOR_IN200901UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/POOR_IN200901UV03.xsd">
+<!--
+其它医嘱
+-->
+    <!-- 消息使用范围 -->
+    <realmCode>
+        <item code="CN" />
+    </realmCode>
+	<!-- 消息ID -->
+	<id root="2.16.840.1.113883.2.23.11.7" extension="test-1234" identifierName="消息管理应用程序" />
+	<!-- 消息创建时间(中国的时区是+0800) -->
+	<creationTime value="201112311100+0800" />
+	<!-- 使用的数据类型/RIM/词汇的版本是2011年5月 -->
+	<versionCode code="2011-05" />
+	<!-- 交互ID(HL7交互类型编码系统) -->
+	<interactionId root="2.16.840.1.113883.1.6" extension="POOR_IN200901UV" identifierName="HL7" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+	    <!-- 发送设备/应用 -->
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID(发送设备/应用ID) -->
+			<id>
+			    <item root="2.16.840.1.113883.2.23.11.1" extension="THH 医生站" />
+			</id>
+			<!-- 通讯方式(telecom和asLocatedEntity可以任选) -->
+			<telecom xsi:type="LIST_TEL">
+				<item use="WP" value="https://example.org/PatientFeed" />
+			</telecom>
+            <!-- 发送地点标识 -->			
+			<asLocatedEntity classCode="LOCE">
+			    <location classCode="PLC" determinerCode="INSTANCE">
+					<id>
+                		<item root="2.16.840.1.113883.2.23.11.2" extension="医生站录入医嘱" />			
+					</id>
+				</location>
+			</asLocatedEntity>			
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+	    <!-- 接收设备/应用 -->
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接收者ID(接收设备/应用ID) -->
+			<id>
+			    <item root="2.16.840.1.113883.2.23.11.1" extension="THH HIS应用系统" />
+			</id>
+            <!-- 接收地点标识 -->			
+			<asLocatedEntity classCode="LOCE">
+			    <location classCode="PLC" determinerCode="INSTANCE">
+					<id>
+                		<item root="2.16.840.1.113883.2.23.11.2" extension="相关工作站" />			
+					</id>
+				</location>
+			</asLocatedEntity>			
+		</device>
+	</sender>
+	
+	<!-- 封装的消息内容 - Trigger Event Control Act wrapper -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new 修改:update 
+        -->
+	    <code code="new" />
+	    <subject typeCode="SUBJ" contextConductionInd="false">
+
+	        <placerGroup>				
+	            
+                <!-- 病人信息 -->
+				<subject typeCode="SBJ">
+					<patient classCode="PAT">
+					    <!-- 病人标识 -->
+					    <id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="02" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="04" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+					    </id>
+					    
+						<!-- 病人当前病区床号信息 -->
+						<addr xsi:type="BAG_AD">
+						    <!-- 病区编码/病区名称/床位号 -->
+							<item use="TMP">
+								<part type="BNR" value="病区名称" code="病区编码" codeSystem="1.2.156.112606.1.1.33" />
+								<part type="CAR" value="床位号" />
+							</item>
+						</addr>					    
+					    
+					    <!-- 个人信息 -->
+					    <patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 病人名称 -->
+					        <name xsi:type="DSET_EN">
+                                <item>
+                                    <part value="张三"/>
+                                </item>			        
+					        </name>
+					        <!-- 性别编码 -->
+					        <administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3" />
+							<!-- 出生日期 -->
+							<birthTime value="19430605">
+							    <!-- 年龄 -->
+							    <originalText value="69" />
+							</birthTime>					        
+					    </patientPerson>
+					    
+						<!-- 病人当前科室信息 -->
+						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+						    <!-- 科室编码 -->
+							<id>
+								<item extension="110" root="1.2.156.112606.1.1.1" identifierName="医院科室编码系统" />
+							</id>
+							<!-- 科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="肾内科"/>
+								</item>									
+							</name>
+						</providerOrganization>						    					    
+					</patient>
+				</subject>
+				
+				
+				<!-- 医嘱确认护士信息 -->
+				<verifier typeCode="VRF">
+					<!-- 确认时间 -->
+					<time value="201205031433"/>
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 确认护士编码 -->
+						<id>
+							<item extension="123456789" root="1.2.156.112606.1.1.2"/>
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 确认护士名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="确认人名称"/>
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedEntity>
+				</verifier>
+				
+
+				<!-- 医嘱项信息(可循环) -->
+				<component typeCode="COMP">
+					<substanceAdministrationRequest classCode="SBADM" moodCode="RQO">
+						<!-- 医嘱号 -->
+						<id extension="31657458" />
+						
+						<!-- 医嘱类别编码/医嘱类别名称 - 针剂药品, 材料类, 治疗类, 片剂药品, 化验类 -->
+						<code code="z" codeSystem="1.2.156.112606.1.1.27">
+						    <displayName value="其它类" />
+						</code>
+
+						<!-- 医嘱备注 -->
+						<text value="转科医嘱" />
+						
+						<!-- 病人原科室病区信息 -->
+						<subject>
+							<patient classCode="PAT">
+								<!-- 病人原病区床号信息 -->
+								<addr xsi:type="BAG_AD">
+									<!-- 病区编码/病区名称 -->
+									<item use="TMP">
+										<part type="BNR" value="病区名称" code="病区编码" codeSystem="1.2.156.112606.1.1.33" />
+									</item>
+								</addr>
+								<!-- 病人原科室信息 -->
+								<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+									<!-- 科室编码 -->
+									<id>
+										<item root="1.2.156.112606.1.1.1" extension="1234" />
+									</id>
+									<!-- 科室名称 -->
+									<name xsi:type="BAG_EN">
+										<item><part value="心血管内科门诊" /></item>
+									</name>
+								</providerOrganization>												
+							</patient>
+						</subject>						
+						
+						<!-- 开嘱医生信息 -->
+						<author typeCode="AUT" contextControlCode="OP">
+						    <!-- 开嘱时间 -->
+						    <time value="201112311100" />
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 开嘱医生编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="0000200012" />
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+								    <!-- 开嘱人名称 -->
+									<name xsi:type="LIST_EN">
+										<item><part value="李四"/></item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</author>
+						
+						<!-- 确认医生信息 -->
+						<verifier typeCode="VRF">
+							<!-- 确认时间 -->
+							<time value="201205031433"/>
+							<assignedEntity classCode="ASSIGNED">
+								<!-- 确认医生编码 -->
+								<id>
+									<item root="1.2.156.112606.1.1.2" extension="123456789" />
+								</id>
+								<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+									<!-- 确认医生名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="确认人名称"/>
+										</item>
+									</name>
+								</assignedPerson>
+							</assignedEntity>
+						</verifier>						
+
+						<!-- 执行科室信息 -->
+						<location typeCode="LOC">
+							<serviceDeliveryLocation classCode="SDLOC">
+							    <location classCode="PLC" determinerCode="INSTANCE">
+							        <!-- 执行科室编码 -->
+							        <id>
+							            <item root="1.2.156.112606.1.1.1" extension="1234" />
+							        </id>
+							        <!-- 执行科室名称 -->
+							        <name xsi:type="BAG_EN">
+							            <item><part value="肾内科10C" /></item>
+							        </name>
+							    </location>
+							</serviceDeliveryLocation>
+						</location>			
+						
+						<!-- 费用标记(嘱托, 基数药, 分药， 自备, 空) -->
+						<coverage>
+							<coverageRecord classCode="COV" moodCode="EVN">
+							    <component typeCode="COMP">
+									<policyOrProgram classCode="COV" moodCode="EVN">
+									    <!-- 费用标记编码 -->
+										<code code="04">
+										    <displayName value="自备" />
+										</code>
+										<coveredParty typeCode="COV">
+											<coveredParty classCode="COVPTY">
+												<id></id>
+											</coveredParty>
+										</coveredParty>
+									</policyOrProgram>
+								</component>
+							</coverageRecord>
+						</coverage>
+						
+						<!-- 嘱托信息 -->
+						<pertinentInformation typeCode="PERT" contextConductionInd="false">
+							<act classCode="ACT" moodCode="INT">
+							    <code />
+							    <!-- 嘱托内容 -->
+								<text value="急查" />								
+							</act>
+						</pertinentInformation>														
+						
+						<!-- 医嘱编码信息 -->
+						<component>
+							<substanceAdministrationRequest>
+							    <!-- 医嘱编码/医嘱名称 -->
+							    <code code="1470" codeSystem="OID申请中">
+							        <displayName value="转科" />
+							    </code>
+							</substanceAdministrationRequest>
+						</component>																
+					</substanceAdministrationRequest>
+				</component>
+				<!-- 其它医嘱项按上面格式添加 -->
+
+				
+				<!-- 就诊信息 -->
+				<componentOf contextConductionInd="false" typeCode="COMP" contextControlCode="OP">
+					<encounter classCode="ENC" moodCode="EVN">
+						<id>
+							<item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="就诊次数"/>
+						</id>
+						<statusCode code="active" />
+						<subject typeCode="SBJ">
+							<patient classCode="PAT" />
+						</subject>						
+					</encounter>
+				</componentOf>
+				            
+	        </placerGroup>
+	        
+	    </subject>	
+	</controlActProcess>
+		
+</POOR_IN200901UV>
+

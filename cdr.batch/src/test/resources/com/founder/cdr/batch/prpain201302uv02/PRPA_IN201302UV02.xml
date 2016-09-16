@@ -1,0 +1,752 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN201302UV02 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 file:///E:/HL7%20package/multicacheschemas/PRPA_IN201301UV02.xsd">
+	<!-- 消息ID -->
+	<id root=""/>
+	<!-- 消息创建时间 -->
+	<creationTime value=""/>
+	<!-- 交互ID(HL7交互类型代码系统) -->
+	<interactionId root="" extension="PRPA_IN201301UV02"/>
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code=""/>
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code=""/>
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code=""/>
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<!-- 接受设备/应用 -->
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接收者ID(接收设备/应用ID) -->
+			<id>
+				<item root="1" extension="接受机构"/>
+			</id>
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<!-- 发送设备/应用 -->
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID(发送设备/应用ID) -->
+			<id>
+				<item root="2" extension="发送机构"/>
+			</id>
+		</device>
+	</sender>
+	<!-- 封装的消息内容 - Trigger Event Control Act wrapper -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 此为SBR记录 -->
+		<subject typeCode="SUBJ" contextConductionInd="false">
+			<registrationEvent classCode="REG" moodCode="EVN">
+				<!-- 时间戳 -->
+				<id>
+					<item extension="1340169626911" identifierName="操作时间"/>
+				</id>
+				<statusCode/>
+				<custodian/>
+				<subject1 typeCode="SBJ">
+					<patient classCode="PAT">
+						<!-- 必须项已使用 -->
+						<!-- 各种标识符 -->
+						<id>
+							<item extension="8s" root="1.2.156.112606.1.2.1.1" identifierName="患者EMPI标识"/>
+							<item extension="123" root="1.2.156.112606.1.2.1.13" identifierName="住院号"/>
+							<item extension="321" root="1.2.156.112606.1.2.1.12" identifierName="门诊号"/>
+							<item extension="444" root="1.2.156.112606.1.2.1.11" identifierName="医保号"/>
+							<item extension="555" root="1.2.156.112606.1.2.1.2" identifierName="域ID(门诊、住院)"/>
+							<item extension="666" root="1.2.156.112606.1.2.1.3" identifierName="患者ID"/>
+							<item extension="999" root="1.2.156.112606.1.2.1.5" identifierName="影像号"/>
+						</id>
+						<statusCode code="active"/>
+						<!--住址
+						@use: 地址类别，比如H代表家庭住址，TMP代表现住址，PUB代表户籍地址 -->
+						<addr xsi:type="BAG_AD">
+							<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+							<!-- 现住地址 -->
+							<item use="TMP">
+								<part type="CTY" value="地址第一部分（广西省南宁市）" code="1111"/>
+								<part type="AL" value="地址第二部分或者完成地址（XX路234号）"/>
+								<!--邮政编码 -->
+								<part type="ZIP" value="123"/>
+							</item>
+							<!-- 家庭地址 -->
+							<item use="H">
+								<part type="CTY" value="地址第一部分（广西省南宁市）" code="2222"/>
+								<part type="AL" value="地址第二部分或者完成地址（XX路234号）"/>
+								<!--邮政编码 -->
+								<part type="ZIP" value="321"/>
+							</item>
+							<!-- 户籍地址 -->
+							<item use="PUB">
+								<part type="CTY" value="地址第一部分（广西省南宁市）" code="3333"/>
+								<part type="AL" value="地址第二部分或者完成地址（XX路234号）"/>
+								<!--邮政编码 -->
+								<part type="ZIP" value="123"/>
+							</item>
+						</addr>
+						<!-- 家庭电话，电子邮件等联系方式
+						@use: 联系方式类型。MC为手机，H为家庭电话
+						value: 前缀为区分电话还是电子邮件地址。tel为电话，email为电子邮件地址-->
+						<telecom xsi:type="BAG_TEL">
+							<item use="MC" value="phone:123444"/>
+							<item use="H" value="tel:999-999-999999"/>
+							<item use="PUB" value="email:someone@company.com"/>
+						</telecom>
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 身份证号及各种证件号
+							@extension: 证件号码
+							@root: 证件OID
+							@controlInformationExtension: 证件名称 -->
+							<id>
+								<item extension="15001198807080982" root="1.2.156.112606.1.2.1.9" controlInformationExtension="身份证号"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.14" controlInformationExtension="居民户口簿"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.15" controlInformationExtension="护照"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.16" controlInformationExtension="军官证"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.17" controlInformationExtension="驾驶证"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.18" controlInformationExtension="港澳居民来往内地通行证"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.19" controlInformationExtension="台湾居民来往内地通行证"/>
+								<item extension="证件号码" root="1.2.156.112606.1.2.1.20" controlInformationExtension="其他法定有效证件"/>
+							</id>
+							<!--姓名 必须项已使用-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+							<!-- 性别代码 -->
+							<administrativeGenderCode code="1" codeSystem="1.2.156.112606.1.1.3" codeSystemName="性别"/>
+							<!-- 出生日期 -->
+							<birthTime value="20000101"/>
+							<!-- 婚姻状况类别代码 -->
+							<maritalStatusCode code="10" codeSystem="1.2.156.112606.1.1.4" codeSystemName="婚姻状况"/>
+							<!-- 文化程度代码 -->
+							<educationLevelCode code="9887" codeSystem="1.2.156.112606.1.1.8" codeSystemName="文化程度"/>
+							<!--民族代码 -->
+							<ethnicGroupCode>
+								<item code="TJ" codeSystem="1.2.156.112606.1.1.5" codeSystemName="民族"/>
+							</ethnicGroupCode>
+							<!--雇佣关系 -->
+							<!--雇佣关系 -->
+							<asEmployee classCode="EMP">
+								<!--职业编码系统名称/职业代码 -->
+								<occupationCode code="23" codeSystem="1.2.156.112606.1.1.7" codeSystemName="职业"/>
+								<!-- 必须项未使用 -->
+								<!--工作单位 -->
+								<employerOrganization determinerCode="INSTANCE" classCode="ORG">
+									<!--工作单位名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value="某某公司"/>
+										</item>
+									</name>
+									<!-- 必须项未使用 -->
+									<contactParty classCode="CON" xsi:nil="true"/>
+								</employerOrganization>
+								<!-- 工作单位地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式）
+									@use: WP为工作联系方式-->
+									<item use="WP">
+										<part type="CTY" value="地址第一部分（广西省南宁市）" code="4444"/>
+										<part type="AL" value="地址第二部分或者完成地址（XX路234号）"/>
+										<!--邮政编码 -->
+										<part type="ZIP" value="98ff"/>
+									</item>
+								</addr>
+								<!-- 工作单位联系方式 -->
+								<telecom xsi:type="BAG_TEL">
+									<item use="WP" value="tel:999-999-999999"/>
+									<item use="PUB" value="email:someone@company.com"/>
+								</telecom>
+							</asEmployee>
+							<!--公民身份 -->
+							<asCitizen classCode="CIT">
+								<!--所属国家 必须项已使用-->
+								<politicalNation classCode="NAT" determinerCode="INSTANCE">
+									<code code="444" codeSystem="1.2.156.112606.1.1.6" codeSystemName="国籍"/>
+									<!-- 国家名称 -->
+									<name>
+										<part value="中国"/>
+									</name>
+								</politicalNation>
+							</asCitizen>
+							<!-- 出生地 -->
+							<birthPlace classCode="BIRTHPL">
+								<addr use="H">
+									<part type="AL" value="江苏省苏州市"/>
+									<!--邮政编码 -->
+									<part type="ZIP" value="9999"/>
+								</addr>
+							</birthPlace>
+							<!-- 联系人 -->
+							<contactParty>
+								<!-- 与患者关系 -->
+								<id>
+									<item extension="12" root="1.2.156.112606.1.1.18" identifierName="与患者关系"/>
+								</id>
+								<!-- 联系人地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+									<item use="H">
+										<part type="CTY" value="地址第一部分（广西省南宁市）" code="123"/>
+										<part type="AL" value="地址第二部分或者完成地址（XX路234号）"/>
+										<!--邮政编码 -->
+										<part type="ZIP" value="156400"/>
+									</item>
+								</addr>
+								<!-- 联系人电话或电子邮件 -->
+								<telecom>
+									<item use="H" value="tel:999-999-999999"/>
+									<item use="MC" value="tel:943472"/>
+									<item use="PUB" value="email:someone@company.com"/>
+								</telecom>
+								<contactPerson>
+									<!-- 联系人姓名 -->
+									<name>
+										<part value="sdf"/>
+									</name>
+								</contactPerson>
+							</contactParty>
+						</patientPerson>
+						<!-- 必须项未使用  -->
+						<providerOrganization/>
+					</patient>
+				</subject1>
+			</registrationEvent>
+		</subject>
+		
+		<!-- 此为最佳纪录关联患者信息 -->
+		<subject typeCode="SUBJ" contextConductionInd="false">
+			<registrationEvent classCode="REG" moodCode="EVN">
+				<!-- 时间戳 -->
+				<id>
+					<item extension="12456889" identifierName="操作时间"/>
+				</id>
+				<statusCode/>
+				<custodian/>
+				<subject1 typeCode="SBJ">
+					<patient classCode="PAT">
+						<!-- 必须项已使用 -->
+						<!-- 各种标识符 -->
+						<id>
+							<item extension="999" root="1.2.156.112606.1.2.1.1" identifierName="患者EMPI标识"/>
+							<item extension="222" root="1.2.156.112606.1.2.1.13" identifierName="住院号"/>
+							<item extension="333" root="1.2.156.112606.1.2.1.12" identifierName="门诊号"/>
+							<item extension="444" root="1.2.156.112606.1.2.1.11" identifierName="医保号"/>
+							<item extension="555" root="1.2.156.112606.1.2.1.2" identifierName="域ID(门诊、住院)"/>
+							<item extension="666" root="1.2.156.112606.1.2.1.3" identifierName="患者ID"/>
+							<item extension="777" root="1.2.156.112606.1.2.1.5" identifierName="影像号"/>
+						</id>
+						<statusCode code="active"/>
+						<!--住址
+						@use: 地址类别，比如H代表家庭住址，TMP代表现住址，PUB代表户籍地址 -->
+						<addr xsi:type="BAG_AD">
+							<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+							<!-- 现住地址 -->
+							<item use="TMP">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+							<!-- 家庭地址 -->
+							<item use="H">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+							<!-- 户籍地址 -->
+							<item use="PUB">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+						</addr>
+						<!-- 家庭电话，电子邮件等联系方式
+						@use: 联系方式类型。MC为手机，H为家庭电话
+						value: 前缀为区分电话还是电子邮件地址。tel为电话，email为电子邮件地址-->
+						<telecom xsi:type="BAG_TEL">
+							<item use="PUB" value="tel:"/>
+							<item use="H" value="tel:"/>
+							<item use="PUB" value="email:"/>
+						</telecom>
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 身份证号及各种证件号
+							@extension: 证件号码
+							@root: 证件OID
+							@controlInformationExtension: 证件名称 -->
+							<id>
+								<item extension="" root="1.2.156.112606.1.2.1.9" controlInformationExtension="身份证号"/>
+								<item extension="" root="1.2.156.112606.1.2.1.14" controlInformationExtension="居民户口簿"/>
+								<item extension="" root="1.2.156.112606.1.2.1.15" controlInformationExtension="护照"/>
+								<item extension="" root="1.2.156.112606.1.2.1.16" controlInformationExtension="军官证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.17 " controlInformationExtension="驾驶证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.18 " controlInformationExtension="港澳居民来往内地通行证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.19" controlInformationExtension="台湾居民来往内地通行证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.20" controlInformationExtension="其他法定有效证件"/>
+							</id>
+							<!--姓名 必须项已使用-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value=""/>
+								</item>
+							</name>
+							<!-- 性别代码 -->
+							<administrativeGenderCode code="" codeSystem="1.2.156.112606.1.1.3" codeSystemName="性别"/>
+							<!-- 出生日期 -->
+							<birthTime value=""/>
+							<!-- 婚姻状况类别代码 -->
+							<maritalStatusCode code="" codeSystem="1.2.156.112606.1.1.4" codeSystemName="婚姻状况"/>
+							<!-- 文化程度代码 -->
+							<educationLevelCode code="" codeSystem="1.2.156.112606.1.1.8" codeSystemName="文化程度"/>
+							<!--民族代码 -->
+							<ethnicGroupCode>
+								<item code="" codeSystem="1.2.156.112606.1.1.5" codeSystemName="民族"/>
+							</ethnicGroupCode>
+							<!--雇佣关系 -->
+							<!--雇佣关系 -->
+							<asEmployee classCode="EMP">
+								<!--职业编码系统名称/职业代码 -->
+								<occupationCode code="" codeSystem="1.2.156.112606.1.1.7" codeSystemName="职业"/>
+								<!-- 必须项未使用 -->
+								<!--工作单位 -->
+								<employerOrganization determinerCode="INSTANCE" classCode="ORG">
+									<!--工作单位名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value=""/>
+										</item>
+									</name>
+									<!-- 必须项未使用 -->
+									<contactParty classCode="CON" xsi:nil="true"/>
+								</employerOrganization>
+								<!-- 工作单位地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式）
+									@use: WP为工作联系方式-->
+									<item use="WP">
+										<part type="CTY" value="" code=""/>
+										<part type="AL" value=""/>
+										<!--邮政编码 -->
+										<part type="ZIP" value=""/>
+									</item>
+								</addr>
+								<!-- 工作单位联系方式 -->
+								<telecom xsi:type="BAG_TEL">
+									<item use="WP" value="tel:"/>
+									<item use="PUB" value="email:"/>
+								</telecom>
+							</asEmployee>
+							<!--公民身份 -->
+							<asCitizen classCode="CIT">
+								<!--所属国家 必须项已使用-->
+								<politicalNation classCode="NAT" determinerCode="INSTANCE">
+									<code code="" codeSystem="1.2.156.112606.1.1.6" codeSystemName="国籍"/>
+									<!-- 国家名称 -->
+									<name>
+										<part value=""/>
+									</name>
+								</politicalNation>
+							</asCitizen>
+							<!-- 出生地 -->
+							<birthPlace classCode="BIRTHPL">
+								<addr use="H">
+									<part type="AL" value=""/>
+									<!--邮政编码 -->
+									<part type="ZIP" value=""/>
+								</addr>
+							</birthPlace>
+							<!-- 联系人 -->
+							<contactParty>
+								<!-- 与患者关系 -->
+								<id>
+									<item extension="" root="1.2.156.112606.1.1.18" identifierName="与患者关系"/>
+								</id>
+								<!-- 联系人地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+									<item use="H">
+										<part type="CTY" value="" code=""/>
+										<part type="AL" value=""/>
+										<!--邮政编码 -->
+										<part type="ZIP" value=""/>
+									</item>
+								</addr>
+								<!-- 联系人电话或电子邮件 -->
+								<telecom>
+									<item use="H" value="tel:"/>
+									<item use="PUB" value="email:"/>
+								</telecom>
+								<contactPerson>
+									<!-- 联系人姓名 -->
+									<name>
+										<part value=""/>
+									</name>
+								</contactPerson>
+							</contactParty>
+						</patientPerson>
+						<!-- 必须项未使用  -->
+						<providerOrganization/>
+					</patient>
+				</subject1>
+			</registrationEvent>
+		</subject>
+		
+		<subject typeCode="SUBJ" contextConductionInd="false">
+			<registrationEvent classCode="REG" moodCode="EVN">
+				<!-- 时间戳 -->
+				<id>
+					<item extension="23333333333" identifierName="操作时间"/>
+				</id>
+				<statusCode/>
+				<custodian/>
+				<subject1 typeCode="SBJ">
+					<patient classCode="PAT">
+						<!-- 必须项已使用 -->
+						<!-- 各种标识符 -->
+						<id>
+							<item extension="889" root="1.2.156.112606.1.2.1.1" identifierName="患者EMPI标识"/>
+							<item extension="229" root="1.2.156.112606.1.2.1.13" identifierName="住院号"/>
+							<item extension="339" root="1.2.156.112606.1.2.1.12" identifierName="门诊号"/>
+							<item extension="449" root="1.2.156.112606.1.2.1.11" identifierName="医保号"/>
+							<item extension="558" root="1.2.156.112606.1.2.1.2" identifierName="域ID(门诊、住院)"/>
+							<item extension="668" root="1.2.156.112606.1.2.1.3" identifierName="患者ID"/>
+							<item extension="779" root="1.2.156.112606.1.2.1.5" identifierName="影像号"/>
+						</id>
+						<statusCode code="active"/>
+						<!--住址
+						@use: 地址类别，比如H代表家庭住址，TMP代表现住址，PUB代表户籍地址 -->
+						<addr xsi:type="BAG_AD">
+							<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+							<!-- 现住地址 -->
+							<item use="TMP">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+							<!-- 家庭地址 -->
+							<item use="H">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+							<!-- 户籍地址 -->
+							<item use="PUB">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+						</addr>
+						<!-- 家庭电话，电子邮件等联系方式
+						@use: 联系方式类型。MC为手机，H为家庭电话
+						value: 前缀为区分电话还是电子邮件地址。tel为电话，email为电子邮件地址-->
+						<telecom xsi:type="BAG_TEL">
+							<item use="PUB" value="tel:"/>
+							<item use="H" value="tel:"/>
+							<item use="PUB" value="email:"/>
+						</telecom>
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 身份证号及各种证件号
+							@extension: 证件号码
+							@root: 证件OID
+							@controlInformationExtension: 证件名称 -->
+							<id>
+								<item extension="" root="1.2.156.112606.1.2.1.9" controlInformationExtension="身份证号"/>
+								<item extension="" root="1.2.156.112606.1.2.1.14" controlInformationExtension="居民户口簿"/>
+								<item extension="" root="1.2.156.112606.1.2.1.15" controlInformationExtension="护照"/>
+								<item extension="" root="1.2.156.112606.1.2.1.16" controlInformationExtension="军官证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.17 " controlInformationExtension="驾驶证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.18 " controlInformationExtension="港澳居民来往内地通行证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.19" controlInformationExtension="台湾居民来往内地通行证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.20" controlInformationExtension="其他法定有效证件"/>
+							</id>
+							<!--姓名 必须项已使用-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value=""/>
+								</item>
+							</name>
+							<!-- 性别代码 -->
+							<administrativeGenderCode code="" codeSystem="1.2.156.112606.1.1.3" codeSystemName="性别"/>
+							<!-- 出生日期 -->
+							<birthTime value=""/>
+							<!-- 婚姻状况类别代码 -->
+							<maritalStatusCode code="" codeSystem="1.2.156.112606.1.1.4" codeSystemName="婚姻状况"/>
+							<!-- 文化程度代码 -->
+							<educationLevelCode code="" codeSystem="1.2.156.112606.1.1.8" codeSystemName="文化程度"/>
+							<!--民族代码 -->
+							<ethnicGroupCode>
+								<item code="" codeSystem="1.2.156.112606.1.1.5" codeSystemName="民族"/>
+							</ethnicGroupCode>
+							<!--雇佣关系 -->
+							<!--雇佣关系 -->
+							<asEmployee classCode="EMP">
+								<!--职业编码系统名称/职业代码 -->
+								<occupationCode code="" codeSystem="1.2.156.112606.1.1.7" codeSystemName="职业"/>
+								<!-- 必须项未使用 -->
+								<!--工作单位 -->
+								<employerOrganization determinerCode="INSTANCE" classCode="ORG">
+									<!--工作单位名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value=""/>
+										</item>
+									</name>
+									<!-- 必须项未使用 -->
+									<contactParty classCode="CON" xsi:nil="true"/>
+								</employerOrganization>
+								<!-- 工作单位地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式）
+									@use: WP为工作联系方式-->
+									<item use="WP">
+										<part type="CTY" value="" code=""/>
+										<part type="AL" value=""/>
+										<!--邮政编码 -->
+										<part type="ZIP" value=""/>
+									</item>
+								</addr>
+								<!-- 工作单位联系方式 -->
+								<telecom xsi:type="BAG_TEL">
+									<item use="WP" value="tel:"/>
+									<item use="PUB" value="email:"/>
+								</telecom>
+							</asEmployee>
+							<!--公民身份 -->
+							<asCitizen classCode="CIT">
+								<!--所属国家 必须项已使用-->
+								<politicalNation classCode="NAT" determinerCode="INSTANCE">
+									<code code="" codeSystem="1.2.156.112606.1.1.6" codeSystemName="国籍"/>
+									<!-- 国家名称 -->
+									<name>
+										<part value=""/>
+									</name>
+								</politicalNation>
+							</asCitizen>
+							<!-- 出生地 -->
+							<birthPlace classCode="BIRTHPL">
+								<addr use="H">
+									<part type="AL" value=""/>
+									<!--邮政编码 -->
+									<part type="ZIP" value=""/>
+								</addr>
+							</birthPlace>
+							<!-- 联系人 -->
+							<contactParty>
+								<!-- 与患者关系 -->
+								<id>
+									<item extension="" root="1.2.156.112606.1.1.18" identifierName="与患者关系"/>
+								</id>
+								<!-- 联系人地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+									<item use="H">
+										<part type="CTY" value="" code=""/>
+										<part type="AL" value=""/>
+										<!--邮政编码 -->
+										<part type="ZIP" value=""/>
+									</item>
+								</addr>
+								<!-- 联系人电话或电子邮件 -->
+								<telecom>
+									<item use="H" value="tel:"/>
+									<item use="PUB" value="email:"/>
+								</telecom>
+								<contactPerson>
+									<!-- 联系人姓名 -->
+									<name>
+										<part value=""/>
+									</name>
+								</contactPerson>
+							</contactParty>
+						</patientPerson>
+						<!-- 必须项未使用  -->
+						<providerOrganization/>
+					</patient>
+				</subject1>
+			</registrationEvent>
+		</subject>
+		
+		<subject typeCode="SUBJ" contextConductionInd="false">
+			<registrationEvent classCode="REG" moodCode="EVN">
+				<!-- 时间戳 -->
+				<id>
+					<item extension="23333333333" identifierName="操作时间"/>
+				</id>
+				<statusCode/>
+				<custodian/>
+				<subject1 typeCode="SBJ">
+					<patient classCode="PAT">
+						<!-- 必须项已使用 -->
+						<!-- 各种标识符 -->
+						<id>
+							<item extension="880" root="1.2.156.112606.1.2.1.1" identifierName="患者EMPI标识"/>
+							<item extension="220" root="1.2.156.112606.1.2.1.13" identifierName="住院号"/>
+							<item extension="330" root="1.2.156.112606.1.2.1.12" identifierName="门诊号"/>
+							<item extension="440" root="1.2.156.112606.1.2.1.11" identifierName="医保号"/>
+							<item extension="559" root="1.2.156.112606.1.2.1.2" identifierName="域ID(门诊、住院)"/>
+							<item extension="669" root="1.2.156.112606.1.2.1.3" identifierName="患者ID"/>
+							<item extension="770" root="1.2.156.112606.1.2.1.5" identifierName="影像号"/>
+						</id>
+						<statusCode code="active"/>
+						<!--住址
+						@use: 地址类别，比如H代表家庭住址，TMP代表现住址，PUB代表户籍地址 -->
+						<addr xsi:type="BAG_AD">
+							<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+							<!-- 现住地址 -->
+							<item use="TMP">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+							<!-- 家庭地址 -->
+							<item use="H">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+							<!-- 户籍地址 -->
+							<item use="PUB">
+								<part type="CTY" value="" code=""/>
+								<part type="AL" value=""/>
+								<!--邮政编码 -->
+								<part type="ZIP" value=""/>
+							</item>
+						</addr>
+						<!-- 家庭电话，电子邮件等联系方式
+						@use: 联系方式类型。MC为手机，H为家庭电话
+						value: 前缀为区分电话还是电子邮件地址。tel为电话，email为电子邮件地址-->
+						<telecom xsi:type="BAG_TEL">
+							<item use="PUB" value="tel:"/>
+							<item use="H" value="tel:"/>
+							<item use="PUB" value="email:"/>
+						</telecom>
+						<patientPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 身份证号及各种证件号
+							@extension: 证件号码
+							@root: 证件OID
+							@controlInformationExtension: 证件名称 -->
+							<id>
+								<item extension="" root="1.2.156.112606.1.2.1.9" controlInformationExtension="身份证号"/>
+								<item extension="" root="1.2.156.112606.1.2.1.14" controlInformationExtension="居民户口簿"/>
+								<item extension="" root="1.2.156.112606.1.2.1.15" controlInformationExtension="护照"/>
+								<item extension="" root="1.2.156.112606.1.2.1.16" controlInformationExtension="军官证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.17 " controlInformationExtension="驾驶证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.18 " controlInformationExtension="港澳居民来往内地通行证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.19" controlInformationExtension="台湾居民来往内地通行证"/>
+								<item extension="" root="1.2.156.112606.1.2.1.20" controlInformationExtension="其他法定有效证件"/>
+							</id>
+							<!--姓名 必须项已使用-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value=""/>
+								</item>
+							</name>
+							<!-- 性别代码 -->
+							<administrativeGenderCode code="" codeSystem="1.2.156.112606.1.1.3" codeSystemName="性别"/>
+							<!-- 出生日期 -->
+							<birthTime value=""/>
+							<!-- 婚姻状况类别代码 -->
+							<maritalStatusCode code="" codeSystem="1.2.156.112606.1.1.4" codeSystemName="婚姻状况"/>
+							<!-- 文化程度代码 -->
+							<educationLevelCode code="" codeSystem="1.2.156.112606.1.1.8" codeSystemName="文化程度"/>
+							<!--民族代码 -->
+							<ethnicGroupCode>
+								<item code="" codeSystem="1.2.156.112606.1.1.5" codeSystemName="民族"/>
+							</ethnicGroupCode>
+							<!--雇佣关系 -->
+							<!--雇佣关系 -->
+							<asEmployee classCode="EMP">
+								<!--职业编码系统名称/职业代码 -->
+								<occupationCode code="" codeSystem="1.2.156.112606.1.1.7" codeSystemName="职业"/>
+								<!-- 必须项未使用 -->
+								<!--工作单位 -->
+								<employerOrganization determinerCode="INSTANCE" classCode="ORG">
+									<!--工作单位名称 -->
+									<name xsi:type="BAG_EN">
+										<item>
+											<part value=""/>
+										</item>
+									</name>
+									<!-- 必须项未使用 -->
+									<contactParty classCode="CON" xsi:nil="true"/>
+								</employerOrganization>
+								<!-- 工作单位地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式）
+									@use: WP为工作联系方式-->
+									<item use="WP">
+										<part type="CTY" value="" code=""/>
+										<part type="AL" value=""/>
+										<!--邮政编码 -->
+										<part type="ZIP" value=""/>
+									</item>
+								</addr>
+								<!-- 工作单位联系方式 -->
+								<telecom xsi:type="BAG_TEL">
+									<item use="WP" value="tel:"/>
+									<item use="PUB" value="email:"/>
+								</telecom>
+							</asEmployee>
+							<!--公民身份 -->
+							<asCitizen classCode="CIT">
+								<!--所属国家 必须项已使用-->
+								<politicalNation classCode="NAT" determinerCode="INSTANCE">
+									<code code="" codeSystem="1.2.156.112606.1.1.6" codeSystemName="国籍"/>
+									<!-- 国家名称 -->
+									<name>
+										<part value=""/>
+									</name>
+								</politicalNation>
+							</asCitizen>
+							<!-- 出生地 -->
+							<birthPlace classCode="BIRTHPL">
+								<addr use="H">
+									<part type="AL" value=""/>
+									<!--邮政编码 -->
+									<part type="ZIP" value=""/>
+								</addr>
+							</birthPlace>
+							<!-- 联系人 -->
+							<contactParty>
+								<!-- 与患者关系 -->
+								<id>
+									<item extension="" root="1.2.156.112606.1.1.18" identifierName="与患者关系"/>
+								</id>
+								<!-- 联系人地址 -->
+								<addr>
+									<!--通用联系地址（如果只有一个地址:保留type="AL"项目，删除type="CTY"项目；如果有两个地址:参考如下形式） -->
+									<item use="H">
+										<part type="CTY" value="" code=""/>
+										<part type="AL" value=""/>
+										<!--邮政编码 -->
+										<part type="ZIP" value=""/>
+									</item>
+								</addr>
+								<!-- 联系人电话或电子邮件 -->
+								<telecom>
+									<item use="H" value="tel:"/>
+									<item use="PUB" value="email:"/>
+								</telecom>
+								<contactPerson>
+									<!-- 联系人姓名 -->
+									<name>
+										<part value=""/>
+									</name>
+								</contactPerson>
+							</contactParty>
+						</patientPerson>
+						<!-- 必须项未使用  -->
+						<providerOrganization/>
+					</patient>
+				</subject1>
+			</registrationEvent>
+		</subject>
+	</controlActProcess>
+</PRPA_IN201302UV02>

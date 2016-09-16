@@ -1,0 +1,307 @@
+.tab
+{
+	border:1px solid #99ccff;
+	border-right-style:none; 
+	border-bottom-style:none; 
+	border-collapse: collapse;
+}
+.tab td 
+{
+	border-right:1px solid #99ccff;
+	border-bottom:1px solid #99ccff;
+}
+.tabLayout
+{
+	table-layout:fixed;
+}
+.tabLayout td
+{
+	word-wrap:break-word;
+}
+.tabLeft
+{
+	width:150px;
+}
+.tabHead td
+{
+	border-bottom-style:none; 
+}
+.bottomNone td
+{
+	border-bottom-style:none; 
+}
+.topNone td
+{
+	border-top-style:none; 
+}
+.trBackGround
+{
+	background-color:#C2D69A;
+}
+.temColor
+{
+	color:red;
+	font-weight: bold;
+}
+.bpColor
+{
+	color:blue;
+	font-weight: bold;
+}
+.pulseColor
+{
+	color:black;
+	font-weight: bold;
+}
+.wordSpace
+{
+	word-spacing: 16px;
+}
+.fontBold
+{
+	font-weight: bold;
+}
+.tabletitleRow
+{
+	background-color: #BEDFFE;
+	color:#000000;
+}
+.oddRow
+{
+	background-color: #D5EAFF;
+	color: #000000;
+}
+.evenRow
+{
+	background-color: #F1FBFD;
+	color: #000000;
+}
+.condition
+{
+	background: url(../images/pic_rightcol_bj.gif) repeat left center;
+	height:10px;
+}
+.head1024
+{
+	background: url(../images/pic_gm.gif) no-repeat 33% center;
+	color:#DB2C33;
+	font-weight:bold;
+}
+.head
+{
+	background: url(../images/pic_gm.gif) no-repeat 50% center!important;
+	background: url(../images/pic_gm.gif) no-repeat 52% center;
+	color:#DB2C33;
+	font-weight:bold;
+}
+.but
+{
+	border:0px; 
+	width:57px; 
+	height:25px; 
+}
+.butSearch
+{
+	background: url(../images/button_go.gif) no-repeat center center;
+}
+.butFront
+{
+	background: url(../images/button_up.gif) no-repeat center center;
+}
+.butBehind
+{
+	background: url(../images/button_down.gif) no-repeat center center;
+}
+.butDisabledFront
+{
+	background: url(../images/button_up_gray.gif) no-repeat center center;
+}
+.butDisabledBehind
+{
+	background: url(../images/button_down_gray.gif) no-repeat center center;
+}
+.cellHead
+{
+	float: left;
+	/*padding-left: 2px;*/
+	padding-right: 1px;
+	/*height: 20px;*/
+	line-height: 20px;
+	overflow: hidden;
+	vertical-align: middle;
+	width:100%; 
+	text-align: right;
+	font-weight:bold;
+}
+.cellFoot
+{
+	float: left;
+	height: 29px;
+	line-height: 29px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.cellEllipsis
+{
+	text-overflow:ellipsis;
+	white-space:nowrap;
+	color:red;
+	font-weight:bold;
+}
+.cellHeadGround
+{
+	background: url(../images/pic_hzxx.gif) no-repeat 5% bottom;
+}
+.cellBodyHeadTitleImage
+{
+	float:left;
+	width:62px;
+}
+.cellBodyHeadTitleImagein
+{
+	float:left;
+	width:28%;
+}
+.cellBodyHeadTitleText
+{
+	float:left;
+	word-spacing:14px;
+	font-weight:bold;
+	padding-top:5px;
+}
+.cellBodyHead
+{
+	height:80px; 
+	font-weight:bold;
+	padding-left:40%; 
+	line-height:80px; 
+}
+.cellBodyHeadGroundDignosis
+{
+	background: url(../images/pic_zd_left.png) no-repeat 12% center;
+	word-spacing: 14px;
+}
+.cellBodyHeadGroundDrug
+{
+	background: url(../images/pic_ywyz_left.png) no-repeat 12% center;
+	word-spacing: 14px;
+}
+.cellBodyHeadGroundExamination
+{
+	background: url(../images/pic_jc_right.png) no-repeat 12% center;
+	word-spacing: 14px;
+}
+.cellBodyHeadGroundLab
+{
+	background: url(../images/pic_jy_right.png) no-repeat 12% center;
+	word-spacing: 14px;
+}
+.cellBodyHeadGroundProcedure
+{
+	background: url(../images/pic_ss_left.png) no-repeat 12% center;
+	word-spacing: 14px;
+}
+.cellBodyHeadGroundDocumentation
+{
+	background: url(../images/pic_blws_left.png) no-repeat 12% center;
+}
+.cellBodyHeadGroundNoDrug
+{
+	background: url(../images/pic_footer_bj.png) no-repeat 12% center;
+}
+.cellBody
+{
+	padding-left: 21px;
+	padding-right: 2px;
+	padding-bottom: 4px;
+	text-align: left;
+	line-height: 14px;
+	overflow: hidden;
+	vertical-align: middle;
+	background: url(../images/button_small.gif) no-repeat left center 
+}
+.cellBodyRight
+{
+	padding-left: 2px;
+	padding-right: 2px;
+	padding-bottom: 4px;
+	text-align: right;
+	line-height: 14px;
+	overflow: hidden;
+	vertical-align: middle;
+}
+.cellTd
+{
+	padding-top:3px; 
+	vertical-align:top;
+}
+.cellHead a
+{
+	color:blue;
+}
+.cellBody a 
+{
+	color:black;
+}
+.cellBodyRight a
+{
+	text-decoration:none;
+	color:blue;
+}
+.cellFont
+{
+	color:blue;
+}
+a:hover 
+{ 
+	color:red; 
+}
+.loadingBar
+{
+	width:150px;
+	height:70px;
+	line-height:70px;
+}
+.sHead
+{
+	display:none;
+	width:100%;
+	overflow:hidden;
+}
+.leftClass
+{
+	padding-left:3px;
+	border-bottom:1px solid #0099ff;
+	float:left;
+	margin-left:3px;
+	text-align:left;
+	overflow:hidden;
+}
+
+.rightClass
+{
+	border-bottom:1px solid #0099ff;
+	float:right;
+	margin-right:3px;
+	text-align:left;
+	overflow:hidden;
+}
+
+.gapBottom
+{
+	height:4px;
+	border-bottom:0;
+	width:99%;
+	float:left
+}
+
+.gapContent
+{
+	margin-left:10px;
+}
+
+.styleHead
+{
+	cursor:pointer;
+	color:blue;
+}

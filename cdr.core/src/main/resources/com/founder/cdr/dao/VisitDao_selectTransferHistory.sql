@@ -1,0 +1,10 @@
+/**
+ * 转科转区转床信息
+ * 常学文  2013/10/22
+ */
+SELECT *
+  FROM TRANSFER_HISTORY TH
+ WHERE TH.PATIENT_SN = /*patientSn*/
+   AND TH.VISIT_SN = /*visitSn*/
+   AND TH.DELETE_FLAG = 0 
+ ORDER BY TH.EXEC_TIME DESC

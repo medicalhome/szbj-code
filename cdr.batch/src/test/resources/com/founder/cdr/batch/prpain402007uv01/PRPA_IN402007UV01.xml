@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN402007UV02 ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/PRPA_IN402007UV03.xsd">
+<!--
+出院召回消息
+-->
+	<!-- 消息ID -->
+	<id root="" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="PRPA_IN402001UV02" />
+	<!-- 消息发送系统的状态: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current  processing) -->
+	<processingModeCode code="R" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="AL" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+	
+	<!-- 封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+        <!-- 
+            消息交互类型
+            @code: 新增:new 
+        -->
+		<code code="new" />
+		<subject typeCode="SUBJ">
+		
+			<!-- 出院召回信息 -->
+			<inpatientEncounterEvent classCode="ENC" moodCode="EVN ">
+				<id>
+					<item root="1.2.156.112606.1.2.1.7" extension="1" identifierName="就诊次数"/>
+				</id>
+				
+				<!-- 必须固定项 -->
+				<code />
+				
+				<!-- 必须固定项 -->
+				<statusCode code="active" />
+
+				<!-- 召回日期 -->
+				<effectiveTime>
+					<any value="201112311100" />
+				</effectiveTime>
+				
+				<!-- 召回原因 -->
+				<reasonCode>
+					<item>
+						<displayName value="财务出错" />
+					</item>
+				</reasonCode>
+				
+				<!-- 病人信息 -->
+				<subject typeCode="SBJ ">
+					<patient classCode="PAT ">
+					    <!-- 病人标识 -->
+					    <id>
+					        <item root="1.2.156.112606.1.2.1.2" extension="01" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="222" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="87976" identifierName="就诊号"/>
+					    </id>
+					    
+					    <!-- 病区床号信息 -->
+					    <addr xsi:type="BAG_AD">
+					        <item use="TMP">
+					            <!-- 病区编码@code/病名名称@value-->
+					            <part type="BNR" value="12C" code="1000662" codeSystem="1.2.156.112606.1.1.33" />
+					            <!-- 床位号 -->
+					            <part type="CAR" value="001" />
+					        </item>
+					    </addr>
+					    
+					    <!-- 个人信息 -->
+						<patientPerson>	
+							<!-- 病人名称 -->
+							<name xsi:type="BAG_EN">
+								<item><part value="张三" /></item>
+							</name>
+							
+							<!-- 性别编码 -->
+							<administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3"/>
+							
+							<!-- 出生日期 -->
+							<birthTime value="19430605">
+							    <!-- 年龄 -->
+							    <originalText value="69" />
+							</birthTime>
+						</patientPerson>
+						
+						<!-- 病人科室信息 -->
+						<providerOrganization classCode="ORG" determinerCode="INSTANCE">
+							<!-- 科室编码 -->
+							<id>
+								<item root="1.2.156.112606.1.1.1" extension="1234" />
+							</id>
+							<!-- 科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="肾内科" />
+								</item>
+							</name>
+							<contactParty classCode="CON" />
+						</providerOrganization>
+					</patient>
+				</subject>
+				
+				<!-- 召回操作者信息 -->
+				<admitter typeCode="ADM">
+					<time />
+					<assignedPerson classCode="ASSIGNED">
+						<!-- 召回操作者编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="9875" />
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 召回操作者名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四" />
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</admitter>
+				
+				<!-- 必须固定项 -->
+				<location typeCode="LOC">
+					<time />
+					<statusCode />
+					<serviceDeliveryLocation classCode="SDLOC" />
+				</location>
+																				
+			</inpatientEncounterEvent>
+					
+		</subject>
+	</controlActProcess>	
+</PRPA_IN402007UV02>

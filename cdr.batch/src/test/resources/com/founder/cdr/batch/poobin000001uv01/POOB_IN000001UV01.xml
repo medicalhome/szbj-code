@@ -1,0 +1,204 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<POOB_IN000001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../../Schemas/POOB_IN000001UV.xsd">
+<!--
+过敏和生理状态
+-->
+	<!-- 消息ID -->
+	<id extension="BS306" />
+	<!-- 消息创建时间 -->
+	<creationTime value="20120106110000" />
+	<!-- 交互ID -->
+	<interactionId root="" extension="POOB_IN000001UV" />
+	<!-- 消息用途: P(Production); D(Debugging); T(Training) -->
+	<processingCode code="P" />
+	<!-- 消息处理模式: A(Archive); I(Initial load); R(Restore from archive); T(Current processing) -->
+	<processingModeCode code="T" />
+	<!-- 消息应答: AL(Always); ER(Error/reject only); NE(Never) -->
+	<acceptAckCode code="NE" />
+	<!-- 接受者 -->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 接受者ID -->
+			<id />
+		</device>
+	</receiver>
+	<!-- 发送者 -->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!-- 发送者ID -->
+			<id />
+		</device>
+	</sender>
+
+	<!-- 封装的消息内容 -->
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new 
+        -->
+	    <code code="new" />
+		<subject typeCode="SUBJ">
+			<resultGroup>
+				<code/>
+				<statusCode code="completed"/>
+
+				<!-- 记录时间 -->
+				<effectiveTime>
+					<any value="201203061017"/>
+				</effectiveTime>
+
+				<!-- 病人信息 -->
+				<subject contextControlCode="OP">
+					<patient classCode="PAT">
+						<!-- 病人标识 -->
+						<id>
+							<item root="1.2.156.112606.1.2.1.2" extension="4130232" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="4130230" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+						<patientPerson>
+							<!-- 病人名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+							<!-- 性别编码 -->
+							<administrativeGenderCode code="F" codeSystem="1.2.156.112606.1.1.3"/>
+							<!-- 出生日期 -->
+							<birthTime value="19730401">
+							    <!-- 年龄 -->
+							    <originalText value="39" />
+							</birthTime>
+						</patientPerson>
+					</patient>
+				</subject>
+
+				<!-- 记录人信息 -->
+				<author contextControlCode="AP">
+					<assignedEntity classCode="ASSIGNED">
+						<!-- 医生编码 -->
+						<id>
+							<item root="1.2.156.112606.1.1.2" extension="5678" />
+						</id>
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!-- 医生姓名 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四"/>
+								</item>
+							</name>
+						</assignedPerson>
+						<!-- 所在科室信息 -->
+						<representedOrganization classCode="ORG" determinerCode="INSTANCE">
+							<!-- 科室编码 -->
+							<id>
+								<item root="1.2.156.112606.1.1.1" extension="6789" />
+							</id>
+							<!-- 科室名称 -->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="内分泌科"/>
+								</item>
+							</name>
+						</representedOrganization>
+					</assignedEntity>
+				</author>
+
+
+				<!-- 生理状态信息(可循环) -->
+				<component>
+					<commonObservationEvent>
+						<!-- 过敏/生理状态编码(固定值: 生理状态01, 过敏02) -->
+						<code code="01" codeSystem="1.2.156.112606.1.2.2.23">
+							<displayName value="生理状态"/>
+						</code>
+						
+						<statusCode code="completed"/>
+						<effectiveTime />
+
+						<!-- 生理状态编码/生理状态名称 -->
+						<value xsi:type="CD" code="12" codeSystem="1.2.156.112606.1.1.17">
+							<displayName value="孕妇"/>
+						</value>
+
+						<subject contextControlCode="OP">
+							<patient classCode="PAT" />
+						</subject>
+					</commonObservationEvent>
+				</component>
+
+
+				<!-- 过敏信息(可循环) -->
+				<component>
+					<commonObservationEvent>
+						<!-- 过敏/生理状态编码(固定值: 生理状态01, 过敏02) -->
+						<code code="02" codeSystem="1.2.156.112606.1.2.2.23">
+							<displayName value="过敏"/>
+						</code>
+						
+						<statusCode code="completed"/>
+						
+						<!-- 过敏开始时间 -->
+						<effectiveTime>
+						    <any value="201203011200" />
+						</effectiveTime>
+						
+						<!-- 是否家族史编码(@code - 固定值09)/是否家族史(@value - 是:1 否:0) -->
+						<interpretationCode xsi:type="PQR" value="0" code="09" codeSystem="1.2.156.112606.1.1.84">
+							<displayName value="没有家族史"/>
+						</interpretationCode>
+						
+						<!-- 过敏原信息 -->
+						<subject contextControlCode="OP">
+							<investigativeSubject classCode="INVSBJ">
+							   <!-- 过敏诊断内容编码/过敏诊断内容名称(过敏大类) -->
+							    <code code="01">
+							        <displayName value="15元大环" />
+							    </code>
+								<subjectMaterial classCode="MMAT" determinerCode="KIND">
+									<!-- 过敏原编码 -->
+									<code code="8901" codeSystem="1.2.156.112606.1.1.13">
+										<!-- 过敏原名称 -->
+										<displayName value="红花"/>
+									</code>
+									<asMemberOf classCode="MBR">
+									   <!-- 过敏类型编码/过敏类型名称(@code: 01药品, 02非药品) -->
+										<code code="01">
+											<displayName value="药品" />
+										</code>
+									</asMemberOf>
+								</subjectMaterial>
+							</investigativeSubject>
+						</subject>
+						
+						<!-- 过敏严重性信息 -->
+						<subjectOf1 contextControlCode="AN">
+							<severityObservation>
+								<!-- 固定值 -->
+								<code code="SEV" />
+								<!-- 严重程度编码/严重程度名称 -->
+								<value code="M" codeSystem="1.2.156.112606.1.1.16">
+									<displayName value="中度"/>
+								</value>
+							</severityObservation>
+						</subjectOf1>
+						
+						<!-- 过敏备注信息 -->
+						<subjectOf3 contextControlCode="AN">
+							<annotation>
+								<!-- 备注内容 -->
+								<text value="过敏的备注内容"/>
+								<statusCode code="completed"/>
+								<author>
+									<assignedEntity classCode="ASSIGNED"/>
+								</author>
+							</annotation>
+						</subjectOf3>
+					</commonObservationEvent>
+				</component>
+
+			</resultGroup>
+		</subject>
+	</controlActProcess>
+</POOB_IN000001UV>

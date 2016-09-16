@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 标本号信息-标本号信息-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>BS019</msgId>
+        <!-- 消息名称 -->
+        <msgName>标本号信息</msgName>
+        <!-- 消息源系统编码 -->
+        <sourceSysCode>xxx</sourceSysCode>
+        <!-- 消息目标系统编码 由平台统一管理 可以为空 -->
+        <targetSysCode>xxx</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action = "insert">
+            <!-- 标本条码号  -->
+            <barCode>88888</barCode>
+            <!-- 域ID 对应术语服务ID：MS041 -->
+            <domainId>2</domainId>
+            <!-- 医嘱号  -->
+            <orderNo>35566</orderNo>
+            <!-- 执行科室编码 对应术语服务ID：MS025 -->
+            <performDeptCode>执行科室编码</performDeptCode>
+            <!-- 执行科室名称  -->
+            <performDeptName>执行科室名称</performDeptName>
+        </row>
+        
+        <row action = "insert">
+            <!-- 标本条码号  -->
+            <barCode>99999</barCode>
+            <!-- 域ID 对应术语服务ID：MS041 -->
+            <domainId>2</domainId>
+            <!-- 医嘱号  -->
+            <orderNo>315</orderNo>
+            <!-- 执行科室编码 对应术语服务ID：MS025 -->
+            <performDeptCode>执行科室编码</performDeptCode>
+            <!-- 执行科室名称  -->
+            <performDeptName>执行科室名称</performDeptName>
+        </row>
+    </body>
+</msg>

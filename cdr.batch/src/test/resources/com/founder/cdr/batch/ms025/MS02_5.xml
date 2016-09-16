@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 统一身份和权限管理公用服务-科室字典-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>MS025</msgId>
+        <!-- 版本号 -->
+        <version>1</version>
+        <!-- 消息名称 -->
+        <msgName>科室字典</msgName>
+        <!-- 消息来源的系统编码(接入的各系统均有系统编码，比如S028为术语编码服务) -->
+        <sourceSysCode>S028</sourceSysCode>
+        <!-- 消息目标的系统编码 由平台统一管理 暂时为空 -->
+        <targetSysCode>XXX</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete、update) -->
+        <row action = "delete">
+            <!-- 科室编码 -->
+            <code>1</code>
+            <!-- 科室名称 -->
+            <name>科室名称</name>
+            <!-- 组织级别 -->
+            <orgLevel>组织级别</orgLevel>
+            <!-- 科室类型 -->
+            <deptType>科室类型</deptType>
+            <!-- 学科/行政职能 -->
+            <subjects>学科/行政职能</subjects>
+            <!-- 院区标志码 -->
+            <locationCode>院区标志码</locationCode>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+        </row>
+         <row action = "delete">
+            <!-- 科室编码 -->
+            <code>2</code>
+            <!-- 科室名称 -->
+            <name>科室名称2</name>
+            <!-- 组织级别 -->
+            <orgLevel>组织级别2</orgLevel>
+            <!-- 科室类型 -->
+            <deptType>科室类型2</deptType>
+            <!-- 学科/行政职能 -->
+            <subjects>学科/行政职能2</subjects>
+            <!-- 院区标志码 -->
+            <locationCode>院区标志码2</locationCode>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+        </row> <row action = "delete">
+            <!-- 科室编码 -->
+            <code>3</code>
+            <!-- 科室名称 -->
+            <name>科室名称3</name>
+            <!-- 组织级别 -->
+            <orgLevel>组织级别3</orgLevel>
+            <!-- 科室类型 -->
+            <deptType>科室类型3</deptType>
+            <!-- 学科/行政职能 -->
+            <subjects>学科/行政职3能</subjects>
+            <!-- 院区标志码 -->
+            <locationCode>院区标志码</locationCode>
+            <!-- 拼音码 -->
+            <pyCode>拼音码</pyCode>
+        </row>
+    </body>
+</msg>

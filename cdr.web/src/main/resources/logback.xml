@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<!-- 当前时间的变量 -->
+	<timestamp key="bySecond" datePattern="HHmmss"/>
+	<!-- 日志输出的目录 -->
+	<property name="DIR_LOG" value="/opt/founder/cdr/tomcat/backlogs" />
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<!-- encoders are assigned the type ch.qos.logback.classic.encoder.PatternLayoutEncoder 
+			by default -->
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+  		<fileNamePattern>${DIR_LOG}/tom_run-${bySecond}-%d{yyyyMMdd}.log</fileNamePattern>            
+  		<maxHistory>7</maxHistory>        
+  		</rollingPolicy>         
+  		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<logger name="com.founder.cdr" additivity="false" level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<logger name="com.founder.cdr.web.LoginController" additivity="false" level="DEBUG">
+		<appender-ref ref="FILE" />
+	</logger>
+	
+	<logger name="org.springframework.jdbc.core.JdbcTemplate" additivity="false" level="DEBUG">
+		<appender-ref ref="STDOUT" />
+	</logger>
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+	</root>
+</configuration>

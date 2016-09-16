@@ -1,0 +1,70 @@
+#bios-window{
+	background:#F4F4F4;overflow:hidden;
+	font-size:12px;font-family:'宋体';
+	filter:progid:DXImageTransform.Microsoft.Shadow(Color=#ff666666, Strength=5, Direction=135);
+}
+
+.bios-tl{padding-left:3px;background:#DCE4F8 url(image/title_bg_left.gif) no-repeat 0 0}
+.bios-tr{padding-right:3px;background:#DCE4F8 url(image/title_bg_right.gif) no-repeat right 0;}
+.bios-tc{background:#DCE4F8 url(image/title_bg_center.gif) repeat-x 0 0;overflow:hidden;height:25px;line-height:25px;}
+.bios-ttc{height:3px}
+.bios-header-text{font-size:12px;font-weight:bold;color:#000;margin-left:5px;float:left}
+.bios-header-tools{float:right;margin-top:3px}
+.bios-header-tools strong{display:none}
+
+.bios-ml{background:url(image/win_l.gif) repeat-y 0 0;padding-left:3px;}
+.bios-mr{background:url(image/win_r.gif) repeat-y right 0;padding-right:3px;}
+.bios-mc{padding:0}
+.bios-body{overflow:auto;padding:0;font-size:12px;}
+
+.bios-btn{text-align:center}
+
+.bios-bl{background:url(image/win_lb.gif) no-repeat 0 bottom;padding-left:3px}
+.bios-br{background:url(image/win_rb.gif) no-repeat right bottom;padding-right:3px}
+.bios-bc{background:url(image/win_b.gif) repeat-x 0 bottom;height:3px;font-size:3px}
+
+.biosPopup_alert{
+	padding-left:90px;
+	background:url(image/info.gif) no-repeat 20px 50%
+}
+.biosPopup_succeed{
+	padding-left:90px;
+	background:url(image/right.gif) no-repeat 20px 50%
+}
+.biosPopup_error{
+	padding-left:90px;
+	background:url(image/err.gif) no-repeat 20px 50%
+}
+.biosPopup_confirm{
+	padding-left:90px;
+	background:url(image/ask.gif) no-repeat 20px 50%
+}
+.loading_img{
+	height:50px;
+	background:url(image/loading.gif) no-repeat center;
+}
+.bios-header-tools div{
+	cursor:pointer;
+	width:25px;height:18px;float:left;margin:-3px 0px
+}
+.biosPopup_close{
+	background:url(image/ico.gif) no-repeat -75px 0;
+	width:44px !important;
+}
+.biosPopup_max{
+	background:url(image/ico.gif) no-repeat -50px 0px;
+}
+.biosPopup_min{
+	background:url(image/ico.gif) no-repeat -25px 0;
+}
+.biosPopup_normal{
+	background:url(image/ico.gif) no-repeat 0 0;
+}
+
+.biosPopup_alert .bios-content,.biosPopup_succeed .bios-content,.biosPopup_error .bios-content,.biosPopup_confirm .bios-content{padding:50px 0 0}
+
+input.btnStyle{
+	background:url(image/btn_bg.gif) no-repeat;
+	width:80px;height:21px;line-height:21px;
+	font-size:12px;color:#000;border:0;margin:10px 0
+}

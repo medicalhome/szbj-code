@@ -1,0 +1,1024 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<configuration>
+	<!-- 当前时间的变量 -->
+	<timestamp key="bySecond" datePattern="yyyyMMdd'_'HHmmss"/>
+	<!-- 日志输出的目录 -->
+	<property name="DIR_LOG" value="/opt/founder/cdr/batch/logs" />
+	<!-- 连接的队列名称 -->
+	<define name="QueueName" class="com.founder.cdr.batch.QueueNamePropertyDefiner">
+	</define>
+	<!-- 日志命名参数 -->
+	<property name="MessageBS313Check" value="BS313CHECK"/>	
+	<property name="MessageBS001Check" value="BS001CHECK"/>
+	<property name="MessageBS002Check" value="BS002CHECK"/>
+	<property name="MessageBS004Check" value="BS004CHECK"/>
+	<property name="MessageBS005Check" value="BS005CHECK"/>
+	<property name="MessageBS006Check" value="BS006CHECK"/>
+	<property name="MessageBS007Check" value="BS007CHECK"/>
+	<property name="MessageBS008Check" value="BS008CHECK"/>
+	<property name="MessageBS301Check" value="BS301CHECK"/>
+	<property name="MessageBS302Check" value="BS302CHECK"/>
+	<property name="MessageBS303Check" value="BS303CHECK"/>
+	<property name="MessageBS306Check" value="BS306CHECK"/>
+	<property name="MessageBS307Check" value="BS307CHECK"/>
+	<property name="MessageBS308Check" value="BS308CHECK"/>
+	<property name="MessageBS309Check" value="BS309CHECK"/>
+	<property name="MessageBS304Check" value="BS304CHECK"/>
+	<property name="MessageBS305Check" value="BS305CHECK"/>
+	<property name="MessageBS310Check" value="BS310CHECK"/>
+	<property name="MessageBS311Check" value="BS311CHECK"/>
+	<property name="MessageBS312Check" value="BS312CHECK"/>
+	<property name="MessageBS321Check" value="BS321CHECK"/>
+	<property name="MessageBS347Check" value="BS347CHECK"/>
+	<property name="MessageBS352Check" value="BS352CHECK"/>
+	<property name="MessageBS913Check" value="BS913CHECK"/>
+	<property name="MessageBS317Check" value="BS317CHECK"/>
+	<property name="MessageBS320Check" value="BS320CHECK"/>
+	<property name="MessageBS003Check" value="BS003CHECK"/>
+	<property name="MessageBS019Check" value="BS019CHECK"/>
+	<property name="MessageBS319Check" value="BS319CHECK"/>
+	<property name="MessageBS355Check" value="BS355CHECK"/>
+	<property name="MessageBS354Check" value="BS354CHECK"/>
+	
+	<property name="MessageBS322Check" value="BS322CHECK"/>
+	<property name="MessageBS323Check" value="BS323CHECK"/>
+	<property name="MessageBS324Check" value="BS324CHECK"/>
+	<property name="MessageBS325Check" value="BS325CHECK"/>
+	<property name="MessageBS326Check" value="BS327CHECK"/>
+	<property name="MessageBS327Check" value="BS354CHECK"/>
+	<property name="MessageBS328Check" value="BS328CHECK"/>
+	<property name="MessageBS329Check" value="BS329CHECK"/>
+	<property name="MessageBS330Check" value="BS330CHECK"/>
+	<property name="MessageBS331Check" value="BS331CHECK"/>
+	<property name="MessageBS332Check" value="BS332CHECK"/>
+	<property name="MessageBS333Check" value="BS333CHECK"/>
+	<property name="MessageBS334Check" value="BS334CHECK"/>
+	<property name="MessageBS335Check" value="BS335CHECK"/>
+	<property name="MessageBS336Check" value="BS336CHECK"/>
+	<property name="MessageBS337Check" value="BS337CHECK"/>
+	<property name="MessageBS338Check" value="BS338CHECK"/>
+	<property name="MessageBS340Check" value="BS340CHECK"/>
+	<property name="MessageBS341Check" value="BS341CHECK"/>
+	<property name="MessageBS342Check" value="BS342CHECK"/>
+	<property name="MessageBS343Check" value="BS343CHECK"/>
+	<property name="MessageBS344Check" value="BS344CHECK"/>
+	<property name="MessageBS345Check" value="BS345CHECK"/>
+	<property name="MessageBS348Check" value="BS348CHECK"/>
+	<property name="MessageBS349Check" value="BS349CHECK"/>
+	<property name="MessageBS350Check" value="BS350CHECK"/>
+	<property name="MessageBS351Check" value="BS351CHECK"/>
+	<property name="MessageBS315Check" value="BS315CHECK"/>
+	<property name="MessageBS356Check" value="BS356CHECK"/>
+	<property name="MessageBS357Check" value="BS357CHECK"/>
+	<property name="MessageBS359Check" value="BS359CHECK"/>
+	<property name="MessageBS360Check" value="BS360CHECK"/>
+	
+	<!-- <property name="MessageTS003Check" value="TS003CHECK"/> -->
+
+	<!-- 控制台输出 -->
+	<appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+	
+	<appender name="FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">		
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-%d{yyyyMMdd}.log</fileNamePattern>            
+  		<maxHistory>10</maxHistory>        
+  		</rollingPolicy>         
+  		<encoder>
+			<pattern>%d{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+		</encoder>
+	</appender>
+    
+	<logger name="com.founder.cdr" additivity="false" level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</logger>
+	
+	<logger name="org.springframework.jdbc.core.JdbcTemplate" additivity="false" level="DEBUG">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</logger>
+	
+	<!-- 日志定义 -->
+	<if condition='p("QueueName").contains("OUT.S015.HL7MSG.LQ")' level="DEBUG"> 
+	    <then>
+			<appender name="FILEBS313CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS313Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+		
+			<appender name="FILEBS002CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS002Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<!-- <appender name="FILEBS004CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS004Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender> -->
+			<appender name="FILEBS005CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS005Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS006CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS006Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS007CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS007Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS008CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS008Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<!--
+			<appender name="FILEBS301CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS301Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			-->
+			<appender name="FILEBS302CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS302Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS303CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS303Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS306CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS306Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS307CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS307Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS308CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS308Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS309CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS309Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS304CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS304Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS305CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS305Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS310CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS310Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS311CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS311Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS312CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS312Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS321CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS321Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS352CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS352Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			
+			<appender name="FILEBS913CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS913Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+		  
+		  <appender name="FILEBS001CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">         
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS001Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>    
+		  </appender>
+		  <appender name="FILEBS317CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS317Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+		  <appender name="FILEBS003CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS003Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<!-- <appender name="FILETS003CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageTS003Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender> -->
+			<appender name="FILEBS019CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS019Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS315CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS315Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+		</then>
+	</if>
+	<if condition='p("QueueName").contains("OUT.S015.HL7CDA.LQ") || p("QueueName").contains("OUT.S015.TRANSFER1.LQ") || p("QueueName").contains("OUT.S015.TRANSFER2.LQ") || p("QueueName").contains("OUT.S015.TRANSFER3.LQ") || p("QueueName").contains("OUT.S015.TRANSFER4.LQ")'
+	level="DEBUG"> 
+	    <then>
+	    	<appender name="FILEBS347CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS347Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS320CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS320Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS319CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS319Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS355CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS355Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS354CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS354Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			
+			<appender name="FILEBS322CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS322Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS323CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS323Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS324CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS324Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS325CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS325Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS326CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS326Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS327CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS327Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS328CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS328Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS329CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS329Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS330CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS330Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS331CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS331Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS332CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS332Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS333CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS333Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS334CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS334Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS335CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS335Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS336CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS336Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS337CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS337Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS338CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS338Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS340CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS340Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS341CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS341Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS342CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS342Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS343CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS343Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS344CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS344Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS345CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS345Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS348CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS348Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS349CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS349Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS350CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS350Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS351CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS351Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS356CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS356Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS357CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS357Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS359CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS359Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+			<appender name="FILEBS360CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		  		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS360Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+		</then>
+	</if>
+
+	
+	<if condition='p("QueueName").contains("OUT.S015.TRANSFER1.LQ") || p("QueueName").contains("OUT.S015.TRANSFER2.LQ") || p("QueueName").contains("OUT.S015.TRANSFER3.LQ") || p("QueueName").contains("OUT.S015.TRANSFER4.LQ") || p("QueueName").contains("OUT.S015.HL7MSG.LQ")' level="DEBUG"> 
+	    <then>
+	    	<appender name="FILEBS301CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS301Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>        
+		  		</encoder>
+			</appender>
+		</then>
+	</if>
+	
+	<if condition='p("QueueName").contains("OUT.S015.BS004.LQ") || p("QueueName").contains("OUT.S015.HL7MSG.LQ")' level="DEBUG"> 
+	    <then>
+	    	<appender name="FILEBS004CHECK" class="ch.qos.logback.core.rolling.RollingFileAppender">
+				<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">            
+		  		<fileNamePattern>${DIR_LOG}/%d{yyyyMMdd}/batch-${QueueName}-${bySecond}-${MessageBS004Check}-%d{yyyyMMdd}.log</fileNamePattern>            
+		  		<maxHistory>10</maxHistory>        
+		  		</rollingPolicy>         
+		  		<encoder>            
+		  			<pattern>%d{HH:mm:ss.SSS} %-5level -%msg%n</pattern>
+		  		</encoder>
+			</appender>
+		</then>
+	</if>
+	
+	<!-- 日志调用 -->
+	<if condition='p("QueueName").contains("OUT.S015.HL7MSG.LQ")' level="DEBUG"> 
+	    <then>
+			<logger name="BS313" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS313CHECK" />
+			</logger>
+			<logger name="BS001" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS001CHECK" />
+			</logger>
+			<logger name="BS002" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS002CHECK" />
+			</logger>
+			<!-- <logger name="BS004" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS004CHECK" />
+			</logger> -->
+			<logger name="BS005" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS005CHECK" />
+			</logger>
+			<logger name="BS006" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS006CHECK" />
+			</logger>
+			<logger name="BS007" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS007CHECK" />
+			</logger>
+			<logger name="BS008" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS008CHECK" />
+			</logger>
+			<!--
+			<logger name="BS301" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS301CHECK" />
+			</logger>
+			-->
+			<logger name="BS302" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS302CHECK" />
+			</logger>
+			<logger name="BS303" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS303CHECK" />
+			</logger>
+			<logger name="BS306" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS306CHECK" />
+			</logger>
+			<logger name="BS307" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS307CHECK" />
+			</logger>
+			<logger name="BS308" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS308CHECK" />
+			</logger>
+			<logger name="BS309" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS309CHECK" />
+			</logger>
+			<logger name="BS304" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS304CHECK" />
+			</logger>
+			<logger name="BS305" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS305CHECK" />
+			</logger>
+			<logger name="BS310" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS310CHECK" />
+			</logger>
+			<logger name="BS311" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS311CHECK" />
+			</logger>
+			<logger name="BS312" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS312CHECK" />
+			</logger>
+			<logger name="BS321" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS321CHECK" />
+			</logger>
+			<logger name="BS352" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS352CHECK" />
+			</logger>
+			<logger name="BS913" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS913CHECK" />
+			</logger>
+			<logger name="BS317" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS317CHECK" />
+			</logger>
+			<logger name="BS003" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS003CHECK" />
+			</logger>
+			<!-- <logger name="TS003" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILETS003CHECK" />
+			</logger> -->
+			<logger name="BS019" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS019CHECK" />
+			</logger>
+			<logger name="BS315" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS315CHECK" />
+			</logger>
+		</then>
+	</if>
+	<if condition='p("QueueName").contains("OUT.S015.HL7CDA.LQ") || p("QueueName").contains("OUT.S015.TRANSFER1.LQ") || p("QueueName").contains("OUT.S015.TRANSFER2.LQ") || p("QueueName").contains("OUT.S015.TRANSFER3.LQ") || p("QueueName").contains("OUT.S015.TRANSFER4.LQ")' level="DEBUG"> 
+	    <then>
+	    	<logger name="BS347" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS347CHECK" />
+			</logger>
+			<logger name="BS320" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS320CHECK" />
+			</logger>
+			<logger name="BS319" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS319CHECK" />
+			</logger>
+			<logger name="BS355" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS355CHECK" />
+			</logger>
+			<logger name="BS354" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS354CHECK" />
+			</logger>
+			
+			<logger name="BS322" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS322CHECK" />
+			</logger>
+			<logger name="BS323" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS323CHECK" />
+			</logger>
+			<logger name="BS324" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS324CHECK" />
+			</logger>
+			<logger name="BS325" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS325CHECK" />
+			</logger>
+			<logger name="BS326" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS326CHECK" />
+			</logger>
+			<logger name="BS327" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS327CHECK" />
+			</logger>
+			<logger name="BS328" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS328CHECK" />
+			</logger>
+			<logger name="BS329" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS329CHECK" />
+			</logger>
+			<logger name="BS330" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS330CHECK" />
+			</logger>
+			<logger name="BS331" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS331CHECK" />
+			</logger>
+			<logger name="BS332" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS332CHECK" />
+			</logger>
+			<logger name="BS333" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS333CHECK" />
+			</logger>
+			<logger name="BS334" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS334CHECK" />
+			</logger>
+			<logger name="BS335" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS335CHECK" />
+			</logger>
+			<logger name="BS336" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS336CHECK" />
+			</logger>
+			<logger name="BS337" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS337CHECK" />
+			</logger>
+			<logger name="BS338" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS338CHECK" />
+			</logger>
+			<logger name="BS340" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS340CHECK" />
+			</logger>
+			<logger name="BS341" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS341CHECK" />
+			</logger>
+			<logger name="BS342" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS342CHECK" />
+			</logger>
+			<logger name="BS343" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS343CHECK" />
+			</logger>
+			<logger name="BS344" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS344CHECK" />
+			</logger>
+			<logger name="BS345" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS345CHECK" />
+			</logger>
+			<logger name="BS348" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS348CHECK" />
+			</logger>
+			<logger name="BS349" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS349CHECK" />
+			</logger>
+			<logger name="BS350" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS350CHECK" />
+			</logger>
+			<logger name="BS351" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS351CHECK" />
+			</logger>
+			<logger name="BS356" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS356CHECK" />
+			</logger>
+			<logger name="BS357" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS357CHECK" />
+			</logger>
+			<logger name="BS359" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS359CHECK" />
+			</logger>
+			<logger name="BS360" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS360CHECK" />
+			</logger>
+		</then>
+	</if>
+	
+	<if condition='p("QueueName").contains("OUT.S015.TRANSFER1.LQ") || p("QueueName").contains("OUT.S015.TRANSFER2.LQ") || p("QueueName").contains("OUT.S015.TRANSFER3.LQ") || p("QueueName").contains("OUT.S015.TRANSFER4.LQ") || p("QueueName").contains("OUT.S015.HL7MSG.LQ")' level="DEBUG"> 
+	    <then>
+	    	<logger name="BS301" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS301CHECK" />
+			</logger>
+		</then>
+	</if>
+	
+	<if condition='p("QueueName").contains("OUT.S015.BS004.LQ") || p("QueueName").contains("OUT.S015.HL7MSG.LQ")' level="DEBUG"> 
+	    <then>
+	    	<logger name="BS004" additivity="false" level="DEBUG">
+				<appender-ref ref="STDOUT" />
+				<appender-ref ref="FILEBS004CHECK" />
+			</logger>
+		</then>
+	</if>
+
+	<!--
+	<logger name="org.springframework.jdbc.core.StatementCreatorUtils" additivity="false" level="TRACE">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</logger> -->
+	
+	<root level="INFO">
+		<appender-ref ref="STDOUT" />
+		<appender-ref ref="FILE" />
+	</root>
+</configuration>

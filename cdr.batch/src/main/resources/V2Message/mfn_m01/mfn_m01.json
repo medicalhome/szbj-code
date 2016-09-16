@@ -1,0 +1,786 @@
+{
+	"identifier" : {
+		"desc" : "字典类别",
+		"path" : "/MFI-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"sourceSysCode" : {
+		"desc" : "消息源系统编码",
+		"path" : "/MSH-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"targetSysCode" : {
+		"desc" : "消息目标系统编码",
+		"path" : "/MSH-5",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"createTime" : {
+		"desc" : "消息创建时间",
+		"path" : "/MFI-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"Dept" : {
+		"desc" : "科室字典",
+		"path" : "/MF/Z01",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "科室编码",
+				"path" : "/MF/Z01-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "科室名称",
+				"path" : "/MF/Z01-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"otherName" : {
+				"desc" : "别名",
+				"path" : "/MF/Z01-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"openFlag" : {
+				"desc" : "开放标志",
+				"path" : "/MF/Z01-9",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"mzFlag" : {
+				"desc" : "门诊住院标志",
+				"path" : "/MF/Z01-6",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/Z01-11",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"Person" : {
+		"desc" : "人员字典",
+		"path" : "/MF/Z02",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "人员编码",
+				"path" : "/MF/Z02-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "人员名称",
+				"path" : "/MF/Z02-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"sexCode" : {
+				"desc" : "性别码",
+				"path" : "/MF/Z02-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"nationalIdentifier" : {
+				"desc" : "身份证号",
+				"path" : "/MF/Z02-8",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"birthday" : {
+				"desc" : "出生日期",
+				"path" : "/MF/Z02-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"departCd" : {
+				"desc" : "科室编码",
+				"path" : "/MF/Z02-9-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"departName" : {
+				"desc" : "科室名称",
+				"path" : "/MF/Z02-9-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"employeeTypeCd" : {
+				"desc" : "人员类型码",
+				"path" : "/MF/Z02-11",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/Z02-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"WardDictionary" : {
+		"desc" : "病区字典",
+		"path" : "/MF/Z03",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "病区编码",
+				"path" : "/MF/Z03-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "病区名称",
+				"path" : "/MF/Z03-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"deptSn" : {
+				"desc" : "科室",
+				"path" : "/MF/Z03-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"Drug" : {
+		"desc" : "药品字典",
+		"path" : "/MF/Z06",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "药品编码",
+				"path" : "/MF/Z06-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "药品名称",
+				"path" : "/MF/Z06-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugId" : {
+				"desc" : "自定义码",
+				"path" : "/MF/Z06-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"printName" : {
+				"desc" : "通用名称",
+				"path" : "/MF/Z06-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugStandardId" : {
+				"desc" : "国标分类码",
+				"path" : "/MF/Z06-14",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"specification" : {
+				"desc" : "规格",
+				"path" : "/MF/Z06-19",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"retprice" : {
+				"desc" : "零售价",
+				"path" : "/MF/Z06-20",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"buyPrice" : {
+				"desc" : "购入价",
+				"path" : "/MF/Z06-21",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"packUnit" : {
+				"desc" : "包装单位",
+				"path" : "/MF/Z06-22",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"packSize" : {
+				"desc" : "包装数量",
+				"path" : "/MF/Z06-23",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"miniUnit" : {
+				"desc" : "最小单位",
+				"path" : "/MF/Z06-24",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"dosage" : {
+				"desc" : "剂型编码",
+				"path" : "/MF/Z06-25",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderDosage" : {
+				"desc" : "常用剂量",
+				"path" : "/MF/Z06-26",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"dosageUnit" : {
+				"desc" : "常用剂量单位",
+				"path" : "/MF/Z06-27",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"supplyCode" : {
+				"desc" : "常用服法",
+				"path" : "/MF/Z06-28",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"frequCode" : {
+				"desc" : "常用频率",
+				"path" : "/MF/Z06-29",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+	
+			"skinTestFlag" : {
+				"desc" : "皮试标志（试敏标志）",
+				"path" : "/MF/Z06-39",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"manufactory" : {
+				"desc" : "制药厂",
+				"path" : "/MF/Z06-42",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"divideFlag" : {
+				"desc" : "分装标志",
+				"path" : "/MF/Z06-45",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/Z06-49",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugKind" : {
+				"desc" : "药品类别（港大系统类别，不确定）",
+				"path" : "/MF/Z06-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"classCode" : {
+				"desc" : "药品类别码（港大药品类别，不确定）",
+				"path" : "/MF/Z06-17",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"drugQuality" : {
+				"desc" : "药品性质，数据库中无对应标志，但可能对应毒麻标志，贵重标志等",
+				"path" : "/MF/Z06-18",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"EmergencyTreatment" : {
+		"desc" : "ICD10",
+		"path" : "/MF/Z10",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "疾病编码",
+				"path" : "/MF/Z10-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "疾病名称",
+				"path" : "/MF/Z10-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/Z10-11",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"samplesType" : {
+		"desc" : "标本类别",
+		"path" : "/MF/Z99",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "标本类别编码",
+				"path" : "/MF/Z99-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "标本类别名称",
+				"path" : "/MF/Z99-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/Z99-8",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}, 
+	
+	"supplyRoute" : {
+		"desc" : "用药途径（给药方式）",
+		"path" : "/MF/ZA2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "用药途径编码",
+				"path" : "/MF/ZA2-5",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "用药途径名称",
+				"path" : "/MF/ZA2-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/ZA2-8",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}, 
+	
+	"medicineFreq" : {
+		"desc" : "频率",
+		"path" : "/MF/ZA3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "频率编码",
+				"path" : "/MF/ZA3-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "频率名称",
+				"path" : "/MF/ZA3-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/ZA3-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"codeOrderItemDto" : {
+		"desc" : "医嘱字典",
+		"path" : "/MF/ZA1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "医嘱编码",
+				"path" : "/MF/ZA1-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "医嘱名称",
+				"path" : "/MF/ZA1-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/ZA1-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"classCode" : {
+		"desc" : "系统类别（区分检查项目/检验项目）",
+		"path" : "/MF/Z04-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"labOrExam" : {
+		"desc" : "医嘱字典",
+		"path" : "/MF/Z04",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+						
+			"newUpFlag" : {
+				"desc" : "操作类型",
+				"path" : "/MF/MFE-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"pyCode" : {
+				"desc" : "拼音码",
+				"path" : "/MF/Z04-19",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"code" : {
+				"desc" : "项目编码",
+				"path" : "/MF/Z04-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"name" : {
+				"desc" : "项目名称",
+				"path" : "/MF/Z04-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"execNuit" : {
+				"desc" : "执行科室",
+				"path" : "/MF/Z04-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"execUnit" : {
+				"desc" : "执行科室",
+				"path" : "/MF/Z04-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}
+}

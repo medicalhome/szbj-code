@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 访问控制信息服务结果数据-访问控制信息服务结果数据-消息定义 -->
+<msg>
+    <head>
+        <!-- 消息类别代码 -->
+        <msgId>BS908</msgId>
+        <!-- 消息名称 -->
+        <msgName>访问权限更新通知</msgName>
+        <!-- 消息源系统编码 -->
+        <sourceSysCode>S030</sourceSysCode>
+        <!-- 消息目标系统编码 由平台统一管理 可以为空 -->
+        <targetSysCode>S015</targetSysCode>
+        <!-- 消息创建时间 -->
+        <createTime>2009-01-01 12:13:30</createTime>
+    </head>
+    <body>
+        <!-- 操作类型 取值范围( insert、delete) -->
+        <row action = "insert">
+			<!-- 用户/角色区分 0-用户、1-角色-->
+			<userOrRole>1</userOrRole>
+            <!-- 用户ID/角色ID-->
+            <userOrRoleNo>9090909090</userOrRoleNo>
+			<!-- 权限ID -->
+            <authId>A0001</authId>
+			<!-- 权限描述 -->
+            <authDesc>可以访问本科室门诊患者信息</authDesc>
+        </row>
+        <!-- 操作类型 取值范围( insert、delete) -->
+        <row action = "insert">
+			<!-- 用户/角色区分 0-用户、1-角色-->
+			<userOrRole>0</userOrRole>
+            <!-- 用户ID/角色ID-->
+            <userOrRoleNo>10</userOrRoleNo>
+			<!-- 权限ID -->
+            <authId>A0002</authId>
+			<!-- 权限描述 -->
+            <authDesc>可以访问本科室门诊患者信息</authDesc>
+        </row>
+        <!-- 操作类型 取值范围( insert、delete) -->
+        <row action = "insert">
+			<!-- 用户/角色区分 0-用户、1-角色-->
+			<userOrRole>0</userOrRole>
+            <!-- 用户ID/角色ID-->
+            <userOrRoleNo>9090909090</userOrRoleNo>
+			<!-- 权限ID -->
+            <authId>A0002</authId>
+			<!-- 权限描述 -->
+            <authDesc>可以访问本科室门诊患者信息</authDesc>
+        </row>
+    </body>
+</msg>

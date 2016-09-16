@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PRPA_IN400001UV ITSVersion="XML_1.0" xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 Schemas/PRPA_IN400001UV.xsd">
+<!--
+PRPA_IN400001UV
+02
+出科
+-->	
+    <!--消息ID-->
+	<id root="2.16.840.1.113883.19.3.2409"/>
+	<!--消息创建时间-->
+	<creationTime value="201203011525"/>
+	<!--交互ID-->
+	<interactionId root="2.16.840.1.113883.1.18" extension="PRPA_IN400001UV"/>
+	<!--消息发送系统的状态:P(Production);D (Debugging);T (Training)-->
+	<processingCode code="P"/>
+	<!--消息处理模式：A (Archive)；I (Initial load);R (Restore from archive);T (Current processing)-->
+	<processingModeCode code="R"/>
+	<!--消息应答：AL (Always)；ER (Error/reject only)；NE (Never)-->
+	<acceptAckCode code="AL"/>
+	<!--接受者-->
+	<receiver typeCode="RCV">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--接受者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99999.4567"/>
+			</id>
+			<!--接受者电话-->
+			<telecom xsi:type="BAG_TEL">
+				<item use="WP" value="https://example.org/PatientFeed"/>
+			</telecom>
+		</device>
+	</receiver>
+	<!--发送者-->
+	<sender typeCode="SND">
+		<device classCode="DEV" determinerCode="INSTANCE">
+			<!--发送者ID-->
+			<id>
+				<item root="1.2.840.114350.1.13.99998.8734"/>
+			</id>
+		</device>
+	</sender>
+	<controlActProcess classCode="CACT" moodCode="EVN">
+		<!-- 
+            消息交互类型
+            @code: 新增:new 修改:update 
+        -->
+	    <code code="update" />
+		<subject typeCode="SUBJ">
+			<encounterEvent>
+				<!--就诊次数-->
+				<id>
+                    <item scope="VER" extension="1" root="1.2.156.112606.1.2.1.7" identifierName="就诊次数"/>
+				</id>
+				<!--出科-->
+				<code code="11" codeSystem="1.2.156.112606.1.2.3.34">
+					<displayName value="出科"/>
+				</code>
+				<statusCode code="completed"/>
+				<!--出科时间-->
+				<effectiveTime>
+					<any value="201203011530"/>
+				</effectiveTime>
+				<!--在科天数-->
+				<activityTime>
+					<width xsi:type="INT" value="2"/>
+				</activityTime>
+				<!--出科去向-->
+				<dischargeDispositionCode code="01" codeSystem="1.2.156.112606.1.1.78">
+					<displayName value="转去其他科室"/>
+				</dischargeDispositionCode>
+				<!--病人信息-->
+				<subject>
+					<patient classCode="PAT">
+						<!--病历号/EMPI_ID-->
+						<id>
+							<item root="1.2.156.112606.1.2.1.2" extension="4130232" identifierName="域ID"/>
+					        <item root="1.2.156.112606.1.2.1.3" extension="4130230" identifierName="患者ID"/>
+					        <item root="1.2.156.112606.1.2.1.12" extension="121212" identifierName="就诊号"/>
+						</id>
+						<patientPerson>
+							<!--病人姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="张三"/>
+								</item>
+							</name>
+							<!--性别代码-->
+							<administrativeGenderCode/>
+							<!--出生日期-->
+							<birthTime value="19730401">
+							    <!-- 年龄 -->
+							    <originalText value="39" />
+							</birthTime>
+						</patientPerson>
+					</patient>
+				</subject>
+				<!--出科操作者-->
+				<discharger typeCode="DIS">
+					<assignedPerson classCode="ASSIGNED">
+						<!--ID-->
+						<id>
+							<item extension="5678" root="1.2.156.112606.1.1.2" identifierName="护士ID"/>
+						</id>
+						
+						<assignedPerson classCode="PSN" determinerCode="INSTANCE">
+							<!--姓名-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="李四"/>
+								</item>
+							</name>
+						</assignedPerson>
+					</assignedPerson>
+				</discharger>
+				<!--转出科室-->
+				<location typeCode="LOC">
+					<!--未使用,1..1-->
+					<time/>
+					<statusCode code="active"/>
+					<serviceDeliveryLocation classCode="SDLOC">
+						<!--科室ID-->
+						<id>
+							<item extension="6789" root="1.2.156.112606.1.1.1" identifierName="科室ID"/>
+						</id>
+						<!--科室名称-->
+						<name xsi:type="BAG_EN">
+							<item>
+								<part value="ICU"/>
+							</item>
+						</name>
+						<location classCode="PLC" determinerCode="INSTANCE">
+							<!--病区ID-->
+							<id>
+								<item extension="789" root="1.2.156.112606.1.1.33" identifierName="病区ID"/>
+							</id>
+							<!--病区名称-->
+							<name xsi:type="BAG_EN">
+								<item>
+									<part value="ICU 4B 病区"/>
+								</item>
+							</name>
+							<!--床位-->
+							<positionText value="01"/>
+						</location>
+					</serviceDeliveryLocation>
+				</location>
+			</encounterEvent>
+		</subject>
+	</controlActProcess>
+</PRPA_IN400001UV>

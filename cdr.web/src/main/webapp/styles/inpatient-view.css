@@ -1,0 +1,14 @@
+.clinicalevent {
+	font-size: 11px;
+	color: red;
+	text-shadow: 0 0 2px #000;
+	text-align: center;
+	background-color: transparent;
+	/*Author:chang_xuewen
+	Date:2013/7/17 15:30
+	[BUG]0034926 ADD BEGIN*/
+	z-index:1;
+	/*[BUG]0034926 ADD END*/
+	/*font-weight: bold;*/
+}
+

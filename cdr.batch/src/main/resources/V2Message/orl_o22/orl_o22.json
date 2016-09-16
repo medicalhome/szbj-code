@@ -1,0 +1,303 @@
+{
+	"newUpFlg" : {
+		"desc" : "交互类型（新增删除标识）",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"newUpFlag" : {
+		"desc" : "交互类型（新增删除标识）",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"triggerEvent" : {
+		"desc" : "触发事件",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientDomain" : {
+		"desc" : "域id",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-2-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientLid" : {
+		"desc" : "患者id",
+		"path" : "/RESPONSE/PATIENT/PID-2-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-2-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitType" : {
+		"desc" : "就诊类别",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-2-4",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientName" : {
+		"desc" : "患者姓名",
+		"path" : "/RESPONSE/PATIENT/PID-5",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"genderCode" : {
+		"desc" : "性别编码",
+		"path" : "/RESPONSE/PATIENT/PID-8",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationCode" : {
+		"desc" : "操作人编码",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-10-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationName" : {
+		"desc" : "操作人姓名",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-10-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"operationDate" : {
+		"desc" : "操作日期",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-15",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"requestDept" : {
+		"desc" : "申请科室编码",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-17-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"requestDeptName" : {
+		"desc" : "申请科室名称",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-17-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"confirmPerson" : {
+		"desc" : "操作人编码",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-10-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"confirmPersonName" : {
+		"desc" : "操作人姓名",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-10-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"sender" : {
+		"desc" : "发送方",
+		"path" : "/MSH-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"orderStatusInf" : {
+		"desc" : "医嘱，BS004",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"requestNo" : {
+				"desc" : "申请单号",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-2-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderStatus" : {
+				"desc" : "医嘱状态",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-5",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"requestList" : {
+		"desc" : "申请单，BS006",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"requestNo" : {
+				"desc" : "申请单编号",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-2-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"chargeList" : {
+				"desc" : "检验费用列表",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/OBSERVATION_REQUEST",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..n",
+				"child" : {
+					"charge" : {
+						"desc" : "检验费用",
+						"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/OBSERVATION_REQUEST/OBR-23-1",
+						"display" : "",
+						"type" : "string",
+						"format" : "",
+						"multiplicity" : "0..1"
+					}
+				}
+			}
+		}
+	},
+	
+	"labOrderDto" : {
+		"desc" : "医嘱，BS006",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	},
+	
+	"order" : {
+		"desc" : "医嘱，BS005",
+		"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"requestNo" : {
+				"desc" : "申请单编号",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-2-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"cancelOrStopTime" : {
+				"desc" : "撤销停止时间",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-9",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"cancelOrStopPerson" : {
+				"desc" : "撤销停止人编码",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-10-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"cancelOrStopPersonName" : {
+				"desc" : "撤销停止人姓名",
+				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/ORC-10-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}	
+		}
+	}
+}

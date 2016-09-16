@@ -1,0 +1,155 @@
+.grid-bottombar{
+	display:block;
+	font-size:11px;
+	position:relative;
+	border:1px solid #a9bfd3;
+}
+.grid-bottombar-t{
+	position:relative;
+	display:block;
+	font-size:11px;
+}
+button{
+	border:0 none;
+  background:transparent;
+  font-size:11px;
+  font-family: tahoma;
+  padding-left:3px;
+  padding-right:3px;
+  cursor:pointer;
+} 
+.btn-icon .btn-center .btn-text{
+	background-position: center;
+	background-repeat: no-repeat;
+	height: 16px;
+	width: 16px;
+	cursor:pointer;
+}
+.btn-text-icon .btn-center .btn-text{
+	background-position: 0 2px;
+	background-repeat: no-repeat;
+	padding-left:15px;
+	padding-top:3px;
+	padding-bottom:3px;
+	padding-right:0;
+}
+.btn-center{
+	vertical-align: middle;
+	text-align:center;
+	cursor:pointer;
+}
+.toolbar{
+	border-top: 1px solid #eaf0f7;
+	border-bottom: 1px solid #a9bfd3;
+	padding-top:2px;
+	padding-bottom:2px;
+	background: url(image/toolbar/bg.gif);
+}
+.toolbar td{
+  font-size:11px;
+}
+.toolbar .btn-sep {
+	background-image: url(image/toolbar/grid-split.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	display: block;
+	padding-right:4px;
+	height: 16px;
+	width:2px;
+}
+.toolbar-t{
+	padding-top:2px;
+	padding-bottom:2px;
+}
+.toolbar-t td{
+  font-size:11px;
+}
+.toolbar-t .btn-sep {
+	background-image: url(image/toolbar/grid-split.gif);
+	background-position: center;
+	background-repeat: no-repeat;
+	display: block;
+	padding-right:4px;
+	height: 16px;
+	width:2px;
+}
+.paging-info {
+    position:absolute;
+    top:8px;
+    right: 8px;
+}
+.page-first .btn-text{
+	background-image: url(image/toolbar/page-first.gif);
+}
+.page-last .btn-text{
+	background-image: url(image/toolbar/page-last.gif);
+}
+.page-next .btn-text{
+	background-image: url(image/toolbar/page-next.gif);
+}
+.page-prev .btn-text{
+	background-image: url(image/toolbar/page-prev.gif);
+}
+.disabled .page-first .btn-text{
+	background-image: url(image/toolbar/page-first-disabled.gif);
+}
+.disabled .page-last .btn-text{
+	background-image: url(image/toolbar/page-last-disabled.gif);
+}
+.disabled .page-next .btn-text{
+	background-image: url(image/toolbar/page-next-disabled.gif);
+}
+.disabled .page-prev .btn-text{
+	background-image: url(image/toolbar/page-prev-disabled.gif);
+}
+.button-img {
+	width: 16px;
+	height: 16px;
+	background-repeat: no-repeat;
+	cursor:pointer;
+}
+.button-text {
+	font-size: 11px;
+	font-family: tahoma;
+	padding-left: 3px;
+	padding-right: 3px;
+	word-break: keep-all;	
+	vertical-align: bottom;
+	cursor:pointer;
+}
+.btn-excel {
+  background-image: url(image/toolbar/excel.gif);
+}
+.btn-excel-paged {
+  background-image: url(image/toolbar/xls.gif);
+}
+.btn-pdf {
+  background-image: url(image/toolbar/pdf.png);
+}
+.btn-doc {
+  background-image: url(image/toolbar/doc.gif);
+}
+.btn-csv {
+  background-image: url(image/toolbar/csv.gif);
+}
+.btn-print {
+  background-image: url(image/toolbar/print.gif);
+}
+.btn-add {
+  background-image: url(image/toolbar/add.gif);
+}
+.btn-delete {
+  background-image: url(image/toolbar/delete.gif);
+}
+.btn-save {
+  background-image: url(image/toolbar/save.gif);
+}
+.btn-validate {
+  background-image: url(image/toolbar/validate.gif);
+}
+.btn-upload {
+  background-image: url(image/toolbar/upload.gif);
+}
+.btn-download {
+  background-image: url(image/toolbar/download.gif);
+}

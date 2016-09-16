@@ -1,0 +1,122 @@
+{
+	"newUpFlag" : {
+		"desc" : "触发事件",
+		"path" : "/RESPONSE/ORDER/ORC-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	"patientLid" : {
+		"desc" : "患者本地ID",
+		"path" : "/RESPONSE/PATIENT/PID-2-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	"patientDomain": {
+	    "desc" : "域Id",
+	    "path" : "/RESPONSE/ORDER/ORC-2-4",
+	    "display" : "",
+	    "type" : "string",
+	    "format" : "",
+	    "multiplicity" : "0..1"
+	  },
+	  "operationDate" : {
+			"desc" : "操作日期",
+			"path" : "/RESPONSE/ORDER/ORC-9",
+			"display" : "",
+			"type" : "string",
+			"format" : "",
+			"multiplicity" : "0..1"
+		},
+		
+		"sender" : {
+			"desc" : "发送者",
+			"path" : "/MSH-3",
+			"display" : "",
+			"type" : "string",
+			"format" : "",
+			"multiplicity" : "0..1"
+		},
+		"operationCode" : {
+			"desc" : "操作人",
+			"path" : "/RESPONSE/ORDER/ORC-10-1",
+			"display" : "",
+			"type" : "string",
+			"format" : "",
+			"multiplicity" : "0..1"
+		},
+		"operationName" : {
+			"desc" : "操作人名称",
+			"path" : "/RESPONSE/ORDER/ORC-10-2",
+			"display" : "",
+			"type" : "string",
+			"format" : "",
+			"multiplicity" : "0..1"
+		},
+		"orderStatusInf" : {
+		"desc" : "医嘱",
+		"path" : "/RESPONSE/ORDER",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..n",
+		"child" : {
+			"orderLid" : {
+				"desc" : "医嘱号",
+				"path" : "/RESPONSE/ORDER/ORC-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"cancelOrStopTime" : {
+				"desc" : "撤销/停止时间",
+				"path" : "/RESPONSE/ORDER/ORC-15",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"cancelOrStopPerson" : {
+				"desc" : "撤销/停止人id",
+				"path" : "/RESPONSE/ORDER/ORC-12-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"cancelOrStopPersonName" : {
+				"desc" : "撤销/停止人姓名",
+				"path" : "/RESPONSE/ORDER/ORC-12-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+
+			"requestNo" : {
+				"desc" : "申请单编号",
+				"path" : "/RESPONSE/ORDER/ORC-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"orderStatus" : {
+				"desc" : "医嘱状态",
+				"path" : "/RESPONSE/ORDER/ORC-5",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+	}
+}

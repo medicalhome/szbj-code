@@ -1,0 +1,26 @@
+{
+"newUpFlag": {
+    "desc" : "交互类型",
+    "path" : "/ZDA-1",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+"documentLid": {
+    "desc" : "文档号",
+    "path" : "/ZDA-3",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "content": {
+    "desc" : "文档内容",
+    "path" : "/ZDA-8",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  }
+}

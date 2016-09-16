@@ -1,0 +1,53 @@
+BODY{
+	 font: 13px/1.5em arial,helvetica
+}
+
+
+A{text-decoration:none}
+A:link {color:#666666; text-decoration: none}
+A:visited {color: #666666; text-decoration: none }
+A:hover {color: #ff6600; text-decoration: underline;}
+
+TD{
+	FONT-SIZE: 13px; FONT-FAMILY: arial,helvetica
+}
+
+INPUT{
+	FONT-SIZE: 13px;
+	FONT-FAMILY: arial,helvetica;
+	border: 1px solid #336699;
+}
+
+
+TEXTAREA{
+	FONT-SIZE: 12px;
+	FONT-FAMILY: arial,helvetica;
+	border: 1px solid #336699;
+}
+
+
+SELECT{
+	FONT-SIZE: 13px;
+	FONT-FAMILY: arial,helvetica;
+	border: 1px solid #336699;
+}
+
+FIELDSET{
+	border-width:1px;
+	BORDER-COLOR:#336699
+}
+
+
+BUTTON{
+	FONT-SIZE: 12px;
+	FONT-FAMILY: arial,helvetica;
+	border: 1px solid #336699;
+	background-color: #CDDBEB;
+	padding: 1px;
+}
+
+.border{
+	border: 1px solid #336699;
+	background-color: #CDDBEB;
+}
+

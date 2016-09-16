@@ -1,0 +1,147 @@
+{
+	"patientLid" : {
+		"desc" : "患者ID",
+		"path" : "/PATIENT_RESULT/PATIENT/PID-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"patientDomain" : {
+		"desc" : "域id",
+		"path" : "/PATIENT_RESULT/PATIENT/VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"operationDate" : {
+		"desc" : "操作日期",
+		"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-22",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+
+	"operationName" : {
+		"desc" : "操作人姓名",
+		"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-35-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"execDeptName" : {
+		"desc" : "执行科室名称",
+		"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-24-1",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"sender" : {
+		"desc" : "发送方",
+		"path" : "/MSH-3",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitTypeCode" : {
+		"desc" : "就诊类别编码",
+		"path" : "/PATIENT_RESULT/PATIENT/VISIT/PV1-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"visitOrdNo" : {
+		"desc" : "就诊流水号",
+		"path" : "/PATIENT_RESULT/PATIENT/VISIT/PV1-19",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1"
+	},
+	
+	"requestNos" : {
+		"desc" : "申请单编号，当一个检查报告包含多个申请单号时以“^”符号分隔，示例：525435^525433",
+		"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2",
+		"display" : "",
+		"type" : "string",
+		"format" : "",
+		"multiplicity" : "0..1",
+		"child" : {
+			"no1" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-1",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"no2" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-2",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"no3" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-3",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"no4" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-4",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"no5" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-5",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"no6" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-6",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			},
+			
+			"no7" : {
+				"desc" : "申请单编号",
+				"path" : "/PATIENT_RESULT/ORDER_OBSERVATION/OBR-2-7",
+				"display" : "",
+				"type" : "string",
+				"format" : "",
+				"multiplicity" : "0..1"
+			}
+		}
+		
+	}
+}

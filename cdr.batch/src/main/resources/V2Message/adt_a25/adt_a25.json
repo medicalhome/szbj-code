@@ -1,0 +1,218 @@
+{
+"patientDomain": {
+    "desc" : "",
+    "path" : "/PV1-2",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+"patientLid": {
+    "desc" : "",
+    "path" : "/PID-2",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },  
+  "visitTimes": {
+    "desc" : "",
+    "path" : "/PV1-13",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "visitOrdNo" : {
+    "desc" : "",
+    "path" : "/PV1-19",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "visitType" : {
+    "desc" : "",
+    "path" : "/PV1-2",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "registeredDate" : {
+    "desc" : "",
+    "path" : "/PV1-44",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "registeredDept" : {
+    "desc" : "",
+    "path" : "/PV1-3-4",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "registeredDoctor" : {
+    "desc" : "",
+    "path" : "/PV1-17-1",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "registeredDoctorName" : {
+    "desc" : "",
+    "path" : "/PV1-17-2",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "registrationClass" : {
+    "desc" : "",
+    "path" : "/PV1-4",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "insuranceType" : {
+    "desc" : "",
+    "path" : "/PV1-18",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "registeredWay" : {
+    "desc" : "",
+    "path" : "/PID-8",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "visitDate" : {
+    "desc" : "",
+    "path" : "/PV1-44",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "admissionWards" : {
+    "desc" : "",
+    "path" : "/PV1-3-2",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "admissionBedNo" : {
+    "desc" : "",
+    "path" : "/PV1-3-3",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+   "patientName" : {
+    "desc" : "",
+    "path" : "/PID-5",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "genderCode" : {
+    "desc" : "",
+    "path" : "/PID-8",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "birthDate" : {
+    "desc" : "",
+    "path" : "/PID-7",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "dischargeDate" : {
+    "desc" : "",
+    "path" : "/PV1-45",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "dischargeWards" : {
+    "desc" : "",
+    "path" : "/PV1-3-1",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "dischargeWardsName" : {
+  	"desc" : "",
+    "path" : "/PV1-3-9",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "dischargeBedNo" : {
+    "desc" : "",
+    "path" : "/PV1-3-3",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "birthPlace" : {
+    "desc" : "",
+    "path" : "/PID-23",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "dischargeDept" : {
+  	"desc" : "",
+    "path" : "/PV1-3-4",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "dischargeDeptName" : {
+	  "desc" : "",
+	    "path" : "/PV1-3-5",
+	    "display" : "",
+	    "type" : "string",
+	    "format" : "",
+	    "multiplicity" : "0..1"
+  },
+  "attendingDoctor" : {
+    "desc" : "",
+    "path" : "/PV1-7-1",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  },
+  "attendingDoctorName" : {
+    "desc" : "",
+    "path" : "/PV1-7-2",
+    "display" : "",
+    "type" : "string",
+    "format" : "",
+    "multiplicity" : "0..1"
+  }
+}

@@ -1,0 +1,34 @@
+﻿.partcontent {margin: 0 auto;text-align: left;width: 420px;border:0px;height:32px;overflow:hidden;}
+.part{border:1px solid #e5e5e5;border:0px;}
+.part_t{height:0px;line-height:0px;float:right;}
+.part_t .rotlink{ margin:5px 5px 0 0;}
+.part_c{ margin:0 auto; width:330px;display:inline;}
+.blank {font-size: 0;height: 5px;}
+.scrollshow {width:340px;padding-left:20px;position:relative;overflow:hidden;}
+.scrollshow .pic {margin: 0 0 5px;text-align: center;}
+.scrollshow ul li {float: left;display:inline;height: 32px;width: 114px;}
+.scrollshow .scrollshow_con {height: 32px;overflow: hidden;position: relative;}
+.scrollshow .scrollshow_con ul {overflow: hidden;position: relative; padding:0; margin:0}
+.rotlink {display: inline; float:right;margin-right:8px;}
+.rotlink div, .rotlink div {cursor: pointer;display: inline-block;height: 17px;margin: 0 3px;width: 25px;}
+.rotlink div.l {float:right;background: url("../images/main_left.png") no-repeat;height:25px;width:25px}
+.rotlink div.r {background: url("../images/main_right.png") no-repeat;height:25px;width:25px}
+.rotlink div.r_unclick {background: url("../images/main_right.png") no-repeat;height:25px;width:25px}
+
+
+     #cart { width: 146px;float: left;}
+	#cart ol {width:140px; margin: 0; padding: 2em 0 1em 0;list-style-type:none; }
+	#cart2 { width: 144px; float: left;}
+	#cart2 ol {width: 141px; margin: 0; padding: 2em 0 1em 0;list-style-type:none;}
+	#cart3 { width: 143px; float: left;}
+	#cart3 ol {width: 140px; margin: 0; padding: 2em 0 1em 0;list-style-type:none;}
+	#cart4 { width: 143px; float: left;}
+	#cart4 ol {width: 140px; margin: 0; padding: 2em 0 1em 0;list-style-type:none;}
+	#cart5 { width: 143px; float: left;}
+	#cart5 ol {width: 140px; margin: 0; padding: 2em 0 1em 0;list-style-type:none;}
+	#cart6 { width: 143px; float: left;}
+	#cart6 ol {width: 140px; margin: 0; padding: 2em 0 1em 0;list-style-type:none;}
+	.placeholder{text-align:left;width:100%;height:112px;}
+	.toggler { width: 80px; height: auto;}
+	#button { padding: .5em 1em; text-decoration: none; }
+	#effect { width: 290px; padding: 0.4em;}

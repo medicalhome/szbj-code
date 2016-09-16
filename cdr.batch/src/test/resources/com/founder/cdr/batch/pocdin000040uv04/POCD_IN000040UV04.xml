@@ -1,0 +1,642 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ClinicalDocument xmlns="urn:hl7-org:v3" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="urn:hl7-org:v3 ../coreschemas/CDA.xsd">
+<!--===================================-->
+<!-- 检验报告                           -->
+<!--===================================-->
+<!-- 
+****************************************************************************
+  CDA Header
+****************************************************************************
+-->	
+    <!-- 文档适用范围编码 -->
+	<realmCode code="CN" />
+	
+	<!-- 文档信息模型类别-标识符 -->
+	<!-- 固定值 -->
+	<typeId root="2.16.840.1.113883.1.3" extension="POCD_HD000040" />
+	
+    <!-- 文档标识-报告号 -->
+    <!-- @root是固定值 -->
+	<id root="S010" extension="c266" />
+
+	<!-- 文档标识-名称 / 文档标识-类别编码 -->
+	<!-- 固定值 -->
+	<code code="04" codeSystem="1.2.156.112606.1.1.60" displayName="检查检验记录"/>
+		
+	<!-- 文档标题文本 -->
+	<title>检验报告</title>
+	
+    <!-- 文档生效日期 -->
+	<effectiveTime value="20111231" />
+
+	<!-- 文档保密程度-代码
+      @code: N默认值, 没有特殊限制/加密. 其他值可以是R, V
+      @displayName: normal，对@code的解释, 表示文档的保密级别名称
+      @codeSystem: 2.16.840.1.113883.5.25，固定值，表示HL7 OID
+      @codeSystemName: Confidentiality，固定值，表示HL7注册的编码系统名称  -->	
+	<confidentialityCode code="N" codeSystem="2.16.840.1.113883.5.25" codeSystemName="Confidentiality" displayName="normal" />
+
+	<!-- 文档语言编码 -->
+    <!-- 固定值 -->
+	<languageCode code="zh-CN" />
+	
+    <!-- 文档的操作版本:0表示新增, 1表示修改 -->
+	<versionNumber value="0"/>
+	
+	<!-- 文档记录对象 -->
+	<recordTarget>
+	    <!-- 病人信息 -->
+		<patientRole>
+		    <!-- 域ID -->
+			<id root="1.2.156.112606.1.2.1.2" extension="222" /> 
+			<!-- 患者ID -->
+			<id root="1.2.156.112606.1.2.1.3" extension="333" /> 
+			<!-- 就诊号 -->
+            <id root="1.2.156.112606.1.2.1.12" extension="121212" /> 
+			
+			<!-- 病区床号信息 -->
+			<addr use="TMP">
+                <!-- 病区(房号) -->			    
+			    <houseNumber>1</houseNumber>
+                <!-- 床位号 -->
+			    <careOf>02</careOf>
+			</addr>
+			
+			<!-- 病人基本信息 -->
+			<patient>
+			    <!-- 病人名称 -->
+			    <name>李四</name>
+			    <!-- 性别编码/性别名称 -->
+			    <administrativeGenderCode code="M" codeSystem="1.2.156.112606.1.1.3" displayName="男" />
+			    <!-- 出生日期 -->
+			    <birthTime value="20000101" />
+			</patient>
+			
+			<!-- 院区信息 -->
+			<providerOrganization>
+			    <asOrganizationPartOf>
+			        <!-- 院区编码/院区名称 -->
+			        <code code="01" displayName="新院" />
+			    </asOrganizationPartOf>
+			</providerOrganization>
+		</patientRole>
+	</recordTarget>
+	
+	<!-- 报告人信息(可循环) -->
+	<author>
+	    <!-- 报告日期 -->
+		<time value="201112311010" />
+		<assignedAuthor>
+		    <!-- 报告人编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017" />	
+			<assignedPerson>
+			    <!-- 报告人名称 -->
+				<name>张三</name>
+			</assignedPerson>
+		</assignedAuthor>
+	</author>
+	
+	<!-- 文档保管者(固定值，CDA中custodian为必填项) -->
+	<custodian>
+		<assignedCustodian>
+			<representedCustodianOrganization>
+				<id root="1.2.156.112606" />
+				<name>北大人民医院</name>
+			</representedCustodianOrganization>
+		</assignedCustodian>
+	</custodian>
+	
+	<!-- 电子签章信息 -->
+	<legalAuthenticator>
+		<time value='201112311010'/>
+		<signatureCode code="S" />
+		<assignedEntity>
+			<id extension="121313" />
+		</assignedEntity>
+	</legalAuthenticator>	
+	
+	<!-- 审核人信息 -->
+	<authenticator>
+	    <!-- 审核日期 -->
+		<time value="201112311010" />
+		<signatureCode code="S" />
+		<assignedEntity>
+		    <!-- 审核者编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017" />
+			<assignedPerson>
+			    <!-- 审核者名称 -->
+				<name>张三</name>
+			</assignedPerson>
+		</assignedEntity>
+	</authenticator>	
+	
+	<!-- 送检医生信息 -->
+	<participant typeCode="DIST">
+	    <!-- 送检日期 -->
+	    <time value="201112311010" />
+		<associatedEntity classCode="ASSIGNED">
+			<!-- 送检医生编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00017"/>
+			<associatedPerson>
+				<!-- 送检医生名称 -->
+				<name>张三</name>
+			</associatedPerson>
+			<scopingOrganization>
+				<!-- 送检科室编码 -->
+				<id root="1.2.156.112606.1.1.1" extension="1239"/>
+				<!-- 送检科室名称 -->
+				<name>妇科门诊</name>
+			</scopingOrganization>			
+		</associatedEntity>
+	</participant>
+	
+	<!-- 检验科室信息(执行科室) -->
+	<participant typeCode="PRF">
+		<associatedEntity classCode="ASSIGNED">
+			<!-- 检验医生编码 -->
+			<id root="1.2.156.112606.1.1.2" extension="KP00018"/>		
+			<associatedPerson>
+				<!-- 检验医生名称 -->
+				<name>李四</name>
+			</associatedPerson>
+			<scopingOrganization>
+				<!-- 检验科室编码 -->
+				<id root="1.2.156.112606.1.1.1" extension="1234"/>
+				<!-- 检验科室名称 -->
+				<name>检验科生化室</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	
+	<!-- 申请科室信息 -->
+	<participant typeCode="AUT">
+		<!-- 申请时间 -->
+		<time value="201112310900"/>
+		<associatedEntity classCode="ASSIGNED">
+			<scopingOrganization>
+				<!-- 申请科室编码 -->
+				<id root="1.2.156.112606.1.1.1" extension="12345678"/>
+				<!-- 申请科室名称 -->
+				<name>申请科室名称</name>
+			</scopingOrganization>
+		</associatedEntity>
+	</participant>
+	
+	<!-- 其他参与者
+      @code: 可以用此属性表明是不同身份人员 -->
+
+	<!-- 关联医嘱信息 -->
+    <inFulfillmentOf>
+		<order>
+		    <!-- 关联医嘱号(可多个) -->
+			<id extension="1000" />
+			<id extension="2000" />
+		</order>
+	</inFulfillmentOf>	
+	
+	<!-- 文档中医疗卫生事件的就诊场景 -->
+    <componentOf>
+		<encompassingEncounter>
+            <!-- 就诊次数 -->
+			<id root="1.2.156.112606.1.2.1.7" extension="1" />
+
+			<!-- 就诊类别编码(门诊, 住院, 体检) -->
+			<code code="03" codeSystem="1.2.156.112606.1.1.80" />
+		    
+		    <!-- 必须项 -->
+			<effectiveTime />
+			
+			<!-- 申请科室信息 -->
+			<location>
+				<healthCareFacility>
+				    <!-- 申请科室(就诊科室) -->
+				    <serviceProviderOrganization>
+						<!-- 申请科室编码 -->
+						<id root="1.2.156.112606.1.1.1" extension="100" />
+						<!-- 申请科室名称 -->
+						<name>病人所在科室</name>
+				    </serviceProviderOrganization>
+				</healthCareFacility>
+			</location>
+		</encompassingEncounter>
+	</componentOf>
+
+
+
+<!-- 
+****************************************************************************
+  CDA Body
+****************************************************************************
+-->	
+	<!-- 结构化信息 -->
+	<component>
+		
+		<structuredBody>
+		
+<!-- 
+****************************************************************************
+  #检验章节(Labs section)
+****************************************************************************
+-->
+			<component>
+				<section>
+					<code code="11502-2" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Laboratory report" />
+					<title>检验</title>
+					
+					<!-- 相关备注说明 -->
+					<text>
+					    <!-- 报告备注 -->
+					    <content ID="a1">ddd</content>
+					    <!-- 技术备注 -->
+					    <content ID="a2">ddddd</content>
+					</text>					
+					
+					<!-- 一个条目对应一个大的检验结果 -->
+					<entry>
+					    <observation classCode="OBS" moodCode="EVN">					        
+					        <!-- 检验类别编码(1.2.156.112606.1.1.44) -->
+							<code />
+							
+							<statusCode code="completed" />
+							
+                            <!-- 优先级别:紧急/优先/普通 -->
+							<priorityCode code="01" />
+							
+							<!-- 相关信息 -->
+							<entryRelationship typeCode="COMP">
+							    <organizer classCode="BATTERY" moodCode="EVN">
+							        <code code="310388008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="relative information status" />
+							        <statusCode code="completed" />
+							        
+							        <!-- 相关信息项 -->
+									<!-- 整张报告图片信息 -->
+									<component>
+									    <observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 图片信息(要求编码为BASE64), @mediaType: 图片格式(JPG格式: image/jpeg) -->
+											<value xsi:type="ED" mediaType="image/gif">
+												TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+												IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+												dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+												dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+												ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+											</value>
+											<entryRelationship typeCode="XCRPT">
+												<act classCode="INFRM" moodCode="PRP">
+													<code />
+													<!-- 提示信息 -->
+													<text>提示信息填写处</text>
+												</act>
+											</entryRelationship>									    
+									    </observationMedia>
+									</component>
+								</organizer>
+							</entryRelationship>							
+							
+							<!-- 检验报告条目信息 -->
+                            <entryRelationship typeCode="COMP">
+								<organizer classCode="BATTERY" moodCode="EVN">
+									<!-- 检验项编码/检验项名称 -->
+									<code code="1000" codeSystem="1.2.156.112606.1.1.46" displayName="骨髓像" />
+									
+									<statusCode code="completed" />
+									
+									<!-- 危机信息(定性结果) -->
+									<component>
+										<observation classCode="OBS" moodCode="EVN">
+											<code code="32937002" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="Crisis" />
+											<!-- 危机编码/危机名称(@code: 阴性0, 阳性1) -->
+							                <interpretationCode code="1" displayName="阳性" />
+										</observation>
+									</component>									
+									
+									<!-- 血液检查报告表格对应内容(表格中备注使用报告备注) -->
+									
+														
+								
+								</organizer>
+							</entryRelationship>
+							
+							<!-- 标本及其图像信息 -->
+							<entryRelationship typeCode="SAS" inversionInd="true">
+								<procedure classCode="PROC" moodCode="EVN">
+									<code />
+									<statusCode code="completed" />
+									<!-- 标本采集日期(取材日期) -->
+									<effectiveTime value="201112311100" />
+									
+									<!-- 取材部位编码/取材部位名称 -->
+									<targetSiteCode code="01" displayName="骼后" />
+									
+									<!-- 标本信息 -->
+									<specimen>
+										<specimenRole>
+											<!-- 标本条码号 -->
+											<id extension="1000" />
+										</specimenRole>
+									</specimen>
+									
+									<!-- 标本接收人信息 -->
+									<participant typeCode="RCV">
+										<!-- 接收时间 -->
+										<time value="201112311105" />
+										<participantRole />
+									</participant>
+									
+                                    <!-- 操作方法信息 -->
+                                    <entryRelationship typeCode="SAS">
+									    <procedure classCode="PROC" moodCode="EVN">
+											<code code="260686004" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" displayName="method" />
+											
+											<!-- 制备方法(培养法) -->
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<code code="61594008" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" 
+													    displayName="microbial culture" />
+													<!-- 制备方法编码/制备方法名称 -->
+													<methodCode code="01" displayName="72h培养法 +PHA" />
+												</procedure>
+											</entryRelationship>
+											
+											<!-- 检测技术 -->
+											<entryRelationship typeCode="COMP">
+												<procedure classCode="PROC" moodCode="EVN">
+													<code code="246366009" codeSystem="2.16.840.1.113883.6.96" codeSystemName="SNOMED CT" 
+													    displayName="method of detection" />
+													<!-- 检测方法编码/检测方法名称 -->
+													<methodCode code="01" displayName="G显带" />
+												</procedure>
+											</entryRelationship>
+											
+										</procedure>
+									</entryRelationship>
+									
+									<!-- 图像信息 -->
+									<entryRelationship typeCode="SPRT">
+										<observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 影像信息(要求编码为BASE64), @mediaType: 影像格式(PDF格式为: application/pdf) -->
+											<value xsi:type="ED" mediaType="image/gif">
+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
+AgA7
+
+											</value>
+											<entryRelationship typeCode="XCRPT">
+												<act classCode="INFRM" moodCode="PRP">
+													<code />
+													<!-- 提示信息 -->
+													<text>提示信息填写处1</text>
+												</act>
+											</entryRelationship>											
+										</observationMedia>										
+									</entryRelationship>	
+                                    <entryRelationship typeCode="SPRT">
+										<observationMedia classCode="OBS" moodCode="EVN">
+											<!-- 影像信息(要求编码为BASE64), @mediaType: 影像格式(PDF格式为: application/pdf) -->
+											<value xsi:type="ED" mediaType="image/gif">
+												TWFuIGlzIGRpc3Rpbmd1aXNoZWQsIG5vdCBvbmx5IGJ5IGhpcyByZWFzb24sIGJ1dCBieSB0aGlz
+												IHNpbmd1bGFyIHBhc3Npb24gZnJvbSBvdGhlciBhbmltYWxzLCB3aGljaCBpcyBhIGx1c3Qgb2Yg
+												dGhlIG1pbmQsIHRoYXQgYnkgYSBwZXJzZXZlcmFuY2Ugb2YgZGVsaWdodCBpbiB0aGUgY29udGlu
+												dWVkIGFuZCBpbmRlZmF0aWdhYmxlIGdlbmVyYXRpb24gb2Yga25vd2xlZGdlLCBleGNlZWRzIHRo
+												ZSBzaG9ydCB2ZWhlbWVuY2Ugb2YgYW55IGNhcm5hbCBwbGVhc3VyZS4=
+											</value>
+											<entryRelationship typeCode="XCRPT">
+												<act classCode="INFRM" moodCode="PRP">
+													<code />
+													<!-- 提示信息 -->
+													<text>提示信息填写处2</text>
+												</act>
+											</entryRelationship>											
+										</observationMedia>										
+									</entryRelationship>										
+									<!-- 其他图像按以上格式添加 -->
+									
+								</procedure>
+							</entryRelationship>	
+						</observation>
+						
+					</entry>
+					
+				</section>
+			</component>
+			
+
+<!-- 
+****************************************************************************
+  #临床诊断章节(Diagnosis section)
+****************************************************************************
+-->							    	
+			<component>
+				<section>
+					<code code="29308-4" codeSystem="2.16.840.1.113883.6.1" codeSystemName="LOINC" displayName="Diagnosis"/> 
+					<title>诊断</title> 
+					<entry typeCode="DRIV">
+						<act classCode="ACT" moodCode="EVN">
+							<code nullFlavor="NA"/>
+							<!-- 诊断信息(可循环) -->
+							<entryRelationship typeCode="SUBJ">
+								<observation classCode="OBS" moodCode="EVN">
+									<!-- 诊断类别编码/诊断类别名称 -->
+									<code code="02" codeSystem="1.2.156.112606.1.1.29" displayName="门诊诊断" />
+									
+									<statusCode code="completed"/>
+									
+									<!-- 疾病编码/疾病名称(没有编码去掉@code) -->
+									<value xsi:type="CD" code="233604007" codeSystem="1.2.156.112606.1.1.30" displayName="肺炎" />        
+								</observation>
+							</entryRelationship>
+						</act>
+					</entry>
+				</section>
+		    </component>
+			
+<!-- 
+****************************************************************************
+  #药观章节
+****************************************************************************
+-->
+			<component>
+				<section>
+					<entry>
+						<observation classCode="OBS" moodCode="EVN">
+							<!-- 药观编码/药观名称 -->
+							<code code="123" displayName="药观名称"/>
+						</observation>
+					</entry>
+				</section>
+			</component>
+         
+			
+        </structuredBody>     
+	</component>
+</ClinicalDocument>
