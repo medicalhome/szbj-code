@@ -10,13 +10,14 @@
 	<bean id="messageReader" class="com.founder.cdr.batch.core.MessageReader" />-->
 	<bean id="springBeanFactory" class="com.founder.cdr.util.SpringBeanFactory" />
 	
-	<bean id="MQQueueFactory" class="com.founder.cdr.wmq.WMQQueueFactory">  
-		<!--<property name="host" value="172.18.73.233" />
+	<!--
+		<bean id="MQQueueFactory" class="com.founder.cdr.wmq.WMQQueueFactory">  
+		<property name="host" value="172.18.73.233" />
 		<property name="managerName" value="dd" />
 		<property name="port" value="1414" />
 		<property name="channel" value="SYSTEM.DEF.SVRCONN" />
 		<property name="ccsid" value="1208" />
-		<property name="transport" value="1" />-->
+		<property name="transport" value="1" />
 		
 		<property name="host" value="${mq.hostname}" />
 		<property name="managerName" value="${mq.qmName}" />
@@ -24,8 +25,7 @@
 		<property name="channel" value="${mq.channel}" />
 		<property name="ccsid" value="${mq.ccsid}" />
 		<property name="transport" value="${mq.transport}" />
-	</bean>
-	
+	</bean>-->	
 	
     <bean id="appSettings" class="com.founder.cdr.core.AppSettings">
 		<property name="locations" value="classpath:cdr.properties" />

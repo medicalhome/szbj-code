@@ -7,7 +7,8 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<bean id="dataSource" class="com.founder.cdr.core.SpringDataSourceProxy">
-		<property name="target" ref="dataSourceTarget" />
+		<!--<property name="target" ref="dataSourceTarget" />-->
+        <property name="target" ref="dataSourceSqlite" />
 	</bean>
 
 	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
@@ -42,8 +43,6 @@
         <property name="defaultAutoCommit" value="true"/>
     </bean>
 
-
-
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
 		<property name="locations" value="classpath:setting.properties" />
@@ -53,8 +52,15 @@
 		class="com.founder.fasf.core.util.daohelper.impl.DefaultSession"
 		lazy-init="true">
 		<property name="dataSource" ref="dataSource"></property>
-		<property name="dialect" ref="sQLiteDialect" />
+        <property name="dialect" ref="sQLiteDialect" />
 	</bean>
+
+    <!--<bean id="session"
+          class="com.founder.fasf.core.util.daohelper.impl.SqliteSession"
+          lazy-init="true">
+        <property name="dataSource" ref="dataSource"></property>
+        <property name="dialect" ref="sQLiteDialect" />
+    </bean>-->
 
 	<bean id="entityDao" class="com.founder.fasf.core.util.daohelper.entity.EntityDao"
 		lazy-init="true">
@@ -65,7 +71,7 @@
 		class="com.founder.fasf.core.util.dihelper.impl.SQLDaoProxyAssembler">
 		<constructor-arg ref="session" />
 		<property name="interceptorClass"
-			value="com.founder.fasf.web.interceptor.WebSqliteSQLDaoInterceptor" />
+                  value="com.founder.fasf.web.interceptor.WebSqliteSQLDaoInterceptor" />
 	</bean>
 
 	<bean
