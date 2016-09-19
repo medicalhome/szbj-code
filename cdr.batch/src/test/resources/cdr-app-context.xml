@@ -35,6 +35,4 @@
 	<context:component-scan base-package="com.founder.cdr" >
 		<!-- context:include-filter type="regex" expression=".*(Service).*"/-->
 	</context:component-scan>
-	
-	<bean id="retryWebservice" class="com.founder.cdr.batch.ws.impl.RepeatRetryWebserviceImpl"/>  
 </beans>
