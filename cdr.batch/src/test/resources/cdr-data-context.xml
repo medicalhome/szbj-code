@@ -7,11 +7,11 @@
                            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd">
 
 	<bean id="dataSource" class="com.founder.cdr.core.SpringDataSourceProxy">
-		<!--<property name="target" ref="dataSourceTarget" />-->
-        <property name="target" ref="dataSourceSqlite" />
+		<property name="target" ref="dataSourceTarget" />
+        <!--<property name="target" ref="dataSourceSqlite" />-->
 	</bean>
 
-	<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
+	<!--<bean id="dataSourceTarget" class="org.apache.commons.dbcp.BasicDataSource"
 		destroy-method="close">
 		<property name="driverClassName" value="${jdbc.driverClassName}" />
 		<property name="url" value="${jdbc.url}" />
@@ -25,9 +25,28 @@
 		<property name="removeAbandonedTimeout" value="60" />
 		<property name="validationQuery" value="select count(*) from dual" />
 		<property name="testOnBorrow" value="true" />
-	</bean>
+	</bean>-->
 
-    <bean id="dataSourceSqlite" class="org.apache.commons.dbcp.BasicDataSource"
+    <bean id="dataSourceTarget" class="org.apache.tomcat.jdbc.pool.DataSource" destroy-method="close">
+        <!-- Connection Info -->
+        <property name="driverClassName" value="${jdbc.driver}"/>
+        <property name="url" value="jdbc:mysql://${jdbc.host}/${jdbc.database}?useUnicode=true&amp;characterEncoding=utf-8&amp;zeroDateTimeBehavior=convertToNull&amp;transformedBitIsBoolean=true"/>
+        <property name="username" value="${jdbc.username}"/>
+        <property name="password" value="${jdbc.password}"/>
+        <property name="testOnBorrow" value="true"/>
+        <property name="testOnConnect" value="true"/>
+        <property name="validationQuery" value="SELECT 1"/>
+        <property name="initialSize" value="${jdbc.pool.initialSize}"/>
+        <property name="maxActive" value="${jdbc.pool.maxActive}"/>
+        <property name="maxIdle" value="${jdbc.pool.maxIdle}"/>
+        <property name="minIdle" value="${jdbc.pool.minIdle}"/>
+        <property name="defaultAutoCommit" value="false"/>
+        <!-- 连接Idle10分钟后超时，每1分钟检查一次 -->
+        <property name="timeBetweenEvictionRunsMillis" value="60000"/>
+        <property name="minEvictableIdleTimeMillis" value="600000"/>
+    </bean>
+
+    <!--<bean id="dataSourceSqlite" class="org.apache.commons.dbcp.BasicDataSource"
           destroy-method="close">
         <property name="driverClassName" value="org.sqlite.JDBC" />
         <property name="url" value="jdbc:sqlite:cdr.db" />
@@ -41,7 +60,7 @@
         <property name="minEvictableIdleTimeMillis" value="1800000"/>
         <property name="numTestsPerEvictionRun" value="5"/>
         <property name="defaultAutoCommit" value="true"/>
-    </bean>
+    </bean>-->
 
 	<bean
 		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
@@ -52,7 +71,7 @@
 		class="com.founder.fasf.core.util.daohelper.impl.DefaultSession"
 		lazy-init="true">
 		<property name="dataSource" ref="dataSource"></property>
-        <property name="dialect" ref="sQLiteDialect" />
+        <property name="dialect" ref="mySQLDialect" />
 	</bean>
 
     <!--<bean id="session"
@@ -71,7 +90,7 @@
 		class="com.founder.fasf.core.util.dihelper.impl.SQLDaoProxyAssembler">
 		<constructor-arg ref="session" />
 		<property name="interceptorClass"
-                  value="com.founder.fasf.web.interceptor.WebSqliteSQLDaoInterceptor" />
+                  value="com.founder.fasf.web.interceptor.WebSQLDaoInterceptor" />
 	</bean>
 
 	<bean

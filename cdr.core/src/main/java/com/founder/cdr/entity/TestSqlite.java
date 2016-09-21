@@ -12,7 +12,6 @@ import java.math.BigDecimal;
  */
 
 @Entity
-@Table(name = "PATIENT")
 public class TestSqlite  implements Serializable {
     private BigDecimal id;
     private String name;
