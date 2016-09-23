@@ -286,7 +286,7 @@ public class BatchApplication
         if (!disableRetry)
             app.startRetry(ctx, queueName);
         if (!disableinitMesP)
-            app.initMessagePool(ctx, queueName, date);
+           // app.initMessagePool(ctx, queueName, date);
         // end 2012-08-24
         if (!disableV2Receiver)
             app.startV2Receiver(ctx, queueName);
