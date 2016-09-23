@@ -25,5 +25,5 @@
 		</property>
 	</bean> -->
 	
-	<bean id="dictionaryCache" class="com.founder.cdr.cache.DictionaryCache" init-method="cache" />
+	<!--  <bean id="dictionaryCache" class="com.founder.cdr.cache.DictionaryCache" init-method="cache" />-->
 </beans>

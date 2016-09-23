@@ -36,7 +36,7 @@
 		<property name="dataDir" value="/var" />
 	</bean>
 	-->
-	<!--<bean id="messageStore" class="com.founder.cdr.batch.core.DatabaseMessageStore" />-->
+	<bean id="messageStore" class="com.founder.cdr.batch.core.DatabaseMessageStore" />
 
 	<!-- 
 	业务逻辑处理 
