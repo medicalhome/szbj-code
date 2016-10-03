@@ -19,8 +19,8 @@
 	</beans:bean>
 	
 	<beans:bean id="parametersFilter"
-		class="com.founder.cdr.web.filter.ProcessParametersFilter" />
+		class="com.yly.cdr.web.filter.ProcessParametersFilter" />
 		
 <!-- 	<beans:bean id="escapeFilter"
-	class = "com.founder.cdr.web.filter.EscapeFilter"	/> -->
+	class = "com.yly.cdr.web.filter.EscapeFilter"	/> -->
 </beans:beans>

@@ -4,7 +4,7 @@
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions"%>
 <%@ taglib uri="translation.tld" prefix="ref"%>
 <%@ taglib uri="html.tld" prefix="html"%>
-<jsp:useBean id="Constants" class="com.founder.cdr.core.Constants"/>
+<jsp:useBean id="Constants" class="com.yly.cdr.core.Constants"/>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

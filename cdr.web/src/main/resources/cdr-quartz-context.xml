@@ -25,5 +25,5 @@
 	</bean>
 
 	<!-- dictionaryCache -->
-	<bean id="dictionaryCache" class="com.founder.cdr.cache.DictionaryCache" />
+	<bean id="dictionaryCache" class="com.yly.cdr.cache.DictionaryCache" />
 </beans>

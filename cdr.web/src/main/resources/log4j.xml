@@ -9,7 +9,7 @@
 		</layout>
 	</appender>
 	
-	<category name="com.founder.cdr" additivity="false">
+	<category name="com.yly.cdr" additivity="false">
 		<priority value="debug" />
 		<appender-ref ref="CONSOLE" />
 	</category>

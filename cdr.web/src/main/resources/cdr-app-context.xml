@@ -18,7 +18,7 @@
     	<property name="order" value="1"/>
     </bean>
     <aop:config>
-		<aop:pointcut id="services" expression="execution(* com.founder.cdr.*.service.*.*.*(..))"/>
+		<aop:pointcut id="services" expression="execution(* com.yly.cdr.*.service.*.*.*(..))"/>
 		<aop:advisor pointcut-ref="services" advice-ref="loggingInterceptor"/>
 	</aop:config>
 	<!-- End -->
@@ -48,7 +48,7 @@
 		<property name="useCodeAsDefaultMessage" value="true" />
 	</bean>
 	
-	<bean id="appSettings" class="com.founder.cdr.core.AppSettings">
+	<bean id="appSettings" class="com.yly.cdr.core.AppSettings">
 		<property name="locations">
 			<list>
 				<value>classpath:cdr.properties</value>
@@ -57,7 +57,7 @@
 		</property>
 	</bean>
 	
-	<context:component-scan base-package="com.founder.cdr" >
+	<context:component-scan base-package="com.yly.cdr" >
 		<!-- context:include-filter type="regex" expression=".*(Service).*"/-->
 	</context:component-scan>
 
@@ -126,6 +126,6 @@
 			<property name="paramName" value="locale"/>
 		</bean>
 		<!-- ajax session expried -->
-    	<bean id="ajaxExpiredSessionInterceptor" class="com.founder.cdr.web.interceptor.AjaxExpiredSessionInterceptor" />  
+    	<bean id="ajaxExpiredSessionInterceptor" class="com.yly.cdr.web.interceptor.AjaxExpiredSessionInterceptor" />  
 	</mvc:interceptors>
 </beans>

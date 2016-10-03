@@ -3,5 +3,5 @@
 	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<!-- dictionaryCacheResource -->
-	<bean id="dictionaryCacheResource" class="com.founder.cdr.resources.DictionaryCacheResource" />
+	<bean id="dictionaryCacheResource" class="com.yly.cdr.resources.DictionaryCacheResource" />
 </beans>

@@ -24,11 +24,11 @@
 		</encoder>
 	</appender>
 	
-	<logger name="com.founder.cdr" additivity="false" level="DEBUG">
+	<logger name="com.yly.cdr" additivity="false" level="DEBUG">
 		<appender-ref ref="STDOUT" />
 	</logger>
 	
-	<logger name="com.founder.cdr.web.LoginController" additivity="false" level="DEBUG">
+	<logger name="com.yly.cdr.web.LoginController" additivity="false" level="DEBUG">
 		<appender-ref ref="FILE" />
 	</logger>
 	

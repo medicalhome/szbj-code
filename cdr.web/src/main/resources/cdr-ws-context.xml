@@ -25,7 +25,7 @@
 		class="com.founder.fasf.core.util.dihelper.impl.ClassPathInterfaceBeanDefinitionScanner" lazy-init="false">
 		<property name="basePackages">
 			<list>			
-				<value>com.founder.cdr.web.idm.webservice</value>
+				<value>com.yly.cdr.web.idm.webservice</value>
 			</list>
 		</property>
 		
@@ -36,7 +36,7 @@
 	</bean>
 
 	<context:component-scan
-		base-package="com.founder.cdr.web.idm.webservice.impl" 
+		base-package="com.yly.cdr.web.idm.webservice.impl" 
 		use-default-filters="false">
 		<context:include-filter type="regex" expression="^.*.impl.*WebserviceImpl$"/>
 	</context:component-scan>

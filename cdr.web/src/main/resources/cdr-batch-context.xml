@@ -4,7 +4,7 @@
 	xsi:schemaLocation="
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 	
-	<bean id="MQQueueFactory" class="com.founder.cdr.wmq.WMQQueueFactory">  
+	<bean id="MQQueueFactory" class="com.yly.cdr.wmq.WMQQueueFactory">  
 		<property name="host" value="${mq.hostname}" />
 		<property name="managerName" value="${mq.qmName}" />
 		<property name="port" value="${mq.port}" />
@@ -13,7 +13,7 @@
 		<property name="transport" value="${mq.transport}" />
 	</bean>
 	
-	<bean id="auditMessageHelper" class="com.founder.cdr.web.mq.process.audit.AuditMessageHelper">  
+	<bean id="auditMessageHelper" class="com.yly.cdr.web.mq.process.audit.AuditMessageHelper">  
 		<property name="auditQueueName" value="${AUDIT_QUEUE_NAME}" />
 	</bean>
 	

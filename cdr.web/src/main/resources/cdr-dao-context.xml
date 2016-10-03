@@ -5,7 +5,7 @@ xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.sprin
     <bean class="com.founder.fasf.core.util.dihelper.impl.ClassPathInterfaceBeanDefinitionScanner" lazy-init="false">
         <property name="basePackages">
             <list>
-                <value>com.founder.cdr.dao</value>
+                <value>com.yly.cdr.dao</value>
             </list>
         </property>
         <property name="regexPattern">

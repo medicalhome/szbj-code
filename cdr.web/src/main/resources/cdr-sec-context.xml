@@ -47,9 +47,9 @@
 	<!--<beans:bean id="daoAuthenticationProvider"
 		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">-->
 	 <beans:bean id="daoAuthenticationProvider"
-		class="com.founder.cdr.web.loginValidation.ProxyDaoAuthenticationProvider">
+		class="com.yly.cdr.web.loginValidation.ProxyDaoAuthenticationProvider">
 	<!-- <beans:bean id="daoAuthenticationProvider"
-		class="com.founder.cdr.web.loginValidation.SecPWDaoAuthenticationProvider" >
+		class="com.yly.cdr.web.loginValidation.SecPWDaoAuthenticationProvider" >
 		-->
 		<beans:property name="userDetailsService" ref="loginUserDetailsValidation" />
 		<beans:property name="hideUserNotFoundExceptions" value="false"></beans:property>
@@ -71,7 +71,7 @@
 	<!-- spring security userDetailsService -->
 	<!-- ============================================================================================ -->
 	<beans:bean id="loginUserDetailsValidation"
-		class="com.founder.cdr.web.loginValidation.LoginUserDetailsValidation">
+		class="com.yly.cdr.web.loginValidation.LoginUserDetailsValidation">
 		<beans:property name="loginService" ref="loginService" />
 	    <!--  $Author:wu_jianfeng
 	          $Date : 2012/09/12 14:10
@@ -93,14 +93,14 @@
 		<beans:property name="passwordEncoder" ref="md5PasswordEncoder" />
 	</beans:bean>
 	
-	<beans:bean id="loginService" class="com.founder.cdr.service.impl.LoginServiceImpl" />
+	<beans:bean id="loginService" class="com.yly.cdr.service.impl.LoginServiceImpl" />
 	
 	<!-- $Author :jin_peng
          $Date : 2012/09/21 14:01$
          [BUG]0009561 ADD BEGIN
                                登陆控制 -->
     <beans:bean id="loginController"
-		class="com.founder.cdr.web.LoginController">
+		class="com.yly.cdr.web.LoginController">
 		<beans:property name="loginService" ref="loginService" />
 		
 		<!-- $Author :jin_peng
@@ -117,7 +117,7 @@
           $[BUG]0009663 MODIFY BEGIN
                                    访问控制实现 
 	 -->
-	<beans:bean id="accessControlService" class="com.founder.cdr.service.impl.AccessControlServiceImpl" />
+	<beans:bean id="accessControlService" class="com.yly.cdr.service.impl.AccessControlServiceImpl" />
 	<!-- $[BUG]0009663 MODIFY END -->	
 	
 	<!-- $Author :jin_peng
@@ -125,7 +125,7 @@
          [BUG]0010836 ADD BEGIN
                                 通用service -->
     <beans:bean id="commonService"
-		class="com.founder.cdr.service.impl.CommonServiceImpl" />
+		class="com.yly.cdr.service.impl.CommonServiceImpl" />
     <!-- [BUG]0010836 ADD END -->
 
 	<beans:bean id="springSecurityFilterChain"
@@ -202,7 +202,7 @@
          [BUG]0010836 ADD BEGIN
                                 用户退出系统时添加用户操作日志-->
 	<beans:bean id="loginSecurityContextLogoutHandler"
-		class="com.founder.cdr.web.loginValidation.LoginSecurityContextLogoutHandler">
+		class="com.yly.cdr.web.loginValidation.LoginSecurityContextLogoutHandler">
 		<beans:property name="loginService" ref="loginService" />
 	</beans:bean>
 	<!-- [BUG]0010836 ADD END -->
@@ -342,7 +342,7 @@
 	</beans:bean>
 
 	<beans:bean id="proxySessionRegistry"
-		class="com.founder.cdr.web.loginValidation.ProxySessionRegistryImpl">
+		class="com.yly.cdr.web.loginValidation.ProxySessionRegistryImpl">
 		<beans:property name="loginService" ref="loginService" />
 	</beans:bean>
 		

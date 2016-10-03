@@ -9,7 +9,7 @@
 	<description></description>
 	<tag>
 		<name>pycodeoptions</name>
-		<tag-class>com.founder.cdr.web.tags.options.PyCodeOptionsTag</tag-class>
+		<tag-class>com.yly.cdr.web.tags.options.PyCodeOptionsTag</tag-class>
 		<body-content>empty</body-content>
 		<display-name>pycodeoptions</display-name>
 		<description></description>

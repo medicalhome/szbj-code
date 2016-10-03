@@ -25,8 +25,8 @@
 		</property>
 	</bean> -->
 	<!-- dictionaryCache -->
-	<bean id="dictionaryCache" class="com.founder.cdr.cache.DictionaryCache" init-method="init" />
+	<bean id="dictionaryCache" class="com.yly.cdr.cache.DictionaryCache" init-method="init" />
 	
 	<!--Logo Private custom -->
-	<bean id="hospitalPicCache" class="com.founder.cdr.cache.HospitalPicCache" init-method="init" />
+	<bean id="hospitalPicCache" class="com.yly.cdr.cache.HospitalPicCache" init-method="init" />
 </beans>

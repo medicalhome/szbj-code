@@ -9,7 +9,7 @@
 	<description></description>
 	<tag>
 		<name>translate</name>
-		<tag-class>com.founder.cdr.web.tags.translation.TranslationTag</tag-class>
+		<tag-class>com.yly.cdr.web.tags.translation.TranslationTag</tag-class>
 		<body-content>JSP</body-content>
 		<display-name>translate</display-name>
 		<description></description>
