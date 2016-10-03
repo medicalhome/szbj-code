@@ -23,7 +23,7 @@
 	<!-- ======================================= DB Dialect ====================================== -->
 	<bean id="oracleDialect" class="com.founder.fasf.core.util.dbhelper.OracleDialect"/>
 	<bean id="mySQLDialect" class="com.founder.fasf.core.util.dbhelper.MySQLDialect"/>
-    <bean id="sQLiteDialect" class="com.founder.cdr.util.dbhelper.SQLiteDialect"/>
+    <bean id="sQLiteDialect" class="com.yly.cdr.util.dbhelper.SQLiteDialect"/>
 
 	<!-- BeanPostProcessor -->
 	<bean id="interfaceBeanPostProcessor"

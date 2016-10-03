@@ -5,12 +5,12 @@
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
 
 	<!--  
-	<bean id="messagePool" class="com.founder.cdr.batch.core.MessagePool" />
-	<bean id="messageDispatcher" class="com.founder.cdr.batch.core.MessageDispatcher" />
-	<bean id="messageReader" class="com.founder.cdr.batch.core.MessageReader" />-->
-	<bean id="springBeanFactory" class="com.founder.cdr.util.SpringBeanFactory" />
+	<bean id="messagePool" class="com.yly.cdr.batch.core.MessagePool" />
+	<bean id="messageDispatcher" class="com.yly.cdr.batch.core.MessageDispatcher" />
+	<bean id="messageReader" class="com.yly.cdr.batch.core.MessageReader" />-->
+	<bean id="springBeanFactory" class="com.yly.cdr.util.SpringBeanFactory" />
 	
-	<bean id="MQQueueFactory" class="com.founder.cdr.wmq.WMQQueueFactory">  
+	<bean id="MQQueueFactory" class="com.yly.cdr.wmq.WMQQueueFactory">  
 		<!--<property name="host" value="172.18.73.233" />
 		<property name="managerName" value="dd" />
 		<property name="port" value="1414" />
@@ -27,25 +27,25 @@
 	</bean>
 	
 	
-    <bean id="appSettings" class="com.founder.cdr.core.AppSettings">
+    <bean id="appSettings" class="com.yly.cdr.core.AppSettings">
 		<property name="locations" value="classpath:cdr.properties" />
 	</bean>
 	
 	<!--  
-	<bean id="messageStore" class="com.founder.cdr.batch.core.FileMessageStore">
+	<bean id="messageStore" class="com.yly.cdr.batch.core.FileMessageStore">
 		<property name="dataDir" value="/var" />
 	</bean>
 	-->
-	<bean id="messageStore" class="com.founder.cdr.batch.core.DatabaseMessageStore" />
+	<bean id="messageStore" class="com.yly.cdr.batch.core.DatabaseMessageStore" />
 
 	<!-- 
 	业务逻辑处理 
-	<bean id="processor" class="com.founder.cdr.batch.processor.MessageProcessor" scope="prototype" />
+	<bean id="processor" class="com.yly.cdr.batch.processor.MessageProcessor" scope="prototype" />
 	-->
 	
 	<!-- 写 -->
-	<bean id="writer" class="com.founder.cdr.batch.core.MessageWriter" scope="prototype">
+	<bean id="writer" class="com.yly.cdr.batch.core.MessageWriter" scope="prototype">
 	</bean>
 
-    <bean id="rwLock" class="com.founder.cdr.util.RWLock" scope="singleton"></bean>
+    <bean id="rwLock" class="com.yly.cdr.util.RWLock" scope="singleton"></bean>
 </beans>

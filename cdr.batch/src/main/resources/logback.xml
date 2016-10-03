@@ -5,7 +5,7 @@
 	<!-- 日志输出的目录 -->
 	<property name="DIR_LOG" value="/opt/founder/cdr/batch/logs" />
 	<!-- 连接的队列名称 -->
-	<define name="QueueName" class="com.founder.cdr.batch.QueueNamePropertyDefiner">
+	<define name="QueueName" class="com.yly.cdr.batch.QueueNamePropertyDefiner">
 	</define>
 	<!-- 日志命名参数 -->
 	<property name="MessageBS313Check" value="BS313CHECK"/>	
@@ -92,7 +92,7 @@
 		</encoder>
 	</appender>
     
-	<logger name="com.founder.cdr" additivity="false" level="DEBUG">
+	<logger name="com.yly.cdr" additivity="false" level="DEBUG">
 		<appender-ref ref="STDOUT" />
 		<appender-ref ref="FILE" />
 	</logger>

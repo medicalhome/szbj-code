@@ -20,7 +20,7 @@
 
 	<aop:aspectj-autoproxy proxy-target-class="true"/>
     <aop:config>
-		<aop:pointcut id="services" expression="execution(* com.founder.cdr.*.service.*.*.*(..))"/>
+		<aop:pointcut id="services" expression="execution(* com.yly.cdr.*.service.*.*.*(..))"/>
 		<aop:advisor pointcut-ref="services" advice-ref="loggingInterceptor"/>
 	</aop:config>
 	<!-- End -->
@@ -32,7 +32,7 @@
     </bean>
     <!-- End -->
 	
-	<context:component-scan base-package="com.founder.cdr" >
+	<context:component-scan base-package="com.yly.cdr" >
 		<!-- context:include-filter type="regex" expression=".*(Service).*"/-->
 	</context:component-scan>
 </beans>
