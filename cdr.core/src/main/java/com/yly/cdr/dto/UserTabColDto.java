@@ -1,0 +1,17 @@
+package com.yly.cdr.dto;
+
+public class UserTabColDto
+{
+    private String tableName;
+
+    public String getTableName()
+    {
+        return tableName;
+    }
+
+    public void setTableName(String tableName)
+    {
+        this.tableName = tableName;
+    }
+
+}
