@@ -97,7 +97,7 @@ public class MQClientTest
      */
     private String testData()
     {
-        String file = "com/founder/cdr/batch/" + messageId.toLowerCase() + "/" + messageId.substring(0, 4) + "_" + messageId.substring(4) + ".xml";
+        String file = "com/yly/cdr/batch/" + messageId.toLowerCase() + "/" + messageId.substring(0, 4) + "_" + messageId.substring(4) + ".xml";
         BufferedReader in = new BufferedReader(new InputStreamReader(Thread.currentThread().getContextClassLoader().getResourceAsStream(file)));
 
         StringBuilder sb = new StringBuilder();
