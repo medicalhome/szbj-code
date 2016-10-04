@@ -44,7 +44,7 @@
 	</bean>
 	 
 	<bean id="messageSource" class="com.founder.fasf.core.util.message.ResourceMessageSource">
-		<property name="basenamePatterns" value="com/founder/cdr/**/message,ApplicationResources" />
+		<property name="basenamePatterns" value="com/yly/cdr/**/message,ApplicationResources" />
 		<property name="useCodeAsDefaultMessage" value="true" />
 	</bean>
 	
