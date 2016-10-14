@@ -108,7 +108,7 @@ public class V2MessageProcessor implements ItemProcessor<Message, BaseDto>
      * @throws JsonParseException 
      * @exception MessageProcessException
      */
-    private Map getV2Map(Message message) throws JsonParseException, JsonMappingException, IOException{
+    public Map getV2Map(Message message) throws JsonParseException, JsonMappingException, IOException{
     	fileJsonMapHandler = new FileJsonMapHandler();
     	fileJsonMapHandler.setMessageId(messageId);
     	ObjectMapper mapper = new ObjectMapper();
@@ -135,6 +135,13 @@ public class V2MessageProcessor implements ItemProcessor<Message, BaseDto>
         return model.getContent();
     }
 
+    public  String getJson(Message message) throws JsonParseException, JsonMappingException, IOException{
+    	fileJsonMapHandler = new FileJsonMapHandler();
+    	fileJsonMapHandler.setMessageId(messageId);
+    	String jsonContent = fileJsonMapHandler.getJsonContent();
+    	return jsonContent;
+    }
+    
 	private String getServiceId(String msgId, Map mp) throws Exception{
 		getPatientEid(mp);
     	String result = null;

@@ -284,7 +284,7 @@ public class BatchApplication
         if (!disableDispatcher)
             app.startDispatcher(ctx, queueName);
         if (!disableRetry)
-            app.startRetry(ctx, queueName);
+            //app.startRetry(ctx, queueName);
         if (!disableinitMesP)
            // app.initMessagePool(ctx, queueName, date);
         // end 2012-08-24

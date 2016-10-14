@@ -204,25 +204,6 @@
 				"type" : "string",
 				"format" : "",
 				"multiplicity" : "0..1"
-			},
-			
-			"chargeList" : {
-				"desc" : "检验费用列表",
-				"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/OBSERVATION_REQUEST",
-				"display" : "",
-				"type" : "string",
-				"format" : "",
-				"multiplicity" : "0..n",
-				"child" : {
-					"charge" : {
-						"desc" : "检验费用",
-						"path" : "/RESPONSE/PATIENT/GENERAL_ORDER/ORDER/OBSERVATION_REQUEST/OBR-23-1",
-						"display" : "",
-						"type" : "string",
-						"format" : "",
-						"multiplicity" : "0..1"
-					}
-				}
 			}
 		}
 	},
