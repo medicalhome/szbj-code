@@ -1,5 +1,4 @@
 {
-
 	"patientLid" : {
 		"desc" : "患者id",
 		"path" : "/RESPONSE/PATIENT/PID-2-1",
