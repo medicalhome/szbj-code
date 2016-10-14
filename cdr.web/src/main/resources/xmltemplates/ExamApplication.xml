@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<!-- 检查申请单信息-->
+	<application>
+		<!-- 操作类型 取值范围( insert、delete、update) -->
+		<operationType>操作类型</operationType>
+		<patient>
+			<!-- 病人ID  -->
+			<PatientId>病人ID</PatientId>
+			<!-- 门诊号  -->
+			<OutpatientNo>门诊号</OutpatientNo>
+			<!-- 住院号  -->
+			<HospitalizedNo>住院号</HospitalizedNo>
+			<!-- 医保卡号  -->
+			<MedicareNo>医保卡号</MedicareNo>
+			<!-- 病历编号  -->
+			<PatientNo>病历编号</PatientNo>
+			<!-- 姓名  -->
+			<PatientName>姓名</PatientName>
+			<!-- 医院Id  -->
+			<HospitalId>医院Id</HospitalId>
+			<!-- 性别  -->
+			<Sex>性别</Sex>
+			<!-- 年龄  -->
+			<Age>年龄</Age>
+		</patient>
+		<visit>
+			<!-- 就诊类型  -->
+			<MedicalType>就诊类型</MedicalType>
+			<!-- 就诊流水号  -->
+			<VisitNo>就诊流水号</VisitNo>
+			<!-- 就诊次数  -->
+			<VisitTimes>就诊次数</VisitTimes>
+			<!-- 病区编码  -->
+			<WardCode>病区编码</WardCode>
+			<!-- 病房号(病区)  -->
+			<Ward>病房号(病区)</Ward>
+			<!-- 床号  -->
+			<BedNo>床号</BedNo>
+			<!-- 申请单号  -->
+			<ApplyNo>申请单号</ApplyNo>
+		</visit>
+		<!-- 检查设备Id  -->
+		<DeviceId>检查设备Id</DeviceId>
+		<!-- 检查设备类型  -->
+		<DeviceType>检查设备类型</DeviceType>
+		<!-- 检查单类型  -->
+		<ApplicationType>检查单类型</ApplicationType>
+		<!-- 检查项目类型  -->
+		<CheckItem>检查项目类型</CheckItem>
+		<!-- 申请时间  -->
+		<AdviceTime>申请时间</AdviceTime>
+		<!-- 申请科室  -->
+		<AdviceDept>申请科室</AdviceDept>
+		<!-- 申请医生  -->
+		<AdviceDoctor>申请医生</AdviceDoctor>
+		<!-- 申请会诊时间  -->
+		<ConsultationTime>申请会诊时间</ConsultationTime>
+		<!-- 医嘱编号   -->
+		<AdviceNo>医嘱编号 </AdviceNo>
+		<!-- 检查单状态  -->
+		<State>检查单状态</State>
+		<!-- 临床诊断  -->
+		<ClinicalInfo>临床诊断</ClinicalInfo>
+		<!-- 备注  -->
+		<Remark>备注</Remark>
+		<!-- 本地Id  -->
+		<LocalId>本地Id</LocalId>
+		<!-- 域ID  -->
+		<DomainId>域ID</DomainId>
+		<!-- 申请详细内容  -->
+		<ApplyDetail>申请详细内容</ApplyDetail>
+		<!-- 检查项目代码  -->
+		<CheckItemCode>检查项目代码</CheckItemCode>
+		<!-- 检查项目名称  -->
+		<CheckItemName>检查项目名称</CheckItemName>
+		<!-- 执行科室编码  -->
+		<ExecuteDept>执行科室编码</ExecuteDept>
+		<!-- 执行科室名称  -->
+		<ExecuteDeptName>执行科室名称</ExecuteDeptName>
+
+		<!-- 医嘱时间类型  -->
+		<OrderTimeType>医嘱时间类型</OrderTimeType>
+		<!-- 申请科室编码  -->
+		<AdviceDeptCode>申请科室编码</AdviceDeptCode>
+	</application>
