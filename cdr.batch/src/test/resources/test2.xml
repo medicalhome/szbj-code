@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- 检查申请单信息-->
+<application>
+    <!-- 操作类型 取值范围( insert、delete、update) -->
+    <operationType>insert</operationType>
+    <patient>
+        <!-- 病人ID  -->
+        <PatientId>1</PatientId>
+        <!-- 门诊号  -->
+        <OutpatientNo>22</OutpatientNo>
+        <!-- 住院号  -->
+        <HospitalizedNo>333</HospitalizedNo>
+        <!-- 医保卡号  -->
+        <MedicareNo>4444</MedicareNo>
+        <!-- 病历编号  -->
+        <PatientNo>5555</PatientNo>
+        <!-- 姓名  -->
+        <PatientName>姓名</PatientName>
+        <!-- 医院Id  -->
+        <HospitalId>医院Id</HospitalId>
+        <!-- 性别  -->
+        <Sex>性别</Sex>
+        <!-- 年龄  -->
+        <Age>25</Age>
+    </patient>
+</application>

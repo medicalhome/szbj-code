@@ -1,16 +1,17 @@
 package com.yly.cdr.hl7.codec;
 
+import ca.uhn.hl7v2.model.v24.message.OMG_O19;
+import ca.uhn.hl7v2.model.v24.message.ORG_O20;
+import com.yly.cdr.batch.processor.MessageProcessor;
+import com.yly.cdr.batch.processor.V2MessageProcessor;
+import com.yly.cdr.hl7.dto.BaseDto;
+import com.yly.cdr.util.DateUtils;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.net.SocketAddress;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import org.apache.commons.codec.binary.Base64;
 import org.slf4j.Logger;
@@ -132,7 +133,12 @@ public class HL7MLLPServerHandler extends SimpleChannelInboundHandler<Object>
             			}
             		} else{
             			// 普通V2消息
-            			pool.addMessage(constructMessage(hapiMsg));
+//            			pool.addMessage(constructMessage(hapiMsg));
+                        Hl7Message result = constructMessage(hapiMsg);
+                        V2MessageProcessor processor = new V2MessageProcessor();
+                        processor.setMessageId(result.getMessageType());
+                        com.yly.cdr.entity.Message msgEntity = this.construct(result);
+                        BaseDto dto = processor.process(msgEntity);
             		}
             		ChannelFuture f = ctx.channel().writeAndFlush(ack.getMessage().toString());
         		} else {
@@ -150,6 +156,37 @@ public class HL7MLLPServerHandler extends SimpleChannelInboundHandler<Object>
         		ChannelFuture f = ctx.channel().writeAndFlush("NG");
         	}
         }
+    }
+    private com.yly.cdr.entity.Message construct(Hl7Message message) throws Exception
+    {
+        String messageId = message.getMessageType();
+        // $Author :wu_biao
+        // $Date : 2013/03/13
+        // 警告通知框架 ADD BEGIN
+        // sender.setMessageId(messageId);
+        // 警告通知框架 ADD END
+        com.yly.cdr.entity.Message msg = new com.yly.cdr.entity.Message();
+        msg.setId(message.getDatabaseId());
+        msg.setVid(messageId);
+        msg.setMsgMode(message.getMsgMode());
+        msg.setBatchId(message.getQueueName());
+        msg.setContent(message.getText());
+        msg.setOrgCode(message.getHospitalCd());
+        msg.setDatetime(new Date(message.getJMSTimestamp()));
+        msg.setSourceSysCd(message.getSourceSysCd());
+        // writeLog.setMessageId(messageId);
+        // writeLog.setId(message.getDatabaseId().toString());
+
+        // $Author:chunlin jing
+        // $Date:2013/7/17
+        // $[BUG]0034809 ADD BEGIN
+        // 增加消息服务ID
+        msg.setServiceId(message.getServiceId());
+        msg.setCreateTime(DateUtils.stringToDate(message.getCreateTime(),
+                DateUtils.PATTERN_MINUS_DATETIME));
+        // $[BUG]0034809 ADD END
+        msg.setOrderDispatchTypeCode(message.getOrderExecId());
+        return msg;
     }
 
     @Override

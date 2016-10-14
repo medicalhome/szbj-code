@@ -1,5 +1,6 @@
 package com.yly.cdr.batch.processor;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -9,6 +10,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import com.founder.hie.message.data.AbstractMessage;
+import com.founder.hie.message.data.HL7V2Message;
+import com.founder.hie.message.processor.HL7V2MessageProcessor;
+import com.founder.hie.rce.util.FileUtils;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -120,7 +125,14 @@ public class V2MessageProcessor implements ItemProcessor<Message, BaseDto>
     		logger.error("V2消息解析失败。。。。。。");
     		throw new NullPointerException("V2消息解析失败。。。。。。");
     	}
-		return model.getContent();
+        /*AbstractMessage abstractMessage1 = MessageFactory.generateMessage("HL7_V2_MESSAGE", model,msd);
+        HL7V2MessageProcessor hl7V2MessageProcessor = new HL7V2MessageProcessor();
+//        msd.setMessageType("OMG_O19");
+        msd.setMessageType("ORG_O20");
+        msd.setVersionNumber("2.4");
+        HL7V2MessageHandle hl7V2MessageHandle = new HL7V2MessageHandle();
+        FileUtils.writeToFile(hl7V2MessageHandle.buildV2Message(model,msd), new File("/a.txt"));*/
+        return model.getContent();
     }
 
 	private String getServiceId(String msgId, Map mp) throws Exception{
