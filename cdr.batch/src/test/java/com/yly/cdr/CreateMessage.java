@@ -96,12 +96,20 @@ public class CreateMessage {
         try {
             String m = "MSH|^~\\&|hl7Integration|hl7Integration|||||ADT^A01|||2.4|\r" +
                     "EVN|A01|20130617154644\r" +
-                    "PID|1|465 306 5961||407623|Wood^Patrick^^^MR||19700101|1||||||||||\r" +
+//                    "PID|1|465 306 5961||407623|Wood^Patrick^^^MR||19700101|1||||||||||\r" +
                     "PV1|1||Location||||||||||||||||261938_6_201306171546|||||||||||||||||||||||||20130617134644|||||||||";
 //Create the Terser
             PipeParser pipeParser = new PipeParser();
             Message message = pipeParser.parse(m);
             Terser terser = new Terser(message);
+            terser.set("/.PID-1-1", "1");
+            terser.set("/.PID-2-1", "465 306 5961");
+            terser.set("/.PID-4-1", "407623");
+            terser.set("/.PID-5-1", "Wood");
+            terser.set("/.PID-5-2", "Patrick");
+            terser.set("/.PID-5-5", "MR");
+            terser.set("/.PID-7-1", "19700101");
+            terser.set("/.PID-8-1", "1");
 //Add first next of Kin
 //NK1|1|Jones^Joe|Father||||||
             terser.set("/.NK1(1)-1-1", "1");
