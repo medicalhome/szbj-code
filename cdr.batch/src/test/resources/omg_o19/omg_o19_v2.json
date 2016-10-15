@@ -72,23 +72,24 @@
         "format": "",
         "multiplicity": "0..n",
         "child": {
-            "id": {
-                "desc": "标识号",
-                "path": "/PID-3-1",
-                "display": "",
-                "type": "string",
-                "format": "",
-                "multiplicity": "0..1"
-            },
-            "idTypeCode": {
-                "desc": "标识类型",
-                "path": "/PID-3-5",
-                "display": "",
-                "type": "string",
-                "format": "",
-                "multiplicity": "0..1"
-            }
-        },
+          "id": {
+            "desc": "标识号",
+            "path": "/PID-3-1",
+            "display": "",
+            "type": "string",
+            "format": "",
+            "multiplicity": "0..1"
+          },
+          "idTypeCode": {
+            "desc": "标识类型",
+            "path": "/PID-3-5",
+            "display": "",
+            "type": "string",
+            "format": "",
+            "multiplicity": "0..1"
+          }
+        }
+    },
         "PatientName": {
             "desc": "患者名称",
             "path": "/PID-5",
@@ -259,5 +260,4 @@
                 }
             }
         }
-    }
 }
