@@ -27,9 +27,21 @@ public class MessageParserWrapper {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static MessageModel xml2Map(String schemaContent, String xmlContent,String msgType) throws  JsonParseException, JsonMappingException, IOException{
+	public static MessageModel xml2Map(String schemaContent, String xmlContent,String msgType) {
 		ObjectMapper mapper = new ObjectMapper();
-		Map<String, Object> schema = mapper.readValue(schemaContent, HashMap.class);
+		Map<String, Object> schema = null;
+		try {
+			schema = mapper.readValue(schemaContent, HashMap.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MessageSchemaDefinition msd = new MessageSchemaDefinition();
 		msd.setSchema(schema);
 		xmlContent = xmlContent.replaceAll("[\\x00-\\x08\\x0b-\\x0c\\x0e-\\x1f]", "");
@@ -50,9 +62,21 @@ public class MessageParserWrapper {
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static String map2Xml(String schemaContent,String templateContent,String msgType,MessageModel model) throws  JsonParseException, JsonMappingException, IOException{
+	public static String map2Xml(String schemaContent,String templateContent,String msgType,MessageModel model){
 		ObjectMapper mapper = new ObjectMapper();
-		Map<String, Object> schema = mapper.readValue(schemaContent, HashMap.class);
+		Map<String, Object> schema = null;
+		try {
+			schema = mapper.readValue(schemaContent, HashMap.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MessageSchemaDefinition msd = new MessageSchemaDefinition();
 		msd.setSchema(schema);
 		msd.setTemplate(templateContent);

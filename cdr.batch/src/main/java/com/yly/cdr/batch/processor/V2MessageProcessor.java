@@ -1,6 +1,5 @@
 package com.yly.cdr.batch.processor;
 
-import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -10,10 +9,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import com.founder.hie.message.data.AbstractMessage;
-import com.founder.hie.message.data.HL7V2Message;
-import com.founder.hie.message.processor.HL7V2MessageProcessor;
-import com.founder.hie.rce.util.FileUtils;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -108,7 +103,7 @@ public class V2MessageProcessor implements ItemProcessor<Message, BaseDto>
      * @throws JsonParseException 
      * @exception MessageProcessException
      */
-    public Map getV2Map(Message message) throws JsonParseException, JsonMappingException, IOException{
+    public Map<String,Object> getV2Map(Message message){
     	fileJsonMapHandler = new FileJsonMapHandler();
     	fileJsonMapHandler.setMessageId(messageId);
     	ObjectMapper mapper = new ObjectMapper();
@@ -117,7 +112,19 @@ public class V2MessageProcessor implements ItemProcessor<Message, BaseDto>
     		logger.error("V2消息配置文件加载失败。。。。。。");
     		throw new NullPointerException("V2配置文件未找到。。。。。。");
     	}
-		Map schema = mapper.readValue(jsonContent, HashMap.class);
+		Map schema = null;
+		try {
+			schema = mapper.readValue(jsonContent, HashMap.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		MessageSchemaDefinition msd = new MessageSchemaDefinition();
 		msd.setSchema(schema);
 		MessageModel model = MessageFactory.parseMessage("HL7_V2_MESSAGE", message.getContent(),msd);
@@ -135,7 +142,7 @@ public class V2MessageProcessor implements ItemProcessor<Message, BaseDto>
         return model.getContent();
     }
 
-    public  String getJson(Message message) throws JsonParseException, JsonMappingException, IOException{
+    public  String getJson(Message message){
     	fileJsonMapHandler = new FileJsonMapHandler();
     	fileJsonMapHandler.setMessageId(messageId);
     	String jsonContent = fileJsonMapHandler.getJsonContent();
