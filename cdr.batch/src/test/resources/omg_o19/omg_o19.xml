@@ -54,7 +54,7 @@
 		</ObservertionRequest>
 		<ObsResult>
 			<ObsIdentifier>观察标识符</ObsIdentifier>
-			<ValueType></ValueType>
+			<ValueType>值类型</ValueType>
 			<ObservationValue>观察值</ObservationValue>
 		</ObsResult>
 	</Application>

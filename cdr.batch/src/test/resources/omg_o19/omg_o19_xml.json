@@ -1,86 +1,76 @@
 {
-  "SendApplication": {
-    "desc": "发送系统",
-    "path": "/Msg/Head/SendApplication",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "ReceivingApplication": {
-    "desc": "接收方系统",
-    "path": "/Msg/Head/ReceivingApplication",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "MessageType": {
-    "desc": "消息类型",
-    "path": "/Msg/Head/MessageType",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "MessageControlId": {
-    "desc": "消息ID",
-    "path": "/Msg/Head/MessageControlId",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "ProcessingId": {
-    "desc": "处理ID",
-    "path": "/Msg/Head/ProcessingId",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "VersionId": {
-    "desc": "版本ID",
-    "path": "/Msg/Head/VersionId",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "PatientId": {
-    "desc": "患者id",
-    "path": "/Msg/Body/Patient/PatientId",
-    "display": "",
-    "type": "string",
-    "format": "",
-    "multiplicity": "0..1"
-  },
-  "PIdList": {
-    "desc": "患者标识",
-    "path": "/Msg/Body/Patient/IdList/Item",
-    "display": "",
-    "type": "complex",
-    "format": "",
-    "multiplicity": "0..n",
-    "child": {
-      "Id": {
-        "desc": "标识号",
-        "path": "s:Id",
-        "display": "",
-        "type": "string",
-        "format": "",
-        "multiplicity": "0..1"
-      },
-      "IdTypeCode": {
-        "desc": "标识类型",
-        "path": "s:IdTypeCode",
-        "display": "",
-        "type": "string",
-        "format": "",
-        "multiplicity": "0..1"
-      }
-    }
-  },
+    "SendApplication": {
+      "desc": "发送系统",
+      "path": "/Msg/Head/SendApplication",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "ReceivingApplication": {
+      "desc": "接收方系统",
+      "path": "/Msg/Head/ReceivingApplication",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "MessageType": {
+      "desc": "消息类型",
+      "path": "/Msg/Head/MessageType",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "MessageControlId": {
+      "desc": "消息ID",
+      "path": "/Msg/Head/MessageControlId",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "ProcessingId": {
+      "desc": "处理ID",
+      "path": "/Msg/Head/ProcessingId",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "VersionId": {
+      "desc": "版本ID",
+      "path": "/Msg/Head/VersionId",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "PatientId": {
+      "desc": "患者id",
+      "path": "/Msg/Body/Patient/PatientId",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "Id": {
+      "desc": "标识号",
+      "path": "/Msg/Body/Patient/IdList/Item/Id",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "IdTypeCode": {
+      "desc": "标识类型",
+      "path": "/Msg/Body/Patient/IdList/ItemIdTypeCode",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
     "PatientName": {
       "desc": "患者名称",
       "path": "/Msg/Body/Patient/PatientName",
@@ -225,38 +215,28 @@
       "format": "",
       "multiplicity": "0..1"
     },
-    "Obxs": {
-      "desc": "观察结果",
-      "path": "/Msg/Body/Application/ObsResult",
+    "ValueType": {
+      "desc": "值类型",
+      "path": "/Msg/Body/Application/ObsResult/ValueType",
       "display": "",
-      "type": "complex",
+      "type": "string",
       "format": "",
-      "multiplicity": "0..n",
-      "child": {
-        "ValueType": {
-          "desc": "值类型",
-          "path": "ValueType",
-          "display": "",
-          "type": "string",
-          "format": "",
-          "multiplicity": "0..1"
-        },
-        "ObsIdentifier": {
-          "desc": "标识符",
-          "path": "ObsIdentifier",
-          "display": "",
-          "type": "string",
-          "format": "",
-          "multiplicity": "0..1"
-        },
-        "ObsValue": {
-          "desc": "观察值",
-          "path": "ObservationValue",
-          "display": "",
-          "type": "string",
-          "format": "",
-          "multiplicity": "0..1"
-        }
-      }
+      "multiplicity": "0..1"
+    },
+    "ObsIdentifier": {
+      "desc": "标识符",
+      "path": "/Msg/Body/Application/ObsResult/ObsIdentifier",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
+    },
+    "ObsValue": {
+      "desc": "观察值",
+      "path": "/Msg/Body/Application/ObsResult/ObservationValue",
+      "display": "",
+      "type": "string",
+      "format": "",
+      "multiplicity": "0..1"
     }
 }
