@@ -53,6 +53,7 @@
 			<list>
 				<value>classpath:cdr.properties</value>
 				<value>classpath:closedCycle.properties</value>
+				<value>classpath:szbj.properties</value>
 			</list>
 		</property>
 	</bean>
