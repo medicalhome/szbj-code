@@ -65,7 +65,7 @@
     },
     "IdTypeCode": {
       "desc": "标识类型",
-      "path": "/Msg/Body/Patient/IdList/ItemIdTypeCode",
+      "path": "/Msg/Body/Patient/IdList/Item/IdTypeCode",
       "display": "",
       "type": "string",
       "format": "",
