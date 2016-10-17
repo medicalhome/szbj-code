@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Msg>
+<Head>
+   <SendApplication>发送方应用程序</SendApplication>
+   <ReceivingApplication>接收方应用程序</ReceivingApplication>
+   <MessageType>消息类型</MessageType>
+   <MessageControlId></MessageControlId>
+   <ProcessingId>处理ID</ProcessingId>
+   <VersionId>2.4</VersionId>
+</Head>
+<Body>
+	<Patient>
+		<PatientId>病人ID</PatientId>
+		<IdList>
+			<Item>
+				<Id>患者标识id</Id>
+				<IdTypeCode>患者标识类型</IdTypeCode>
+			</Item>
+		</IdList>
+		<PatientName>姓名</PatientName>
+		<HospitalId>医院Id</HospitalId>
+		<Sex>性别</Sex>
+		<Age>年龄</Age>
+	</Patient>
+	<Visit>
+		<MedicalType>就诊类型</MedicalType>
+		<VisitNo>就诊流水号</VisitNo>
+		<VisitTimes>就诊次数</VisitTimes>
+		<WardCode>病区编码</WardCode>
+		<Ward>病房号(病区)</Ward>
+		<BedNo>床号</BedNo>
+	</Visit>
+	<Application>
+		<CommonOder>
+			<OrderControl>申请控制</OrderControl>
+			<ApplyNo>申请单号</ApplyNo>
+			<AdviceNo>医嘱编号 </AdviceNo>
+			<ApplicationType>检查单类型0:正常 1:加急</ApplicationType>
+			<AdviceTime>申请时间</AdviceTime>
+			<ConsultationTime>申请会诊时间</ConsultationTime>
+			<AdviceDoctorCode>申请医生</AdviceDoctorCode>
+			<AdviceDoctorName>申请医生</AdviceDoctorName>
+			<AdviceDeptCode>申请科室编码</AdviceDeptCode>
+			<AdviceDeptName>申请科室</AdviceDeptName>
+			<State>检查单状态</State>
+		</CommonOder>
+		<ObservertionRequest>
+			<CheckItemType>检查项目类型</CheckItemType>
+			<CheckItemCode>检查项目代码</CheckItemCode>
+			<CheckItemName>检查项目名称</CheckItemName>
+			<ExecuteDeptCode>执行科室编码</ExecuteDeptCode>
+			<ExecuteDeptName>执行科室名称</ExecuteDeptName>
+			<Remark>备注</Remark>
+		</ObservertionRequest>
+		<ObsResult>
+			<ObsIdentifier>观察标识符</ObsIdentifier>
+			<ValueType>值类型</ValueType>
+			<ObservationValue>观察值</ObservationValue>
+		</ObsResult>
+	</Application>
+</Body>
+</Msg>
