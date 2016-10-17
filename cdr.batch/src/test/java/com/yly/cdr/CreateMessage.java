@@ -94,34 +94,51 @@ public class CreateMessage {
     @Test
     public void testSetSegmentRepetitions(){
         try {
-            String m = "MSH|^~\\&|hl7Integration|hl7Integration|||||ADT^A01|||2.4|\r" +
+            String m = "MSH|^~\\&|hl7Integration|hl7Integration|||||ADT^A01|||2.6|\r" +
                     "EVN|A01|20130617154644\r" +
 //                    "PID|1|465 306 5961||407623|Wood^Patrick^^^MR||19700101|1||||||||||\r" +
                     "PV1|1||Location||||||||||||||||261938_6_201306171546|||||||||||||||||||||||||20130617134644|||||||||";
+
+            String s = "MSH|^~\\&|||||20161016233253||OMG^O19|||2.4\r" +
+//                    "PID|||0000740315^^^^PatientNO~0000740315^^^^IDCard\r" +
+                    "OBR|\r"
+                    /*"OBX||ST|SIGN||主诉："*/;
 //Create the Terser
             PipeParser pipeParser = new PipeParser();
-            Message message = pipeParser.parse(m);
+            Message message = pipeParser.parse(s);
             Terser terser = new Terser(message);
             terser.set("/.PID-1-1", "1");
             terser.set("/.PID-2-1", "465 306 5961");
+            terser.set("/.PID-3(0)-1", "Wood00");
+            terser.set("/.PID-3(0)-5", "MR00");
+            terser.set("/.PID-3(1)-1", "p3-1");
+            terser.set("/.PID-3(1)-5", "p3-5");
             terser.set("/.PID-4-1", "407623");
             terser.set("/.PID-5-1", "Wood");
             terser.set("/.PID-5-2", "Patrick");
             terser.set("/.PID-5-5", "MR");
-            terser.set("/.PID-7-1", "19700101");
-            terser.set("/.PID-8-1", "1");
+
+            terser.set("/.NTE(0)-1","1");
+            terser.set("/.NTE(1)-1","2");
+
+            terser.set("/.ORDER/OBSERVATION(0)/OBX-2", "ST");
+            terser.set("/.ORDER/OBSERVATION(0)/OBX-3", "SIGN");
+            terser.set("/.ORDER/OBSERVATION(0)/OBX-5", "主诉：");
+            terser.set("/.ORDER/OBSERVATION(1)/OBX-2", "1");
+            terser.set("/.ORDER/OBSERVATION(1)/OBX-3", "SIGN1");
+            terser.set("/.ORDER/OBSERVATION(1)/OBX-5", "主诉111：");
 //Add first next of Kin
 //NK1|1|Jones^Joe|Father||||||
-            terser.set("/.NK1(1)-1-1", "1");
-            terser.set("/.NK1(1)-2-1", "Jones");
-            terser.set("/.NK1(1)-2-2", "Joe");
-            terser.set("/.NK1(1)-3-1", "Father");
+//            terser.set("/.NK1(1)-1-1", "1");
+//            terser.set("/.NK1(1)-2-1", "Jones");
+//            terser.set("/.NK1(1)-2-2", "Joe");
+//            terser.set("/.NK1(1)-3-1", "Father");
 //Add Second next of kin
 //NK1|2|Hall^Anna|Mother
-            terser.set("/.NK1(2)-1-1", "2");
-            terser.set("/.NK1(2)-2-1", "Hall");
-            terser.set("/.NK1(2)-2-2", "Anna");
-            terser.set("/.NK1(2)-3-1", "Mother");
+//            terser.set("/.NK1(0)-1-1", "2");
+//            terser.set("/.NK1(0)-2-1", "Hall");
+//            terser.set("/.NK1(0)-2-2", "Anna");
+//            terser.set("/.NK1(0)-3-1", "Mother");
             System.out.println(message.encode());
             FileUtils.writeToFile(message.encode(), new File("/b.txt"));
         } catch (HL7Exception e) {

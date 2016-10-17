@@ -13,6 +13,7 @@ import com.founder.hie.message.factory.ValueHandlerFactory;
 import com.founder.hie.message.handler.IValueHandler;
 import com.founder.hie.message.schema.MessageSchemaDefinition;
 import com.founder.hie.message.util.SchemaUtil;
+import com.google.common.collect.Maps;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -102,7 +103,7 @@ public class HL7V2MessageHandle {
                     if(hasChild){
                         fillNode(messageTerser, child, valuee);
                     }
-                    setNodeValue(messageTerser, valuee, rule/*, 0*/);
+                    setNodeValue(messageTerser, valuee, rule, 0);
                 }
             } else{
                 if(value instanceof Collection){
@@ -112,7 +113,7 @@ public class HL7V2MessageHandle {
                         if(hasChild){
                             fillNodee(messageTerser, child, contentList[i], path, i);
                         } else{
-                            setNodeValue(messageTerser, contentList[i], rule/*, i*/);
+                            setNodeValue(messageTerser, contentList[i], rule, i);
                         }
                     }
                 } else{
@@ -131,7 +132,7 @@ public class HL7V2MessageHandle {
                 value = ((Map<String, Object>) contentMap).get(key);
                 Map<String, Object> rule = (Map<String, Object>) entity.getValue();
                 String path = rule.get(HL7V3Constant.SCHEMA_KEY_PATH).toString();
-                if(!isRightPath(path) || !isRightPath(pathPartent)){
+                /*if(!isRightPath(path) || !isRightPath(pathPartent)){
                     return false;
                 }
                 String[] pathPartentArray = pathPartent.replaceFirst("/", "").split("/");
@@ -154,12 +155,17 @@ public class HL7V2MessageHandle {
                 }
                 if(!pathPartentArray[pathPartentArray.length - 1].contains("(")){
                     pathPartent = pathPartent + "(" + i + ")";
-                }
-                if(ii == pathPartentArray.length){
-                    rule.remove(HL7V3Constant.SCHEMA_KEY_PATH);
-                    rule.put(HL7V3Constant.SCHEMA_KEY_PATH, pathPartent + "/" + pathArray[pathArray.length - 1]);
-                    processWritingSchema(messageTerser, rule, value);
-                }
+                }*/
+                path = path.replace("#",i+"");
+//                if(ii == pathPartentArray.length){
+//                    rule.remove(HL7V3Constant.SCHEMA_KEY_PATH);
+//                    rule.put(HL7V3Constant.SCHEMA_KEY_PATH, path);
+                Map temPMap = Maps.newHashMap(rule);
+                temPMap.remove(HL7V3Constant.SCHEMA_KEY_PATH);
+                temPMap.put(HL7V3Constant.SCHEMA_KEY_PATH, path);
+
+                    processWritingSchema(messageTerser, temPMap, value);
+//                }
             }
             return true;
         }
@@ -183,7 +189,7 @@ public class HL7V2MessageHandle {
         return false;
     }
 
-    private boolean setNodeValue(Message messageTerser, Object value, Map<String, Object> rule/*, int ii*/){
+    private boolean setNodeValue(Message messageTerser, Object value, Map<String, Object> rule, int ii){
         String format = (String) rule.get(HL7V3Constant.SCHEMA_KEY_FORMAT);
         String type = (String) rule.get(HL7V3Constant.SCHEMA_KEY_TYPE);
         IValueHandler valueHandler = ValueHandlerFactory.getValueHandler(type);
@@ -196,10 +202,10 @@ public class HL7V2MessageHandle {
         }
         Terser terser = new Terser(messageTerser);
 
-        /*if(ii > 0){
+        if(ii > 0){
             paths = paths + "(" + ii + ")";
-        }*/
-        paths = "/."+paths.substring(paths.lastIndexOf("/")+1);
+        }
+        paths = "/."+paths.substring(paths.indexOf("/")+1);
         try {
             terser.set(paths, retValue);
         } catch (HL7Exception e){
