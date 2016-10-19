@@ -55,21 +55,31 @@
       "format": "",
       "multiplicity": "0..1"
     },
-    "Id": {
-      "desc": "标识号",
-      "path": "/Msg/Body/Patient/IdList/Item/Id",
+    "PIdList" : {
+      "desc": "患者标识",
+      "path": "/Msg/Body/Patient/IdList/Item",
       "display": "",
-      "type": "string",
+      "type": "complex",
       "format": "",
-      "multiplicity": "0..1"
-    },
-    "IdTypeCode": {
-      "desc": "标识类型",
-      "path": "/Msg/Body/Patient/IdList/ItemIdTypeCode",
-      "display": "",
-      "type": "string",
-      "format": "",
-      "multiplicity": "0..1"
+      "multiplicity": "0..n",
+      "child": {
+        "Id": {
+          "desc": "标识号",
+          "path": "Id",
+          "display": "",
+          "type": "string",
+          "format": "",
+          "multiplicity": "0..1"
+        },
+        "IdTypeCode": {
+          "desc": "标识类型",
+          "path": "IdTypeCode",
+          "display": "",
+          "type": "string",
+          "format": "",
+          "multiplicity": "0..1"
+        }
+      }
     },
     "PatientName": {
       "desc": "患者名称",
@@ -215,28 +225,38 @@
       "format": "",
       "multiplicity": "0..1"
     },
-    "ValueType": {
-      "desc": "值类型",
-      "path": "/Msg/Body/Application/ObsResult/ValueType",
+    "Obxs" : {
+      "desc": "观察结果",
+      "path": "/Msg/Body/Application/ObsResult",
       "display": "",
-      "type": "string",
+      "type": "complex",
       "format": "",
-      "multiplicity": "0..1"
-    },
-    "ObsIdentifier": {
-      "desc": "标识符",
-      "path": "/Msg/Body/Application/ObsResult/ObsIdentifier",
-      "display": "",
-      "type": "string",
-      "format": "",
-      "multiplicity": "0..1"
-    },
-    "ObsValue": {
-      "desc": "观察值",
-      "path": "/Msg/Body/Application/ObsResult/ObservationValue",
-      "display": "",
-      "type": "string",
-      "format": "",
-      "multiplicity": "0..1"
+      "multiplicity": "0..n",
+      "child": {
+        "ValueType": {
+          "desc": "值类型",
+          "path": "ValueType",
+          "display": "",
+          "type": "string",
+          "format": "",
+          "multiplicity": "0..1"
+        },
+        "ObsIdentifier": {
+          "desc": "标识符",
+          "path": "ObsIdentifier",
+          "display": "",
+          "type": "string",
+          "format": "",
+          "multiplicity": "0..1"
+        },
+        "ObsValue": {
+          "desc": "观察值",
+          "path": "ObservationValue",
+          "display": "",
+          "type": "string",
+          "format": "",
+          "multiplicity": "0..1"
+        }
+      }
     }
 }

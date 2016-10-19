@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<head>
+	<!--字段分隔符-->
+	<FieldSeparator>字段分隔符</FieldSeparator>
+	<!--代码字符-->
+	<EncodingCharacters>代码字符</EncodingCharacters>	
+   <!--发送方应用程序-->
+   <SendApplication>发送方应用程序</SendApplication>
+   <!--接收方应用程序-->
+   <ReceivingApplication>接收方应用程序</ReceivingApplication>
+  <!--消息日期-->
+   <TimeOfMessage>消息日期</TimeOfMessage> 
+   <!--消息类型-->
+   <MessageType>消息类型</MessageType>
+   <!--消息ID-->
+   <MessageControlId></MessageControlId>
+   <!--处理ID-->
+   <ProcessingId>处理ID</ProcessingId>
+   <!--版本ID-->
+   <VersionId>版本ID</VersionId>
+    <!--消息接收确认类型-->
+   <AcceptAckType>消息接收确认类型</AcceptAckType>
+    <!--消息接收确认类型-->
+   <ApplicationAckType>应用程序确认类型</ApplicationAckType>   
+    <!--国家代码-->
+   <CountryCode>国家代码</CountryCode>
+</head>
+<body>
+	<!-- 执行报告信息-->
+	<report>
+		
+	</report>
+</body>
