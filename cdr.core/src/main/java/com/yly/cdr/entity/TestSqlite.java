@@ -8,7 +8,7 @@ import java.math.BigDecimal;
 
 /**
  * 类描述
- * Created by masong1 on 2016/9/6.
+ * Created by on 2016/9/6.
  */
 
 @Entity

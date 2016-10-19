@@ -9,7 +9,7 @@ import java.io.StringWriter;
 
 /**
  * 类描述
- * Created by masong1 on 2016/10/3.
+ * Created by on 2016/10/3.
  */
 
 public class JaxbXmlUtil {
