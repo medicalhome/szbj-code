@@ -19,7 +19,7 @@ import java.lang.reflect.Method;
 
 /**
  * 类描述
- * Created by masong1 on 2016/9/18.
+ * Created by on 2016/9/18.
  */
 
 public class WebSqliteSQLDaoInterceptor extends WebSQLDaoInterceptor {

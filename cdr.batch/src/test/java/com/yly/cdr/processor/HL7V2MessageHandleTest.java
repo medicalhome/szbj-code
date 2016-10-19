@@ -20,7 +20,7 @@ import java.util.Map;
 
 /**
  * 类描述
- * Created by masong1 on 2016/10/15.
+ * Created by  on 2016/10/15.
  */
 
 public class HL7V2MessageHandleTest {

@@ -27,7 +27,7 @@ import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * 类描述
- * Created by masong1 on 2016/9/15.
+ * Created by on 2016/9/15.
  */
 
 public class SqliteSQLCommand extends AbstractSqlCommand {

@@ -14,7 +14,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 类描述
- * Created by masong1 on 2016/9/6.
+ * Created by  on 2016/9/6.
  */
 
 @RunWith(SpringJUnit4ClassRunner.class)

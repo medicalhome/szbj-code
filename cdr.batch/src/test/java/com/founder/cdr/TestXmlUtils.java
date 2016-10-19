@@ -17,7 +17,7 @@ import java.util.concurrent.CountDownLatch;
 
 /**
  * 类描述
- * Created by masong1 on 2016/10/3.
+ * Created by on 2016/10/3.
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "classpath:beanRefContext.xml")

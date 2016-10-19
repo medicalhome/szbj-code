@@ -26,7 +26,7 @@ import java.util.regex.Pattern;
 
 /**
  * 类描述
- * Created by masong1 on 2016/10/12.
+ * Created by  2016/10/12.
  */
 
 public class HL7V2MessageHandle {

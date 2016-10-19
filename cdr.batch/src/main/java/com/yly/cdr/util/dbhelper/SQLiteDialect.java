@@ -4,11 +4,6 @@ import com.founder.fasf.core.util.dbhelper.Dialect;
 
 import java.util.UUID;
 
-/**
- * 类描述
- * Created by masong1 on 2016/9/6.
- */
-
 public class SQLiteDialect extends Dialect {
     public SQLiteDialect() {
     }
