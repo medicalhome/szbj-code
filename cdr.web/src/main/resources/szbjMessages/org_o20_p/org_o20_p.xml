@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Msg>
+  <Head>
+    <MSH>
+      <!--字段分隔符-->
+      <FieldSeparator>
+      </FieldSeparator>
+      <!--代码字符-->
+      <EncodingCharacters>
+      </EncodingCharacters>
+      <!--发送方应用程序-->
+      <SendApplication>
+      </SendApplication>
+      <!--接收方应用程序-->
+      <ReceivingApplication>
+      </ReceivingApplication>
+      <!--消息日期-->
+      <TimeOfMessage>
+      </TimeOfMessage>
+      <!--消息类型-->
+      <MessageType>
+      </MessageType>
+      <!--消息ID-->
+      <MessageControlId>
+      </MessageControlId>
+      <!--处理ID-->
+      <ProcessingId>
+      </ProcessingId>
+      <!--版本ID-->
+      <VersionId>
+      </VersionId>
+      <!--消息接收确认类型-->
+      <AcceptAckType>
+      </AcceptAckType>
+      <!--消息接收确认类型-->
+      <ApplicationAckType>
+      </ApplicationAckType>
+      <!--国家代码-->
+      <CountryCode>
+      </CountryCode>
+    </MSH>
+    <MSA>
+      <!--确认代码-->
+      <AckCode>
+      </AckCode>
+      <!--延迟确认类型-->
+      <DelayedAckType>
+      </DelayedAckType>
+    </MSA>
+  </Head>
+  <Body>
+    <!-- 检查申请单信息-->
+    <Patient>
+      <!-- 病人ID  -->
+      <PatientId>
+      </PatientId>
+      <IdList>
+        <Item>
+          <!--患者标识id-->
+          <Id>
+          </Id>
+          <!--患者标识类型  InpatientNO:住院号 OutpatientNo：门诊号 MedicareNo：医保卡号 PatientNo:-病历编号-->
+          <IdTypeCode>
+          </IdTypeCode>
+        </Item>
+      </IdList>
+      <!-- 姓名  -->
+      <PatientName>
+      </PatientName>
+      <!-- 性别  -->
+      <Sex>
+      </Sex>
+    </Patient>
+    <Application>
+      <CommonOder>
+        <!-- 申请控制 -->
+        <OrderControl>
+        </OrderControl>
+        <!-- 申请单号  -->
+        <ApplyNo>
+        </ApplyNo>
+        <!-- 医嘱编号   -->
+        <AdviceNo>
+        </AdviceNo>
+        <!-- 就诊类型  -->
+        <MedicalType>
+        </MedicalType>
+        <!-- 就诊流水号  -->
+        <VisitNo>
+        </VisitNo>
+        <!-- 操作时间  -->
+        <OperateTime>
+        </OperateTime>
+        <!-- 操作者编码  -->
+        <OperatorCode>
+        </OperatorCode>
+        <!-- 操作者名称  -->
+        <OperatorName>
+        </OperatorName>
+      </CommonOder>
+    </Application>
+  </Body>
+</Msg>

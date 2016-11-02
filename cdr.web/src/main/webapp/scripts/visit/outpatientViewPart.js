@@ -41,13 +41,13 @@ $(function() {
 		
 		if(currentIndex == 0)
 		{
-			$("#next").attr("disabled",　true);
-			$("#next").attr("class",　"but butDisabledBehind");
+			$("#next").attr("disabled",true);
+			$("#next").attr("class","but butDisabledBehind");
 		}
 		else if(currentIndex == visitList.options.length - 1)
 		{
-			$("#prev").attr("disabled",　true);
-			$("#prev").attr("class",　"but butDisabledFront");
+			$("#prev").attr("disabled",true);
+			$("#prev").attr("class","but butDisabledFront");
 		}
 	}
 	

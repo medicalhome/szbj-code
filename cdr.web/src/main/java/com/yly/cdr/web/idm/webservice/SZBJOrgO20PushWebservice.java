@@ -8,12 +8,12 @@ import javax.jws.WebService;
  *
  */
 @WebService
-public interface SZBJOmgO19PushWebservice {
+public interface SZBJOrgO20PushWebservice {
 
 	/**
 	 * 为心电系统提供检查申请单推送
 	 * @param conditionXml
 	 * @return
 	 */
-	public String examApplicationPush(String conditionXml);
+	public String orderStatePush(String conditionXml);
 }

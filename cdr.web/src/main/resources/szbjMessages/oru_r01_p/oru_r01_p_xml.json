@@ -1,7 +1,7 @@
 {
     "FieldSeparator": {
         "desc": "字段分隔符",
-        "path": "/Head/FieldSeparator",
+        "path": "/Msg/Head/MSH/FieldSeparator",
         "display": "",
         "type": "string",
         "format": "",
@@ -9,7 +9,7 @@
     },
     "EncodingCharacters": {
         "desc": "代码字符",
-        "path": "/Head/EncodingCharacters",
+        "path": "/Msg/Head/MSH/EncodingCharacters",
         "display": "",
         "type": "string",
         "format": "",
@@ -17,7 +17,7 @@
     },
     "SendApplication": {
         "desc": "发送系统",
-        "path": "/Head/SendApplication",
+        "path": "/Msg/Head/MSH/SendApplication",
         "display": "",
         "type": "string",
         "format": "",
@@ -25,7 +25,7 @@
     },
     "ReceivingApplication": {
         "desc": "接收方系统",
-        "path": "/Head/ReceivingApplication",
+        "path": "/Msg/Head/MSH/ReceivingApplication",
         "display": "",
         "type": "string",
         "format": "",
@@ -33,7 +33,7 @@
     },
     "TimeOfMessage": {
         "desc": "消息日期",
-        "path": "/Head/TimeOfMessage",
+        "path": "/Msg/Head/MSH/TimeOfMessage",
         "display": "",
         "type": "string",
         "format": "",
@@ -41,7 +41,7 @@
     },
     "MessageType": {
         "desc": "消息类型",
-        "path": "/Head/MessageType",
+        "path": "/Msg/Head/MSH/MessageType",
         "display": "",
         "type": "string",
         "format": "",
@@ -49,7 +49,7 @@
     },
     "MessageControlId": {
         "desc": "消息ID",
-        "path": "/Head/MessageControlId",
+        "path": "/Msg/Head/MSH/MessageControlId",
         "display": "",
         "type": "string",
         "format": "",
@@ -57,7 +57,7 @@
     },
     "ProcessingId": {
         "desc": "处理ID",
-        "path": "/Head/ProcessingId",
+        "path": "/Msg/Head/MSH/ProcessingId",
         "display": "",
         "type": "string",
         "format": "",
@@ -65,7 +65,7 @@
     },
     "VersionId": {
         "desc": "版本ID",
-        "path": "/Head/VersionId",
+        "path": "/Msg/Head/MSH/VersionId",
         "display": "",
         "type": "string",
         "format": "",
@@ -73,7 +73,7 @@
     },
     "AcceptAckType": {
         "desc": "消息接收确认类型",
-        "path": "/Head/AcceptAckType",
+        "path": "/Msg/Head/MSH/AcceptAckType",
         "display": "",
         "type": "string",
         "format": "",
@@ -81,7 +81,7 @@
     },
     "ApplicationAckType": {
         "desc": "应用程序确认类型",
-        "path": "/Head/ApplicationAckType",
+        "path": "/Msg/Head/MSH/ApplicationAckType",
         "display": "",
         "type": "string",
         "format": "",
@@ -89,7 +89,7 @@
     },
     "CountryCode": {
         "desc": "国家代码",
-        "path": "/Head/CountryCode",
+        "path": "/Msg/Head/MSH/CountryCode",
         "display": "",
         "type": "string",
         "format": "",
@@ -97,7 +97,7 @@
     },
     "PatientId": {
         "desc": "患者id",
-        "path": "/Body/Patient/PatientId",
+        "path": "/Msg/Body/Patient/PatientId",
         "display": "",
         "type": "string",
         "format": "",
@@ -105,7 +105,7 @@
     },
     "PIdList": {
         "desc": "患者标识",
-        "path": "/Body/Patient/IdList/Item",
+        "path": "/Msg/Body/Patient/IdList/Item",
         "display": "",
         "type": "complex",
         "format": "",
@@ -113,7 +113,7 @@
         "child": {
             "Id": {
                 "desc": "标识号",
-                "path": "s:Id",
+                "path": "Id",
                 "display": "",
                 "type": "string",
                 "format": "",
@@ -121,7 +121,7 @@
             },
             "IdTypeCode": {
                 "desc": "标识类型",
-                "path": "s:IdTypeCode",
+                "path": "IdTypeCode",
                 "display": "",
                 "type": "string",
                 "format": "",
@@ -131,7 +131,7 @@
     },
     "PatientName": {
         "desc": "患者名称",
-        "path": "/Body/Patient/PatientName",
+        "path": "/Msg/Body/Patient/PatientName",
         "display": "",
         "type": "string",
         "format": "",
@@ -139,7 +139,7 @@
     },
     "GenderCode": {
         "desc": "性别编码",
-        "path": "/Body/Patient/Sex",
+        "path": "/Msg/Body/Patient/Sex",
         "display": "",
         "type": "string",
         "format": "",
@@ -147,7 +147,7 @@
     },
     "VisitTypeCode": {
         "desc": "就诊类别编码",
-        "path": "/Body/visit/MedicalType",
+        "path": "/Msg/Body/Visit/MedicalType",
         "display": "",
         "type": "string",
         "format": "",
@@ -155,7 +155,7 @@
     },
     "VisitTimes": {
         "desc": "就诊次数",
-        "path": "/Body/visit/VisitTimes",
+        "path": "/Msg/Body/Visit/VisitTimes",
         "display": "",
         "type": "string",
         "format": "",
@@ -163,7 +163,7 @@
     },
     "VisitOrdNo": {
         "desc": "就诊流水号",
-        "path": "/Body/visit/VisitNo",
+        "path": "/Msg/Body/Visit/VisitNo",
         "display": "",
         "type": "string",
         "format": "",
@@ -171,7 +171,7 @@
     },
     "BedNo": {
         "desc": "床号",
-        "path": "/Body/visit/BedNo",
+        "path": "/Msg/Body/Visit/BedNo",
         "display": "",
         "type": "string",
         "format": "",
@@ -179,15 +179,7 @@
     },
     "WardsCode": {
         "desc": "病区编码",
-        "path": "/Body/visit/WardCode",
-        "display": "",
-        "type": "string",
-        "format": "",
-        "multiplicity": "0..1"
-    },
-    "OrderControl": {
-        "desc": "申请控制",
-        "path": "/Body/Application/CommonOder/OrderControl",
+        "path": "/Msg/Body/Visit/WardCode",
         "display": "",
         "type": "string",
         "format": "",
@@ -195,7 +187,7 @@
     },
     "ApplyNo": {
         "desc": "申请单号",
-        "path": "/Body/ObservertionRequest/ApplyNo",
+        "path": "/Msg/Body/ObservertionRequest/ApplyNo",
         "display": "",
         "type": "string",
         "format": "",
@@ -203,7 +195,7 @@
     },
     "CheckItemCode": {
         "desc": "检查项目编码",
-        "path": "/Body/ObservertionRequest/CheckItemCode",
+        "path": "/Msg/Body/ObservertionRequest/CheckItemCode",
         "display": "",
         "type": "string",
         "format": "",
@@ -211,7 +203,7 @@
     },
     "CheckItemName": {
         "desc": "检查项目名称",
-        "path": "/Body/ObservertionRequest/CheckItemName",
+        "path": "/Msg/Body/ObservertionRequest/CheckItemName",
         "display": "",
         "type": "string",
         "format": "",
@@ -219,7 +211,7 @@
     },
     "ReportDoctorCode": {
         "desc": "报告医生编码",
-        "path": "/Body/ObservertionRequest/ReportDoctorCode",
+        "path": "/Msg/Body/ObservertionRequest/ReportDoctorCode",
         "display": "",
         "type": "string",
         "format": "",
@@ -227,7 +219,7 @@
     },
     "ReportDoctorNm": {
         "desc": "报告医生名称",
-        "path": "/Body/ObservertionRequest/ReportDoctorNm",
+        "path": "/Msg/Body/ObservertionRequest/ReportDoctorNm",
         "display": "",
         "type": "string",
         "format": "",
@@ -235,7 +227,7 @@
     },
     "ReportTime": {
         "desc": "报告时间",
-        "path": "/Body/ObservertionRequest/ReportTime",
+        "path": "/Msg/Body/ObservertionRequest/ReportTime",
         "display": "",
         "type": "string",
         "format": "",
@@ -243,7 +235,7 @@
     },
     "CheckedDoctorCode": {
         "desc": "审核医生编码",
-        "path": "/Body/ObservertionRequest/CheckedDoctorCode",
+        "path": "/Msg/Body/ObservertionRequest/CheckedDoctorCode",
         "display": "",
         "type": "string",
         "format": "",
@@ -251,7 +243,7 @@
     },
     "CheckedDoctorNm": {
         "desc": "审核医生名称",
-        "path": "/Body/ObservertionRequest/CheckedDoctorNm",
+        "path": "/Msg/Body/ObservertionRequest/CheckedDoctorNm",
         "display": "",
         "type": "string",
         "format": "",
@@ -259,7 +251,7 @@
     },
     "CheckedTime": {
         "desc": "审核时间",
-        "path": "/Body/ObservertionRequest/CheckedTime",
+        "path": "/Msg/Body/ObservertionRequest/CheckedTime",
         "display": "",
         "type": "string",
         "format": "",
@@ -267,7 +259,7 @@
     },
     "ExecDeptCode": {
         "desc": "执行科室编码",
-        "path": "/Body/ObservertionRequest/ExecDeptCode",
+        "path": "/Msg/Body/ObservertionRequest/ExecDeptCode",
         "display": "",
         "type": "string",
         "format": "",
@@ -275,7 +267,7 @@
     },
     "ExecDeptName": {
         "desc": "执行科室名称",
-        "path": "/Body/ObservertionRequest/ExecDeptName",
+        "path": "/Msg/Body/ObservertionRequest/ExecDeptName",
         "display": "",
         "type": "string",
         "format": "",
@@ -283,7 +275,7 @@
     },
     "Obxs": {
         "desc": "观察结果",
-        "path": "/Body/Application/ObsResult",
+        "path": "/Msg/Body/ObsResult",
         "display": "",
         "type": "complex",
         "format": "",

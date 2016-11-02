@@ -1,152 +1,228 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Msg>
-    <Head>
-        <!--发送方应用程序-->
-        <SendApplication>CIS</SendApplication>
-        <!--接收方应用程序-->
-        <ReceivingApplication>ECG</ReceivingApplication>
-        <!--消息类型-->
-        <MessageType>OMG^O19</MessageType>
-        <!--消息ID-->
-        <MessageControlId>20150515113334</MessageControlId>
-        <!--处理ID-->
-        <ProcessingId>P</ProcessingId>
-        <!--版本ID-->
-        <VersionId>2.4</VersionId>
-    </Head>
-    <Body>
-        <!-- 检查申请单信息-->
-        <Patient>
-            <!-- 病人ID  -->
-            <PatientId>0000740315</PatientId>
-            <IdList>
-                <Item>
-                    <!--患者标识id-->
-                    <Id>0000740315</Id>
-                    <!--患者标识类型  InpatientNO:住院号 OutpatientNo：门诊号 MedicareNo：医保卡号 PatientNo:-病历编号-->
-                    <IdTypeCode>PatientNO</IdTypeCode>
-                </Item>
-                <Item>
-                    <!--患者标识id-->
-                    <Id>0000740315</Id>
-                    <!--患者标识类型  InpatientNO:住院号 OutpatientNo：门诊号 MedicareNo：医保卡号 PatientNo:-病历编号-->
-                    <IdTypeCode>IDCard</IdTypeCode>
-                </Item>
-            </IdList>
-            <!-- 姓名  -->
-            <PatientName>王力</PatientName>
-            <!-- 医院Id  -->
-            <HospitalId></HospitalId>
-            <!-- 性别  -->
-            <Sex>F</Sex>
-            <!-- 年龄  -->
-            <Age></Age>
-        </Patient>
-        <Visit>
-            <!-- 就诊类型  -->
-            <MedicalType>O</MedicalType>
-            <!-- 就诊流水号  -->
-            <VisitNo>2068423</VisitNo>
-            <!-- 就诊次数  -->
-            <VisitTimes>2</VisitTimes>
-            <!-- 病区编码  -->
-            <WardCode></WardCode>
-            <!-- 病房号(病区)  -->
-            <Ward></Ward>
-            <!-- 床号  -->
-            <BedNo></BedNo>
-            <!--就诊科室编码 -->
-            <DeptCode>8149 </DeptCode>
-            <!--就诊科室名称 -->
-            <DeptName>急诊科</DeptName>
-        </Visit>
-        <Application>
-            <CommonOder>
-                <!-- 申请控制 取值范围( ) -->
-                <OrderControl>RU</OrderControl>
-                <!-- 申请单号  -->
-                <ApplyNo>923480</ApplyNo>
-                <!-- 医嘱编号   -->
-                <AdviceNo>22631317</AdviceNo>
-                <!-- 检查单类型  0:正常 1：加急-->
-                <ApplicationType>检查单类型</ApplicationType>
-                <!-- 申请时间  -->
-                <AdviceTime>20150515113250</AdviceTime>
-                <!-- 申请会诊时间  -->
-                <ConsultationTime></ConsultationTime>
-                <!-- 申请医生编码  -->
-                <AdviceDoctorCode>001257</AdviceDoctorCode>
-                <!-- 申请医生  -->
-                <AdviceDoctorName>李学哲</AdviceDoctorName>
-                <!-- 申请科室编码  -->
-                <AdviceDeptCode>8149</AdviceDeptCode>
-                <!-- 申请科室  -->
-                <AdviceDeptName>心血管科</AdviceDeptName>
-                <!-- 检查单状态  -->
-                <State>1</State>
-            </CommonOder>
-            <ObservertionRequest>
-                <!-- 检查项目类型  -->
-                <CheckItemType>30</CheckItemType>
-                <!-- 检查项目代码  -->
-                <CheckItemCode>F00000015019</CheckItemCode>
-                <!-- 检查项目名称  -->
-                <CheckItemName>彩超：经阴道子宫附件</CheckItemName>
-                <!-- 执行科室编码  -->
-                <ExecuteDeptCode>8149</ExecuteDeptCode>
-                <!-- 执行科室名称  -->
-                <ExecuteDeptName>心血管科</ExecuteDeptName>
-                <!-- 备注  -->
-                <Remark></Remark>
-            </ObservertionRequest>
-            <ObsResult>
-                <!--identifier:
-                SIGN:临床症状及体征  HISTORY:既往病史
-                RIS:检查结果  LIS:检验结果  DRUG:用药情况
-                REMARK:备注 DIAG:诊断  SITE：部位描述-->
-                <!--观察标识符-->
-                <ObsIdentifier>SIGN</ObsIdentifier>
-                <!--值类型 ST-->
-                <ValueType>ST</ValueType>
-                <!--观察值-->
-                <ObservationValue>主诉：</ObservationValue>
-            </ObsResult>
-            <ObsResult>
-                <!--identifier:
-                SIGN:临床症状及体征  HISTORY:既往病史
-                RIS:检查结果  LIS:检验结果  DRUG:用药情况
-                REMARK:备注 DIAG:诊断  SITE：部位描述-->
-                <!--观察标识符-->
-                <ObsIdentifier>DIAG</ObsIdentifier>
-                <!--值类型 ST-->
-                <ValueType>ST</ValueType>
-                <!--观察值-->
-                <ObservationValue>诊断:痛经？</ObservationValue>
-            </ObsResult>
-            <ObsResult>
-                <!--identifier:
-                SIGN:临床症状及体征  HISTORY:既往病史
-                RIS:检查结果  LIS:检验结果  DRUG:用药情况
-                REMARK:备注 DIAG:诊断  SITE：部位描述-->
-                <!--观察标识符-->
-                <ObsIdentifier>HISTORY</ObsIdentifier>
-                <!--值类型 ST-->
-                <ValueType>ST</ValueType>
-                <!--观察值-->
-                <ObservationValue>现病史:下腹痛，无恶心、呕吐，无腹泻，无发热，经期</ObservationValue>
-            </ObsResult>
-            <ObsResult>
-                <!--identifier:
-                SIGN:临床症状及体征  HISTORY:既往病史
-                RIS:检查结果  LIS:检验结果  DRUG:用药情况
-                REMARK:备注 DIAG:诊断  SITE：部位描述-->
-                <!--观察标识符-->
-                <ObsIdentifier>SITE</ObsIdentifier>
-                <!--值类型 ST-->
-                <ValueType>ST</ValueType>
-                <!--观察值-->
-                <ObservationValue>部位:彩超：经阴道子宫附件</ObservationValue>
-            </ObsResult>
-        </Application>
-    </Body>
+  <Head>
+    <MSH>
+      <!--字段分隔符-->
+      <FieldSeparator>
+      </FieldSeparator>
+      <!--代码字符-->
+      <EncodingCharacters>
+      </EncodingCharacters>
+      <!--发送方应用程序-->
+      <SendApplication>
+      </SendApplication>
+      <!--接收方应用程序-->
+      <ReceivingApplication>
+      </ReceivingApplication>
+      <!--消息日期-->
+      <TimeOfMessage>
+      </TimeOfMessage>
+      <!--消息类型-->
+      <MessageType>
+      </MessageType>
+      <!--消息ID-->
+      <MessageControlId>
+      </MessageControlId>
+      <!--处理ID-->
+      <ProcessingId>
+      </ProcessingId>
+      <!--版本ID-->
+      <VersionId>
+      </VersionId>
+      <!--消息接收确认类型-->
+      <AcceptAckType>
+      </AcceptAckType>
+      <!--消息接收确认类型-->
+      <ApplicationAckType>
+      </ApplicationAckType>
+      <!--国家代码-->
+      <CountryCode>
+      </CountryCode>
+    </MSH>
+    <MSA>
+      <!--确认代码-->
+      <AckCode>
+      </AckCode>
+      <!--延迟确认类型-->
+      <DelayedAckType>
+      </DelayedAckType>
+    </MSA>
+  </Head>
+  <Body>
+    <QAK>
+      <!--查询标签-->
+      <QueryTag>
+      </QueryTag>
+      <!--查询应答状态-->
+      <QueryResponseStatus>
+      </QueryResponseStatus>
+      <!--消息查询编码-->
+      <QueryIdentifier>
+      </QueryIdentifier>
+      <!--消息查询名称-->
+      <QueryName>
+      </QueryName>
+      <!--消息查询编码体系-->
+      <QueryNameSystem>
+      </QueryNameSystem>
+      <!--查询总数-->
+      <CountTotal>
+      </CountTotal>
+    </QAK>
+    <QPD>
+      <!--消息查询名称-->
+      <QueryName>
+      </QueryName>
+      <!--查询标签-->
+      <QueryTag>
+      </QueryTag>
+      <!--查询参数-->
+      <UserParameter>
+      </UserParameter>
+    </QPD>
+    <Err>
+      <!--错误段ID-->
+      <ErrSegmentId>
+      </ErrSegmentId>
+      <!--错误顺序-->
+      <ErrSequence>
+      </ErrSequence>
+      <!--错误字段位置-->
+      <ErrFieldPosition>
+      </ErrFieldPosition>
+    </Err>
+    <ResultItem>
+      <!-- 检查申请单信息-->
+      <Patient>
+        <!-- 病人ID  -->
+        <PatientId>
+        </PatientId>
+        <IdList>
+          <Item>
+            <!--患者标识id-->
+            <Id>
+            </Id>
+            <!--患者标识类型  InpatientNO:住院号 OutpatientNo：门诊号 MedicareNo：医保卡号 PatientNo:-病历编号-->
+            <IdTypeCode>
+            </IdTypeCode>
+          </Item>
+        </IdList>
+        <!-- 姓名  -->
+        <PatientName>
+        </PatientName>
+        <!-- 医院Id  -->
+        <HospitalId>
+        </HospitalId>
+        <!-- 性别  -->
+        <Sex>
+        </Sex>
+        <!-- 出生日期  -->
+        <Birthday>
+        </Birthday>
+      </Patient>
+      <Visit>
+        <!-- 就诊类型  -->
+        <MedicalType>
+        </MedicalType>
+        <!-- 就诊流水号  -->
+        <VisitNo>
+        </VisitNo>
+        <!-- 就诊次数  -->
+        <VisitTimes>
+        </VisitTimes>
+        <!-- 病区编码  -->
+        <WardCode>
+        </WardCode>
+        <!-- 病房号(病区)  -->
+        <Ward>
+        </Ward>
+        <!-- 床号  -->
+        <BedNo>
+        </BedNo>
+        <!--就诊科室编码 -->
+        <DeptCode>
+        </DeptCode>
+        <!--就诊科室名称 -->
+        <DeptName>
+        </DeptName>
+      </Visit>
+      <!--多个申请单可循环Application节点-->
+      <Application>
+        <CommonOder>
+          <!-- 申请控制 取值范围( ) -->
+          <OrderControl>
+          </OrderControl>
+          <!-- 申请单号  -->
+          <ApplyNo>
+          </ApplyNo>
+          <!-- 医嘱编号   -->
+          <AdviceNo>
+          </AdviceNo>
+          <!-- 检查单类型  0:正常 1：加急-->
+          <ApplicationType>
+          </ApplicationType>
+          <!-- 申请时间  -->
+          <AdviceTime>
+          </AdviceTime>
+          <!-- 申请会诊时间  -->
+          <ConsultationTime>
+          </ConsultationTime>
+          <!-- 申请医生编码  -->
+          <AdviceDoctorCode>
+          </AdviceDoctorCode>
+          <!-- 申请医生  -->
+          <AdviceDoctorName>
+          </AdviceDoctorName>
+          <!-- 申请科室编码  -->
+          <AdviceDeptCode>
+          </AdviceDeptCode>
+          <!-- 申请科室  -->
+          <AdviceDeptName>
+          </AdviceDeptName>
+          <!-- 检查单状态  -->
+          <State>
+          </State>
+        </CommonOder>
+        <ObservertionRequest>
+          <!-- 检查项目类型  -->
+          <CheckItemType>
+          </CheckItemType>
+          <!-- 检查项目代码  -->
+          <CheckItemCode>
+          </CheckItemCode>
+          <!-- 检查项目名称  -->
+          <CheckItemName>
+          </CheckItemName>
+          <!-- 执行科室编码  -->
+          <ExecuteDeptCode>
+          </ExecuteDeptCode>
+          <!-- 执行科室名称  -->
+          <ExecuteDeptName>
+          </ExecuteDeptName>
+          <!-- 备注  -->
+          <Remark>
+          </Remark>
+        </ObservertionRequest>
+        <!--多个obx可循环Obsresult-->
+        <ObsResult>
+          <!--identifier:
+				SIGN:临床症状及体征  HISTORY:既往病史
+				RIS:检查结果  LIS:检验结果  DRUG:用药情况
+				REMARK:备注 DIAG:诊断  SITE：部位描述-->
+          <!--观察标识符编码-->
+          <ObsIdentifierCode>
+          </ObsIdentifierCode>
+          <!--观察标识符名称-->
+          <ObsIdentifierName>
+          </ObsIdentifierName>
+          <!--值类型 ST-->
+          <ValueType>
+          </ValueType>
+          <!--观察值-->
+          <ObservationValue>
+          </ObservationValue>
+        </ObsResult>
+      </Application>
+    </ResultItem>
+  </Body>
 </Msg>

@@ -26,14 +26,15 @@ import com.yly.cdr.web.idm.webservice.SZBJGetExamApplicationWebservice;
 public class HL7V2AndXMLHelper {
 	ClassLoader classLoader = getClass().getClassLoader();
 	
-	public String buildV2Message(String xmlContent, String v2Id,String msgType) throws Exception{
+	public String buildV2Message(String xmlContent, String v2Id, String action, String msgType) throws Exception{
 		//1. xml ——> map
-		String xmlJson = "szbjMessages" + File.separator + v2Id + File.separator + v2Id + "_xml.json";
+		String serviceId = File.separator + v2Id + "_" + action;
+		String xmlJson = "szbjMessages" + serviceId + serviceId + "_xml.json";
 		String schemaContent = loadFile(classLoader.getResource(xmlJson));
 		MessageModel messageModel = MessageParserWrapper.xml2Map(schemaContent,xmlContent,msgType);
 		
 		//2. map ——> V2
-		String V2Json = "szbjMessages" + File.separator + v2Id + File.separator + v2Id + "_v2.json";
+		String V2Json = "szbjMessages" + serviceId +serviceId + "_v2.json";
 		String v2SchemaContent = loadFile(classLoader.getResource(V2Json));
         HL7V2MessageHandle hl7V2MessageHandle = new HL7V2MessageHandle();
         ObjectMapper mapper = new ObjectMapper();

@@ -22,7 +22,7 @@ public class SZBJGetExamApplicationWebserviceImpl implements SZBJGetExamApplicat
 	 */
 	public String getExamApplication(String V2Xml) {
 		ClassLoader classLoader = getClass().getClassLoader();
-		String xmlJson = "szbjMessages/omg_o19_c/omg_o19_c_v2.xml";
+		String xmlJson = "szbjMessages/omg_o19_q/omg_o19_q_v2.xml";
 		String result = "";
 		try {
 			result = loadFile(classLoader.getResource(xmlJson));

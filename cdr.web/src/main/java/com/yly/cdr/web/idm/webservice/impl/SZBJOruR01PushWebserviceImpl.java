@@ -4,19 +4,24 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.yly.cdr.core.AppSettings;
-import com.yly.cdr.web.idm.webservice.SZBJOmgO19QueryWebservice;
+import com.yly.cdr.web.idm.webservice.SZBJOruR01PushWebservice;
 import com.yly.cdr.web.util.HL7V2AndXMLHelper;
 
-public class SZBJOmgO19QueryWebserviceImpl implements SZBJOmgO19QueryWebservice {
+/**
+ * 检验报告推送
+ * @author Administrator
+ *
+ */
+public class SZBJOruR01PushWebserviceImpl implements SZBJOruR01PushWebservice {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SZBJOmgO19QueryWebserviceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(SZBJOruR01PushWebserviceImpl.class);
 	
 	@Override
-	public String examApplicationQuery(String xmlContent) {
+	public String examReportPush(String xmlContent) {
 		String result = "";
 		try{
-			String v2Id = "omg_o19";
-			String action = "q";
+			String v2Id = "oru_r01";
+			String action = "p";
 			String msgType = "HL7_V3_MESSAGE";
 			//1.将查询条件xml转成V2查询条件   xml->v2    
 			HL7V2AndXMLHelper helper = new HL7V2AndXMLHelper();
@@ -33,5 +38,5 @@ public class SZBJOmgO19QueryWebserviceImpl implements SZBJOmgO19QueryWebservice 
 		}
 		return result;
 	}
-	
+
 }
