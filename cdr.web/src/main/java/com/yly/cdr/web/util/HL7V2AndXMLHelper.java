@@ -55,10 +55,11 @@ public class HL7V2AndXMLHelper {
         return client.getExamApplication(params);
 	}
 	
-	public String buildXML(String v2Content, String v2Id,String msgType) throws Exception{
+	public String buildXML(String v2Content, String v2Id, String action,String msgType) throws Exception{
 		//1. V2 ——> map
         ObjectMapper mapper = new ObjectMapper();
-        String V2Json = "szbjMessages" + File.separator + v2Id + File.separator + v2Id + "_v2.json";
+        String serviceId = File.separator + v2Id + "_" + action;
+        String V2Json = "szbjMessages" + serviceId + serviceId + "_his_v2.json";
     	String jsonContent = loadFile(classLoader.getResource(V2Json));
     	if(StringUtils.isEmpty(jsonContent)){
     		//logger.error("V2消息配置文件加载失败。。。。。。");
@@ -86,9 +87,12 @@ public class HL7V2AndXMLHelper {
     	}
         
 		//2. map ——> xml
-		String xmlJson = "szbjMessages" + File.separator + v2Id + File.separator + v2Id + "_xml.json";
-		String templateXml = "szbjMessages" + File.separator + v2Id + File.separator + v2Id + ".xml";
-        return MessageParserWrapper.map2Xml(xmlJson, templateXml, "HL7_V3_MESSAGE", model);
+		//serviceId = File.separator+"oru_r01";
+		String xmlJson = "szbjMessages" + serviceId + serviceId + "_szbj_xml.json";
+		String templateXml = "szbjMessages" + serviceId + serviceId + "_szbj.xml";
+		jsonContent = loadFile(classLoader.getResource(xmlJson));
+		String xmlContent = loadFile(classLoader.getResource(templateXml));
+        return MessageParserWrapper.map2Xml(jsonContent, xmlContent, "HL7_V3_MESSAGE", model);
 	}
 	
 	private static String loadFile(URL url) throws Exception {

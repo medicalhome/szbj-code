@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<Msg>
+<Head>
+	<MSH>
+		<!--字段分隔符-->
+		<FieldSeparator></FieldSeparator>
+		<!--代码字符-->
+		<EncodingCharacters></EncodingCharacters>	
+	   <!--发送方应用程序-->
+	   <SendApplication></SendApplication>
+	   <!--接收方应用程序-->
+	   <ReceivingApplication></ReceivingApplication>
+	  <!--消息日期-->
+	   <TimeOfMessage></TimeOfMessage> 
+	   <!--消息类型-->
+	   <MessageType></MessageType>
+	   <!--消息ID-->
+	   <MessageControlId></MessageControlId>
+	   <!--处理ID-->
+	   <ProcessingId></ProcessingId>
+	   <!--版本ID-->
+	   <VersionId></VersionId>
+		<!--消息接收确认类型-->
+	   <AcceptAckType></AcceptAckType>
+		<!--消息接收确认类型-->
+	   <ApplicationAckType></ApplicationAckType>   
+		<!--国家代码-->
+	   <CountryCode></CountryCode>
+	 </MSH>
+</Head>
+<Body>
+	 <MSA>
+		<!--确认代码-->
+		<AckCode></AckCode>
+		<!--延迟确认类型-->
+		<DelayedAckType></DelayedAckType>
+	 </MSA>
+	 <Err>
+		<!--错误段ID-->
+		<ErrSegmentId></ErrSegmentId>
+		<!--错误顺序-->
+		<ErrSequence></ErrSequence>
+		<!--错误字段位置-->
+		<ErrFieldPosition></ErrFieldPosition>
+	 </Err>	
+</Body>
+</Msg>

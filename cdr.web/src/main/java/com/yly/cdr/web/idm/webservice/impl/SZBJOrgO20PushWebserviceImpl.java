@@ -26,7 +26,7 @@ public class SZBJOrgO20PushWebserviceImpl implements SZBJOrgO20PushWebservice {
 		    String resultV2 = helper.callWebservice(AppSettings.getConfig("examV2Ws"), v2Msg);
 			
 	        //3.将返回的V2的信息转成普通xml   
-		    result = helper.buildXML(resultV2, v2Id, msgType);
+		    result = helper.buildXML(resultV2, v2Id,action,msgType);
 		    
 		}catch(Exception e){
 			

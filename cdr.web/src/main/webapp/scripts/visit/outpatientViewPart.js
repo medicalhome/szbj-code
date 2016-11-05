@@ -6,8 +6,8 @@ $(function() {
 	var currentIndex = -1;
 	var visitList = document.getElementById("date");
 	
-	$("#prev").attr("class",　"but butFront");
-	$("#next").attr("class",　"but butBehind");
+	$("#prev").attr("class","but butFront");
+	$("#next").attr("class","but butBehind");
 	
 	// $Author:jin_peng
 	// $Date : 2012/11/1 10:30
@@ -23,10 +23,10 @@ $(function() {
 	
 	if(visitList.options.length == 0||visitList.options.length == 1)
 	{
-		$("#prev").attr("disabled",　true);
-		$("#prev").attr("class",　"but butDisabledFront");
-		$("#next").attr("disabled",　true);
-		$("#next").attr("class",　"but butDisabledBehind");
+		$("#prev").attr("disabled",true);
+		$("#prev").attr("class","but butDisabledFront");
+		$("#next").attr("disabled",true);
+		$("#next").attr("class","but butDisabledBehind");
 	}
 	else
 	{
