@@ -1,174 +1,47 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Msg>
-  <Head>
-    <MSH>
-      <!--字段分隔符-->
-      <FieldSeparator>
-      </FieldSeparator>
-      <!--代码字符-->
-      <EncodingCharacters>
-      </EncodingCharacters>
-      <!--发送方应用程序-->
-      <SendApplication>
-      </SendApplication>
-      <!--接收方应用程序-->
-      <ReceivingApplication>
-      </ReceivingApplication>
-      <!--消息日期-->
-      <TimeOfMessage>
-      </TimeOfMessage>
-      <!--消息类型-->
-      <MessageType>
-      </MessageType>
-      <!--消息ID-->
-      <MessageControlId>
-      </MessageControlId>
-      <!--处理ID-->
-      <ProcessingId>
-      </ProcessingId>
-      <!--版本ID-->
-      <VersionId>
-      </VersionId>
-      <!--消息接收确认类型-->
-      <AcceptAckType>
-      </AcceptAckType>
-      <!--消息接收确认类型-->
-      <ApplicationAckType>
-      </ApplicationAckType>
-      <!--国家代码-->
-      <CountryCode>
-      </CountryCode>
-    </MSH>
-  </Head>
-  <Body>
-    <!-- 检查申请单信息-->
-    <Patient>
-      <!-- 病人ID  -->
-      <PatientId>
-      </PatientId>
-      <IdList>
-        <Item>
-          <!--患者标识id-->
-          <Id>
-          </Id>
-          <!--患者标识类型  InpatientNO:住院号 OutpatientNo：门诊号 MedicareNo：医保卡号 PatientNo:-病历编号-->
-          <IdTypeCode>
-          </IdTypeCode>
-        </Item>
-      </IdList>
-      <!-- 姓名  -->
-      <PatientName>
-      </PatientName>
-      <!-- 医院Id  -->
-      <HospitalId>
-      </HospitalId>
-      <!-- 性别  -->
-      <Sex>
-      </Sex>
-      <!-- 出生日期  -->
-      <Birthday>
-      </Birthday>
-    </Patient>
-    <Visit>
-      <!-- 就诊类型  -->
-      <MedicalType>
-      </MedicalType>
-      <!-- 就诊流水号  -->
-      <VisitNo>
-      </VisitNo>
-      <!-- 就诊次数  -->
-      <VisitTimes>
-      </VisitTimes>
-      <!-- 病区编码  -->
-      <WardCode>
-      </WardCode>
-      <!-- 病房号(病区)  -->
-      <Ward>
-      </Ward>
-      <!-- 床号  -->
-      <BedNo>
-      </BedNo>
-      <!--就诊科室编码 -->
-      <DeptCode>
-      </DeptCode>
-      <!--就诊科室名称 -->
-      <DeptName>
-      </DeptName>
-    </Visit>
-    <Application>
-      <CommonOder>
-        <!-- 申请控制 取值范围( ) -->
-        <OrderControl>
-        </OrderControl>
-        <!-- 申请单号  -->
-        <ApplyNo>
-        </ApplyNo>
-        <!-- 医嘱编号   -->
-        <AdviceNo>
-        </AdviceNo>
-        <!-- 检查单类型  0:正常 1：加急-->
-        <ApplicationType>
-        </ApplicationType>
-        <!-- 申请时间  -->
-        <AdviceTime>
-        </AdviceTime>
-        <!-- 申请会诊时间  -->
-        <ConsultationTime>
-        </ConsultationTime>
-        <!-- 申请医生编码  -->
-        <AdviceDoctorCode>
-        </AdviceDoctorCode>
-        <!-- 申请医生  -->
-        <AdviceDoctorName>
-        </AdviceDoctorName>
-        <!-- 申请科室编码  -->
-        <AdviceDeptCode>
-        </AdviceDeptCode>
-        <!-- 申请科室  -->
-        <AdviceDeptName>
-        </AdviceDeptName>
-        <!-- 检查单状态  -->
-        <State>
-        </State>
-      </CommonOder>
-      <ObservertionRequest>
-        <!-- 检查项目类型  -->
-        <CheckItemType>
-        </CheckItemType>
-        <!-- 检查项目代码  -->
-        <CheckItemCode>
-        </CheckItemCode>
-        <!-- 检查项目名称  -->
-        <CheckItemName>
-        </CheckItemName>
-        <!-- 执行科室编码  -->
-        <ExecuteDeptCode>
-        </ExecuteDeptCode>
-        <!-- 执行科室名称  -->
-        <ExecuteDeptName>
-        </ExecuteDeptName>
-        <!-- 备注  -->
-        <Remark>
-        </Remark>
-      </ObservertionRequest>
-      <ObsResult>
-        <!--identifier:
-			SIGN:临床症状及体征  HISTORY:既往病史
-			RIS:检查结果  LIS:检验结果  DRUG:用药情况
-			REMARK:备注 DIAG:诊断  SITE：部位描述-->
-        <!--观察标识符编码-->
-        <ObsIdentifierCode>
-        </ObsIdentifierCode>
-        <!--观察标识符名称-->
-        <ObsIdentifierName>
-        </ObsIdentifierName>
-        <!--值类型 ST-->
-        <ValueType>
-        </ValueType>
-        <!--观察值-->
-        <ObservationValue>
-        </ObservationValue>
-      </ObsResult>
-    </Application>
-  </Body>
+<Head>
+	<MSH>
+		<!--字段分隔符-->
+		<FieldSeparator>|</FieldSeparator>
+		<!--代码字符-->
+		<EncodingCharacters>^~\&amp;</EncodingCharacters>	
+	   <!--发送方应用程序-->
+	   <SendApplication>ECG</SendApplication>
+	   <!--接收方应用程序-->
+	   <ReceivingApplication>HIS</ReceivingApplication>
+	  <!--消息日期-->
+	   <TimeOfMessage>20160515113608</TimeOfMessage> 
+	   <!--消息类型-->
+	   <MessageType>PSP^Z90</MessageType>
+	   <!--消息ID-->
+	   <MessageControlId>1111122222</MessageControlId>
+	   <!--处理ID-->
+	   <ProcessingId>P</ProcessingId>
+	   <!--版本ID-->
+	   <VersionId>2.4</VersionId>
+		<!--消息接收确认类型-->
+	   <AcceptAckType></AcceptAckType>
+		<!--消息接收确认类型-->
+	   <ApplicationAckType></ApplicationAckType>   
+		<!--国家代码-->
+	   <CountryCode></CountryCode>
+	 </MSH>
+</Head>
+<Body>
+	 <MSA>
+		<!--确认代码-->
+		<AckCode>AA</AckCode>
+		<!--延迟确认类型-->
+		<DelayedAckType>F</DelayedAckType>
+	 </MSA>
+	 <Err>
+		<!--错误段ID-->
+		<ErrSegmentId>1</ErrSegmentId>
+		<!--错误顺序-->
+		<ErrSequence>6</ErrSequence>
+		<!--错误字段位置-->
+		<ErrFieldPosition>X3L</ErrFieldPosition>
+	 </Err>	
+</Body>
 </Msg>

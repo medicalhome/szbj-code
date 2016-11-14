@@ -1,7 +1,7 @@
 {
     "FieldSeparator": {
         "desc": "字段分隔符",
-        "path": "/Msg/Head/FieldSeparator",
+        "path": "/Msg/Head/MSH/FieldSeparator",
         "display": "",
         "type": "string",
         "format": "",
@@ -9,7 +9,7 @@
     },
     "EncodingCharacters": {
         "desc": "代码字符",
-        "path": "/Msg/Head/EncodingCharacters",
+        "path": "/Msg/Head/MSH/EncodingCharacters",
         "display": "",
         "type": "string",
         "format": "",
@@ -17,7 +17,7 @@
     },
     "SendApplication": {
         "desc": "发送系统",
-        "path": "/Msg/Head/SendApplication",
+        "path": "/Msg/Head/MSH/SendApplication",
         "display": "",
         "type": "string",
         "format": "",
@@ -25,7 +25,7 @@
     },
     "ReceivingApplication": {
         "desc": "接收方系统",
-        "path": "/Msg/Head/ReceivingApplication",
+        "path": "/Msg/Head/MSH/ReceivingApplication",
         "display": "",
         "type": "string",
         "format": "",
@@ -33,7 +33,7 @@
     },
     "TimeOfMessage": {
         "desc": "消息日期",
-        "path": "/Msg/Head/TimeOfMessage",
+        "path": "/Msg/Head/MSH/TimeOfMessage",
         "display": "",
         "type": "string",
         "format": "",
@@ -41,7 +41,7 @@
     },
     "MessageType": {
         "desc": "消息类型",
-        "path": "/Msg/Head/MessageType",
+        "path": "/Msg/Head/MSH/MessageType",
         "display": "",
         "type": "string",
         "format": "",
@@ -49,7 +49,7 @@
     },
     "MessageControlId": {
         "desc": "消息ID",
-        "path": "/Msg/Head/MessageControlId",
+        "path": "/Msg/Head/MSH/MessageControlId",
         "display": "",
         "type": "string",
         "format": "",

@@ -21,7 +21,8 @@ import com.founder.hie.message.schema.MessageSchemaDefinition;
 import com.yly.cdr.batch.processor.HL7V2MessageHandle;
 import com.yly.cdr.batch.processor.MessageParserWrapper;
 import com.yly.cdr.util.StringUtils;
-import com.yly.cdr.web.idm.webservice.SZBJGetExamApplicationWebservice;
+import com.yly.cdr.web.idm.webservice.SZBJGetPushResultWebservice;
+import com.yly.cdr.web.idm.webservice.SZBJGetPushXmlResultWebservice;
 
 public class HL7V2AndXMLHelper {
 	ClassLoader classLoader = getClass().getClassLoader();
@@ -41,18 +42,28 @@ public class HL7V2AndXMLHelper {
         Map<String, Object> v2schema = mapper.readValue(v2SchemaContent, HashMap.class);
         MessageSchemaDefinition msd = new MessageSchemaDefinition();
         msd.setSchema(v2schema);
+        if("omg_o19_p".equalsIgnoreCase(v2Id + "_" + action)){
+        	v2Id = "ACK";
+        }else if("omg_o19_q".equalsIgnoreCase(v2Id + "_" + action)){
+        	v2Id = "QBP_Q21";
+        }
         msd.setMessageType(v2Id.toUpperCase());
         msd.setVersionNumber("2.4");
         return hl7V2MessageHandle.buildV2Message(messageModel, msd);
 	}
 	
-	public String callWebservice(String url,String params) throws Exception{
+	public String callWebservice(String url,String params,String flag) throws Exception{
 		ClientProxyFactoryBean factory = new ClientProxyFactoryBean();
         factory.getOutInterceptors().add(new LoggingOutInterceptor());
-        factory.setServiceClass(SZBJGetExamApplicationWebservice.class);
+        factory.setServiceClass(SZBJGetPushResultWebservice.class);
         factory.setAddress(url);
-        SZBJGetExamApplicationWebservice client = (SZBJGetExamApplicationWebservice) factory.create();
-        return client.getExamApplication(params);
+        SZBJGetPushResultWebservice client = (SZBJGetPushResultWebservice) factory.create();
+        if("V2".equalsIgnoreCase(flag)){
+        	return client.getV2Result(params);
+        }else if("XML".equalsIgnoreCase(flag)){
+        	return client.getXmlResult(params);
+        }
+        return null;
 	}
 	
 	public String buildXML(String v2Content, String v2Id, String action,String msgType) throws Exception{
@@ -87,7 +98,6 @@ public class HL7V2AndXMLHelper {
     	}
         
 		//2. map ——> xml
-		//serviceId = File.separator+"oru_r01";
 		String xmlJson = "szbjMessages" + serviceId + serviceId + "_szbj_xml.json";
 		String templateXml = "szbjMessages" + serviceId + serviceId + "_szbj.xml";
 		jsonContent = loadFile(classLoader.getResource(xmlJson));

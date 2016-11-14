@@ -1,7 +1,6 @@
 package com.yly.cdr.web.idm.webservice.impl;
 
 import java.io.BufferedInputStream;
-import java.io.File;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.URL;
@@ -9,20 +8,19 @@ import java.net.URL;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.yly.cdr.web.idm.webservice.SZBJGetExamApplicationWebservice;
+import com.yly.cdr.web.idm.webservice.SZBJGetPushXmlResultWebservice;
 
-public class SZBJGetExamApplicationWebserviceImpl implements SZBJGetExamApplicationWebservice {
+public class SZBJGetPushXmlResultWebserviceImpl implements SZBJGetPushXmlResultWebservice {
 	
-	private static final Logger logger = LoggerFactory.getLogger(SZBJGetExamApplicationWebserviceImpl.class);
-	
+	private static final Logger logger = LoggerFactory.getLogger(SZBJGetPushXmlResultWebserviceImpl.class);
 	
 	@Override
 	/**
 	 * 读取指定路径的V2XML
 	 */
-	public String getExamApplication(String V2Xml) {
+	public String getXmlResult(String xmlContent) {
 		ClassLoader classLoader = getClass().getClassLoader();
-		String xmlJson = "szbjMessages/oru_r01_p/oru_r01_p.xml";
+		String xmlJson = "szbjMessages/omg_o19_p/omg_o19_p.xml";
 		String result = "";
 		try {
 			result = loadFile(classLoader.getResource(xmlJson));

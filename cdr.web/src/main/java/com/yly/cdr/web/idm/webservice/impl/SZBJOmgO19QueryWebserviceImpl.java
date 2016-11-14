@@ -23,7 +23,7 @@ public class SZBJOmgO19QueryWebserviceImpl implements SZBJOmgO19QueryWebservice 
 		    String v2Msg = helper.buildV2Message(xmlContent,v2Id,action,msgType);
 		    
 			//2.调用HIS的webservice，传V2参数，查询申请单信息
-		    String resultV2 = helper.callWebservice(AppSettings.getConfig("examV2Ws"), v2Msg);
+		    String resultV2 = helper.callWebservice(AppSettings.getConfig("getPushResult"), v2Msg,"V2");
 			
 	        //3.将返回的V2的信息转成普通xml   
 		    result = helper.buildXML(resultV2, v2Id,action,msgType);

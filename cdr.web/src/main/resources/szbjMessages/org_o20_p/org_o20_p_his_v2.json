@@ -1,0 +1,138 @@
+{
+    "FieldSeparator": {
+        "desc": "字段分隔符",
+        "path": "/MSH-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "EncodingCharacters": {
+        "desc": "代码字符",
+        "path": "/MSH-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "SendApplication": {
+        "desc": "发送系统",
+        "path": "/MSH-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ReceivingApplication": {
+        "desc": "接收方系统",
+        "path": "/MSH-5",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "TimeOfMessage": {
+        "desc": "消息日期",
+        "path": "/MSH-7",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "MessageType": {
+        "desc": "消息类型",
+        "path": "/MSH-9",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "MessageControlId": {
+        "desc": "消息ID",
+        "path": "/MSH-10",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ProcessingId": {
+        "desc": "处理ID",
+        "path": "/MSH-11",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "VersionId": {
+        "desc": "版本ID",
+        "path": "/MSH-12",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AcceptAckType": {
+        "desc": "消息接收确认类型",
+        "path": "/MSH-15",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ApplicationAckType": {
+        "desc": "应用程序确认类型",
+        "path": "/MSH-16",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "CountryCode": {
+        "desc": "国家代码",
+        "path": "/MSH-17",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AckCode": {
+        "desc": "确认代码",
+        "path": "/MSA-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "DelayedAckType": {
+        "desc": "延迟确认类型",
+        "path": "/MSA-5",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ErrSegmentId": {
+        "desc": "错误段ID",
+        "path": "/ERR-1-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ErrSequence": {
+        "desc": "错误顺序",
+        "path": "/ERR-1-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ErrFieldPosition": {
+        "desc": "错误字段位置",
+        "path": "/ERR-1-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    }
+}

@@ -1,0 +1,448 @@
+{
+    "FieldSeparator": {
+        "desc": "字段分隔符",
+        "path": "/MSH-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "EncodingCharacters": {
+        "desc": "代码字符",
+        "path": "/MSH-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "SendApplication": {
+        "desc": "发送系统",
+        "path": "/MSH-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ReceivingApplication": {
+        "desc": "接收方系统",
+        "path": "/MSH-5",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "TimeOfMessage": {
+        "desc": "消息日期",
+        "path": "/MSH-7",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "MessageType": {
+        "desc": "消息类型",
+        "path": "/MSH-9",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "MessageControlId": {
+        "desc": "消息ID",
+        "path": "/MSH-10",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ProcessingId": {
+        "desc": "处理ID",
+        "path": "/MSH-11",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "VersionId": {
+        "desc": "版本ID",
+        "path": "/MSH-12",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AcceptAckType": {
+        "desc": "消息接收确认类型",
+        "path": "/MSH-15",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ApplicationAckType": {
+        "desc": "应用程序确认类型",
+        "path": "/MSH-16",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "CountryCode": {
+        "desc": "国家代码",
+        "path": "/MSH-17",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AckCode": {
+        "desc": "确认代码",
+        "path": "/MSA-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "DelayedAckType": {
+        "desc": "延迟确认类型",
+        "path": "/MSA-5",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "QueryTag": {
+        "desc": "查询标签",
+        "path": "/QAK-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+   "QueryIdentifier": {
+        "desc": "消息查询编码",
+        "path": "/QAK-3-1,
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "QueryName": {
+        "desc": "消息查询名称",
+        "path": "/QAK-3-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+   "QueryNameSystem": {
+        "desc": "消息查询编码体系",
+        "path": "/QAK-3-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },	
+    "QueryResponseStatus": {
+        "desc": "查询应答状态",
+        "path": "/QAK-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "CountTotal": {
+        "desc": "查询总数",
+        "path": "/QAK-4",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+
+    "ErrSegmentId": {
+        "desc": "错误段ID",
+        "path": "/ERR-1-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ErrSequence": {
+        "desc": "错误顺序",
+        "path": "/ERR-1-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ErrFieldPosition": {
+        "desc": "错误字段位置",
+        "path": "/ERR-1-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ResultItem": {
+        "desc": "患者标识",
+        "path": "/Msg/Body/ResultItem",
+        "display": "",
+        "type": "complex",
+        "format": "",
+        "multiplicity": "0..n",
+        "child": {
+	   "PatientId": {
+        "desc": "患者id",
+        "path": "/PID-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "PIdList": {
+        "desc": "患者标识",
+        "path": "/PID-3",
+        "display": "",
+        "type": "complex",
+        "format": "",
+        "multiplicity": "0..n",
+        "child": {
+            "Id": {
+                "desc": "标识号",
+                "path": "/PID-3(#)-1",
+                "display": "",
+                "type": "string",
+                "format": "",
+                "multiplicity": "0..1"
+            },
+            "IdTypeCode": {
+                "desc": "标识类型",
+                "path": "/PID-3(#)-5",
+                "display": "",
+                "type": "string",
+                "format": "",
+                "multiplicity": "0..1"
+            }
+        }
+    },
+    "PatientName": {
+        "desc": "患者名称",
+        "path": "/PID-5",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "GenderCode": {
+        "desc": "性别编码",
+        "path": "/PID-8",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "VisitTypeCode": {
+        "desc": "就诊类别编码",
+        "path": "/PV1-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "VisitTimes": {
+        "desc": "就诊次数",
+        "path": "/PV1-13",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "VisitOrdNo": {
+        "desc": "就诊流水号",
+        "path": "/PV1-19",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "BedNo": {
+        "desc": "床号",
+        "path": "/PV1-3-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "WardsCode": {
+        "desc": "病区编码",
+        "path": "/PV1-3-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "OrderControl": {
+        "desc": "申请控制",
+        "path": "/ORC-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+	"ApplyNo": {
+	    "desc": "申请单编号",
+	    "path": "/ORC-2",
+	    "display": "",
+	    "type": "string",
+	    "format": "",
+	    "multiplicity": "0..1"
+	},
+	"AdviceNo": {
+	    "desc": "医嘱号",
+	    "path": "/ORC-4",
+	    "display": "",
+	    "type": "string",
+	    "format": "",
+	    "multiplicity": "0..1"
+	},
+    "AdviceDoctorCode": {
+        "desc": "申请医生编码",
+        "path": "/ORC-12-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AdviceDoctorName": {
+        "desc": "申请医生姓名",
+        "path": "/ORC-12-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AdviceTime": {
+        "desc": "申请时间",
+        "path": "/ORC-15",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AdviceDeptCode": {
+        "desc": "开嘱科室编码",
+        "path": "/ORC-17-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "AdviceDeptName": {
+        "desc": "开嘱科室名称",
+        "path": "/ORC-17-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "CheckItemType": {
+        "desc": "执行科室编码",
+        "path": "/OBR-4-3",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+
+    "CheckItemType": {
+            "desc": "检查项目类型",
+            "path": "/OBR-4-3",
+            "display": "",
+            "type": "string",
+            "format": "",
+            "multiplicity": "0..1"
+     },
+    "CheckItemCode": {
+        "desc": "检查项目编码",
+        "path": "/OBR-4-1",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "CheckItemName": {
+        "desc": "检查项目名称",
+        "path": "/OBR-4-2",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+	"ApplicationType": {
+	    "desc": "申请单类型",
+	    "path": "",
+	    "display": "",
+	    "type": "string",
+	    "format": "",
+	    "multiplicity": "0..1"
+	},
+    "ExecuteDeptCode": {
+        "desc": "执行科室编码",
+        "path": "/OBR-20",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "ExecuteDeptName": {
+        "desc": "执行科室名称",
+        "path": "/OBR-21",
+        "display": "",
+        "type": "string",
+        "format": "",
+        "multiplicity": "0..1"
+    },
+    "Obxs": {
+        "desc": "观察结果",
+        "path": "/OBX",
+        "display": "",
+        "type": "complex",
+        "format": "",
+        "multiplicity": "0..n",
+        "child": {
+            "ValueType": {
+                "desc": "值类型",
+                "path": "/ORDER/OBSERVATION(#)/OBX-2",
+                "display": "",
+                "type": "string",
+                "format": "",
+                "multiplicity": "0..1"
+            },
+            "ObsIdentifierCode": {
+                "desc": "标识符",
+                "path": "/ORDER/OBSERVATION(#)/OBX-3-1",
+                "display": "",
+                "type": "string",
+                "format": "",
+                "multiplicity": "0..1"
+            },
+            "ObsIdentifierName": {
+                "desc": "/ORDER/OBSERVATION(#)/OBX-3-2",
+                "path": "",
+                "display": "",
+                "type": "string",
+                "format": "",
+                "multiplicity": "0..1"
+            },
+            "ObsValue": {
+                "desc": "观察值",
+                "path": "/ORDER/OBSERVATION(#)/OBX-5",
+                "display": "",
+                "type": "string",
+                "format": "",
+                "multiplicity": "0..1"
+            }
+        }	
+	}
+}
