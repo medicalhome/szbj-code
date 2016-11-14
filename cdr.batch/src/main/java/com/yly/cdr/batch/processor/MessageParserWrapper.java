@@ -1,5 +1,6 @@
 package com.yly.cdr.batch.processor;
 import java.io.IOException;
+import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,13 +46,14 @@ public class MessageParserWrapper {
 	 * @param msgType
 	 * @param model
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 * @throws EvaluationException
 	 * @throws JsonParseException
 	 * @throws JsonMappingException
 	 * @throws IOException
 	 */
 	@SuppressWarnings("unchecked")
-	public static String map2Xml(String schemaContent,String templateContent,String msgType,MessageModel model){
+	public static String map2Xml(String schemaContent,String templateContent,String msgType,MessageModel model) throws UnsupportedEncodingException{
 		ObjectMapper mapper = new ObjectMapper();
 		Map<String, Object> schema = null;
 		try {
