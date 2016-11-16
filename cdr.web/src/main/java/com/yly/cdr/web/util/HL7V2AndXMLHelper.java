@@ -45,7 +45,7 @@ public class HL7V2AndXMLHelper {
         if("omg_o19_p".equalsIgnoreCase(v2Id + "_" + action)){
         	v2Id = "ACK";
         }else if("omg_o19_q".equalsIgnoreCase(v2Id + "_" + action)){
-        	v2Id = "QBP_Q21";
+        	v2Id = "QBP_Q22";
         }
         msd.setMessageType(v2Id.toUpperCase());
         msd.setVersionNumber("2.4");
@@ -62,6 +62,8 @@ public class HL7V2AndXMLHelper {
         	return client.getV2Result(params);
         }else if("XML".equalsIgnoreCase(flag)){
         	return client.getXmlResult(params);
+        }else if("examApplication".equalsIgnoreCase(flag)){
+        	return client.getExamApplication(params);
         }
         return null;
 	}

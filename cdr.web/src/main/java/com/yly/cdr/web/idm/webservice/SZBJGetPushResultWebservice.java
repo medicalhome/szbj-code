@@ -13,4 +13,6 @@ public interface SZBJGetPushResultWebservice {
 	public String getV2Result(String V2Content);
 	
 	public String getXmlResult(String XmlContent);
+	
+	public String getExamApplication(String V2Condition);
 }

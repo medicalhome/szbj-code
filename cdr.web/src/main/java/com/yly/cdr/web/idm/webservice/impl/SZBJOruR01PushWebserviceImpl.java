@@ -49,7 +49,7 @@ public class SZBJOruR01PushWebserviceImpl implements SZBJOruR01PushWebservice {
 		    }
 		    logger.info("\n=====报告推送后返回的结果V2消息转xml内容为：\n"+result);
 		}catch(Exception e){
-			
+			logger.error(e.getMessage());
 		}
 		return result;
 	}

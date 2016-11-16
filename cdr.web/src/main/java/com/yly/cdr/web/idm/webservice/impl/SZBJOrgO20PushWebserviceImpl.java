@@ -46,7 +46,7 @@ public class SZBJOrgO20PushWebserviceImpl implements SZBJOrgO20PushWebservice {
 		    logger.info("\n=====医嘱执行状态推送后返回的结果V2消息转xml内容为：\n"+result);
 		    
 		}catch(Exception e){
-			
+			logger.error(e.getMessage());
 		}
 		return result;
 	}

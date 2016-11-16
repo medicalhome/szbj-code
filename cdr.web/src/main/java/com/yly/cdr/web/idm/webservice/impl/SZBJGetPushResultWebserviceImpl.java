@@ -77,4 +77,19 @@ public class SZBJGetPushResultWebserviceImpl implements SZBJGetPushResultWebserv
 		return result;
 	}
 	
+	
+	@Override
+	public String getExamApplication(String V2Condition) {
+		ClassLoader classLoader = getClass().getClassLoader();
+		String xmlJson = "szbjMessages/omg_o19_q/omg_o19_q.xml";
+		String result = "";
+		try {
+			result = loadFile(classLoader.getResource(xmlJson));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return result;
+	}
+	
 }
